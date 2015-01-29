@@ -14,6 +14,7 @@
 		3185E1301A79D3E600037B10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3185E12F1A79D3E600037B10 /* Images.xcassets */; };
 		3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3185E1311A79D3E600037B10 /* LaunchScreen.xib */; };
 		3185E13F1A79D3E600037B10 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
+		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		3185E1381A79D3E600037B10 /* PixilitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixilitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3185E13D1A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
+		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
+				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
 				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
 				3185E1281A79D3E600037B10 /* FirstViewController.swift */,
 				3185E12A1A79D3E600037B10 /* SecondViewController.swift */,
@@ -218,6 +221,7 @@
 				3185E12B1A79D3E600037B10 /* SecondViewController.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
 				3185E1291A79D3E600037B10 /* FirstViewController.swift in Sources */,
+				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
