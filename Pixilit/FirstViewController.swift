@@ -15,8 +15,6 @@ class FirstViewController: UIViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        loadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,29 +23,41 @@ class FirstViewController: UIViewController,UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = "Test"
+        
+        let urlPath = "http://www.pixilit.com/rest/node/\(indexPath.row + 1).json"
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                    
+                    var json = JSON(data: data)
+                    var text = json["title"].string
+                    var detailText = json["field_phone_number"]["und"][0]["number"].string
+                    
+                    println("text = \(text), detailText = \(detailText)")
+                    
+                    cellToUpdate.textLabel?.text = text
+                    cellToUpdate.detailTextLabel?.text = detailText
+                    
+                }
+            })
+        })
+        task.resume()
         
         return cell
     }
-
-    func loadData() -> Void {
-        
-        let path = "http://www.pixilit.com/rest/node/1.json"
-        
-        let url = NSURL(string: path)
-        var request = NSURLRequest(URL: url!)
-        var data = NSURLConnection.sendSynchronousRequest(request, returningResponse: nil, error: nil)
-        if data != nil {
-            var json = JSON(data: data!)
-            println(json["title"].string)
-        }
-    }
-
 }
 
