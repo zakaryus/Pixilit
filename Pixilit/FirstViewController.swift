@@ -44,14 +44,20 @@ class FirstViewController: UIViewController,UITableViewDelegate {
                 if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
                     
                     var json = JSON(data: data)
+                    //println(json)
                     var text = json["title"].string
                     var detailText = json["field_phone_number"]["und"][0]["number"].string
-                    
-                    println("text = \(text), detailText = \(detailText)")
                     
                     cellToUpdate.textLabel?.text = text
                     cellToUpdate.detailTextLabel?.text = detailText
                     
+                    var uri = json["field_logo"]["und"][0]["uri"].string
+                    var imgPath = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
+                    let imgUrl = NSURL(string: imgPath!)
+                    let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+                    cellToUpdate.imageView?.image = UIImage(data: imgData!)
+                    
+                    println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
                 }
             })
         })
