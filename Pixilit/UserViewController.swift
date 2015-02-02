@@ -1,25 +1,25 @@
-
-//  FirstViewController.swift
+//
+//  SecondViewController.swift
 //  Pixilit
 //
 //  Created by Zak Steele MBP on 1/28/15.
 //  Copyright (c) 2015 PixilitSeniorProject. All rights reserved.
-
+//
 
 import UIKit
 
-class BusinessListViewController: UIViewController,UITableViewDelegate {
-        
+class UserViewController: UIViewController, UITableViewDelegate {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-         //Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-         //Dispose of any resources that can be recreated.
+        // Dispose of any resources that can be recreated.
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -34,7 +34,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
-                 //If there is an error in the web request, print it to the console
+                //If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
             }
             
@@ -65,16 +65,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
     }
     
     
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("BusinessSeque", sender: tableView)
 
-        
-        var view: BusinessViewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        
-        self.navigationController?.pushViewController(view, animated: true)
-        //view.lblName.text = String(indexPath.row)
-        view.lblName.text = "It worked!"
-    }
+
 }
 
