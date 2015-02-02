@@ -415,6 +415,7 @@
 				3185E1441A79D3E600037B10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3185E1451A79D3E600037B10 /* Build configuration list for PBXNativeTarget "PixilitTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +424,7 @@
 				3185E1471A79D3E600037B10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
