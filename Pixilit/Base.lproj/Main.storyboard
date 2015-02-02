@@ -37,12 +37,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <segue destination="Ers-J0-bCH" kind="show" identifier="BusinessSeque" id="qjU-Oa-bVc"/>
+                        <outlet property="tableView" destination="gpZ-ZY-8cE" id="xLM-cU-Pmx"/>
+                        <segue destination="Ers-J0-bCH" kind="show" identifier="BusinessSegue" id="ru2-vL-re3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="755" y="-320"/>
         </scene>
         <!--Business View Controller-->
         <scene sceneID="myc-6U-yoR">

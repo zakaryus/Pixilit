@@ -9,7 +9,9 @@
 import UIKit
 
 class BusinessListViewController: UIViewController,UITableViewDelegate {
-        
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
          //Do any additional setup after loading the view, typically from a nib.
@@ -63,18 +65,11 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
         
         return cell
     }
-    
-    
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("BusinessSeque", sender: tableView)
-
-        
-        var view: BusinessViewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        
-        self.navigationController?.pushViewController(view, animated: true)
-        //view.lblName.text = String(indexPath.row)
-        view.lblName.text = "It worked!"
+   
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
+        viewController.name = String(indexPath.row)
+        self.presentViewController(viewController, animated: true, completion: nil)
     }
 }
 

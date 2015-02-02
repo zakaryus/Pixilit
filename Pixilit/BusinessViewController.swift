@@ -11,9 +11,10 @@ import UIKit
 class BusinessViewController: UIViewController {
     
     @IBOutlet weak var lblName: UILabel!
-    
+    var name: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblName.text=name
         // Do any additional setup after loading the view, typically from a nib.
     }
     
