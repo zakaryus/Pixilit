@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FF5A3E81-40C5-449E-9D56-FEEE7CBA0A8D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Pixilit</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E32BC5C00969CAFF346324E280E17FBCAC08F26B</key>
+		<string>https://github.com/zakaryus/Pixilit.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Pixilit.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E32BC5C00969CAFF346324E280E17FBCAC08F26B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/zakaryus/Pixilit.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E32BC5C00969CAFF346324E280E17FBCAC08F26B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E32BC5C00969CAFF346324E280E17FBCAC08F26B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Pixilit</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1261A79D3E600037B10 /* AppDelegate.swift */; };
-		3185E1291A79D3E600037B10 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1281A79D3E600037B10 /* FirstViewController.swift */; };
+		3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1281A79D3E600037B10 /* BusinessListViewController.swift */; };
 		3185E12B1A79D3E600037B10 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E12A1A79D3E600037B10 /* SecondViewController.swift */; };
 		3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3185E12C1A79D3E600037B10 /* Main.storyboard */; };
 		3185E1301A79D3E600037B10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3185E12F1A79D3E600037B10 /* Images.xcassets */; };
 		3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3185E1311A79D3E600037B10 /* LaunchScreen.xib */; };
 		3185E13F1A79D3E600037B10 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
+		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,7 @@
 		3185E1211A79D3E600037B10 /* Pixilit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixilit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3185E1251A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3185E1261A79D3E600037B10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3185E1281A79D3E600037B10 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		3185E1281A79D3E600037B10 /* BusinessListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessListViewController.swift; sourceTree = "<group>"; };
 		3185E12A1A79D3E600037B10 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		3185E12D1A79D3E600037B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3185E12F1A79D3E600037B10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -40,6 +41,7 @@
 		3185E13D1A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +85,10 @@
 			children = (
 				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
 				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
-				3185E1281A79D3E600037B10 /* FirstViewController.swift */,
+				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
 				3185E12A1A79D3E600037B10 /* SecondViewController.swift */,
 				3185E12C1A79D3E600037B10 /* Main.storyboard */,
+				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
@@ -220,7 +223,8 @@
 			files = (
 				3185E12B1A79D3E600037B10 /* SecondViewController.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
-				3185E1291A79D3E600037B10 /* FirstViewController.swift in Sources */,
+				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
+				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
 				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
