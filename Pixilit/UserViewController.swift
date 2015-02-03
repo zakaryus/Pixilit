@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  UserViewController.swift
 //  Pixilit
 //
 //  Created by Zak Steele MBP on 1/28/15.
@@ -9,15 +9,18 @@
 import UIKit
 
 class UserViewController: UIViewController, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var usernameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        //Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,7 +28,7 @@ class UserViewController: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell2")
         
         
         let urlPath = "http:www.pixilit.com/rest/node/\(indexPath.row + 1).json"
@@ -56,16 +59,23 @@ class UserViewController: UIViewController, UITableViewDelegate {
                     cellToUpdate.imageView?.image = UIImage(data: imgData!)
                     
                     println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
+                    self.setName(text!)
                 }
             })
         })
         task.resume()
-        
+      
         return cell
     }
-    
-    
 
+      func setName(username: String) {
+        usernameField.text=username
+    }	
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
+        viewController.name = String(indexPath.row)
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
 
 }
 
