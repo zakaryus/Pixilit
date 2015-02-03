@@ -8,10 +8,11 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UITableViewDelegate {
+class UserViewController: UIViewController, UICollectionViewDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+ 
 
+    @IBOutlet var colletionView: UICollectionView!
     @IBOutlet weak var usernameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,15 +24,15 @@ class UserViewController: UIViewController, UITableViewDelegate {
         //Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell2")
+        func collectionView(collectionView: UICollectionView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as UICollectionViewCell
         
         
-        let urlPath = "http:www.pixilit.com/rest/node/\(indexPath.row + 1).json"
+        let urlPath = "http:www.pixilit.com/rest/user/19.json"
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -40,26 +41,27 @@ class UserViewController: UIViewController, UITableViewDelegate {
                 //If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
             }
-            
+           
             dispatch_async(dispatch_get_main_queue(), {
-                if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath)  {
                     
                     var json = JSON(data: data)
                     println(json)
-                    var text = json["title"].string
-                    var detailText = json["field_phone_number"]["und"][0]["number"].string
+                    var text = json["name"].string
+                   // var detailText = json["field_phone_number"]["und"][0]["number"].string
                     
-                    cellToUpdate.textLabel?.text = text
-                    cellToUpdate.detailTextLabel?.text = detailText
+                   // cellToUpdate.textLabel?.text = text
+                      self.setName(text!) //update username
+                 //   cellToUpdate.detailTextLabel?.text = detailText
                     
-                    var uri = json["field_logo"]["und"][0]["uri"].string
-                    var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http:www.pixilit.com/sites/default/files/")
-                    let imgUrl = NSURL(string: imgPath!)
-                    let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                    cellToUpdate.imageView?.image = UIImage(data: imgData!)
+               //     var uri = json["field_logo"]["und"][0]["uri"].string
+                  var imgPath = json["picture"]["url"].string
+               let imgUrl = NSURL(string: imgPath!)
+                  let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+              cellToUpdate.imageView.image = UIImage(data: imgData!)
                     
-                    println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
-                    self.setName(text!)
+                   // println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
+                  
                 }
             })
         })
@@ -71,7 +73,7 @@ class UserViewController: UIViewController, UITableViewDelegate {
       func setName(username: String) {
         usernameField.text=username
     }	
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(collectionView: UICollectionView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
         viewController.name = String(indexPath.row)
         self.presentViewController(viewController, animated: true, completion: nil)
