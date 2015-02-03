@@ -68,7 +68,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        viewController.name = String(indexPath.row)
+        //viewController.name = String(indexPath.row)
         self.presentViewController(viewController, animated: true, completion: nil)
     }
 }
