@@ -24,12 +24,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
         //Dispose of any resources that can be recreated.
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
     
         func collectionView(collectionView: UICollectionView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as UICollectionViewCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as CollectionViewCell
         
         
         let urlPath = "http:www.pixilit.com/rest/user/19.json"
@@ -58,9 +58,9 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
                   var imgPath = json["picture"]["url"].string
                let imgUrl = NSURL(string: imgPath!)
                   let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-              cellToUpdate.imageView.image = UIImage(data: imgData!)
-                    
-                   // println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
+              //cellToUpdate.imageView.image = UIImage(data: imgData!)
+                    cell.imageView.image = UIImage(data: imgData!)
+                    // println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
                   
                 }
             })
