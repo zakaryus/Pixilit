@@ -10,16 +10,66 @@ import UIKit
 
 class BusinessViewController: UIViewController {
     
-    @IBOutlet weak var lblName: UILabel!
-    var name: String = ""
+    @IBOutlet weak var businessTable: UITableView!
+    @IBOutlet weak var businessDescription: UILabel!
+    @IBOutlet weak var businessHours: UILabel!
+    @IBOutlet weak var businessEmail: UILabel!
+    @IBOutlet weak var businessPhone: UILabel!
+    @IBOutlet weak var businessAddress: UILabel!
+    @IBOutlet weak var businessImage: UIImageView!
+    @IBOutlet weak var businessName: UILabel!
+    
+    var nid: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblName.text=name
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        
+        
+        let urlPath = "http:www.pixilit.com/rest/node/\(nid).json"
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                    
+                var json = JSON(data: data)
+                println(json)
+                self.businessName.text = json["title"].string
+                
+                var thoroughfare = json["thoroughfare"].string
+                var locality = json["locality"].string
+                var aa = json["administrative_area"].string
+                var post = json["postal_code"].string
+                self.businessAddress.text = "\(thoroughfare), \(locality), \(aa) \(post)"
+                self.businessPhone.text = json["field_phone_number"]["und"][0]["value"].string
+                self.businessEmail.text = json["field_email"]["und"][0]["email"].string
+                
+                //hours
+                
+                self.businessDescription.text = json["field_description"]["und"][0]["safe_value"].string
+                
+                var uri = json["field_logo"]["und"][0]["uri"].string
+                var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http:www.pixilit.com/sites/default/files/")
+                let imgUrl = NSURL(string: imgPath!)
+                let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+                self.businessImage.image = UIImage(data: imgData!)
+            
+            })
+        })
+        task.resume()        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    
         // Dispose of any resources that can be recreated.
     }
     

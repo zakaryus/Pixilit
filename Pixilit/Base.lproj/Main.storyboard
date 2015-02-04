@@ -142,6 +142,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="businessAddress" destination="YIq-k5-J1L" id="d5h-QI-GPl"/>
+                        <outlet property="businessDescription" destination="0E7-Fq-kMM" id="AOt-Cj-wQs"/>
+                        <outlet property="businessEmail" destination="0fs-l0-0EL" id="948-Xv-ip6"/>
+                        <outlet property="businessHours" destination="0fs-l0-0EL" id="qhQ-8L-gDQ"/>
+                        <outlet property="businessImage" destination="6oV-eF-aV5" id="Wbg-in-Pu9"/>
+                        <outlet property="businessName" destination="QL1-dN-HhE" id="Slh-8e-4ix"/>
+                        <outlet property="businessPhone" destination="5ic-fB-ZAB" id="G75-Cm-C0T"/>
+                        <outlet property="businessTable" destination="kV7-aX-sU1" id="dw0-Qz-mKB"/>
                         <outlet property="lblName" destination="QL1-dN-HhE" id="lxu-UB-WQA"/>
                     </connections>
                 </viewController>
