@@ -56,7 +56,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     let imgUrl = NSURL(string: imgPath!)
                     let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
                     cellToUpdate.imageView?.image = UIImage(data: imgData!)
-                    self.nodeIDs[indexPath.row] = json["nid"].string!
+                    self.nodeIDs.append(json["nid"].string!)
                     println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
                 }
             })
@@ -68,7 +68,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        viewController.nid = nodeIDs[indexPath.row]
+        viewController.nid = self.nodeIDs[indexPath.row]
         self.presentViewController(viewController, animated: true, completion: nil)
     }
 }

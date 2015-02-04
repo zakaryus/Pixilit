@@ -44,10 +44,10 @@ class BusinessViewController: UIViewController {
                 println(json)
                 self.businessName.text = json["title"].string
                 
-                var thoroughfare = json["thoroughfare"].string
-                var locality = json["locality"].string
-                var aa = json["administrative_area"].string
-                var post = json["postal_code"].string
+                var thoroughfare = json["field_address"]["und"][0]["thoroughfare"].string!
+                var locality = json["field_address"]["und"][0]["locality"].string!
+                var aa = json["field_address"]["und"][0]["administrative_area"].string!
+                var post = json["field_address"]["und"][0]["postal_code"].string!
                 self.businessAddress.text = "\(thoroughfare), \(locality), \(aa) \(post)"
                 self.businessPhone.text = json["field_phone_number"]["und"][0]["value"].string
                 self.businessEmail.text = json["field_email"]["und"][0]["email"].string
