@@ -14,7 +14,9 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
     var nodes = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        nodes = genericRestRequest()
+        
+        genericRestRequest()
+
          //Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -73,9 +75,9 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
         self.presentViewController(viewController, animated: true, completion: nil)
     }
     
-    func genericRestRequest() ->[String]
+    func genericRestRequest()
     {
-        var nodes = [String]()
+        nodes = [String]()
         let urlPath = "http:www.pixilit.com/rest/node.json"
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -89,12 +91,15 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
             dispatch_async(dispatch_get_main_queue(), {
                 
                 var json = JSON(data: data)
-                println(json)
+                //println(json)
                 
                 for (index: String, subJson: JSON) in json {
+                    
+                    //println(subJson)
+                    
                     if subJson["type"].string == "business"
                     {
-                        nodes.append(subJson["uri"].string! + ".json")
+                        self.nodes.append(subJson["uri"].string! + ".json")
                     }
                 }
                 
@@ -103,8 +108,6 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
             })
         })
         task.resume()
-        
-        return nodes
     }
 }
 
