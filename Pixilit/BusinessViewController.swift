@@ -24,9 +24,6 @@ class BusinessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
         let urlPath = nid
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -41,7 +38,6 @@ class BusinessViewController: UIViewController {
                 
                     
                 var json = JSON(data: data)
-                println(json)
                 self.businessName.text = json["title"].string
                 
                 var thoroughfare = json["field_address"]["und"][0]["thoroughfare"].string!
@@ -52,12 +48,12 @@ class BusinessViewController: UIViewController {
                 self.businessPhone.text = json["field_phone_number"]["und"][0]["value"].string
                 self.businessEmail.text = json["field_email"]["und"][0]["email"].string
                 
-                
+                //hours
                 
                 self.businessDescription.text = json["field_description"]["und"][0]["safe_value"].string
                 
                 var uri = json["field_logo"]["und"][0]["uri"].string
-                var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http:www.pixilit.com/sites/default/files/")
+                var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
                 let imgUrl = NSURL(string: imgPath!)
                 let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
                 self.businessImage.image = UIImage(data: imgData!)

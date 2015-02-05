@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Pixilit-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="BusinessListViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <viewController title="Pixilit" id="9pv-A4-QxB" customClass="BusinessListViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -37,17 +38,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Businesses" image="first" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" id="Eed-v9-22L"/>
                     <connections>
                         <outlet property="tableView" destination="gpZ-ZY-8cE" id="xLM-cU-Pmx"/>
-                        <segue destination="Ers-J0-bCH" kind="show" identifier="BusinessSegue" id="ru2-vL-re3"/>
+                        <segue destination="Gl2-Rm-eX6" kind="show" id="ffd-66-OX0"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="755" y="-320"/>
+            <point key="canvasLocation" x="787" y="-320"/>
         </scene>
-        <!--Business View Controller-->
+        <!--Title-->
         <scene sceneID="myc-6U-yoR">
             <objects>
                 <viewController storyboardIdentifier="businessViewController" id="Ers-J0-bCH" customClass="BusinessViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,7 +60,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL1-dN-HhE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Business name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL1-dN-HhE">
                                 <rect key="frame" x="16" y="20" width="568" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="fI8-cO-86n"/>
@@ -69,7 +70,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-eF-aV5">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oV-eF-aV5">
                                 <rect key="frame" x="16" y="111" width="149" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="149" id="L8A-we-dUe"/>
@@ -141,6 +142,9 @@
                             <constraint firstAttribute="centerX" secondItem="kV7-aX-sU1" secondAttribute="centerX" id="xJx-Ri-Cen"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="gyS-w3-1kg">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="nvq-vm-bRj"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="businessAddress" destination="YIq-k5-J1L" id="d5h-QI-GPl"/>
                         <outlet property="businessDescription" destination="0E7-Fq-kMM" id="AOt-Cj-wQs"/>
@@ -154,7 +158,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nF2-ja-VKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="-320"/>
+            <point key="canvasLocation" x="2405" y="-320"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -209,13 +213,48 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="ITG-ni-Vzd" kind="relationship" relationship="viewControllers" id="0bI-fl-mST"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-1044" y="-34"/>
+        </scene>
+        <!--Businesses-->
+        <scene sceneID="pv2-gv-Kfw">
+            <objects>
+                <navigationController title="Businesses" id="ITG-ni-Vzd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Businesses" id="GXS-QF-Wpx" userLabel="Businesses"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ujr-qN-CUE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="aFA-Sc-QvY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbi-rp-Bil" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26" y="-320"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YFH-mV-gv0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gl2-Rm-eX6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="So8-hP-ggw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ers-J0-bCH" kind="relationship" relationship="rootViewController" id="KcS-p7-aH4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m1q-jz-AfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="-320"/>
         </scene>
     </scenes>
     <resources>

@@ -15,7 +15,11 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        genericRestRequest()
+        genericRestRequest() {
+            urls in
+            self.nodes = urls
+            self.tableView.reloadData()
+        }
 
          //Do any additional setup after loading the view, typically from a nib.
     }
@@ -47,7 +51,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                 if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
                     
                     var json = JSON(data: data)
-                    println(json)
+
                     var text = json["title"].string
                     var detailText = json["field_phone_number"]["und"][0]["number"].string
                     
@@ -55,12 +59,10 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     cellToUpdate.detailTextLabel?.text = detailText
                     
                     var uri = json["field_logo"]["und"][0]["uri"].string
-                    var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http:www.pixilit.com/sites/default/files/")
+                    var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
                     let imgUrl = NSURL(string: imgPath!)
                     let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
                     cellToUpdate.imageView?.image = UIImage(data: imgData!)
-                    
-                    println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
                 }
             })
         })
@@ -75,9 +77,9 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
         self.presentViewController(viewController, animated: true, completion: nil)
     }
     
-    func genericRestRequest()
+    func genericRestRequest(completionHandler: (urls: [String]) -> ())
     {
-        nodes = [String]()
+        var tmpUrls = [String]()
         let urlPath = "http:www.pixilit.com/rest/node.json"
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -99,11 +101,11 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     
                     if subJson["type"].string == "business"
                     {
-                        self.nodes.append(subJson["uri"].string! + ".json")
+                        tmpUrls.append(subJson["uri"].string! + ".json")
                     }
                 }
                 
-                
+                completionHandler(urls: tmpUrls)
                 
             })
         })
