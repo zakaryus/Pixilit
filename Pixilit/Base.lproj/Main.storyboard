@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -144,7 +144,7 @@
                     <connections>
                         <outlet property="businessAddress" destination="YIq-k5-J1L" id="d5h-QI-GPl"/>
                         <outlet property="businessDescription" destination="0E7-Fq-kMM" id="AOt-Cj-wQs"/>
-                        <outlet property="businessEmail" destination="0fs-l0-0EL" id="948-Xv-ip6"/>
+                        <outlet property="businessEmail" destination="FdF-x5-ebt" id="b9u-5L-ocB"/>
                         <outlet property="businessHours" destination="0fs-l0-0EL" id="qhQ-8L-gDQ"/>
                         <outlet property="businessImage" destination="6oV-eF-aV5" id="Wbg-in-Pu9"/>
                         <outlet property="businessName" destination="QL1-dN-HhE" id="Slh-8e-4ix"/>

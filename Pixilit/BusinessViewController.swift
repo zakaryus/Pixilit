@@ -27,7 +27,7 @@ class BusinessViewController: UIViewController {
         
         
         
-        let urlPath = "http:www.pixilit.com/rest/node/\(nid).json"
+        let urlPath = nid
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -52,7 +52,7 @@ class BusinessViewController: UIViewController {
                 self.businessPhone.text = json["field_phone_number"]["und"][0]["value"].string
                 self.businessEmail.text = json["field_email"]["und"][0]["email"].string
                 
-                //hours
+                
                 
                 self.businessDescription.text = json["field_description"]["und"][0]["safe_value"].string
                 

@@ -11,9 +11,10 @@ import UIKit
 class BusinessListViewController: UIViewController,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var nodeIDs = [String]()
+    var nodes = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        nodes = genericRestRequest()
          //Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -23,14 +24,14 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return nodes.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
         
-        let urlPath = "http:www.pixilit.com/rest/node/\(indexPath.row + 1).json"
+        let urlPath = nodes[indexPath.row]
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -56,7 +57,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     let imgUrl = NSURL(string: imgPath!)
                     let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
                     cellToUpdate.imageView?.image = UIImage(data: imgData!)
-                    self.nodeIDs.append(json["nid"].string!)
+                    
                     println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
                 }
             })
@@ -68,8 +69,42 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        viewController.nid = self.nodeIDs[indexPath.row]
+        viewController.nid = self.nodes[indexPath.row]
         self.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
+    func genericRestRequest() ->[String]
+    {
+        var nodes = [String]()
+        let urlPath = "http:www.pixilit.com/rest/node.json"
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                var json = JSON(data: data)
+                println(json)
+                
+                for (index: String, subJson: JSON) in json {
+                    if subJson["type"].string == "business"
+                    {
+                        nodes.append(subJson["uri"].string! + ".json")
+                    }
+                }
+                
+                
+                
+            })
+        })
+        task.resume()
+        
+        return nodes
     }
 }
 
