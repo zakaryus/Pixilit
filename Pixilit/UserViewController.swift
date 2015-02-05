@@ -16,6 +16,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var usernameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView!.registerClass(CustomCell.self, forCellWithReuseIdentifier: "ImgCell")
         //Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -29,7 +30,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     }
     
         func collectionView(collectionView: UICollectionView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as CollectionViewCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as CustomCell
         
         
         let urlPath = "http:www.pixilit.com/rest/user/19.json"
