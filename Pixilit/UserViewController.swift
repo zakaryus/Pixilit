@@ -11,9 +11,10 @@ import UIKit
 class UserViewController: UIViewController, UICollectionViewDelegate {
     
  
-
-    @IBOutlet var colletionView: UICollectionView!
-    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet var collectionView: UICollectionView!
+    
+   
+    @IBOutlet var usernameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.registerClass(CustomCell.self, forCellWithReuseIdentifier: "ImgCell")
@@ -29,10 +30,9 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
         return 1
     }
     
-        func collectionView(collectionView: UICollectionView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as CustomCell
-        
-        
+      
         let urlPath = "http:www.pixilit.com/rest/user/19.json"
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -74,7 +74,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
       func setName(username: String) {
         usernameField.text=username
     }	
-    func collectionView(collectionView: UICollectionView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
         viewController.name = String(indexPath.row)
         self.presentViewController(viewController, animated: true, completion: nil)

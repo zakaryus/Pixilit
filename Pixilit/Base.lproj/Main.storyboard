@@ -137,7 +137,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f0q-4x-Y9G">
-                                <rect key="frame" x="106" y="150" width="322" height="300"/>
+                                <rect key="frame" x="16" y="87" width="322" height="300"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mN3-1c-cdC">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -165,8 +165,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="colletionView" destination="f0q-4x-Y9G" id="aSQ-cu-yvS"/>
-                        <outlet property="usernameField" destination="Hif-pI-0Dd" id="0gn-xT-dfo"/>
+                        <outlet property="collectionView" destination="f0q-4x-Y9G" id="wic-Ah-qcG"/>
+                        <outlet property="usernameField" destination="Hif-pI-0Dd" id="3dl-4h-cVQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

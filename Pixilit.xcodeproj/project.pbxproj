@@ -16,7 +16,7 @@
 		3185E13F1A79D3E600037B10 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
-		A69F31941A82EA2600EED6D7 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F31931A82EA2600EED6D7 /* CustomCell.swift */; };
+		A69F31961A82F0E900EED6D7 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F31951A82F0E900EED6D7 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +43,7 @@
 		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
-		A69F31931A82EA2600EED6D7 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		A69F31951A82F0E900EED6D7 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,6 @@
 		3185E1181A79D3E600037B10 = {
 			isa = PBXGroup;
 			children = (
-				A69F31931A82EA2600EED6D7 /* CustomCell.swift */,
 				3185E1231A79D3E600037B10 /* Pixilit */,
 				3185E13B1A79D3E600037B10 /* PixilitTests */,
 				3185E1221A79D3E600037B10 /* Products */,
@@ -95,6 +94,7 @@
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
+				A69F31951A82F0E900EED6D7 /* CustomCell.swift */,
 			);
 			path = Pixilit;
 			sourceTree = "<group>";
@@ -228,7 +228,7 @@
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
-				A69F31941A82EA2600EED6D7 /* CustomCell.swift in Sources */,
+				A69F31961A82F0E900EED6D7 /* CustomCell.swift in Sources */,
 				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
