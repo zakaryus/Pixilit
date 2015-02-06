@@ -1,5 +1,5 @@
 
-//  FirstViewController.swift
+//  BusinessListViewController.swift
 //  Pixilit
 //
 //  Created by Zak Steele MBP on 1/28/15.
@@ -8,25 +8,51 @@
 
 import UIKit
 
-class BusinessListViewController: UIViewController,UITableViewDelegate {
+class BusinessListViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
+    
+    var collation = UILocalizedIndexedCollation.currentCollation()
+    as UILocalizedIndexedCollation
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    struct Business {
-        let Title:String
-        let Url:String
+    class Business: NSObject {
+        let Title: String
+        let Url: String
+        var section: Int?
+        
+        init(Title: String, Url: String) {
+            self.Title = Title
+            self.Url = Url
+        }
     }
     
-    var nodes = [Business]()
+    // custom type to represent table sections
+    class Section {
+        var businesses: [Business] = []
+        
+        func addBusiness(business: Business) {
+            self.businesses.append(business)
+        }
+    }
+    
+    var listOfBusinesses: [Business] = [Business]()
+    var filteredListOfBusinesses = [Business]()
 
+    var sections: [Section] = [Section]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         genericRestRequest() {
             urls in
-            var tmp: [Business] = urls
-            self.nodes = tmp.sorted({$0.Title < $1.Title})
+            self.listOfBusinesses = urls
+            
+            /*****************/
+            
+            // table sections
+            self.sections = self.getSections()
+            /*****************/
             
             self.tableView.reloadData()
         }
@@ -38,16 +64,20 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
         super.didReceiveMemoryWarning()
          //Dispose of any resources that can be recreated.
     }
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nodes.count
-    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
+        var urlPath: String = ""
+        //let urlPath = self.sections[indexPath.section].businesses[indexPath.row].Url
         
-        let urlPath = nodes[indexPath.row].Url
+        
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            urlPath = filteredListOfBusinesses[indexPath.row].Url
+        } else {
+            urlPath = self.sections[indexPath.section].businesses[indexPath.row].Url
+        }
+        //let urlPath = businesses[indexPath.row].Url
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -84,7 +114,8 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        viewController.nid = self.nodes[indexPath.row].Url
+        viewController.nid = self.sections[indexPath.section].businesses[indexPath.row].Url
+        //viewController.nid = self.businesses[indexPath.row].Url
         self.presentViewController(viewController, animated: true, completion: nil)
     }
     
@@ -118,11 +149,111 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     }
                 }
                 
+                tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+                
                 completionHandler(urls: tmpUrls)
                 
             })
         })
         task.resume()
     }
+    
+    /**************************************************************************************/
+    
+    //adapted from tutorial at http://www.pumpmybicep.com/2014/07/04/uitableview-sectioning-and-indexing/
+    // table view data source
+    
+    func numberOfSectionsInTableView(tableView: UITableView)
+        -> Int {
+            if tableView == self.searchDisplayController!.searchResultsTableView {
+                return self.filteredListOfBusinesses.count
+            } else {
+                return self.sections.count
+            }
+    }
+    
+    func tableView(tableView: UITableView,
+        numberOfRowsInSection section: Int)
+        -> Int {
+            return self.sections[section].businesses.count
+    }
+    
+    func tableView(tableView: UITableView,
+        titleForHeaderInSection section: Int)
+        -> String {
+            // do not display empty `Section`s
+            if !self.sections[section].businesses.isEmpty {
+                return self.collation.sectionTitles[section] as String
+            }
+            return ""
+    }
+
+    func sectionIndexTitlesForTableView(tableView: UITableView)
+        -> [AnyObject] {
+            return self.collation.sectionIndexTitles
+    }
+    
+    func tableView(tableView: UITableView,
+        sectionForSectionIndexTitle title: String,
+        atIndex index: Int)
+        -> Int {
+            return self.collation.sectionForSectionIndexTitleAtIndex(index)
+    }
+    
+    func getSections() -> [Section]
+    {
+        var _sections: [Section]?
+        
+        // return if already initialized
+        if _sections != nil {
+            return _sections!
+        }
+        
+        // create users from the name list
+        var businesses: [Business] = listOfBusinesses.map { business in
+            business.section = self.collation.sectionForObject(business, collationStringSelector: "Title")
+            return business
+        }
+        
+        // create empty sections
+        var sections = [Section]()
+        for i in 0..<collation.sectionIndexTitles.count {
+            sections.append(Section())
+        }
+        
+        // put each user in a section
+        for business in businesses {
+            sections[business.section!].addBusiness(business)
+        }
+        
+        // sort each section
+        for section in sections {
+            section.businesses = collation.sortedArrayFromArray(section.businesses, collationStringSelector: "Title") as [Business]
+        }
+        
+        _sections = sections
+        
+        return _sections!
+        
+    }
+    
+    func filterContentForSearchText(searchText: String) {
+        // Filter the array using the filter method
+        self.filteredListOfBusinesses = self.listOfBusinesses.filter({( business: Business) -> Bool in
+            let stringMatch = business.Title.rangeOfString(searchText)
+            return stringMatch != nil
+        })
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
+    }
+    
 }
 
