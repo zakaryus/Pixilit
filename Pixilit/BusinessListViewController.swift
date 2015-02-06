@@ -11,14 +11,22 @@ import UIKit
 class BusinessListViewController: UIViewController,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var nodes = [String: String]()
+    
+    struct Business {
+        let Title:String
+        let Url:String
+    }
+    
+    var nodes = [Business]()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         genericRestRequest() {
             urls in
-            var dict = urls
-            self.nodes = Array(dict).sorted({$0.0<$1.0})
+            var tmp: [Business] = urls
+            self.nodes = tmp.sorted({$0.Title < $1.Title})
             
             self.tableView.reloadData()
         }
@@ -39,7 +47,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
         
-        let urlPath = nodes[indexPath.row]
+        let urlPath = nodes[indexPath.row].Url
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -53,6 +61,7 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                 if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
                     
                     var json = JSON(data: data)
+                    println(json)
 
                     var text = json["title"].string
                     var detailText = json["field_phone_number"]["und"][0]["number"].string
@@ -75,13 +84,13 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        viewController.nid = self.nodes[indexPath.row]
+        viewController.nid = self.nodes[indexPath.row].Url
         self.presentViewController(viewController, animated: true, completion: nil)
     }
     
-    func genericRestRequest(completionHandler: (urls: [String]) -> ())
+    func genericRestRequest(completionHandler: (urls: [Business]) -> ())
     {
-        var tmpUrls = [String: String]()
+        var tmpUrls = [Business]()
 
         let urlPath = "http:www.pixilit.com/rest/node.json"
         
@@ -104,8 +113,8 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     
                     if subJson["type"].string == "business"
                     {
-                        var business = subJson["title"].string!
-                        tmpUrls[business] = subJson["uri"].string! + ".json"
+                        var business: Business = Business(Title: subJson["title"].string!, Url: subJson["uri"].string! + ".json")
+                        tmpUrls.append(business)
                     }
                 }
                 
