@@ -11,13 +11,15 @@ import UIKit
 class BusinessListViewController: UIViewController,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    var nodes = [String]()
+    var nodes = [String: String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         genericRestRequest() {
             urls in
-            self.nodes = urls
+            var dict = urls
+            self.nodes = Array(dict).sorted({$0.0<$1.0})
+            
             self.tableView.reloadData()
         }
 
@@ -79,7 +81,8 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
     
     func genericRestRequest(completionHandler: (urls: [String]) -> ())
     {
-        var tmpUrls = [String]()
+        var tmpUrls = [String: String]()
+
         let urlPath = "http:www.pixilit.com/rest/node.json"
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -101,7 +104,8 @@ class BusinessListViewController: UIViewController,UITableViewDelegate {
                     
                     if subJson["type"].string == "business"
                     {
-                        tmpUrls.append(subJson["uri"].string! + ".json")
+                        var business = subJson["title"].string!
+                        tmpUrls[business] = subJson["uri"].string! + ".json"
                     }
                 }
                 
