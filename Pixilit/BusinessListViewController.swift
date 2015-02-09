@@ -10,8 +10,7 @@ import UIKit
 
 class BusinessListViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
     
-    var collation = UILocalizedIndexedCollation.currentCollation()
-    as UILocalizedIndexedCollation
+    var collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -38,46 +37,38 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     var listOfBusinesses: [Business] = [Business]()
     var filteredListOfBusinesses = [Business]()
-
     var sections: [Section] = [Section]()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        
+         //Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(animated: Bool)
+    {
         genericRestRequest() {
             urls in
             self.listOfBusinesses = urls
             
-            /*****************/
-            
-            // table sections
-            self.sections = self.getSections()
-            /*****************/
+            self.sections = self.getSections(self.listOfBusinesses)
             
             self.tableView.reloadData()
         }
-
-         //Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
          //Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        var urlPath: String = ""
-        //let urlPath = self.sections[indexPath.section].businesses[indexPath.row].Url
-        
-        
-        if tableView == self.searchDisplayController!.searchResultsTableView {
-            urlPath = filteredListOfBusinesses[indexPath.row].Url
-        } else {
-            urlPath = self.sections[indexPath.section].businesses[indexPath.row].Url
-        }
-        //let urlPath = businesses[indexPath.row].Url
+        var urlPath = self.sections[indexPath.section].businesses[indexPath.row].Url
+
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -91,7 +82,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                 if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
                     
                     var json = JSON(data: data)
-                    println(json)
+                    //println(json)
 
                     var text = json["title"].string
                     var detailText = json["field_phone_number"]["und"][0]["number"].string
@@ -112,11 +103,16 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         return cell
     }
    
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("businessViewController") as BusinessViewController
-        viewController.nid = self.sections[indexPath.section].businesses[indexPath.row].Url
-        //viewController.nid = self.businesses[indexPath.row].Url
-        self.presentViewController(viewController, animated: true, completion: nil)
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    {
+        var nid = self.sections[indexPath.section].businesses[indexPath.row].Url
+        self.performSegueWithIdentifier("BusinessShowSegue", sender: nid)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var bvc = segue.destinationViewController as BusinessViewController
+        bvc.nid = sender as String
     }
     
     func genericRestRequest(completionHandler: (urls: [Business]) -> ())
@@ -163,24 +159,18 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     //adapted from tutorial at http://www.pumpmybicep.com/2014/07/04/uitableview-sectioning-and-indexing/
     // table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView)
-        -> Int {
-            if tableView == self.searchDisplayController!.searchResultsTableView {
-                return self.filteredListOfBusinesses.count
-            } else {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
                 return self.sections.count
-            }
     }
     
-    func tableView(tableView: UITableView,
-        numberOfRowsInSection section: Int)
-        -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
             return self.sections[section].businesses.count
     }
     
-    func tableView(tableView: UITableView,
-        titleForHeaderInSection section: Int)
-        -> String {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
+    {
             // do not display empty `Section`s
             if !self.sections[section].businesses.isEmpty {
                 return self.collation.sectionTitles[section] as String
@@ -188,19 +178,17 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
             return ""
     }
 
-    func sectionIndexTitlesForTableView(tableView: UITableView)
-        -> [AnyObject] {
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]
+    {
             return self.collation.sectionIndexTitles
     }
     
-    func tableView(tableView: UITableView,
-        sectionForSectionIndexTitle title: String,
-        atIndex index: Int)
-        -> Int {
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int
+    {
             return self.collation.sectionForSectionIndexTitleAtIndex(index)
     }
     
-    func getSections() -> [Section]
+    func getSections(list: [Business]) -> [Section]
     {
         var _sections: [Section]?
         
@@ -209,8 +197,8 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
             return _sections!
         }
         
-        // create users from the name list
-        var businesses: [Business] = listOfBusinesses.map { business in
+        // assign businesses section variable from a list of businesses
+        var businesses: [Business] = list.map { business in
             business.section = self.collation.sectionForObject(business, collationStringSelector: "Title")
             return business
         }
@@ -237,20 +225,27 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         
     }
     
-    func filterContentForSearchText(searchText: String) {
+    /**************************************************************************************/
+    
+    func filterContentForSearchText(searchText: String)
+    {
         // Filter the array using the filter method
         self.filteredListOfBusinesses = self.listOfBusinesses.filter({( business: Business) -> Bool in
-            let stringMatch = business.Title.rangeOfString(searchText)
+            let stringMatch = business.Title.lowercaseString.rangeOfString(searchText.lowercaseString)
             return stringMatch != nil
         })
+        
+        self.sections = self.getSections(self.filteredListOfBusinesses)
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool {
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool
+    {
         self.filterContentForSearchText(searchString)
         return true
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool
+    {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
     }

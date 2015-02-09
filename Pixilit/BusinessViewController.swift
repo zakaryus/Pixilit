@@ -10,14 +10,15 @@ import UIKit
 
 class BusinessViewController: UIViewController {
     
-    @IBOutlet weak var businessTable: UITableView!
-    @IBOutlet weak var businessDescription: UILabel!
-    @IBOutlet weak var businessHours: UILabel!
-    @IBOutlet weak var businessEmail: UILabel!
-    @IBOutlet weak var businessPhone: UILabel!
-    @IBOutlet weak var businessAddress: UILabel!
-    @IBOutlet weak var businessImage: UIImageView!
+    @IBOutlet weak var businessNavBar: UINavigationItem!
     @IBOutlet weak var businessName: UILabel!
+    @IBOutlet weak var businessThoroughfare: UILabel!
+    @IBOutlet weak var businessLocalityAdminZip: UILabel!
+    @IBOutlet weak var businessPhone: UILabel!
+    @IBOutlet weak var businessEmail: UILabel!
+    @IBOutlet weak var businessWebsite: UILabel!
+    @IBOutlet weak var businessDescription: UILabel!
+    @IBOutlet weak var businessLogo: UIImageView!
     
     var nid: String = ""
     
@@ -39,12 +40,13 @@ class BusinessViewController: UIViewController {
                     
                 var json = JSON(data: data)
                 self.businessName.text = json["title"].string
+                self.businessNavBar.title = json["title"].string
                 
-                var thoroughfare = json["field_address"]["und"][0]["thoroughfare"].string!
+                self.businessThoroughfare.text = json["field_address"]["und"][0]["thoroughfare"].string!
                 var locality = json["field_address"]["und"][0]["locality"].string!
                 var aa = json["field_address"]["und"][0]["administrative_area"].string!
                 var post = json["field_address"]["und"][0]["postal_code"].string!
-                self.businessAddress.text = "\(thoroughfare), \(locality), \(aa) \(post)"
+                self.businessLocalityAdminZip.text = "\(locality), \(aa) \(post)"
                 self.businessPhone.text = json["field_phone_number"]["und"][0]["value"].string
                 self.businessEmail.text = json["field_email"]["und"][0]["email"].string
                 
@@ -56,7 +58,7 @@ class BusinessViewController: UIViewController {
                 var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
                 let imgUrl = NSURL(string: imgPath!)
                 let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                self.businessImage.image = UIImage(data: imgData!)
+                self.businessLogo.image = UIImage(data: imgData!)
             
             })
         })
