@@ -19,6 +19,7 @@ class BusinessViewController: UIViewController {
     @IBOutlet weak var businessWebsite: UILabel!
     @IBOutlet weak var businessDescription: UILabel!
     @IBOutlet weak var businessLogo: UIImageView!
+    @IBOutlet weak var businessPhotos: UICollectionView!
     
     var nid: String = ""
     
@@ -49,10 +50,11 @@ class BusinessViewController: UIViewController {
                 self.businessLocalityAdminZip.text = "\(locality), \(aa) \(post)"
                 self.businessPhone.text = json["field_phone_number"]["und"][0]["value"].string
                 self.businessEmail.text = json["field_email"]["und"][0]["email"].string
+                self.businessWebsite.text = json["field_website"]["und"][0]["url"].string
                 
                 //hours
                 
-                self.businessDescription.text = json["field_description"]["und"][0]["safe_value"].string
+                self.businessDescription.text = json["field_description"]["und"][0]["value"].string
                 
                 var uri = json["field_logo"]["und"][0]["uri"].string
                 var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")

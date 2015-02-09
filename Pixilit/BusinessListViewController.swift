@@ -85,7 +85,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                     //println(json)
 
                     var text = json["title"].string
-                    var detailText = json["field_phone_number"]["und"][0]["number"].string
+                    var detailText = json["field_phone_number"]["und"][0]["value"].string
                     
                     cellToUpdate.textLabel?.text = text
                     cellToUpdate.detailTextLabel?.text = detailText
