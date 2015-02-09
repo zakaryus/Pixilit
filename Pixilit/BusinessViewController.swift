@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController {
+class BusinessViewController: UIViewController, UICollectionViewDelegateFlowLayout{
     
     @IBOutlet weak var businessNavBar: UINavigationItem!
     @IBOutlet weak var businessName: UILabel!
@@ -22,6 +22,26 @@ class BusinessViewController: UIViewController {
     @IBOutlet weak var businessPhotos: UICollectionView!
     
     var nid: String = ""
+    
+    class collectionCell: NSObject {
+        let PhotoUrl: String
+        let Desc: String
+        var section: Int?
+        
+        init(PhotoUrl: String, Desc: String) {
+            self.PhotoUrl = PhotoUrl
+            self.Desc = Desc
+        }
+    }
+    
+    //****************************
+    let reuseId = "cell"
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var cells: [collectionCell] = [collectionCell]()
+    //****************************
+
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,16 +75,33 @@ class BusinessViewController: UIViewController {
                 //hours
                 
                 self.businessDescription.text = json["field_description"]["und"][0]["value"].string
+                self.businessLogo.image = self.urlToImage(json["field_logo"]["und"][0]["uri"].string!)
                 
-                var uri = json["field_logo"]["und"][0]["uri"].string
-                var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
-                let imgUrl = NSURL(string: imgPath!)
-                let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                self.businessLogo.image = UIImage(data: imgData!)
-            
+                //store photo urls in cellPhotos array
+                
+                if let photos = json["field_photos"]["und"].array
+                {
+                    for p in photos {
+                        var uri = p["uri"].string
+                        var url = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
+                        var c: collectionCell = collectionCell(PhotoUrl: url!, Desc: p["title"].string!)
+                        
+                        self.cells.append(c)
+                    }
+                }
+                
             })
         })
         task.resume()        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func urlToImage(url: String) -> UIImage
+    {
+        var uri = url
+        var imgPath = uri.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
+        let imgUrl = NSURL(string: imgPath)
+        let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+        return UIImage(data: imgData!)!
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,5 +110,37 @@ class BusinessViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //****************************
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        //#warning Incomplete method implementation -- Return the number of sections
+        return 1
+    }
     
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //#warning Incomplete method implementation -- Return the number of items in the section
+        return cells.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
+        cell.photo.image = self.urlToImage(cells[indexPath.row].PhotoUrl)
+        cell.desc.text = self.cells[indexPath.row].Desc
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView!,
+        layout collectionViewLayout: UICollectionViewLayout!,
+        sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+            return CGSize(width: 170, height: 300)
+    }
+    
+    func collectionView(collectionView: UICollectionView!,
+        layout collectionViewLayout: UICollectionViewLayout!,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
+    }
+    //****************************
+
 }
