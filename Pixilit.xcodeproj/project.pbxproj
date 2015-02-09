@@ -91,7 +91,6 @@
 				3185E12A1A79D3E600037B10 /* UserViewController.swift */,
 				3185E12C1A79D3E600037B10 /* Main.storyboard */,
 				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
-				D0C2454C1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift */,
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
@@ -102,6 +101,7 @@
 		3185E1241A79D3E600037B10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0C2454C1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift */,
 				3185E1251A79D3E600037B10 /* Info.plist */,
 			);
 			name = "Supporting Files";

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -211,9 +211,9 @@
                         <outlet property="businessName" destination="Aex-3Q-wSH" id="uKT-su-MZD"/>
                         <outlet property="businessNavBar" destination="gyS-w3-1kg" id="MBF-Vi-oQf"/>
                         <outlet property="businessPhone" destination="dk3-J2-dx2" id="viu-sh-4k6"/>
-                        <outlet property="businessPhotos" destination="QwY-Gf-xNf" id="wuC-1l-heO"/>
                         <outlet property="businessThoroughfare" destination="hhN-bO-2Bd" id="b1H-X3-dB5"/>
                         <outlet property="businessWebsite" destination="Tcz-O7-s7j" id="Rr5-6F-lPA"/>
+                        <outlet property="collectionView" destination="QwY-Gf-xNf" id="s8N-HW-LaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nF2-ja-VKb" userLabel="First Responder" sceneMemberID="firstResponder"/>

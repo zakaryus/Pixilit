@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController, UICollectionViewDelegateFlowLayout{
+class BusinessViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var businessNavBar: UINavigationItem!
     @IBOutlet weak var businessName: UILabel!
@@ -19,7 +19,7 @@ class BusinessViewController: UIViewController, UICollectionViewDelegateFlowLayo
     @IBOutlet weak var businessWebsite: UILabel!
     @IBOutlet weak var businessDescription: UILabel!
     @IBOutlet weak var businessLogo: UIImageView!
-    @IBOutlet weak var businessPhotos: UICollectionView!
+    @IBOutlet var collectionView: UICollectionView!
     
     var nid: String = ""
     
@@ -45,6 +45,76 @@ class BusinessViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView!.registerClass(BusinessPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseId)
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        genericRestRequest() {
+            photos in
+            self.cells = photos
+            
+            for c in self.cells {
+                println("url: \(c.PhotoUrl), desc: \(c.Desc)")
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func urlToImage(url: String) -> UIImage
+    {
+        var uri = url
+        var imgPath = uri.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
+        let imgUrl = NSURL(string: imgPath)
+        let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
+        return UIImage(data: imgData!)!
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //****************************
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //#warning Incomplete method implementation -- Return the number of items in the section
+        return self.cells.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
+        
+        println("indexPath.row = \(indexPath.row)")
+        println("cell 0: \(self.cells[0].PhotoUrl), \(self.cells[0].Desc)")
+        println("cell 1: \(self.cells[1].PhotoUrl), \(self.cells[1].Desc)")
+        println("cell 2: \(self.cells[2].PhotoUrl), \(self.cells[2].Desc)")
+        println("cell 3: \(self.cells[3].PhotoUrl), \(self.cells[3].Desc)")
+        
+        //cell.photo.image = self.urlToImage(cells[indexPath.row].PhotoUrl)
+        cell.desc.text = self.cells[indexPath.row].Desc
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView!,
+        layout collectionViewLayout: UICollectionViewLayout!,
+        sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+            return CGSize(width: 170, height: 300)
+    }
+    
+    func collectionView(collectionView: UICollectionView!,
+        layout collectionViewLayout: UICollectionViewLayout!,
+        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+            return sectionInsets
+    }
+    //****************************
+    
+    
+    func genericRestRequest(completionHandler: (photos: [collectionCell]) -> ())
+    {
+        var tmpPhotos = [collectionCell]()
         
         let urlPath = nid
         
@@ -58,7 +128,7 @@ class BusinessViewController: UIViewController, UICollectionViewDelegateFlowLayo
             
             dispatch_async(dispatch_get_main_queue(), {
                 
-                    
+                
                 var json = JSON(data: data)
                 self.businessName.text = json["title"].string
                 self.businessNavBar.title = json["title"].string
@@ -83,64 +153,18 @@ class BusinessViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 {
                     for p in photos {
                         var uri = p["uri"].string
-                        var url = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
+                        var url = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
                         var c: collectionCell = collectionCell(PhotoUrl: url!, Desc: p["title"].string!)
                         
-                        self.cells.append(c)
+                        tmpPhotos.append(c)
                     }
                 }
                 
+                completionHandler(photos: tmpPhotos)
             })
         })
-        task.resume()        // Do any additional setup after loading the view, typically from a nib.
+        task.resume()
     }
-    
-    func urlToImage(url: String) -> UIImage
-    {
-        var uri = url
-        var imgPath = uri.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
-        let imgUrl = NSURL(string: imgPath)
-        let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        return UIImage(data: imgData!)!
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    
-        // Dispose of any resources that can be recreated.
-    }
-    
-    //****************************
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
-        return 1
-    }
-    
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return cells.count
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
-        cell.photo.image = self.urlToImage(cells[indexPath.row].PhotoUrl)
-        cell.desc.text = self.cells[indexPath.row].Desc
-        
-        return cell
-    }
-    
-    func collectionView(collectionView: UICollectionView!,
-        layout collectionViewLayout: UICollectionViewLayout!,
-        sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            return CGSize(width: 170, height: 300)
-    }
-    
-    func collectionView(collectionView: UICollectionView!,
-        layout collectionViewLayout: UICollectionViewLayout!,
-        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-            return sectionInsets
-    }
-    //****************************
+
 
 }
