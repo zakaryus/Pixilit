@@ -16,6 +16,7 @@
 		3185E13F1A79D3E600037B10 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
+		A61BA6771A8961F200B0CE76 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61BA6761A8961F200B0CE76 /* LoginViewController.swift */; };
 		A69F31961A82F0E900EED6D7 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69F31951A82F0E900EED6D7 /* CustomCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		A61BA6761A8961F200B0CE76 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A69F31951A82F0E900EED6D7 /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,6 +97,7 @@
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
 				A69F31951A82F0E900EED6D7 /* CustomCell.swift */,
+				A61BA6761A8961F200B0CE76 /* LoginViewController.swift */,
 			);
 			path = Pixilit;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A61BA6771A8961F200B0CE76 /* LoginViewController.swift in Sources */,
 				3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,

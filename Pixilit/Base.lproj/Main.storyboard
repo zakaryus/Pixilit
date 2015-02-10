@@ -186,11 +186,64 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="acF-B1-KhO" kind="relationship" relationship="viewControllers" id="orb-Py-rtA"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="eyn-g8-Vdq">
+            <objects>
+                <viewController id="acF-B1-KhO" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Uk2-zN-lcW"/>
+                        <viewControllerLayoutGuide type="bottom" id="oGZ-CH-OeP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L3P-AE-dhx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyw-He-2iA">
+                                <rect key="frame" x="196" y="67" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7b-cQ-RGx">
+                                <rect key="frame" x="185" y="302" width="65" height="46"/>
+                                <color key="backgroundColor" red="0.0" green="0.96078437566757202" blue="0.85098046064376831" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.96862751245498657" green="0.98823535442352295" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signinTapped:" destination="acF-B1-KhO" eventType="touchUpInside" id="4gd-SA-jQW"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5fP-G1-OBj">
+                                <rect key="frame" x="169" y="239" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="username" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lQu-OZ-32f">
+                                <rect key="frame" x="169" y="160" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98431378602981567" green="0.96862751245498657" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Login" image="second" id="jRH-g6-ouf"/>
+                    <connections>
+                        <outlet property="inpassword" destination="5fP-G1-OBj" id="F3o-t5-9W1"/>
+                        <outlet property="inusername" destination="lQu-OZ-32f" id="UIm-FG-8TA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="56G-0U-0S2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="65" y="740"/>
         </scene>
     </scenes>
     <resources>
