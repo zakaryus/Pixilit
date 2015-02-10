@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController, UICollectionViewDelegate {
+class BusinessViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var businessNavBar: UINavigationItem!
     @IBOutlet weak var businessName: UILabel!
@@ -35,7 +35,7 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     }
     
     //****************************
-    let reuseId = "cell"
+    let reuseId = "businessPhotoCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var cells: [collectionCell] = [collectionCell]()
     //****************************
@@ -45,17 +45,13 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView!.registerClass(BusinessPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseId)
+        //collectionView!.registerClass(BusinessPhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseId)
         
         // Do any additional setup after loading the view, typically from a nib.
         
         genericRestRequest() {
             photos in
             self.cells = photos
-            
-            for c in self.cells {
-                println("url: \(c.PhotoUrl), desc: \(c.Desc)")
-            }
             
             self.collectionView.reloadData()
         }
@@ -77,23 +73,50 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     }
     
     //****************************
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+        return 1
+    }
+    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        return self.cells.count
+        //return self.cells.count
+        return 4
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
+        let cell: BusinessPhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
         
-        println("indexPath.row = \(indexPath.row)")
-        println("cell 0: \(self.cells[0].PhotoUrl), \(self.cells[0].Desc)")
-        println("cell 1: \(self.cells[1].PhotoUrl), \(self.cells[1].Desc)")
-        println("cell 2: \(self.cells[2].PhotoUrl), \(self.cells[2].Desc)")
-        println("cell 3: \(self.cells[3].PhotoUrl), \(self.cells[3].Desc)")
+        var urlPath = nid
         
-        //cell.photo.image = self.urlToImage(cells[indexPath.row].PhotoUrl)
-        cell.desc.text = self.cells[indexPath.row].Desc
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) as? BusinessPhotoCollectionViewCell {
+
+                    cellToUpdate.photo.image = self.urlToImage(self.cells[indexPath.row].PhotoUrl)
+                    cellToUpdate.desc.text = self.cells[indexPath.row].Desc
+                    
+                    var json = JSON(data: data)
+
+                    var uri = json["field_photos"]["und"][indexPath.row]["uri"].string
+                    var url = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
+                    
+                    var desc = json["field_photos"]["und"][indexPath.row]["title"].string
+                    
+                    cellToUpdate.photo.image = self.urlToImage(url!)
+                    cellToUpdate.desc.text = desc
+
+                }
+            })
+        })
+        task.resume()
         
         return cell
     }
@@ -101,7 +124,7 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            return CGSize(width: 170, height: 300)
+            return CGSize(width: 198, height: 288)
     }
     
     func collectionView(collectionView: UICollectionView!,
@@ -127,7 +150,6 @@ class BusinessViewController: UIViewController, UICollectionViewDelegate {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                
                 
                 var json = JSON(data: data)
                 self.businessName.text = json["title"].string
