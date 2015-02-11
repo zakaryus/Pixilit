@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -171,13 +171,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="403"/>
+            <point key="canvasLocation" x="741" y="401"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -186,11 +187,77 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="tgs-hF-zE0" kind="relationship" relationship="viewControllers" id="JOi-Sv-AjL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="sdg-iQ-rP6">
+            <objects>
+                <viewController title="Login" id="tgs-hF-zE0" customClass="LoginViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IMA-uL-NuS"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Or-9o-92n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T5m-ip-09G">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVk-8v-gLS">
+                                <rect key="frame" x="91" y="241" width="185" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M0A-Uo-eVj">
+                                <rect key="frame" x="91" y="320" width="185" height="30"/>
+                                <accessibility key="accessibilityConfiguration" hint="asdf"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5FX-dq-RNF">
+                                <rect key="frame" x="140" y="401" width="86" height="30"/>
+                                <color key="backgroundColor" red="0.20786127820672273" green="0.36344340505634409" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="1" green="0.97711976168040449" blue="0.91004210127211649" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signinTapped:" destination="tgs-hF-zE0" eventType="touchUpInside" id="l4l-fp-uT7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSw-lY-4AU">
+                                <rect key="frame" x="137" y="212" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5c-YX-Hmz">
+                                <rect key="frame" x="137" y="291" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pixilit Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w2-vk-oIw">
+                                <rect key="frame" x="117" y="119" width="150" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99713230620184723" blue="0.65478320134188639" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Login" image="second" id="6aP-Ph-dc4"/>
+                    <connections>
+                        <outlet property="inpassword" destination="M0A-Uo-eVj" id="aSd-HY-QK5"/>
+                        <outlet property="inusername" destination="BVk-8v-gLS" id="ZkC-xk-aXf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="52d-l1-3bK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="30" y="790"/>
         </scene>
     </scenes>
     <resources>
