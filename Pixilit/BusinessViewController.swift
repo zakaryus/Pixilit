@@ -100,18 +100,18 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
             dispatch_async(dispatch_get_main_queue(), {
                 if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) as? BusinessPhotoCollectionViewCell {
 
-                    cellToUpdate.photo.image = self.urlToImage(self.cells[indexPath.row].PhotoUrl)
-                    cellToUpdate.desc.text = self.cells[indexPath.row].Desc
-                    
-                    var json = JSON(data: data)
-
-                    var uri = json["field_photos"]["und"][indexPath.row]["uri"].string
-                    var url = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
-                    
-                    var desc = json["field_photos"]["und"][indexPath.row]["title"].string
-                    
-                    cellToUpdate.photo.image = self.urlToImage(url!)
-                    cellToUpdate.desc.text = desc
+//                    cellToUpdate.photo.image = self.urlToImage(self.cells[indexPath.row].PhotoUrl)
+//                    cellToUpdate.desc.text = self.cells[indexPath.row].Desc
+//                    
+//                    var json = JSON(data: data)
+//
+//                    var uri = json["field_photos"]["und"][indexPath.row]["uri"].string
+//                    var url = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
+//                    
+//                    var desc = json["field_photos"]["und"][indexPath.row]["title"].string
+//                    
+//                    cellToUpdate.photo.image = self.urlToImage(url!)
+//                    cellToUpdate.desc.text = desc
 
                 }
             })
