@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		316A9F1E1A9007BA00694B2B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 316A9F1D1A9007BA00694B2B /* Config.plist */; };
+		316A9F201A900A0000694B2B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F1F1A900A0000694B2B /* Config.swift */; };
+		316A9F221A900FFA00694B2B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F211A900FFA00694B2B /* Helper.swift */; };
 		3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1261A79D3E600037B10 /* AppDelegate.swift */; };
 		3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1281A79D3E600037B10 /* BusinessListViewController.swift */; };
 		3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E12A1A79D3E600037B10 /* UserViewController.swift */; };
@@ -32,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		316A9F1D1A9007BA00694B2B /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		316A9F1F1A900A0000694B2B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		316A9F211A900FFA00694B2B /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		3185E1211A79D3E600037B10 /* Pixilit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixilit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3185E1251A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3185E1261A79D3E600037B10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +115,9 @@
 				D0CD32EC1A8C236B00538B9B /* LoginViewController.swift */,
 				D0C2454C1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift */,
 				3185E1251A79D3E600037B10 /* Info.plist */,
+				316A9F1D1A9007BA00694B2B /* Config.plist */,
+				316A9F1F1A900A0000694B2B /* Config.swift */,
+				316A9F211A900FFA00694B2B /* Helper.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,
 				3185E1301A79D3E600037B10 /* Images.xcassets in Resources */,
@@ -232,10 +242,12 @@
 			files = (
 				3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
+				316A9F201A900A0000694B2B /* Config.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				D0C2454D1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift in Sources */,
 				D0CD32EE1A8C236B00538B9B /* LoginViewController.swift in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
+				316A9F221A900FFA00694B2B /* Helper.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);

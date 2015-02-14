@@ -91,7 +91,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                     cellToUpdate.detailTextLabel?.text = detailText
                     
                     var uri = json["field_logo"]["und"][0]["uri"].string
-                    var imgPath = uri?.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
+                    var imgPath = uri?.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
                     let imgUrl = NSURL(string: imgPath!)
                     let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
                     cellToUpdate.imageView?.image = UIImage(data: imgData!)
@@ -112,14 +112,14 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         var bvc = segue.destinationViewController as BusinessViewController
-        bvc.nid = sender as String
+        bvc.RestBusinessUrl = sender as String
     }
     
     func genericRestRequest(completionHandler: (urls: [Business]) -> ())
     {
         var tmpUrls = [Business]()
 
-        let urlPath = "http:www.pixilit.com/rest/node.json"
+        let urlPath = Config.RestNodeIndex
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -138,7 +138,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                     
                     //println(subJson)
                     
-                    if subJson["type"].string == "business"
+                    if subJson["type"].string == Config.ContentTypeBusiness
                     {
                         var business: Business = Business(Title: subJson["title"].string!, Url: subJson["uri"].string! + ".json")
                         tmpUrls.append(business)

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppTitle</key>
+	<string>Pixilit</string>
+	<key>FilePathPublicValue</key>
+	<string>http://www.pixilit.com/sites/default/files/</string>
+	<key>FilePathPublicPlaceholder</key>
+	<string>public://</string>
+	<key>ContentTypeBusiness</key>
+	<string>business</string>
+	<key>RestNodeIndex</key>
+	<string>http:www.pixilit.com/rest/node.json</string>
+</dict>
+</plist>

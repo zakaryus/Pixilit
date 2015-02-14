@@ -21,7 +21,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var businessLogo: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     
-    var nid: String = ""
+    var RestBusinessUrl: String = ""
     
     class collectionCell: NSObject {
         let PhotoUrl: String
@@ -57,15 +57,6 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         }
     }
     
-    func urlToImage(url: String) -> UIImage
-    {
-        var uri = url
-        var imgPath = uri.stringByReplacingOccurrencesOfString("public:", withString: "http://www.pixilit.com/sites/default/files/")
-        let imgUrl = NSURL(string: imgPath)
-        let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        return UIImage(data: imgData!)!
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     
@@ -80,14 +71,14 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //#warning Incomplete method implementation -- Return the number of items in the section
-        //return self.cells.count
-        return 4
+        return self.cells.count
+        //return 4
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: BusinessPhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
         
-        var urlPath = nid
+        var urlPath = RestBusinessUrl
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -100,18 +91,18 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
             dispatch_async(dispatch_get_main_queue(), {
                 if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath) as? BusinessPhotoCollectionViewCell {
 
-//                    cellToUpdate.photo.image = self.urlToImage(self.cells[indexPath.row].PhotoUrl)
-//                    cellToUpdate.desc.text = self.cells[indexPath.row].Desc
-//                    
-//                    var json = JSON(data: data)
-//
-//                    var uri = json["field_photos"]["und"][indexPath.row]["uri"].string
-//                    var url = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
-//                    
-//                    var desc = json["field_photos"]["und"][indexPath.row]["title"].string
-//                    
-//                    cellToUpdate.photo.image = self.urlToImage(url!)
-//                    cellToUpdate.desc.text = desc
+                    cellToUpdate.photo.image = Helper.UrlToImage(self.cells[indexPath.row].PhotoUrl)
+                    cellToUpdate.desc.text = self.cells[indexPath.row].Desc
+                    
+                    var json = JSON(data: data)
+
+                    var uri = json["field_photos"]["und"][indexPath.row]["uri"].string
+                    var url = uri?.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
+                    
+                    var desc = json["field_photos"]["und"][indexPath.row]["title"].string
+                    
+                    cellToUpdate.photo.image = Helper.UrlToImage(url!)
+                    cellToUpdate.desc.text = desc
 
                 }
             })
@@ -139,7 +130,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     {
         var tmpPhotos = [collectionCell]()
         
-        let urlPath = nid
+        let urlPath = RestBusinessUrl
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -167,7 +158,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
                 //hours
                 
                 self.businessDescription.text = json["field_description"]["und"][0]["value"].string
-                self.businessLogo.image = self.urlToImage(json["field_logo"]["und"][0]["uri"].string!)
+                self.businessLogo.image = Helper.UrlToImage(json["field_logo"]["und"][0]["uri"].string!)
                 
                 //store photo urls in cellPhotos array
                 
@@ -175,7 +166,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
                 {
                     for p in photos {
                         var uri = p["uri"].string
-                        var url = uri?.stringByReplacingOccurrencesOfString("public://", withString: "http://www.pixilit.com/sites/default/files/")
+                        var url = uri?.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
                         var c: collectionCell = collectionCell(PhotoUrl: url!, Desc: p["title"].string!)
                         
                         tmpPhotos.append(c)
