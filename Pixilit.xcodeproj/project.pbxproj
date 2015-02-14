@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1261A79D3E600037B10 /* AppDelegate.swift */; };
+		3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1281A79D3E600037B10 /* BusinessListViewController.swift */; };
+		3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E12A1A79D3E600037B10 /* UserViewController.swift */; };
+		3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3185E12C1A79D3E600037B10 /* Main.storyboard */; };
+		3185E1301A79D3E600037B10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3185E12F1A79D3E600037B10 /* Images.xcassets */; };
+		3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3185E1311A79D3E600037B10 /* LaunchScreen.xib */; };
+		3185E13F1A79D3E600037B10 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
+		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
+		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
+		D0C2454D1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2454C1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift */; };
+		D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD32EB1A8C236B00538B9B /* CustomCell.swift */; };
+		D0CD32EE1A8C236B00538B9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD32EC1A8C236B00538B9B /* LoginViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3185E1391A79D3E600037B10 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3185E1191A79D3E600037B10 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3185E1201A79D3E600037B10;
+			remoteInfo = Pixilit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3185E1211A79D3E600037B10 /* Pixilit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixilit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3185E1251A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3185E1261A79D3E600037B10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3185E1281A79D3E600037B10 /* BusinessListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessListViewController.swift; sourceTree = "<group>"; };
+		3185E12A1A79D3E600037B10 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		3185E12D1A79D3E600037B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3185E12F1A79D3E600037B10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3185E1321A79D3E600037B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3185E1381A79D3E600037B10 /* PixilitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixilitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3185E13D1A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
+		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		D0C2454C1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0CD32EB1A8C236B00538B9B /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		D0CD32EC1A8C236B00538B9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3185E11E1A79D3E600037B10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3185E1351A79D3E600037B10 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3185E1181A79D3E600037B10 = {
+			isa = PBXGroup;
+			children = (
+				3185E1231A79D3E600037B10 /* Pixilit */,
+				3185E13B1A79D3E600037B10 /* PixilitTests */,
+				3185E1221A79D3E600037B10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3185E1221A79D3E600037B10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3185E1211A79D3E600037B10 /* Pixilit.app */,
+				3185E1381A79D3E600037B10 /* PixilitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3185E1231A79D3E600037B10 /* Pixilit */ = {
+			isa = PBXGroup;
+			children = (
+				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
+				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
+				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
+				3185E12A1A79D3E600037B10 /* UserViewController.swift */,
+				3185E12C1A79D3E600037B10 /* Main.storyboard */,
+				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
+				3185E12F1A79D3E600037B10 /* Images.xcassets */,
+				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
+				3185E1241A79D3E600037B10 /* Supporting Files */,
+			);
+			path = Pixilit;
+			sourceTree = "<group>";
+		};
+		3185E1241A79D3E600037B10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0CD32EB1A8C236B00538B9B /* CustomCell.swift */,
+				D0CD32EC1A8C236B00538B9B /* LoginViewController.swift */,
+				D0C2454C1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift */,
+				3185E1251A79D3E600037B10 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3185E13B1A79D3E600037B10 /* PixilitTests */ = {
+			isa = PBXGroup;
+			children = (
+				3185E13E1A79D3E600037B10 /* PixilitTests.swift */,
+				3185E13C1A79D3E600037B10 /* Supporting Files */,
+			);
+			path = PixilitTests;
+			sourceTree = "<group>";
+		};
+		3185E13C1A79D3E600037B10 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3185E13D1A79D3E600037B10 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3185E1201A79D3E600037B10 /* Pixilit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3185E1421A79D3E600037B10 /* Build configuration list for PBXNativeTarget "Pixilit" */;
+			buildPhases = (
+				3185E11D1A79D3E600037B10 /* Sources */,
+				3185E11E1A79D3E600037B10 /* Frameworks */,
+				3185E11F1A79D3E600037B10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pixilit;
+			productName = Pixilit;
+			productReference = 3185E1211A79D3E600037B10 /* Pixilit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3185E1371A79D3E600037B10 /* PixilitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3185E1451A79D3E600037B10 /* Build configuration list for PBXNativeTarget "PixilitTests" */;
+			buildPhases = (
+				3185E1341A79D3E600037B10 /* Sources */,
+				3185E1351A79D3E600037B10 /* Frameworks */,
+				3185E1361A79D3E600037B10 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3185E13A1A79D3E600037B10 /* PBXTargetDependency */,
+			);
+			name = PixilitTests;
+			productName = PixilitTests;
+			productReference = 3185E1381A79D3E600037B10 /* PixilitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3185E1191A79D3E600037B10 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = PixilitSeniorProject;
+				TargetAttributes = {
+					3185E1201A79D3E600037B10 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					3185E1371A79D3E600037B10 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 3185E1201A79D3E600037B10;
+					};
+				};
+			};
+			buildConfigurationList = 3185E11C1A79D3E600037B10 /* Build configuration list for PBXProject "Pixilit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3185E1181A79D3E600037B10;
+			productRefGroup = 3185E1221A79D3E600037B10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3185E1201A79D3E600037B10 /* Pixilit */,
+				3185E1371A79D3E600037B10 /* PixilitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3185E11F1A79D3E600037B10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
+				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,
+				3185E1301A79D3E600037B10 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3185E1361A79D3E600037B10 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3185E11D1A79D3E600037B10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */,
+				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
+				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
+				D0C2454D1A8946C00075CC9D /* BusinessPhotoCollectionViewCell.swift in Sources */,
+				D0CD32EE1A8C236B00538B9B /* LoginViewController.swift in Sources */,
+				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
+				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
+				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3185E1341A79D3E600037B10 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3185E13F1A79D3E600037B10 /* PixilitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3185E13A1A79D3E600037B10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3185E1201A79D3E600037B10 /* Pixilit */;
+			targetProxy = 3185E1391A79D3E600037B10 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3185E12C1A79D3E600037B10 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3185E12D1A79D3E600037B10 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3185E1311A79D3E600037B10 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3185E1321A79D3E600037B10 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3185E1401A79D3E600037B10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3185E1411A79D3E600037B10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3185E1431A79D3E600037B10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Pixilit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3185E1441A79D3E600037B10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Pixilit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3185E1461A79D3E600037B10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PixilitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pixilit.app/Pixilit";
+			};
+			name = Debug;
+		};
+		3185E1471A79D3E600037B10 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PixilitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pixilit.app/Pixilit";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3185E11C1A79D3E600037B10 /* Build configuration list for PBXProject "Pixilit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3185E1401A79D3E600037B10 /* Debug */,
+				3185E1411A79D3E600037B10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3185E1421A79D3E600037B10 /* Build configuration list for PBXNativeTarget "Pixilit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3185E1431A79D3E600037B10 /* Debug */,
+				3185E1441A79D3E600037B10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3185E1451A79D3E600037B10 /* Build configuration list for PBXNativeTarget "PixilitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3185E1461A79D3E600037B10 /* Debug */,
+				3185E1471A79D3E600037B10 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3185E1191A79D3E600037B10 /* Project object */;
+}
