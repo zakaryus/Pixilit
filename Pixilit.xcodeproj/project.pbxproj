@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31150CB11A905AC100FB1183 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31150CB01A905AC100FB1183 /* ContentType.swift */; };
 		316A9F1E1A9007BA00694B2B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 316A9F1D1A9007BA00694B2B /* Config.plist */; };
 		316A9F201A900A0000694B2B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F1F1A900A0000694B2B /* Config.swift */; };
 		316A9F221A900FFA00694B2B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F211A900FFA00694B2B /* Helper.swift */; };
+		3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE61A903D6F00E6D1B4 /* Business.swift */; };
+		3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE81A903FB600E6D1B4 /* Section.swift */; };
+		3178DEEB1A9044B200E6D1B4 /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEEA1A9044B200E6D1B4 /* Sections.swift */; };
 		3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1261A79D3E600037B10 /* AppDelegate.swift */; };
 		3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1281A79D3E600037B10 /* BusinessListViewController.swift */; };
 		3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E12A1A79D3E600037B10 /* UserViewController.swift */; };
@@ -35,9 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31150CB01A905AC100FB1183 /* ContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		316A9F1D1A9007BA00694B2B /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		316A9F1F1A900A0000694B2B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		316A9F211A900FFA00694B2B /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		3178DEE61A903D6F00E6D1B4 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
+		3178DEE81A903FB600E6D1B4 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		3178DEEA1A9044B200E6D1B4 /* Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 		3185E1211A79D3E600037B10 /* Pixilit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pixilit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3185E1251A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3185E1261A79D3E600037B10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +126,10 @@
 				316A9F1D1A9007BA00694B2B /* Config.plist */,
 				316A9F1F1A900A0000694B2B /* Config.swift */,
 				316A9F211A900FFA00694B2B /* Helper.swift */,
+				3178DEE61A903D6F00E6D1B4 /* Business.swift */,
+				3178DEE81A903FB600E6D1B4 /* Section.swift */,
+				3178DEEA1A9044B200E6D1B4 /* Sections.swift */,
+				31150CB01A905AC100FB1183 /* ContentType.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -241,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3185E12B1A79D3E600037B10 /* UserViewController.swift in Sources */,
+				3178DEEB1A9044B200E6D1B4 /* Sections.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
 				316A9F201A900A0000694B2B /* Config.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
@@ -248,6 +261,9 @@
 				D0CD32EE1A8C236B00538B9B /* LoginViewController.swift in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
 				316A9F221A900FFA00694B2B /* Helper.swift in Sources */,
+				3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */,
+				3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */,
+				31150CB11A905AC100FB1183 /* ContentType.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);

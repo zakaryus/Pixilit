@@ -8,36 +8,16 @@
 
 import UIKit
 
-class BusinessListViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
-    
-    var collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
+class BusinessListViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate
+{
+    //var collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    class Business: NSObject {
-        let Title: String
-        let Url: String
-        var section: Int?
-        
-        init(Title: String, Url: String) {
-            self.Title = Title
-            self.Url = Url
-        }
-    }
-    
-    // custom type to represent table sections
-    class Section {
-        var businesses: [Business] = []
-        
-        func addBusiness(business: Business) {
-            self.businesses.append(business)
-        }
-    }
-    
     var listOfBusinesses: [Business] = [Business]()
-    var filteredListOfBusinesses = [Business]()
-    var sections: [Section] = [Section]()
+    var filteredListOfBusinesses: [Business] = [Business]()
+    var sections: Sections<Business> = Sections<Business>()
     
     override func viewDidLoad()
     {
@@ -47,13 +27,19 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     override func viewWillAppear(animated: Bool)
     {
-        genericRestRequest() {
+        Helper.RestContentTypeRequest(Config.ContentTypeBusiness)
+        {
             urls in
-            self.listOfBusinesses = urls
             
-            self.sections = self.getSections(self.listOfBusinesses)
-            
-            self.tableView.reloadData()
+            Helper.RestUrlToContent(urls)
+            {
+                Items in
+                self.listOfBusinesses = Items
+                
+                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
+                
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -67,91 +53,25 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        var urlPath = self.sections[indexPath.section].businesses[indexPath.row].Url
-
+        var b: Business = self.sections.data[indexPath.section].data[indexPath.row]
         
-        let url: NSURL = NSURL(string: urlPath)!
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
-            if((error) != nil) {
-                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                    
-                    var json = JSON(data: data)
-                    //println(json)
-
-                    var text = json["title"].string
-                    var detailText = json["field_phone_number"]["und"][0]["value"].string
-                    
-                    cellToUpdate.textLabel?.text = text
-                    cellToUpdate.detailTextLabel?.text = detailText
-                    
-                    var uri = json["field_logo"]["und"][0]["uri"].string
-                    var imgPath = uri?.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
-                    let imgUrl = NSURL(string: imgPath!)
-                    let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                    cellToUpdate.imageView?.image = UIImage(data: imgData!)
-                }
-            })
-        })
-        task.resume()
+        cell.textLabel?.text = b.Title
+        cell.detailTextLabel?.text = b.Phone
+        cell.imageView?.image = Helper.UrlToImage(b.Logo)
         
         return cell
     }
    
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
-        var nid = self.sections[indexPath.section].businesses[indexPath.row].Url
-        self.performSegueWithIdentifier("BusinessShowSegue", sender: nid)
+        var b: Business = self.sections.data[indexPath.section].data[indexPath.row] as Business
+        self.performSegueWithIdentifier("BusinessShowSegue", sender: b)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         var bvc = segue.destinationViewController as BusinessViewController
-        bvc.RestBusinessUrl = sender as String
-    }
-    
-    func genericRestRequest(completionHandler: (urls: [Business]) -> ())
-    {
-        var tmpUrls = [Business]()
-
-        let urlPath = Config.RestNodeIndex
-        
-        let url: NSURL = NSURL(string: urlPath)!
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
-            if((error) != nil) {
-                //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                var json = JSON(data: data)
-                //println(json)
-                
-                for (index: String, subJson: JSON) in json {
-                    
-                    //println(subJson)
-                    
-                    if subJson["type"].string == Config.ContentTypeBusiness
-                    {
-                        var business: Business = Business(Title: subJson["title"].string!, Url: subJson["uri"].string! + ".json")
-                        tmpUrls.append(business)
-                    }
-                }
-                
-                tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
-                
-                completionHandler(urls: tmpUrls)
-                
-            })
-        })
-        task.resume()
+        bvc.business = sender as Business
     }
     
     /**************************************************************************************/
@@ -161,68 +81,31 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-                return self.sections.count
+                return self.sections.data.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-            return self.sections[section].businesses.count
+            return self.sections.data[section].data.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
     {
             // do not display empty `Section`s
-            if !self.sections[section].businesses.isEmpty {
-                return self.collation.sectionTitles[section] as String
+            if !self.sections.data[section].data.isEmpty {
+                return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as String
             }
             return ""
     }
 
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]
     {
-            return self.collation.sectionIndexTitles
+            return UILocalizedIndexedCollation.currentCollation().sectionIndexTitles
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int
     {
-            return self.collation.sectionForSectionIndexTitleAtIndex(index)
-    }
-    
-    func getSections(list: [Business]) -> [Section]
-    {
-        var _sections: [Section]?
-        
-        // return if already initialized
-        if _sections != nil {
-            return _sections!
-        }
-        
-        // assign businesses section variable from a list of businesses
-        var businesses: [Business] = list.map { business in
-            business.section = self.collation.sectionForObject(business, collationStringSelector: "Title")
-            return business
-        }
-        
-        // create empty sections
-        var sections = [Section]()
-        for i in 0..<collation.sectionIndexTitles.count {
-            sections.append(Section())
-        }
-        
-        // put each user in a section
-        for business in businesses {
-            sections[business.section!].addBusiness(business)
-        }
-        
-        // sort each section
-        for section in sections {
-            section.businesses = collation.sortedArrayFromArray(section.businesses, collationStringSelector: "Title") as [Business]
-        }
-        
-        _sections = sections
-        
-        return _sections!
-        
+            return UILocalizedIndexedCollation.currentCollation().sectionForSectionIndexTitleAtIndex(index)
     }
     
     /**************************************************************************************/
@@ -235,7 +118,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
             return stringMatch != nil
         })
         
-        self.sections = self.getSections(self.filteredListOfBusinesses)
+        self.sections = Sections<Business>(list: self.filteredListOfBusinesses, key: "Title")
     }
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool
