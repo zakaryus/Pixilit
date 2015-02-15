@@ -45,22 +45,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.businessName.text = business.Title
-        self.businessNavBar.title = business.Title
-        
-        //self.businessThoroughfare.text = business.Thoroughfare
-        //var locality = business.Locality
-        //var aa = business.AdministrativeArea
-        //var post = business.PostalCode
-        //self.businessLocalityAdminZip.text = "\(locality), \(aa) \(post)"
-        //self.businessPhone.text = business.Phone
-        //self.businessEmail.text = business.Email
-        //self.businessWebsite.text = business.Website
-        
-        //hours
-        
-        //self.businessDescription.text = business.Description
-        self.businessLogo.image = Helper.UrlToImage(business.Logo)
+        SetBusinessToVC(business)
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,8 +68,13 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: BusinessPhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
         
-        cell.photo.image = Helper.UrlToImage(business.Photos[indexPath.row].Url)
-        cell.desc.text = business.Photos[indexPath.row].Description
+        if let url = business.Photos[indexPath.row].Url {
+            cell.photo.image = Helper.UrlToImage(url)
+        }
+        
+        if let description = business.Photos[indexPath.row].Description {
+            cell.desc.text = description
+        }
         
         return cell
     }
@@ -101,4 +91,58 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
             return sectionInsets
     }
     //****************************
+    
+    func SetBusinessToVC(business: Business)
+    {
+        if let title = business.Title {
+            self.businessName.text = title
+            self.businessNavBar.title = title
+        }
+        
+        var thoroughfare: String
+        if let _thoroughfare = business.Thoroughfare {
+            thoroughfare = _thoroughfare
+        }
+        
+        var locality: String = ""
+        if let _locality = business.Locality {
+            locality = _locality
+        }
+        
+        var administrativearea: String = ""
+        if let _administrativearea = business.AdministrativeArea {
+            administrativearea = _administrativearea
+        }
+        
+        var postalcode: String = ""
+        if let _postalcode = business.PostalCode {
+            postalcode = _postalcode
+        }
+        
+        if locality != "" && administrativearea != "" && postalcode != "" {
+            self.businessLocalityAdminZip.text = "\(locality), \(administrativearea) \(postalcode)"
+        }
+        
+        if let phone = business.Phone {
+            self.businessPhone.text = phone
+        }
+        
+        if let email = business.Email {
+            self.businessEmail.text = email
+        }
+        
+        if let website = business.Website {
+            self.businessWebsite.text = website
+        }
+        
+        //self.Hours = [String]()
+        
+        if let description = business.Description {
+            self.businessDescription.text = description
+        }
+        
+        if let logo = business.Logo {
+            self.businessLogo.image = Helper.UrlToImage(logo)
+        }
+    }
 }

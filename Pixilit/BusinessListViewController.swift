@@ -14,6 +14,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var listOfBusinesses: [Business] = [Business]()
     var filteredListOfBusinesses: [Business] = [Business]()
@@ -27,6 +28,9 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     override func viewWillAppear(animated: Bool)
     {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        
         Helper.RestContentTypeRequest(Config.ContentTypeBusiness)
         {
             urls in
@@ -39,6 +43,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                 self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
                 
                 self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
         }
     }
@@ -53,11 +58,19 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        var b: Business = self.sections.data[indexPath.section].data[indexPath.row]
+        var business: Business = self.sections.data[indexPath.section].data[indexPath.row]
         
-        cell.textLabel?.text = b.Title
-        cell.detailTextLabel?.text = b.Phone
-        cell.imageView?.image = Helper.UrlToImage(b.Logo)
+        if let title = business.Title {
+            cell.textLabel?.text = title
+        }
+        
+        if let phone = business.Phone {
+            cell.detailTextLabel?.text = phone
+        }
+        
+        if let logo = business.Logo {
+            cell.imageView?.image = Helper.UrlToImage(logo)
+        }
         
         return cell
     }
@@ -114,8 +127,11 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     {
         // Filter the array using the filter method
         self.filteredListOfBusinesses = self.listOfBusinesses.filter({( business: Business) -> Bool in
-            let stringMatch = business.Title.lowercaseString.rangeOfString(searchText.lowercaseString)
-            return stringMatch != nil
+            if let title = business.Title {
+                let stringMatch = title.lowercaseString.rangeOfString(searchText.lowercaseString)
+                return stringMatch != nil
+            }
+            return false
         })
         
         self.sections = Sections<Business>(list: self.filteredListOfBusinesses, key: "Title")
@@ -132,6 +148,5 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
     }
-    
 }
 
