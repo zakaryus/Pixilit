@@ -104,6 +104,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
+                    var userURL = userjson["user"]["uid"].string?
+                    self.performSegueWithIdentifier("LoginSuccess", sender: userURL)
                     }
                     
                 } else {
@@ -114,6 +116,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
+                  
                 }
             } else {
                 var alertView:UIAlertView = UIAlertView()
@@ -130,6 +133,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
 
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var uvc = segue.destinationViewController as UserViewController
+        uvc.userURL = sender as String
+    }
    
 }

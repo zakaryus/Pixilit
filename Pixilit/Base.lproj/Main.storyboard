@@ -235,13 +235,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="username" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hif-pI-0Dd">
-                                <rect key="frame" x="16" y="34" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f0q-4x-Y9G">
-                                <rect key="frame" x="16" y="87" width="322" height="300"/>
+                                <rect key="frame" x="16" y="150" width="322" height="300"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mN3-1c-cdC">
                                     <size key="itemSize" width="150" height="150"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -264,6 +259,11 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="5xL-u5-DEC"/>
                                 </connections>
                             </collectionView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="username" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hif-pI-0Dd">
+                                <rect key="frame" x="16" y="107" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -330,7 +330,6 @@
                                 </state>
                                 <connections>
                                     <action selector="signinTapped:" destination="tgs-hF-zE0" eventType="touchUpInside" id="l4l-fp-uT7"/>
-                                    <segue destination="8rJ-Kc-sve" kind="show" id="2yb-aw-LMC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSw-lY-4AU">
@@ -358,6 +357,7 @@
                     <connections>
                         <outlet property="inpassword" destination="M0A-Uo-eVj" id="aSd-HY-QK5"/>
                         <outlet property="inusername" destination="BVk-8v-gLS" id="ZkC-xk-aXf"/>
+                        <segue destination="8rJ-Kc-sve" kind="show" identifier="LoginSuccess" id="d4e-oo-DSx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52d-l1-3bK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -408,6 +408,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2yb-aw-LMC"/>
+        <segue reference="d4e-oo-DSx"/>
     </inferredMetricsTieBreakers>
 </document>

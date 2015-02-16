@@ -15,6 +15,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     
     
     @IBOutlet var usernameField: UITextField!
+    var userURL: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.registerClass(CustomCell.self, forCellWithReuseIdentifier: "ImgCell")
@@ -33,7 +34,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as CustomCell
         
-        let urlPath = "http:www.pixilit.com/rest/user/19.json"
+        let urlPath = "http:www.pixilit.com/rest/user/\(userURL).json"
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -57,11 +58,14 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
                     
                     //     var uri = json["field_logo"]["und"][0]["uri"].string
                     var imgPath = json["picture"]["url"].string
+                
+                    if (imgPath != nil)
+                    {
                     let imgUrl = NSURL(string: imgPath!)
-                    let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-                    //cellToUpdate.imageView.image = UIImage(data: imgData!)
+                    let imgData = NSData(contentsOfURL: imgUrl!)
                     cell.imageView.image = UIImage(data: imgData!)
-                    // println("text = \(text), detailText = \(detailText), imagePath = \(imgPath)")
+                    }
+                  
                     
                 }
             })
