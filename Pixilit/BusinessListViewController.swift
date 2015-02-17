@@ -20,10 +20,17 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     var filteredListOfBusinesses: [Business] = [Business]()
     var sections: Sections<Business> = Sections<Business>()
     
+    var tableVC = UITableViewController(style: .Plain)
+    var refresh = UIRefreshControl()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
          //Do any additional setup after loading the view, typically from a nib.
+        
+        tableVC.tableView = tableView
+        tableVC.refreshControl = refresh
+        refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
         
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
@@ -56,11 +63,31 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                 self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
                 
                 dispatch_async(dispatch_get_main_queue(),
-                    {
+                {
                         self.tableView.reloadData()
                         self.activityIndicator.stopAnimating()
                 })
         }
+    }
+    
+    func RefreshList()
+    {
+        Helper.RestBusinessesRequest
+        {
+                bus in
+                
+                println(bus.count)
+                
+                self.listOfBusinesses = bus
+                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
+                
+                dispatch_async(dispatch_get_main_queue(),
+                    {
+                        self.tableView.reloadData()
+                        self.refresh.endRefreshing()
+                })
+        }
+        
     }
     
     override func didReceiveMemoryWarning()
