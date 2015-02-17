@@ -10,13 +10,21 @@ import UIKit
 
 struct Helper
 {
-    static func UrlToImage(Url: String) -> UIImage
+    static func UrlToImage(Url: String, CompletionHandler: (Image: UIImage) -> ())
     {
+        var tmpImage: UIImage
+        
         var uri = Url
         var imgPath = uri.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
         let imgUrl = NSURL(string: imgPath)
-        let imgData = NSData(contentsOfURL: imgUrl!) //make sure your image in this url does exist, otherwise unwrap in a if let check
-        return UIImage(data: imgData!)!
+        if let imgData = NSData(contentsOfURL: imgUrl!) {
+            tmpImage = UIImage(data: imgData)!
+        }
+        else {
+            tmpImage = UIImage()
+        }
+        
+        CompletionHandler(Image: tmpImage)
     }
     
     static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ())
@@ -32,7 +40,7 @@ struct Helper
                 //If there is an error in the web request, print it to the console
                 println(error.localizedDescription)
             }
-            
+
             var json = JSON(data: data)
             //println(json)
             

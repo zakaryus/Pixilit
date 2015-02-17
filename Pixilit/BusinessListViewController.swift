@@ -24,45 +24,45 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     {
         super.viewDidLoad()
          //Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func viewWillAppear(animated: Bool)
-    {
+        
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
         
-//        Helper.RestContentTypeRequest(Config.ContentTypeBusiness)
-//        {
-//            urls in
-//            
-//            Helper.RestUrlToContent(urls)
-//            {
-//                Items in
-//                
-//                println(Items)
-//                self.listOfBusinesses = Items
-//                
-//                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-//                
-//                self.tableView.reloadData()
-//                self.activityIndicator.stopAnimating()
-//            }
-//        }
+        //        Helper.RestContentTypeRequest(Config.ContentTypeBusiness)
+        //        {
+        //            urls in
+        //
+        //            Helper.RestUrlToContent(urls)
+        //            {
+        //                Items in
+        //
+        //                println(Items)
+        //                self.listOfBusinesses = Items
+        //
+        //                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
+        //
+        //                self.tableView.reloadData()
+        //                self.activityIndicator.stopAnimating()
+        //            }
+        //        }
         
         Helper.RestBusinessesRequest
         {
-            bus in
-            
-            println(bus.count)
-            
-            self.listOfBusinesses = bus
-            self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-            
-            self.tableView.reloadData()
-            self.activityIndicator.stopAnimating()
+                bus in
+                
+                println(bus.count)
+                
+                self.listOfBusinesses = bus
+                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
+                
+                dispatch_async(dispatch_get_main_queue(),
+                    {
+                        self.tableView.reloadData()
+                        self.activityIndicator.stopAnimating()
+                })
         }
     }
-
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -75,16 +75,22 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         
         var business: Business = self.sections.data[indexPath.section].data[indexPath.row]
         
-        if let title = business.Title {
-            cell.textLabel?.text = title
-        }
-        
-        if let phone = business.Phone {
-            cell.detailTextLabel?.text = phone
-        }
-        
         if let logo = business.Logo {
-            cell.imageView?.image = Helper.UrlToImage(logo)
+            Helper.UrlToImage(logo)
+            {
+                Image in
+                
+                cell.imageView?.image = Image
+                
+                if let title = business.Title {
+                    cell.textLabel?.text = title
+                }
+                
+                if let phone = business.Phone {
+                    cell.detailTextLabel?.text = phone
+                }
+
+            }
         }
         
         return cell

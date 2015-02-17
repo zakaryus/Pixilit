@@ -69,11 +69,16 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         let cell: BusinessPhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
         
         if let url = business.Photos[indexPath.row].Url {
-            cell.photo.image = Helper.UrlToImage(url)
-        }
-        
-        if let description = business.Photos[indexPath.row].Description {
-            cell.desc.text = description
+            
+            Helper.UrlToImage(url)
+            {
+                Image in
+                cell.photo.image = Image
+                
+                if let description = self.business.Photos[indexPath.row].Description {
+                    cell.desc.text = description
+                }
+            }
         }
         
         return cell
@@ -142,7 +147,11 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         if let logo = business.Logo {
-            self.businessLogo.image = Helper.UrlToImage(logo)
+            Helper.UrlToImage(logo)
+            {
+                Image in
+                self.businessLogo.image = Image
+            }
         }
     }
 }
