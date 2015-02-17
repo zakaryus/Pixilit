@@ -11,6 +11,6 @@
 	<key>ContentTypeBusiness</key>
 	<string>business</string>
 	<key>RestNodeIndex</key>
-	<string>http:www.pixilit.com/rest/node.json</string>
+	<string>http://www.pixilit.com/rest/businesses.json</string>
 </dict>
 </plist>

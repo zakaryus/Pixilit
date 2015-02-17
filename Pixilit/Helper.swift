@@ -19,6 +19,38 @@ struct Helper
         return UIImage(data: imgData!)!
     }
     
+    static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ())
+    {
+        var tmpBusinesses = [Business]()
+        
+        let urlPath = Config.RestNodeIndex
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            //println(json)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                //println(subJson)
+                
+                var business = Business(json: subJson)
+                tmpBusinesses.append(business)
+            }
+            
+            //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+            
+            CompletionHandler(Businesses: tmpBusinesses)
+        })
+        task.resume()
+    }
+    
     static func RestContentTypeRequest(ContentType: String, CompletionHandler: (Urls: [String]) -> ())
     {
         var tmpUrls = [String]()
