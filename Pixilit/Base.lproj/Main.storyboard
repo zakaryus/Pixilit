@@ -43,18 +43,13 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="pwc-bZ-zsA"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Iz5-ml-EE3">
-                                <rect key="frame" x="289" y="290" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gpZ-ZY-8cE" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="256-n7-U3A"/>
                             <constraint firstItem="aau-gE-Z4P" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="GCj-OS-Ch9"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="gpZ-ZY-8cE" secondAttribute="bottom" id="Thl-LI-sdb"/>
-                            <constraint firstAttribute="centerX" secondItem="Iz5-ml-EE3" secondAttribute="centerX" id="Ule-Qz-Nzx"/>
                             <constraint firstItem="gpZ-ZY-8cE" firstAttribute="top" secondItem="aau-gE-Z4P" secondAttribute="bottom" id="Zky-vy-zJR"/>
-                            <constraint firstAttribute="centerY" secondItem="Iz5-ml-EE3" secondAttribute="centerY" id="e3L-5B-Lm1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aau-gE-Z4P" secondAttribute="trailing" constant="-16" id="iPP-tS-ynB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gpZ-ZY-8cE" secondAttribute="trailing" constant="-16" id="mmV-f6-buU"/>
                             <constraint firstItem="aau-gE-Z4P" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="wBf-Cj-uOk"/>
@@ -62,7 +57,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Businesses" id="Eed-v9-22L"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="Iz5-ml-EE3" id="KeP-fc-7X6"/>
                         <outlet property="searchBar" destination="aau-gE-Z4P" id="KvG-S0-xF1"/>
                         <outlet property="searchDisplayController" destination="aOr-kL-JBh" id="YhY-2t-Czt"/>
                         <outlet property="tableView" destination="gpZ-ZY-8cE" id="xLM-cU-Pmx"/>
@@ -211,6 +205,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="gyS-w3-1kg">
                         <barButtonItem key="backBarButtonItem" title="Back" id="nvq-vm-bRj"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="cSV-QU-nIH">
+                            <connections>
+                                <action selector="shareButton:" destination="Ers-J0-bCH" id="fwG-Po-GXd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="businessDescription" destination="iy0-bk-O2O" id="NlH-3i-ZEE"/>

@@ -17,4 +17,5 @@ struct Config
     static let FilePathPublicPlaceholder: String = dict?.objectForKey("FilePathPublicPlaceholder") as String
     static let FilePathPublicValue: String = dict?.objectForKey("FilePathPublicValue") as String
     static let AppTitle: String = dict?.objectForKey("AppTitle") as String
+    static let NodePath: String = dict?.objectForKey("NodePath") as String
 }

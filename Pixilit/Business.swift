@@ -33,7 +33,9 @@ class Business: NSObject
     var Hours: [String] = []
     var Description: String?
     var Logo: String?
+    var PixilitURL: String?
     var Photos: [Photo] = []
+    
     
     override init() { }
     
@@ -80,6 +82,10 @@ class Business: NSObject
         
         if let logo = json["logo"].string {
             self.Logo = logo
+        }
+        
+        if let nid = json["nid"].string {
+            self.PixilitURL = Config.NodePath + nid
         }
         
         if let photos = json["photos"].array {

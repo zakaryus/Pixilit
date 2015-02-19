@@ -14,7 +14,6 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var listOfBusinesses: [Business] = [Business]()
     var filteredListOfBusinesses: [Business] = [Business]()
@@ -31,43 +30,8 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         tableVC.tableView = tableView
         tableVC.refreshControl = refresh
         refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
-        
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        
-        //        Helper.RestContentTypeRequest(Config.ContentTypeBusiness)
-        //        {
-        //            urls in
-        //
-        //            Helper.RestUrlToContent(urls)
-        //            {
-        //                Items in
-        //
-        //                println(Items)
-        //                self.listOfBusinesses = Items
-        //
-        //                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-        //
-        //                self.tableView.reloadData()
-        //                self.activityIndicator.stopAnimating()
-        //            }
-        //        }
-        
-        Helper.RestBusinessesRequest
-        {
-                bus in
-                
-                println(bus.count)
-                
-                self.listOfBusinesses = bus
-                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-                
-                dispatch_async(dispatch_get_main_queue(),
-                {
-                        self.tableView.reloadData()
-                        self.activityIndicator.stopAnimating()
-                })
-        }
+        refresh.beginRefreshing()
+        RefreshList()
     }
     
     func RefreshList()
@@ -82,7 +46,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                 self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
                 
                 dispatch_async(dispatch_get_main_queue(),
-                    {
+                {
                         self.tableView.reloadData()
                         self.refresh.endRefreshing()
                 })
