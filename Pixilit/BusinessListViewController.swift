@@ -35,39 +35,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
         
-        //        Helper.RestContentTypeRequest(Config.ContentTypeBusiness)
-        //        {
-        //            urls in
-        //
-        //            Helper.RestUrlToContent(urls)
-        //            {
-        //                Items in
-        //
-        //                println(Items)
-        //                self.listOfBusinesses = Items
-        //
-        //                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-        //
-        //                self.tableView.reloadData()
-        //                self.activityIndicator.stopAnimating()
-        //            }
-        //        }
-        
-        Helper.RestBusinessesRequest
-        {
-                bus in
-                
-                println(bus.count)
-                
-                self.listOfBusinesses = bus
-                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-                
-                dispatch_async(dispatch_get_main_queue(),
-                {
-                        self.tableView.reloadData()
-                        self.activityIndicator.stopAnimating()
-                })
-        }
+        RefreshList()
     }
     
     func RefreshList()

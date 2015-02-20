@@ -27,11 +27,15 @@ struct Helper
         CompletionHandler(Image: tmpImage)
     }
     
+    static func NidToImageUrl (Nid: String) -> String {
+        
+    }
+    
     static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ())
     {
         var tmpBusinesses = [Business]()
         
-        let urlPath = Config.RestNodeIndex
+        let urlPath = Config.RestBusinessesIndex
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()

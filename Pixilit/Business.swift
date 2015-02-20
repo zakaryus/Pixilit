@@ -34,6 +34,7 @@ class Business: NSObject
     var Description: String?
     var Logo: String?
     var Photos: [Photo] = []
+    var Pix: [String] = []
     
     override init() { }
     
@@ -82,12 +83,12 @@ class Business: NSObject
             self.Logo = logo
         }
         
-        if let photos = json["photos"].array {
-            for p in photos
-            {
-                var url = p.string!
-                var desc = json["title"].string!    //need to figure out how to get photo title
-                self.Photos.append(Photo(url: url, description: desc))
+        if let pix = json["pix"].array {
+            for p in pix {
+                if let nid = p["target_id"].string {
+                    self.Pix.append(nid)
+                    println(nid)
+                }
             }
         }
     }
