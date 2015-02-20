@@ -23,6 +23,18 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     
     var business: Business = Business()
     
+    @IBAction func shareButton(sender: AnyObject)
+    {
+        let firstActivityItem = "Look what I found in Pixilit!"
+        let businessUrl = business.PixilitURL
+        var array: [AnyObject] = [AnyObject]()
+        array.append(firstActivityItem)
+        array.append(businessUrl!)
+        
+        let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: array, applicationActivities: nil)
+        self.presentViewController(activityViewController, animated: true, completion: nil)
+    }
+    
     class collectionCell: NSObject {
         let PhotoUrl: String
         let Desc: String
