@@ -12,9 +12,9 @@
 	<string>public://</string>
 	<key>ContentTypeBusiness</key>
 	<string>business</string>
-	<key>RestBusinessIndex</key>
-	<string>http://www.pixilit.com/rest/business.json?nid=</string>
-	<key>RestBusinessesIndex</key>
+	<key>RestBusinessTileJson</key>
+	<string>http://www.pixilit.com/rest/businesstile.json?nid=</string>
+	<key>RestBusinessesJson</key>
 	<string>http://www.pixilit.com/rest/businesses.json</string>
 </dict>
 </plist>

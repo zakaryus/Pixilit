@@ -26,10 +26,10 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBAction func shareButton(sender: AnyObject)
     {
         let firstActivityItem = "Look what I found in Pixilit!"
-        let businessUrl = business.PixilitURL
+        let businessUrl = business.PixilitUrl
         var array: [AnyObject] = [AnyObject]()
         array.append(firstActivityItem)
-        array.append(businessUrl!)
+        //array.append(businessUrl!)
         
         let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: array, applicationActivities: nil)
         self.presentViewController(activityViewController, animated: true, completion: nil)
@@ -73,23 +73,21 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return self.business.Photos.count
+        return self.business.Pix.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: BusinessPhotoCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as BusinessPhotoCollectionViewCell
+        let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
         
-        if let url = business.Photos[indexPath.row].Url {
+        Helper.NidToTile(business.Pix[indexPath.row])
+        {
+            Tile in
             
-            Helper.UrlToImage(url)
-            {
-                Image in
-                cell.photo.image = Image
-                
-                if let description = self.business.Photos[indexPath.row].Description {
-                    cell.desc.text = description
-                }
+            cell.Description.text = Tile.Description
+            
+            Helper.UrlToImage(Tile.Photo!) {
+                Photo in
+                cell.Photo.image = Photo
             }
         }
         
@@ -113,6 +111,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     {
         if let title = business.Title {
             self.businessName.text = title
+            self.businessName.backgroundColor = UIColor.whiteColor()
             self.businessNavBar.title = title
         }
         
@@ -138,24 +137,29 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if locality != "" && administrativearea != "" && postalcode != "" {
             self.businessLocalityAdminZip.text = "\(locality), \(administrativearea) \(postalcode)"
+            self.businessLocalityAdminZip.backgroundColor = UIColor.whiteColor()
         }
         
         if let phone = business.Phone {
             self.businessPhone.text = phone
+            self.businessPhone.backgroundColor = UIColor.whiteColor()
         }
         
         if let email = business.Email {
             self.businessEmail.text = email
+            self.businessEmail.backgroundColor = UIColor.whiteColor()
         }
         
         if let website = business.Website {
             self.businessWebsite.text = website
+            self.businessWebsite.backgroundColor = UIColor.whiteColor()
         }
         
         //self.Hours = [String]()
         
         if let description = business.Description {
             self.businessDescription.text = description
+            self.businessDescription.backgroundColor = UIColor.whiteColor()
         }
         
         if let logo = business.Logo {
@@ -163,6 +167,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
             {
                 Image in
                 self.businessLogo.image = Image
+                self.businessLogo.backgroundColor = UIColor.whiteColor()
             }
         }
     }

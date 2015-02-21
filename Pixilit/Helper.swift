@@ -27,15 +27,11 @@ struct Helper
         CompletionHandler(Image: tmpImage)
     }
     
-    static func NidToImageUrl (Nid: String) -> String {
-        
-    }
-    
     static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ())
     {
         var tmpBusinesses = [Business]()
         
-        let urlPath = Config.RestBusinessesIndex
+        let urlPath = Config.RestBusinessesJson
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -63,11 +59,32 @@ struct Helper
         task.resume()
     }
     
+    static func NidToTile(Nid: String, CompletionHandler: (tile: Tile) -> ())
+    {
+        let urlPath = Config.RestBusinessTileJson + Nid
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            
+            var tmpTile = Tile(json: json)
+            
+            CompletionHandler(tile: tmpTile)
+        })
+        task.resume()
+    }
+    
     static func RestContentTypeRequest(ContentType: String, CompletionHandler: (Urls: [String]) -> ())
     {
         var tmpUrls = [String]()
         
-        let urlPath = Config.RestNodeIndex
+        let urlPath = Config.RestBusinessesJson
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -102,36 +119,7 @@ struct Helper
         task.resume()
     }
     
-//    static func RestUrlToContent(Urls: [String], CompletionHandler: (Items: [Business]) -> ())
-//    {
-//        let group: dispatch_group_t = dispatch_group_create()
-//        
-//        dispatch_group_enter(group)
-//        
-//        var content = [Business]()
-//
-//        for url in Urls
-//        {
-//            var tmp: Business = Business()
-//            tmp.Create(url) {
-//                Item in
-//                tmp = Item
-//                println("Title: \(tmp.Title)")
-//                content.append(tmp)
-//                
-//                dispatch_group_leave(group)
-//            }
-//            
-//            println(content.count)
-//        }
-//        
-//        dispatch_group_notify(group, dispatch_get_main_queue(),
-//        {
-//            CompletionHandler(Items: content)
-//        })
-//    }
-    
-    static func RestUrlToContent(Urls: [String], CompletionHandler: (Items: [Business]) -> ())
+    static func RestUrlToContentxasdgf(Urls: [String], CompletionHandler: (Items: [Business]) -> ())
     {
         var content = [Business]()
         let group = dispatch_group_create()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessPhotoCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var photo: UIImageView!
-    @IBOutlet weak var desc: UILabel!
+class TileCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var Photo: UIImageView!
+    @IBOutlet weak var Description: UILabel!
 }

@@ -30,14 +30,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         tableVC.tableView = tableView
         tableVC.refreshControl = refresh
         refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
-<<<<<<< HEAD
-        
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        
-=======
         refresh.beginRefreshing()
->>>>>>> FETCH_HEAD
         RefreshList()
     }
     

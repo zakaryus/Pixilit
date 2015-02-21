@@ -35,13 +35,6 @@ class Sections <T: AnyObject>
             sections.append(Section())
         }
         
-        // assign businesses section variable from a list of businesses
-//        var items: [T] = list.map { item in
-//            item.section = self.collation.sectionForObject(item, collationStringSelector: key)
-//            return item
-//        }
-
-        
         // put each user in a section
         for item in list {
             sections[self.collation.sectionForObject(item, collationStringSelector: key)].addItem(item)

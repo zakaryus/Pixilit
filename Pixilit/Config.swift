@@ -12,8 +12,8 @@ let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("C
 
 struct Config
 {
-    static let RestBusinessIndex: String = dict?.objectForKey("RestBusinessIndex") as String
-    static let RestBusinessesIndex: String = dict?.objectForKey("RestBusinessesIndex") as String
+    static let RestBusinessTileJson: String = dict?.objectForKey("RestBusinessTileJson") as String
+    static let RestBusinessesJson: String = dict?.objectForKey("RestBusinessesJson") as String
     static let ContentTypeBusiness: String = dict?.objectForKey("ContentTypeBusiness") as String
     static let FilePathPublicPlaceholder: String = dict?.objectForKey("FilePathPublicPlaceholder") as String
     static let FilePathPublicValue: String = dict?.objectForKey("FilePathPublicValue") as String
