@@ -170,5 +170,19 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
                 self.businessLogo.backgroundColor = UIColor.whiteColor()
             }
         }
+        
+        SetWhiteBackground()
+    }
+    
+    func SetWhiteBackground()
+    {
+        businessName.backgroundColor = UIColor.whiteColor()
+        businessThoroughfare.backgroundColor = UIColor.whiteColor()
+        businessLocalityAdminZip.backgroundColor = UIColor.whiteColor()
+        businessPhone.backgroundColor = UIColor.whiteColor()
+        businessEmail.backgroundColor = UIColor.whiteColor()
+        businessWebsite.backgroundColor = UIColor.whiteColor()
+        businessDescription.backgroundColor = UIColor.whiteColor()
+        businessLogo.backgroundColor = UIColor.whiteColor()
     }
 }
