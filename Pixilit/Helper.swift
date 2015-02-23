@@ -59,10 +59,10 @@ struct Helper
         task.resume()
     }
     
+    
     static func NidToTile(Nid: String, CompletionHandler: (tile: Tile) -> ())
     {
         let urlPath = Config.RestBusinessTileJson + Nid
-        
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in

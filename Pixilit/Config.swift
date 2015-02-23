@@ -12,6 +12,7 @@ let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("C
 
 struct Config
 {
+    static let UserFlagsJson: String = dict?.objectForKey("UserFlagsJson") as String
     static let RestBusinessTileJson: String = dict?.objectForKey("RestBusinessTileJson") as String
     static let RestBusinessesJson: String = dict?.objectForKey("RestBusinessesJson") as String
     static let ContentTypeBusiness: String = dict?.objectForKey("ContentTypeBusiness") as String

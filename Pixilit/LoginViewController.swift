@@ -72,7 +72,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     var loginurl:NSURL = NSURL(string: "http://pixilit.com/rest/user/login")!
                     
                     var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\",\"X-CSRF-Token\":\"\(logintoken!)\"}"
-                 println(loginpost)
+                 
                     var loginpostData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
                     var loginpostLength:NSString = String( postData.length )
                     
@@ -104,8 +104,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     alertView.delegate = self
                     alertView.addButtonWithTitle("OK")
                     alertView.show()
-                    var userURL = userjson["user"]["uid"].string?
-                    self.performSegueWithIdentifier("LoginSuccess", sender: userURL)
+                        
+                        
+                        
+                        var pixurl:NSURL = NSURL(string: Config.UserFlagsJson + userjson["user"]["uid"].string!)!
+
+                        var pixrequest:NSMutableURLRequest = NSMutableURLRequest(URL: pixurl)
+                        pixrequest.HTTPMethod = "GET"
+                        loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
+                        var pixDatas: NSData? = NSURLConnection.sendSynchronousRequest(pixrequest, returningResponse:&response, error:&reponseError)
+                        
+                        var pixjson = JSON(data: pixDatas!)
+                     
+                       
+                        var myuser: User = User(json: userjson)
+                    
+                            myuser.appendPixd(pixjson)
+                        
+                       
+
+                        
+                        self.performSegueWithIdentifier("LoginSuccess", sender: myuser)
+                   
                     }
                     
                 } else {
@@ -137,7 +157,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         var uvc = segue.destinationViewController as UserViewController
-        uvc.userURL = sender as String
+        uvc.user = sender as User
+
     }
    
 }
