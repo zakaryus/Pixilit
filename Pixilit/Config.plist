@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UserPath</key>
+	<string>http://www.pixilit.com/user/</string>
 	<key>NodePath</key>
 	<string>http://www.pixilit.com/node/</string>
 	<key>AppTitle</key>

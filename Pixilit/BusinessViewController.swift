@@ -26,7 +26,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBAction func shareButton(sender: AnyObject)
     {
         let firstActivityItem = "Look what I found in Pixilit!"
-        let businessUrl = business.PixilitUrl
+        let businessUrl = Helper.UidToUserUrl(business.Uid!)
         var array: [AnyObject] = [AnyObject]()
         array.append(firstActivityItem)
         //array.append(businessUrl!)

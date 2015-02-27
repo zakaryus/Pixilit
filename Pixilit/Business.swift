@@ -22,7 +22,7 @@ class Business: NSObject
     var Description: String?
     var Logo: String?
     var Pix: [String] = []
-    var PixilitUrl: String?
+    var Uid: String?
     
     override init() { }
     
@@ -80,8 +80,8 @@ class Business: NSObject
             }
         }
         
-        if let pixiliturl = json["pixiliturl"].string {
-            self.PixilitUrl = pixiliturl
+        if let uid = json["uid"].string {
+            self.Uid = uid
         }
     }
 }

@@ -153,4 +153,9 @@ struct Helper
             CompletionHandler(Items: content)
         })
     }
+
+    static func UidToUserUrl(Uid: String) -> String
+    {
+        return Config.UserPath + Uid
+    }
 }
