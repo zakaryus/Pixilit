@@ -27,6 +27,8 @@
 		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
 		42CFCE9C1AA118F100CDA7D9 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CFCE9B1AA118F100CDA7D9 /* MyTabBarController.swift */; };
 		42CFCE9E1AA11CE300CDA7D9 /* MySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CFCE9D1AA11CE300CDA7D9 /* MySegue.swift */; };
+		42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C61AA4D468009D4AD9 /* NewsPage.swift */; };
+		42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */; };
 		D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */; };
 		D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD32EB1A8C236B00538B9B /* CustomCell.swift */; };
 		D0CD32EE1A8C236B00538B9B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD32EC1A8C236B00538B9B /* LoginViewController.swift */; };
@@ -67,6 +69,8 @@
 		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		42CFCE9B1AA118F100CDA7D9 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		42CFCE9D1AA11CE300CDA7D9 /* MySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySegue.swift; sourceTree = "<group>"; };
+		42F848C61AA4D468009D4AD9 /* NewsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPage.swift; sourceTree = "<group>"; };
+		42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPageListViewController.swift; sourceTree = "<group>"; };
 		D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0CD32EB1A8C236B00538B9B /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		D0CD32EC1A8C236B00538B9B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 				3185E12A1A79D3E600037B10 /* UserViewController.swift */,
 				3185E12C1A79D3E600037B10 /* Main.storyboard */,
 				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
+				42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */,
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
@@ -142,6 +147,7 @@
 				3178DEEA1A9044B200E6D1B4 /* Sections.swift */,
 				31150CB01A905AC100FB1183 /* ContentType.swift */,
 				31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */,
+				42F848C61AA4D468009D4AD9 /* NewsPage.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -280,7 +286,9 @@
 				3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */,
 				31150CB11A905AC100FB1183 /* ContentType.swift in Sources */,
 				31ABEB941A981A04001815F9 /* Tile.swift in Sources */,
+				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
+				42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */,
 				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

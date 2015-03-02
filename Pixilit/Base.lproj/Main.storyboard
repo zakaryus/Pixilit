@@ -207,14 +207,21 @@
                                     <constraint firstItem="hbe-iV-AOI" firstAttribute="trailing" secondItem="cFd-EG-szh" secondAttribute="trailingMargin" id="Eqz-B5-gZd"/>
                                     <constraint firstItem="VMw-gp-5Nj" firstAttribute="leading" secondItem="TV4-hg-rKr" secondAttribute="trailing" constant="8" id="G5R-BL-DGJ"/>
                                     <constraint firstItem="P0c-8e-GdS" firstAttribute="top" secondItem="aU4-To-xcV" secondAttribute="bottom" constant="8" id="Gnc-ws-LwM"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Fle-0x-xxF" secondAttribute="trailing" constant="8" id="IFy-eS-iXM"/>
                                     <constraint firstItem="TV4-hg-rKr" firstAttribute="leading" secondItem="cFd-EG-szh" secondAttribute="leadingMargin" id="L9j-X5-grU"/>
+                                    <constraint firstItem="Fle-0x-xxF" firstAttribute="leading" secondItem="cFd-EG-szh" secondAttribute="leadingMargin" constant="8" id="M1S-et-Uba"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fle-0x-xxF" secondAttribute="trailing" constant="16" id="Oz4-vQ-NOo"/>
+                                    <constraint firstAttribute="centerX" secondItem="Fle-0x-xxF" secondAttribute="centerX" id="YUk-SH-3yx"/>
                                     <constraint firstItem="Fle-0x-xxF" firstAttribute="trailing" secondItem="cFd-EG-szh" secondAttribute="trailingMargin" id="cIp-pK-giu"/>
                                     <constraint firstItem="aU4-To-xcV" firstAttribute="leading" secondItem="TV4-hg-rKr" secondAttribute="trailing" constant="8" id="fXm-3S-r1A"/>
                                     <constraint firstItem="3mz-bx-jNH" firstAttribute="top" secondItem="9eM-we-ddB" secondAttribute="bottom" constant="8" id="hN3-HB-Hd8"/>
                                     <constraint firstItem="3mz-bx-jNH" firstAttribute="leading" secondItem="TV4-hg-rKr" secondAttribute="trailing" constant="8" id="k2K-9B-mRu"/>
+                                    <constraint firstItem="Fle-0x-xxF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cFd-EG-szh" secondAttribute="leading" constant="16" id="kUn-UL-oFt"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fle-0x-xxF" secondAttribute="trailing" constant="16" id="o4o-5b-cVt"/>
                                     <constraint firstItem="9eM-we-ddB" firstAttribute="top" secondItem="VMw-gp-5Nj" secondAttribute="bottom" constant="8" id="s1E-V7-1Ht"/>
                                     <constraint firstItem="hbe-iV-AOI" firstAttribute="top" secondItem="T3P-Vc-LxW" secondAttribute="bottom" constant="8" id="t1S-Fc-82U"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="Fle-0x-xxF" secondAttribute="bottom" constant="39" id="twZ-UL-1sR"/>
+                                    <constraint firstItem="Fle-0x-xxF" firstAttribute="leading" secondItem="cFd-EG-szh" secondAttribute="leading" constant="16" id="uTE-NM-wa7"/>
                                     <constraint firstItem="9eM-we-ddB" firstAttribute="leading" secondItem="TV4-hg-rKr" secondAttribute="trailing" constant="8" id="vrl-QQ-mhT"/>
                                 </constraints>
                             </view>
@@ -287,12 +294,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wea-B0-j9l">
+                                <rect key="frame" x="545" y="20" width="39" height="30"/>
+                                <state key="normal" title="News">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="bFk-fF-RDF" kind="show" id="fcW-nG-Q8H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wea-B0-j9l" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="EAE-We-x7p"/>
+                            <constraint firstItem="wea-B0-j9l" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="TDl-eP-PgZ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="collectionView" destination="f0q-4x-Y9G" id="wic-Ah-qcG"/>
+                        <outlet property="newsButton" destination="wea-B0-j9l" id="BdY-qU-GaH"/>
                         <outlet property="usernameField" destination="Hif-pI-0Dd" id="3dl-4h-cVQ"/>
                     </connections>
                 </viewController>
@@ -315,7 +336,6 @@
                         <segue destination="O7M-fy-MB9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="tEw-5W-eT0" kind="relationship" relationship="viewControllers" id="JOi-Sv-AjL"/>
-                        <segue destination="bFk-fF-RDF" kind="relationship" relationship="viewControllers" id="9Xt-AQ-Vlq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -452,10 +472,10 @@
             </objects>
             <point key="canvasLocation" x="787" y="-320"/>
         </scene>
-        <!--news-->
+        <!--News Page List View Controller-->
         <scene sceneID="qbv-AU-sAk">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bFk-fF-RDF" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="bFk-fF-RDF" customClass="NewsPageListViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4nk-6D-we5"/>
                         <viewControllerLayoutGuide type="bottom" id="Jof-L0-lKY"/>
@@ -463,15 +483,39 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nlv-nQ-lrr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="VW4-dx-nrT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="wd3-Q6-xBe">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zCP-Aa-daX">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zCP-Aa-daX" id="hIl-xL-Bzu">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="VW4-dx-nrT" firstAttribute="bottom" secondItem="nlv-nQ-lrr" secondAttribute="bottomMargin" id="5Pn-nw-IvF"/>
+                            <constraint firstItem="VW4-dx-nrT" firstAttribute="top" secondItem="nlv-nQ-lrr" secondAttribute="topMargin" id="JOB-JH-5su"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VW4-dx-nrT" secondAttribute="trailing" constant="-16" id="LcU-4F-xkd"/>
+                            <constraint firstItem="VW4-dx-nrT" firstAttribute="leading" secondItem="nlv-nQ-lrr" secondAttribute="leadingMargin" constant="-16" id="hHF-k8-l8i"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="news" id="dox-V3-mBT"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pH-t8-hzQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1068" y="956"/>
+            <point key="canvasLocation" x="2204" y="401"/>
         </scene>
     </scenes>
     <resources>

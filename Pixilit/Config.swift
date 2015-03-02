@@ -20,4 +20,5 @@ struct Config
     static let AppTitle: String = dict?.objectForKey("AppTitle") as String
     static let NodePath: String = dict?.objectForKey("NodePath") as String
     static let UserPath: String = dict?.objectForKey("UserPath") as String
+    static let RestMainNewsPageJson: String = dict?.objectForKey("RestMainNewsPageJson") as String
 }

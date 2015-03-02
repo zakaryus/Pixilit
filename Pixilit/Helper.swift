@@ -158,4 +158,31 @@ struct Helper
     {
         return Config.UserPath + Uid
     }
+    
+    static func RestMainNewsPageRequest(CompletionHandler: (newspage: [NewsPage]) -> ())
+    {
+        var tmpNewsPages = [NewsPage]()
+        
+        let urlPath = Config.RestMainNewsPageJson
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                var tmpNewsPage = NewsPage(json: json)
+                tmpNewsPages.append(tmpNewsPage)
+            }
+            
+            CompletionHandler(newspage: tmpNewsPages)
+        })
+        task.resume()
+    }
 }

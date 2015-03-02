@@ -14,11 +14,14 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet var collectionView: UICollectionView!
     
     
+    @IBOutlet weak var newsButton: UIButton!
+    
     @IBOutlet var usernameField: UITextField!
     var userURL: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.registerClass(CustomCell.self, forCellWithReuseIdentifier: "ImgCell")
+        newsButton.hidden=true;
         //Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -65,7 +68,12 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
                         let imgData = NSData(contentsOfURL: imgUrl!)
                         cell.imageView.image = UIImage(data: imgData!)
                     }
-                    
+                    var accountType=json["field_account_type"]["und"][0]["value"].string
+                    if (accountType != nil){
+                        if(accountType! == "business"){
+                            self.newsButton.hidden = false
+                        }
+                    }
                     
                 }
             })

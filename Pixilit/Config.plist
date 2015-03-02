@@ -18,5 +18,7 @@
 	<string>http://www.pixilit.com/rest/businesstile.json?nid=</string>
 	<key>RestBusinessesJson</key>
 	<string>http://www.pixilit.com/rest/businesses.json</string>
+	<key>RestMainNewsPageJson</key>
+	<string>http://www.pixilit.com/rest/main-news-page.json</string>
 </dict>
 </plist>
