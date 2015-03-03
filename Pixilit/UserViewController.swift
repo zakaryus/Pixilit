@@ -22,7 +22,7 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView!.registerClass(CustomCell.self, forCellWithReuseIdentifier: "ImgCell")
-        newsButton.enabled = false
+        //newsButton.enabled = false
         //Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -38,48 +38,48 @@ class UserViewController: UIViewController, UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImgCell", forIndexPath: indexPath) as CustomCell
         
-        let urlPath = "http:www.pixilit.com/rest/user/\(userURL).json"
-        
-        let url: NSURL = NSURL(string: urlPath)!
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
-            if((error) != nil) {
-                //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), {
-                if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath)  {
-                    
-                    var json = JSON(data: data)
-                    println(json)
-                    var text = json["name"].string
-                    // var detailText = json["field_phone_number"]["und"][0]["number"].string
-                    
-                    // cellToUpdate.textLabel?.text = text
-                    self.setName(text!) //update username
-                    //   cellToUpdate.detailTextLabel?.text = detailText
-                    
-                    //     var uri = json["field_logo"]["und"][0]["uri"].string
-                    var imgPath = json["picture"]["url"].string
-                    
-                    if (imgPath != nil)
-                    {
-                        let imgUrl = NSURL(string: imgPath!)
-                        let imgData = NSData(contentsOfURL: imgUrl!)
-                        cell.imageView.image = UIImage(data: imgData!)
-                    }
-//                    var accountType=json["field_account_type"]["und"][0]["value"].string
-//                    if (accountType != nil){
-//                        if(accountType! == "business"){
-//                            self.newsButton.enabled = true
-//                        }
-                    //}
-                    
-                }
-            })
-        })
-        task.resume()
+//        let urlPath = "http:www.pixilit.com/rest/user/\(userURL).json"
+//        
+//        let url: NSURL = NSURL(string: urlPath)!
+//        let session = NSURLSession.sharedSession()
+//        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+//            if((error) != nil) {
+//                //If there is an error in the web request, print it to the console
+//                println(error.localizedDescription)
+//            }
+//            
+//            dispatch_async(dispatch_get_main_queue(), {
+//                if let cellToUpdate = collectionView.cellForItemAtIndexPath(indexPath)  {
+//                    
+//                    var json = JSON(data: data)
+//                    println(json)
+//                    var text = json["name"].string
+//                    // var detailText = json["field_phone_number"]["und"][0]["number"].string
+//                    
+//                    // cellToUpdate.textLabel?.text = text
+//                    self.setName(text!) //update username
+//                    //   cellToUpdate.detailTextLabel?.text = detailText
+//                    
+//                    //     var uri = json["field_logo"]["und"][0]["uri"].string
+//                    var imgPath = json["picture"]["url"].string
+//                    
+//                    if (imgPath != nil)
+//                    {
+//                        let imgUrl = NSURL(string: imgPath!)
+//                        let imgData = NSData(contentsOfURL: imgUrl!)
+//                        cell.imageView.image = UIImage(data: imgData!)
+//                    }
+////                    var accountType=json["field_account_type"]["und"][0]["value"].string
+////                    if (accountType != nil){
+////                        if(accountType! == "business"){
+////                            self.newsButton.enabled = true
+////                        }
+//                    //}
+//                    
+//                }
+//            })
+//        })
+//        task.resume()
         
         return cell
     }

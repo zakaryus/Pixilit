@@ -177,7 +177,7 @@ struct Helper
             
             for (index: String, subJson: JSON) in json {
                 
-                var tmpNewsPage = NewsPage(json: json)
+                var tmpNewsPage = NewsPage(json: subJson)
                 tmpNewsPages.append(tmpNewsPage)
             }
             
