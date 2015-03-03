@@ -1,38 +1,42 @@
 
 import UIKit
 
-class User: NSObject
+struct User
 {
-   
-    var Pixd = [String]()
-    var Username: String!
-    var Uid: String!
-    override init() { }
+    enum AccountType : String{
+        case User = "user"
+        case Business = "business"
+    }
+
     
-    init(json: JSON)
+    static var Username: String!
+    static var Token: String!
+    static var Uid: String!
+    static var Role: AccountType!
+    
+    static func userSetup(json: JSON)
     {
         if let uid = json["user"]["uid"].string {
-            self.Uid = uid
+            Uid = uid
         }
         if let name = json["user"]["name"].string {
-            self.Username = name
-        }
- 
-    }
-
+           Username = name
     
-    func appendPixd(json: JSON)
-    {
-        
-        if let list = json.array {
-            for p in list {
-                if let nid = p["nid"].string {
-                    self.Pixd.append(nid)
-                }
+        }
+        if let token = json["token"].string {
+           Token = token
+        }
+        if let role = json["user"]["field_account_type"]["und"][0]["value"].string {
+            switch role.lowercaseString {
+                case "business" :
+                    Role = AccountType.Business
+                case "user" :
+                    Role = AccountType.User
+                default :
+                    Role = AccountType.User
             }
         }
-
-       
     }
+
     
 }

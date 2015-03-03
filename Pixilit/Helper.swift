@@ -59,7 +59,40 @@ struct Helper
         task.resume()
     }
     
-    
+    static func userFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ())
+    {
+        var tmpTiles = [Tile]()
+        let urlPath = Config.UserFlagsJson + Uid
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+  
+            var json = JSON(data: data)
+            //println(json)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                println(subJson)
+             
+                    var tmpTile = Tile(json: subJson)
+                    tmpTiles.append(tmpTile)
+            }
+            
+            //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+            
+            CompletionHandler(tiles: tmpTiles)
+
+            
+        })
+        task.resume()
+
+        
+    }
+
     static func NidToTile(Nid: String, CompletionHandler: (tile: Tile) -> ())
     {
         let urlPath = Config.RestBusinessTileJson + Nid
@@ -141,7 +174,7 @@ struct Helper
                 
                 var tmp: Business = Business(json: json)
                 content.append(tmp)
-                println(content.count)
+                //println(content.count)
                 
                 dispatch_group_leave(group)
             })

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -261,7 +261,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iiT-9H-Jhg">
                                 <rect key="frame" x="0.0" y="226" width="568" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CTO-d7-NVS">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CTO-d7-NVS">
                                     <size key="itemSize" width="198" height="230"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -294,8 +294,8 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="h9l-1P-ehA" secondAttribute="trailing" constant="-8" id="yrt-3M-KgN"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="Description" destination="h9l-1P-ehA" id="bJH-1B-imf"/>
-                                            <outlet property="Photo" destination="vY4-sr-KwH" id="EOb-o0-a7G"/>
+                                            <outlet property="Description" destination="h9l-1P-ehA" id="Mbk-ek-32V"/>
+                                            <outlet property="Photo" destination="vY4-sr-KwH" id="jgX-vl-HdB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

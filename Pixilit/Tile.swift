@@ -11,17 +11,22 @@ import UIKit
 class Tile: NSObject {
     var Description: String?
     var Photo: String?
+    var BusinessID : String?
     
     override init() { }
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
     init(json: JSON) {
-        if let title = json[0]["description"].string {
+        if let title = json["description"].string {
             self.Description = title
         }
         
-        if let photo = json[0]["photo"].string {
+        if let photo = json["photo"].string {
             self.Photo = photo
+        }
+        
+        if let bid = json["bid"].string {
+            self.BusinessID = bid
         }
     }
 }

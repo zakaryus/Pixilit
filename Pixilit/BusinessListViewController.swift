@@ -40,8 +40,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         {
                 bus in
                 
-                println(bus.count)
-                
+            
                 self.listOfBusinesses = bus
                 self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
                 
