@@ -27,8 +27,10 @@ class NewsPage: NSObject {
             self.Body = body
         }
         
-        if let date = json["date"].double {
-            var tmpDate = NSDate(timeIntervalSince1970: date)
+        if let date = json["date"].string {
+            var dblDate = (date as NSString).doubleValue
+            var interval = NSTimeInterval(dblDate)
+            var tmpDate = NSDate(timeIntervalSince1970: interval)
             self.Date = tmpDate
         }
     }

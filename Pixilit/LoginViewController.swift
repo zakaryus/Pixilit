@@ -64,6 +64,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 NSLog("Response code: %ld", res.statusCode);
                 
+                
                 if (res.statusCode >= 200 && res.statusCode < 300)
                 {
                     var json = JSON(data: urlData!)

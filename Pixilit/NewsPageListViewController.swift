@@ -41,7 +41,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
                 newspage in
                 
                 self.listOfNewsPages = newspage
-                //self.sections = Sections<NewsPage>(list: self.listOfNewsPages, key: "Title")
+                self.sections = Sections<NewsPage>(list: self.listOfNewsPages)
                 
                 dispatch_async(dispatch_get_main_queue(),
                     {
@@ -63,10 +63,10 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        //var newspage: NewsPage = self.sections.data[indexPath.section].data[indexPath.row]
-        var newspage: NewsPage = self.listOfNewsPages[indexPath.row]
+        var newspage: NewsPage = self.sections.data[indexPath.section].data[indexPath.row]
+        //var newspage: NewsPage = self.listOfNewsPages[indexPath.row]
         
-        cell.textLabel?.text = newspage.Title
+        cell.textLabel?.text = "\(newspage.Title!) \(Helper.NSDateToString(newspage.Date!))"
         cell.detailTextLabel?.text = newspage.Body
         
         return cell
@@ -80,25 +80,26 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var bvc = segue.destinationViewController as BusinessViewController
-        bvc.business = sender as Business
+
+        var nvc: NewsPageViewController = segue.destinationViewController as NewsPageViewController
+        nvc.newspage = sender as NewsPage
     }
     
     /**************************************************************************************/
     
     //adapted from tutorial at http:www.pumpmybicep.com/2014/07/04/uitableview-sectioning-and-indexing/
-    //table view data source
+    //table view data source*
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        //return self.sections.data.count
-        return 1
+        return self.sections.data.count
+        //return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        //return self.sections.data[section].data.count
-        return self.listOfNewsPages.count
+        return self.sections.data[section].data.count
+        //return self.listOfNewsPages.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
@@ -125,15 +126,35 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     func filterContentForSearchText(searchText: String)
     {
         // Filter the array using the filter method
-        self.filteredListOfNewsPages = self.listOfNewsPages.filter({( newspage: NewsPage) -> Bool in
+        self.filteredListOfNewsPages = self.listOfNewsPages.filter({(newspage: NewsPage) ->
+            
+            Bool in
+            
+            var term: Bool = false
+            
             if let title = newspage.Title {
                 let stringMatch = title.lowercaseString.rangeOfString(searchText.lowercaseString)
-                return stringMatch != nil
+                term = stringMatch != nil
             }
-            return false
+            
+            if !term {
+                if let body = newspage.Body {
+                    let stringMatch = body.lowercaseString.rangeOfString(searchText.lowercaseString)
+                    term = stringMatch != nil
+                }
+            }
+            
+            if !term {
+                if let date = newspage.Date {
+                    let stringMatch = Helper.NSDateToString(date).lowercaseString.rangeOfString(searchText.lowercaseString)
+                    term = stringMatch != nil
+                }
+            }
+            
+            return term
         })
         
-        //self.sections = Sections<NewsPage>(list: self.filteredListOfNewsPages, key: "Title")
+        self.sections = Sections<NewsPage>(list: self.filteredListOfNewsPages)
     }
     
     func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool
@@ -147,4 +168,10 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
     }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.sections = Sections<NewsPage>(list: self.listOfNewsPages)
+        self.tableView.reloadData()
+    }
+
 }

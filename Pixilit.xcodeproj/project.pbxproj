@@ -24,6 +24,7 @@
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
 		31B7D63A1A98FFA1000936CE /* RestParameteredQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */; };
+		429616881AA7C06400BE167B /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429616871AA7C06400BE167B /* NewsPageViewController.swift */; };
 		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
 		42CFCE9C1AA118F100CDA7D9 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CFCE9B1AA118F100CDA7D9 /* MyTabBarController.swift */; };
 		42CFCE9E1AA11CE300CDA7D9 /* MySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CFCE9D1AA11CE300CDA7D9 /* MySegue.swift */; };
@@ -66,6 +67,7 @@
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestParameteredQuery.swift; sourceTree = "<group>"; };
+		429616871AA7C06400BE167B /* NewsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
 		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		42CFCE9B1AA118F100CDA7D9 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		42CFCE9D1AA11CE300CDA7D9 /* MySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySegue.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				3185E12C1A79D3E600037B10 /* Main.storyboard */,
 				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
 				42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */,
+				429616871AA7C06400BE167B /* NewsPageViewController.swift */,
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
@@ -286,6 +289,7 @@
 				3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */,
 				31150CB11A905AC100FB1183 /* ContentType.swift in Sources */,
 				31ABEB941A981A04001815F9 /* Tile.swift in Sources */,
+				429616881AA7C06400BE167B /* NewsPageViewController.swift in Sources */,
 				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */,

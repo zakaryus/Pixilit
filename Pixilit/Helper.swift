@@ -185,4 +185,17 @@ struct Helper
         })
         task.resume()
     }
+    
+    //From: http://apexappdev.com/date-to-month-day-year-in-swift/
+    static func NSDateToString(date: NSDate) -> String
+    {
+        let flags: NSCalendarUnit = .DayCalendarUnit | .MonthCalendarUnit | .YearCalendarUnit
+        let components = NSCalendar.currentCalendar().components(flags, fromDate: date)
+        
+        let year = components.year
+        let month = components.month
+        let day = components.day
+        
+        return "\(month)/\(day)/\(year)"
+    }
 }
