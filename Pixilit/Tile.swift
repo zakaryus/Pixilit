@@ -11,6 +11,8 @@ import UIKit
 class Tile: NSObject {
     var Description: String?
     var Photo: String?
+    var BusinessID: String?
+    var Pixd: Bool?
     
     override init() { }
     
@@ -22,6 +24,14 @@ class Tile: NSObject {
         
         if let photo = json[0]["photo"].string {
             self.Photo = photo
+        }
+        
+        if let businessid = json[0]["bid"].string {
+            self.BusinessID = businessid
+        }
+        
+        if let pixd = json[0]["pixd"].string {
+            self.Pixd = pixd == "1"
         }
     }
 }
