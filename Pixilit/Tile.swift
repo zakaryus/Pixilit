@@ -18,19 +18,19 @@ class Tile: NSObject {
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
     init(json: JSON) {
-        if let title = json[0]["description"].string {
+        if let title = json["description"].string {
             self.Description = title
         }
         
-        if let photo = json[0]["photo"].string {
+        if let photo = json["photo"].string {
             self.Photo = photo
         }
         
-        if let businessid = json[0]["bid"].string {
+        if let businessid = json["parent_uid"].string {
             self.BusinessID = businessid
         }
         
-        if let pixd = json[0]["pixd"].string {
+        if let pixd = json["pixd"].string {
             self.Pixd = pixd == "1"
         }
     }

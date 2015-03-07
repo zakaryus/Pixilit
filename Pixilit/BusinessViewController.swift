@@ -35,23 +35,10 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
-    class collectionCell: NSObject {
-        let PhotoUrl: String
-        let Desc: String
-        var section: Int?
-        
-        init(PhotoUrl: String, Desc: String) {
-            self.PhotoUrl = PhotoUrl
-            self.Desc = Desc
-        }
-    }
-    
     //****************************
     let reuseId = "businessPhotoCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    var cells: [collectionCell] = [collectionCell]()
     //****************************
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +57,6 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
         return 1
     }
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.business.Pix.count

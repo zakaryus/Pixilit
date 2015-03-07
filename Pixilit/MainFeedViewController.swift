@@ -8,20 +8,43 @@
 
 import UIKit
 
-class MainFeedViewController: UIViewController
+class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
     @IBOutlet var collectionView: UICollectionView!
-    var tiles:[Tile]=[Tile]()
+    var tiles:[(tile: Tile, photo: UIImage)]=[]
     
-    let reuseId = "businessPhotoCollectionViewCell"
+    let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var refresh = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
+        Refresh()
     }
+    
+    func Refresh()
+    {
+        Helper.RestMainFeedRequest() {
+            Tiles in
+            
+            println(Tiles.count)
+            
+            for tile in Tiles {
+                self.tiles.append(tile: tile, photo: UIImage())
+            }
+            
+            self.collectionView.reloadData()
+            self.refresh.endRefreshing()
+        }
+
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -41,12 +64,9 @@ class MainFeedViewController: UIViewController
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
  
-        cell.Description.text = tiles[indexPath.row].Description
+        cell.Description.text = tiles[indexPath.row].tile.Description
         
-        Helper.UrlToImage(tiles[indexPath.row].Photo!) {
-            Photo in
-            cell.Photo.image = Photo
-        }
+        cell.Photo.image = tiles[indexPath.row].photo
 
         
         return cell
@@ -55,7 +75,14 @@ class MainFeedViewController: UIViewController
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            return CGSize(width: 198, height: 288)
+            var tile = tiles[indexPath.row].tile
+            
+            Helper.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+                Photo in
+                self.tiles[indexPath.row].photo = Photo
+            }
+            
+            return CGSize(width: tiles[indexPath.row].photo.size.width, height: tiles[indexPath.row].photo.size.height)
     }
     
     func collectionView(collectionView: UICollectionView!,
