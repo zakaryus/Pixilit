@@ -459,19 +459,24 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bE5-1y-tVo">
                                                     <rect key="frame" x="-6" y="0.0" width="198" height="230"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5na-42-mcA">
-                                                    <rect key="frame" x="-6" y="93" width="198" height="42"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.34999999999999964" contentMode="bottom" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NbE-Fh-owf">
+                                                    <rect key="frame" x="0.0" y="88" width="187" height="42"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="NbE-Fh-owf" firstAttribute="leading" secondItem="L8b-po-GgN" secondAttribute="leadingMargin" constant="-8" id="MUw-jN-1sm"/>
+                                            <constraint firstAttribute="centerY" secondItem="NbE-Fh-owf" secondAttribute="centerY" id="U53-Te-Piu"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="NbE-Fh-owf" secondAttribute="trailing" constant="-8" id="ysy-ZX-RaB"/>
+                                        </constraints>
                                         <size key="customSize" width="187" height="228"/>
                                         <connections>
-                                            <outlet property="Description" destination="5na-42-mcA" id="scC-Hd-wbA"/>
+                                            <outlet property="Desc2" destination="NbE-Fh-owf" id="wKp-bb-yAl"/>
                                             <outlet property="Photo" destination="bE5-1y-tVo" id="ftX-Im-MMh"/>
                                         </connections>
                                     </collectionViewCell>

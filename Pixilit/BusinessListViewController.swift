@@ -9,9 +9,7 @@
 import UIKit
 
 class BusinessListViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate
-{
-    //var collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
-    
+{    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     

@@ -34,6 +34,7 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
             Tiles in
             
             println(Tiles.count)
+            self.tiles = []
             
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage())
@@ -64,7 +65,10 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
  
-        cell.Description.text = tiles[indexPath.row].tile.Description
+        cell.Desc2.editable = true
+        cell.Desc2.text = tiles[indexPath.row].tile.Description!
+        cell.Desc2.editable = false
+        println(cell.Desc2.text)
         
         cell.Photo.image = tiles[indexPath.row].photo
 
@@ -81,6 +85,8 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
                 Photo in
                 self.tiles[indexPath.row].photo = Photo
             }
+            
+            println("width: \(tiles[indexPath.row].photo.size.width), height: \(tiles[indexPath.row].photo.size.height)")
             
             return CGSize(width: tiles[indexPath.row].photo.size.width, height: tiles[indexPath.row].photo.size.height)
     }
