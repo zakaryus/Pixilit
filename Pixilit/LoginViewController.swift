@@ -12,6 +12,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var inusername: UITextField!
     @IBOutlet weak var inpassword: UITextField!
 
+    override func viewWillAppear(animated: Bool) {
+        println(User.Username)
+        
+        if User.Role != AccountType.Anonymous {
+            performSegueWithIdentifier("LoginSuccess", sender: "")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,47 +44,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alertView.addButtonWithTitle("OK")
             alertView.show()
         } else {
-            
-            var post:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\"}"
-            
-            var url:NSURL = NSURL(string: "http://pixilit.com/rest/user/token")!
-
-            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-            
-            var postLength:NSString = String( postData.length )
-            
-            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-            request.HTTPMethod = "POST"
-            request.HTTPBody = postData
-            
-            request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            
-            
-            var reponseError: NSError?
-            var response: NSURLResponse?
-            
-            var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-            
-            if ( urlData != nil ) {
-                let res = response as NSHTTPURLResponse!;
-                
-                NSLog("Response code: %ld", res.statusCode);
-                
-                
-                if (res.statusCode >= 200 && res.statusCode < 300)
-                {
-                    var json = JSON(data: urlData!)
-                    var logintoken = json["token"].string
-                    
                     var loginurl:NSURL = NSURL(string: "http://pixilit.com/rest/user/login")!
                     
-                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\",\"X-CSRF-Token\":\"\(logintoken!)\"}"
-                 println(loginpost)
-                    var loginpostData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-                    var loginpostLength:NSString = String( postData.length )
-                    
+                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\"}"
+                 
+                    var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
+                    var loginpostLength:NSString = String( loginpostData.length )
+                    var reponseError: NSError?
+                    var response: NSURLResponse?
+            
                     var loginrequest:NSMutableURLRequest = NSMutableURLRequest(URL: loginurl)
                     loginrequest.HTTPMethod = "POST"
                     loginrequest.HTTPBody = loginpostData
@@ -84,11 +60,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     loginrequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                     loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
                     var loginData: NSData? = NSURLConnection.sendSynchronousRequest(loginrequest, returningResponse:&response, error:&reponseError)
-                    
+            
+            
+            if(loginData != nil) {
                     var userjson = JSON(data: loginData!)
-                
-                   var name = userjson["user"]["name"].string?
-                    
+                    var name = userjson["user"]["name"].string?
+            
                     if (name == nil) {
                         var alertView:UIAlertView = UIAlertView()
                         alertView.title = "Login Failed"
@@ -100,34 +77,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                   
                     else {
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Welcome, \(name!)"
-                    alertView.delegate = self
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
-                    var userURL = userjson["user"]["uid"].string?
-                    self.performSegueWithIdentifier("LoginSuccess", sender: userURL)
+                        var alertView:UIAlertView = UIAlertView()
+                        alertView.title = "Welcome, \(name!)"
+                        alertView.delegate = self
+                        alertView.addButtonWithTitle("OK")
+                        alertView.show()
+
+                        User.userSetup(userjson)
+
+                        self.performSegueWithIdentifier("LoginSuccess", sender: "")
+                   
                     }
-                    
-                } else {
-                    var alertView:UIAlertView = UIAlertView()
-                    alertView.title = "Sign in Failed!"
-                    alertView.message = "Connection Failed"
-                    alertView.delegate = self
-                    
-                    alertView.addButtonWithTitle("OK")
-                    alertView.show()
-                  
-                }
-            } else {
+            }
+            else {
                 var alertView:UIAlertView = UIAlertView()
-                alertView.title = "Sign in Failed!"
-                alertView.message = "Connection Failure"
-                if let error = reponseError {
-                    alertView.message = (error.localizedDescription)
-                }
-               
+                alertView.title = "Network Issues"
+                alertView.message = "Please try again later"
                 alertView.delegate = self
+                
                 alertView.addButtonWithTitle("OK")
                 alertView.show()
             }
@@ -138,7 +105,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         var uvc = segue.destinationViewController as UserViewController
-        uvc.userURL = sender as String
     }
    
 }

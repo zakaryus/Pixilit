@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UserFlagsJson</key>
+	<string>http://www.pixilit.com/rest/flags-pixd-tab.json?uid=</string>
 	<key>RestMainFeedJson</key>
 	<string>http://www.pixilit.com/rest/main-feed.json</string>
 	<key>UserPath</key>
