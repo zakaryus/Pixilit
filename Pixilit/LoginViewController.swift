@@ -22,7 +22,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.inusername.delegate = self;
+        self.inpassword.delegate = self;
         // Do any additional setup after loading the view.
     }
 
@@ -100,6 +101,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             }
         }
 
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool
+    {
+        self.view.endEditing(true)
+        return false;
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
