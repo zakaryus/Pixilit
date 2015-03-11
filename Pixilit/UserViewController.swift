@@ -14,6 +14,10 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var usernameField: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var newsButton: UIBarButtonItem!
+    @IBAction func btnLogout(sender: AnyObject) {
+        User.SetAnonymous()
+        
+    }
     
     //var user : String = ""
     var tiles:[(tile: Tile, photo: UIImage)]=[]

@@ -317,6 +317,15 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="FAz-5o-sOB"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruD-cu-U12">
+                                <rect key="frame" x="535" y="80" width="49" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnLogout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Gkg-lH-P7r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -325,7 +334,9 @@
                             <constraint firstItem="gMq-hm-Kvm" firstAttribute="top" secondItem="zgg-QU-1KN" secondAttribute="bottom" constant="8" id="OzN-Bg-xQp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gMq-hm-Kvm" secondAttribute="trailing" constant="-16" id="Pja-q3-kjN"/>
                             <constraint firstItem="zgg-QU-1KN" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="XOJ-b5-Mbh"/>
+                            <constraint firstItem="ruD-cu-U12" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="hSH-1t-NN0"/>
                             <constraint firstItem="zgg-QU-1KN" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="mHM-wX-o2u"/>
+                            <constraint firstItem="ruD-cu-U12" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="16" id="sJG-XP-8Fr"/>
                             <constraint firstItem="gMq-hm-Kvm" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="yPE-vA-5VE"/>
                         </constraints>
                     </view>
