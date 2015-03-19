@@ -28,6 +28,13 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
         Refresh()
     }
     
+    override func viewWillAppear(animated: Bool) {        
+        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
+        Refresh()
+    }
+    
     func Refresh()
     {
         Helper.RestMainFeedRequest() {
