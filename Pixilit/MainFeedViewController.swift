@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+public class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     
     @IBOutlet var collectionView: UICollectionView!
@@ -18,17 +18,17 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        self.title = "Main Feed"
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
         Refresh()
     }
     
-    override func viewWillAppear(animated: Bool) {        
+    override public func viewWillAppear(animated: Bool) {        
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
@@ -54,7 +54,7 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
     }
 
     
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
         // Dispose of any resources that can be recreated.
@@ -65,11 +65,11 @@ class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.tiles.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
  
         cell.Desc2.editable = true

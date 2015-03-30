@@ -3,26 +3,26 @@
 <plist version="1.0">
 <dict>
 	<key>UserFlagsJson</key>
-	<string>http://www.pixilit.com/rest/flags-pixd-tab.json?uid=</string>
+	<string>http://198.199.92.82/rest/flags-pixd-tab.json?uid=</string>
 	<key>RestMainFeedJson</key>
-	<string>http://www.pixilit.com/rest/main-feed.json</string>
+	<string>http://198.199.92.82/rest/main-feed.json</string>
 	<key>UserPath</key>
-	<string>http://www.pixilit.com/user/</string>
+	<string>http://198.199.92.82/user/</string>
 	<key>NodePath</key>
-	<string>http://www.pixilit.com/node/</string>
+	<string>http://198.199.92.82/node/</string>
 	<key>AppTitle</key>
 	<string>Pixilit</string>
 	<key>FilePathPublicValue</key>
-	<string>http://www.pixilit.com/sites/default/files/</string>
+	<string>http://198.199.92.82/sites/default/files/</string>
 	<key>FilePathPublicPlaceholder</key>
 	<string>public://</string>
 	<key>ContentTypeBusiness</key>
 	<string>business</string>
 	<key>RestBusinessTileJson</key>
-	<string>http://www.pixilit.com/rest/businesstile.json?nid=</string>
+	<string>http://198.199.92.82/rest/businesstile.json?nid=</string>
 	<key>RestBusinessesJson</key>
-	<string>http://www.pixilit.com/rest/businesses.json</string>
+	<string>http://198.199.92.82/rest/businesses.json</string>
 	<key>RestMainNewsPageJson</key>
-	<string>http://www.pixilit.com/rest/main-news-page.json</string>
+	<string>http://198.199.92.82/rest/main-news-page.json</string>
 </dict>
 </plist>

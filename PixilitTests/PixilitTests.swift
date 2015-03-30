@@ -9,6 +9,7 @@
 import UIKit
 import XCTest
 
+
 class PixilitTests: XCTestCase {
     
     override func setUp() {
@@ -31,6 +32,12 @@ class PixilitTests: XCTestCase {
         self.measureBlock() {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testBackgroundColor() {
+        User.SetAnonymous()
+        XCTAssert(User.Username == "Anonymous", "everything went better than expected")
+        
     }
     
 }

@@ -128,7 +128,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int
     {
-            return UILocalizedIndexedCollation.currentCollation().sectionForSectionIndexTitleAtIndex(index)
+        return UILocalizedIndexedCollation.currentCollation().sectionForSectionIndexTitleAtIndex(index)
     }
     
     /**************************************************************************************/
