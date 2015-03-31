@@ -317,15 +317,6 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="FAz-5o-sOB"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruD-cu-U12">
-                                <rect key="frame" x="535" y="80" width="49" height="30"/>
-                                <state key="normal" title="Logout">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnLogout:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Gkg-lH-P7r"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -334,9 +325,7 @@
                             <constraint firstItem="gMq-hm-Kvm" firstAttribute="top" secondItem="zgg-QU-1KN" secondAttribute="bottom" constant="8" id="OzN-Bg-xQp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gMq-hm-Kvm" secondAttribute="trailing" constant="-16" id="Pja-q3-kjN"/>
                             <constraint firstItem="zgg-QU-1KN" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="XOJ-b5-Mbh"/>
-                            <constraint firstItem="ruD-cu-U12" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="hSH-1t-NN0"/>
                             <constraint firstItem="zgg-QU-1KN" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="mHM-wX-o2u"/>
-                            <constraint firstItem="ruD-cu-U12" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="16" id="sJG-XP-8Fr"/>
                             <constraint firstItem="gMq-hm-Kvm" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="yPE-vA-5VE"/>
                         </constraints>
                     </view>
@@ -372,11 +361,12 @@
                         <segue destination="hzJ-st-WfM" kind="relationship" relationship="viewControllers" id="uvN-6K-yvp"/>
                         <segue destination="tEw-5W-eT0" kind="relationship" relationship="viewControllers" id="JOi-Sv-AjL"/>
                         <segue destination="O7M-fy-MB9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="DLe-nB-eIa" kind="relationship" relationship="viewControllers" id="fuA-TU-KTF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1894" y="444"/>
+            <point key="canvasLocation" x="-1888" y="442"/>
         </scene>
         <!--Account-->
         <scene sceneID="sdg-iQ-rP6">
@@ -545,7 +535,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tc-Qw-G6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1068" y="764"/>
+            <point key="canvasLocation" x="-1044" y="556"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="KdR-FF-R0h">
+            <objects>
+                <viewController title="Settings" id="DLe-nB-eIa" customClass="SettingsViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rtb-de-3dg"/>
+                        <viewControllerLayoutGuide type="bottom" id="ItI-OU-HPj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i3Q-lj-BZC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lZ-aN-hZY">
+                                <rect key="frame" x="257" y="76" width="86" height="30"/>
+                                <state key="normal" title="Logout">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="DLe-nB-eIa" eventType="touchUpInside" id="mSd-9v-Xcz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="9lZ-aN-hZY" secondAttribute="centerY" constant="209" id="ZQo-iY-eDU"/>
+                            <constraint firstItem="9lZ-aN-hZY" firstAttribute="top" secondItem="rtb-de-3dg" secondAttribute="bottom" constant="56" id="xOs-bF-IPt"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" id="6sd-5h-6NE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLS-e9-GtE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1044" y="1314"/>
         </scene>
         <!--Account-->
         <scene sceneID="MTf-fP-woj">
@@ -564,7 +588,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA9-kr-eu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1869" y="2008"/>
+            <point key="canvasLocation" x="-1565" y="2028"/>
         </scene>
         <!--Businesses-->
         <scene sceneID="hcw-up-eRj">

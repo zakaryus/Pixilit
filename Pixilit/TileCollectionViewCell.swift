@@ -12,4 +12,5 @@ class TileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Photo: UIImageView!
     @IBOutlet weak var Description: UILabel!
     @IBOutlet weak var Desc2: UITextView!
+
 }

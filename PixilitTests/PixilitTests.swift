@@ -37,7 +37,6 @@ class PixilitTests: XCTestCase {
     func testBackgroundColor() {
         User.SetAnonymous()
         XCTAssert(User.Username == "Anonymous", "everything went better than expected")
-        
     }
     
 }

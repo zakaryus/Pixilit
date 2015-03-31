@@ -9,6 +9,7 @@
 import UIKit
 
 class Tile: NSObject {
+    
     var Description: String?
     var Photo: String?
     var BusinessID: String?
