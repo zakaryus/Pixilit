@@ -11,6 +11,7 @@ import UIKit
 class SettingsViewController: UIViewController
 {
 
+
     @IBAction func logout(sender: AnyObject) {
         User.SetAnonymous()
     }
