@@ -565,7 +565,8 @@
                                 </state>
                                 <connections>
                                     <action selector="about:" destination="DLe-nB-eIa" eventType="touchUpInside" id="bse-VH-Byp"/>
-                                    <segue destination="0Pg-IP-wOC" kind="show" id="Cek-kK-eAE"/>
+                                    <action selector="showAboutPage:" destination="DLe-nB-eIa" eventType="touchUpInside" id="U6D-rS-QhR"/>
+                                    <segue destination="0Pg-IP-wOC" kind="show" id="0mA-b9-vAn"/>
                                 </connections>
                             </button>
                         </subviews>

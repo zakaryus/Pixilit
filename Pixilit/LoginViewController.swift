@@ -45,7 +45,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alertView.addButtonWithTitle("OK")
             alertView.show()
         } else {
-                    var loginurl:NSURL = NSURL(string: "http://pixilit.com/rest/user/login")!
+                    var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
                     
                     var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\"}"
                  
