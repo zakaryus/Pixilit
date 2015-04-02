@@ -11,9 +11,6 @@ import UIKit
 class SettingsViewController: UIViewController
 {
 
-    @IBAction func showAboutPage(sender: AnyObject) {
-    }
-
     @IBAction func logout(sender: AnyObject) {
         User.SetAnonymous()
     }

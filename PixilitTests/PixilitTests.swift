@@ -60,4 +60,8 @@ class PixilitTests: XCTestCase {
             XCTAssert(Businesses.count > 0, "No businesses were grabbed from the website")
         }
     }
+    
+    /*func testalwaysFails() {
+        XCTAssert(false, "this will always fail")
+    }*/
 }

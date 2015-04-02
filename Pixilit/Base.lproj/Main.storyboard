@@ -564,9 +564,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="about:" destination="DLe-nB-eIa" eventType="touchUpInside" id="bse-VH-Byp"/>
-                                    <action selector="showAboutPage:" destination="DLe-nB-eIa" eventType="touchUpInside" id="U6D-rS-QhR"/>
-                                    <segue destination="0Pg-IP-wOC" kind="show" id="0mA-b9-vAn"/>
+                                    <segue destination="0Pg-IP-wOC" kind="show" id="rtq-Sl-u6W"/>
                                 </connections>
                             </button>
                         </subviews>
