@@ -35,8 +35,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         Refresh()
     }
     
-    func Refresh()
-    {
+    func Refresh() {
         Helper.RestMainFeedRequest() {
             Tiles in
             

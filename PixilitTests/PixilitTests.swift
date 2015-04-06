@@ -13,7 +13,8 @@ import XCTest
 class PixilitTests: XCTestCase {
 
     var mainFeed : MainFeedViewController = MainFeedViewController()
-
+    var businessList : BusinessListViewController = BusinessListViewController()
+    var businessView : BusinessViewController = BusinessViewController()
     
     override func setUp() {
         super.setUp()
@@ -44,21 +45,43 @@ class PixilitTests: XCTestCase {
         //XCTAssert(User.Username == "Anonymous", "everything went better than expected")
     }
     
+    func testBusinessListNotNil() {
+        XCTAssertNotNil(businessList, "view did not load")
+        //User.SetAnonymous()
+        //XCTAssert(User.Username == "Anonymous", "everything went better than expected")
+    }
+    
+    func testBusinessViewNotNil() {
+        XCTAssertNotNil(businessView, "view did not load")
+        //User.SetAnonymous()
+        //XCTAssert(User.Username == "Anonymous", "everything went better than expected")
+    }
+
+
+    
     func testMainFeedJsonRequest() {
+        var completionHandlerRan = false
         Helper.RestMainFeedRequest() {
             Tiles in
             println(Tiles.count)
             XCTAssert(Tiles.count > 0, "No pictures were grabbed")
+            completionHandlerRan = true
         }
+        println("TEST TEST TEST")
+        XCTAssert(completionHandlerRan, "Completion handler did not run")
         
     }
     
     func testBusinessListJson(){
+        var completionHandlerRan = false
         Helper.RestBusinessesRequest() {
             Businesses in
-            println(Businesses.count)
+            println("Buisinesses: \(Businesses.count)")
             XCTAssert(Businesses.count > 0, "No businesses were grabbed from the website")
+            completionHandlerRan = true
         }
+        println("Buisinesses: \(3)")
+        XCTAssert(completionHandlerRan, "Completion handler did not run")
     }
     
     /*func testalwaysFails() {

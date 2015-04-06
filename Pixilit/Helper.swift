@@ -133,7 +133,7 @@ struct Helper
             }
             
             //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
-            
+            println("TEST TEST TEST")
             CompletionHandler(Businesses: tmpBusinesses)
         })
         task.resume()
@@ -186,7 +186,7 @@ struct Helper
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
             }
-            
+            println("TEST TEST TEST")
             CompletionHandler(tiles: tmpTiles)
         })
         task.resume()

@@ -2,7 +2,7 @@
 import UIKit
 
 enum AccountType : String{
-    case User = "user"
+    case Basic = "basic"
     case Business = "business"
     case Anonymous = "anonymous"
     case Admin = "administrator"
@@ -27,15 +27,18 @@ struct User
         if let token = json["token"].string {
            Token = token
         }
-        if let role = json["user"]["field_account_type"]["und"][0]["value"].string {
-            switch role.lowercaseString {
-                case "business" :
-                    Role = .Business
-                case "user" :
-                    Role = .User
-                default :
-                    Role = .User
-            }
+        
+        SetRole(.Basic, index: "5", json: json)
+        SetRole(.Business, index: "4", json: json)
+        SetRole(.Admin, index: "3", json: json)
+    
+    }
+    
+    static func SetRole(accountType: AccountType, index: String, json: JSON) {
+        let roles = json["user"]["roles"][index].string
+        
+        if let r = roles{
+            Role = accountType
         }
     }
     
