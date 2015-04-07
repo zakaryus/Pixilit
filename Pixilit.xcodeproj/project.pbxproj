@@ -48,6 +48,13 @@
 		3278325C1ACA0B4A001F1D72 /* NewsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C61AA4D468009D4AD9 /* NewsPage.swift */; };
 		329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
 		329E41A11ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
+		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
+		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
+		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
+		32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDAB1AD4782900B99783 /* RNEncryptor.m */; };
+		32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */; };
+		32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB51AD4794A00B99783 /* MyCrypt.swift */; };
+		32FBEDBA1AD4819C00B99783 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB91AD4819C00B99783 /* File.swift */; };
 		4293ACC21AAE53010089F441 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC11AAE53010089F441 /* User.swift */; };
 		4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC31AAE533D0089F441 /* LoginViewController.swift */; };
 		4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC51AAE53600089F441 /* UserViewController.swift */; };
@@ -93,6 +100,21 @@
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestParameteredQuery.swift; sourceTree = "<group>"; };
 		329E419F1ACB3EBA002131FD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
+		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
+		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		32FBEDA41AD4782900B99783 /* RNCryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptor.m; sourceTree = "<group>"; };
+		32FBEDA51AD4782900B99783 /* RNCryptor+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor+Private.h"; sourceTree = "<group>"; };
+		32FBEDA61AD4782900B99783 /* RNCryptorEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptorEngine.h; sourceTree = "<group>"; };
+		32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCryptorEngine.m; sourceTree = "<group>"; };
+		32FBEDA81AD4782900B99783 /* RNDecryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNDecryptor.h; sourceTree = "<group>"; };
+		32FBEDA91AD4782900B99783 /* RNDecryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDecryptor.m; sourceTree = "<group>"; };
+		32FBEDAA1AD4782900B99783 /* RNEncryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNEncryptor.h; sourceTree = "<group>"; };
+		32FBEDAB1AD4782900B99783 /* RNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEncryptor.m; sourceTree = "<group>"; };
+		32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRNEncryptor.m; sourceTree = "<group>"; };
+		32FBEDB21AD478B900B99783 /* MyRNEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRNEncryptor.h; sourceTree = "<group>"; };
+		32FBEDB51AD4794A00B99783 /* MyCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCrypt.swift; sourceTree = "<group>"; };
+		32FBEDB91AD4819C00B99783 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		4293ACC11AAE53010089F441 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4293ACC31AAE533D0089F441 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4293ACC51AAE53600089F441 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +167,9 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
+				32FBED701AD475FB00B99783 /* RNCryptor */,
 				4293ACC51AAE53600089F441 /* UserViewController.swift */,
+				32FBEDB91AD4819C00B99783 /* File.swift */,
 				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
 				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
 				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
@@ -166,6 +190,7 @@
 		3185E1241A79D3E600037B10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				32FBEDB51AD4794A00B99783 /* MyCrypt.swift */,
 				4293ACC31AAE533D0089F441 /* LoginViewController.swift */,
 				4293ACC11AAE53010089F441 /* User.swift */,
 				D0CD32EB1A8C236B00538B9B /* CustomCell.swift */,
@@ -200,6 +225,26 @@
 				3185E13D1A79D3E600037B10 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32FBED701AD475FB00B99783 /* RNCryptor */ = {
+			isa = PBXGroup;
+			children = (
+				32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */,
+				32FBEDA31AD4782900B99783 /* RNCryptor.h */,
+				32FBEDA41AD4782900B99783 /* RNCryptor.m */,
+				32FBEDA51AD4782900B99783 /* RNCryptor+Private.h */,
+				32FBEDA61AD4782900B99783 /* RNCryptorEngine.h */,
+				32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */,
+				32FBEDA81AD4782900B99783 /* RNDecryptor.h */,
+				32FBEDA91AD4782900B99783 /* RNDecryptor.m */,
+				32FBEDAA1AD4782900B99783 /* RNEncryptor.h */,
+				32FBEDAB1AD4782900B99783 /* RNEncryptor.m */,
+				32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */,
+				32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */,
+				32FBEDB21AD478B900B99783 /* MyRNEncryptor.h */,
+			);
+			name = RNCryptor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,17 +357,24 @@
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */,
 				D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */,
+				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
 				42E524F41AAA4B16004E93D5 /* MainFeedTagsViewController.swift in Sources */,
+				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
 				316A9F221A900FFA00694B2B /* Helper.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
 				3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */,
 				3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */,
+				32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */,
 				31150CB11A905AC100FB1183 /* ContentType.swift in Sources */,
 				329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */,
 				31ABEB941A981A04001815F9 /* Tile.swift in Sources */,
+				32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */,
+				32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */,
 				429616881AA7C06400BE167B /* NewsPageViewController.swift in Sources */,
+				32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */,
 				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
+				32FBEDBA1AD4819C00B99783 /* File.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */,
 				42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */,
@@ -474,10 +526,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Pixilit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pixilit/Pixilit-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Pixilit/Pixilit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -485,9 +542,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Pixilit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pixilit/Pixilit-Bridging-Header.h";
 			};
 			name = Release;
 		};

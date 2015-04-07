@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class UserViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     
     @IBOutlet weak var usernameField: UILabel!
@@ -18,7 +18,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         User.SetAnonymous()
         
     }
-    
+ 
     //var user : String = ""
     var tiles:[(tile: Tile, photo: UIImage)]=[]
     let reuseId = "userPhotoCollectionViewCell"
@@ -37,6 +37,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.setName() //update username
        // collectVC.collectionView = collectionView
