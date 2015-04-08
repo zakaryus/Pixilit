@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 PixilitSeniorProject. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 import XCTest
 
 
@@ -64,4 +64,4 @@ class PixilitTests: XCTestCase {
     /*func testalwaysFails() {
         XCTAssert(false, "this will always fail")
     }*/
-}
+}*/

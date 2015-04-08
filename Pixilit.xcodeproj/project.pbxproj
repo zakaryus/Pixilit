@@ -23,38 +23,13 @@
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
 		31B7D63A1A98FFA1000936CE /* RestParameteredQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */; };
 		327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
-		327832461ACA084A001F1D72 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */; };
-		327832471ACA0AFE001F1D72 /* NewsPageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */; };
-		327832481ACA0B02001F1D72 /* BusinessListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1281A79D3E600037B10 /* BusinessListViewController.swift */; };
-		327832491ACA0B07001F1D72 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1261A79D3E600037B10 /* AppDelegate.swift */; };
-		3278324A1ACA0B0B001F1D72 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC51AAE53600089F441 /* UserViewController.swift */; };
-		3278324B1ACA0B13001F1D72 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
-		3278324C1ACA0B16001F1D72 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
-		3278324D1ACA0B1A001F1D72 /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429616871AA7C06400BE167B /* NewsPageViewController.swift */; };
-		3278324E1ACA0B1C001F1D72 /* MainFeedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */; };
-		3278324F1ACA0B23001F1D72 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC31AAE533D0089F441 /* LoginViewController.swift */; };
-		327832501ACA0B25001F1D72 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC11AAE53010089F441 /* User.swift */; };
-		327832511ACA0B2B001F1D72 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD32EB1A8C236B00538B9B /* CustomCell.swift */; };
-		327832521ACA0B2D001F1D72 /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */; };
-		327832531ACA0B33001F1D72 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 316A9F1D1A9007BA00694B2B /* Config.plist */; };
-		327832541ACA0B3A001F1D72 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F1F1A900A0000694B2B /* Config.swift */; };
-		327832551ACA0B3C001F1D72 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
-		327832561ACA0B3E001F1D72 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F211A900FFA00694B2B /* Helper.swift */; };
-		327832571ACA0B41001F1D72 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE61A903D6F00E6D1B4 /* Business.swift */; };
-		327832581ACA0B43001F1D72 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE81A903FB600E6D1B4 /* Section.swift */; };
-		327832591ACA0B45001F1D72 /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEEA1A9044B200E6D1B4 /* Sections.swift */; };
-		3278325A1ACA0B47001F1D72 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31150CB01A905AC100FB1183 /* ContentType.swift */; };
-		3278325B1ACA0B48001F1D72 /* RestParameteredQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */; };
-		3278325C1ACA0B4A001F1D72 /* NewsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C61AA4D468009D4AD9 /* NewsPage.swift */; };
 		329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
-		329E41A11ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
 		32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDAB1AD4782900B99783 /* RNEncryptor.m */; };
 		32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */; };
 		32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB51AD4794A00B99783 /* MyCrypt.swift */; };
-		32FBEDBA1AD4819C00B99783 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB91AD4819C00B99783 /* File.swift */; };
 		4293ACC21AAE53010089F441 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC11AAE53010089F441 /* User.swift */; };
 		4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC31AAE533D0089F441 /* LoginViewController.swift */; };
 		4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC51AAE53600089F441 /* UserViewController.swift */; };
@@ -114,7 +89,6 @@
 		32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRNEncryptor.m; sourceTree = "<group>"; };
 		32FBEDB21AD478B900B99783 /* MyRNEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRNEncryptor.h; sourceTree = "<group>"; };
 		32FBEDB51AD4794A00B99783 /* MyCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCrypt.swift; sourceTree = "<group>"; };
-		32FBEDB91AD4819C00B99783 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		4293ACC11AAE53010089F441 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4293ACC31AAE533D0089F441 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4293ACC51AAE53600089F441 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +143,6 @@
 			children = (
 				32FBED701AD475FB00B99783 /* RNCryptor */,
 				4293ACC51AAE53600089F441 /* UserViewController.swift */,
-				32FBEDB91AD4819C00B99783 /* File.swift */,
 				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
 				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
 				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
@@ -179,6 +152,7 @@
 				429616871AA7C06400BE167B /* NewsPageViewController.swift */,
 				42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */,
 				42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */,
+				32FBEDB51AD4794A00B99783 /* MyCrypt.swift */,
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				329E419F1ACB3EBA002131FD /* SettingsViewController.swift */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
@@ -190,7 +164,6 @@
 		3185E1241A79D3E600037B10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				32FBEDB51AD4794A00B99783 /* MyCrypt.swift */,
 				4293ACC31AAE533D0089F441 /* LoginViewController.swift */,
 				4293ACC11AAE53010089F441 /* User.swift */,
 				D0CD32EB1A8C236B00538B9B /* CustomCell.swift */,
@@ -338,7 +311,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				327832531ACA0B33001F1D72 /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +346,6 @@
 				429616881AA7C06400BE167B /* NewsPageViewController.swift in Sources */,
 				32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */,
 				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
-				32FBEDBA1AD4819C00B99783 /* File.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */,
 				42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */,
@@ -386,30 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3278325C1ACA0B4A001F1D72 /* NewsPage.swift in Sources */,
-				327832481ACA0B02001F1D72 /* BusinessListViewController.swift in Sources */,
-				327832511ACA0B2B001F1D72 /* CustomCell.swift in Sources */,
-				327832541ACA0B3A001F1D72 /* Config.swift in Sources */,
-				327832551ACA0B3C001F1D72 /* Tile.swift in Sources */,
-				3278324A1ACA0B0B001F1D72 /* UserViewController.swift in Sources */,
-				3278325B1ACA0B48001F1D72 /* RestParameteredQuery.swift in Sources */,
-				327832591ACA0B45001F1D72 /* Sections.swift in Sources */,
-				3278324E1ACA0B1C001F1D72 /* MainFeedTagsViewController.swift in Sources */,
-				327832581ACA0B43001F1D72 /* Section.swift in Sources */,
-				3278324C1ACA0B16001F1D72 /* BusinessViewController.swift in Sources */,
 				327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */,
-				327832561ACA0B3E001F1D72 /* Helper.swift in Sources */,
-				3278325A1ACA0B47001F1D72 /* ContentType.swift in Sources */,
-				327832521ACA0B2D001F1D72 /* TileCollectionViewCell.swift in Sources */,
-				3278324D1ACA0B1A001F1D72 /* NewsPageViewController.swift in Sources */,
-				327832461ACA084A001F1D72 /* MainFeedViewController.swift in Sources */,
-				327832491ACA0B07001F1D72 /* AppDelegate.swift in Sources */,
-				327832501ACA0B25001F1D72 /* User.swift in Sources */,
-				3278324B1ACA0B13001F1D72 /* SwiftyJSON.swift in Sources */,
-				327832571ACA0B41001F1D72 /* Business.swift in Sources */,
-				327832471ACA0AFE001F1D72 /* NewsPageListViewController.swift in Sources */,
-				3278324F1ACA0B23001F1D72 /* LoginViewController.swift in Sources */,
-				329E41A11ACB3EBA002131FD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,23 +9,13 @@
 import UIKit
 import Foundation
 
-class MyCrypt: NSObject {
+struct MyCrypt{
     
-    let key = "MySecretPassword"
+    static let key = "JLRcwQpE42efaz4TWkyf"
     
-
-    
-    func encryptString(estring: String) -> NSData {
+    static func encryptString(estring: String) -> String {
         var edata = MyRNEncryptor.encryptData(estring.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), password: key, error: nil)
-        
-        return edata
+        return edata.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
     }
-    
-    func decryptData(edata: NSData) -> String {
-        
-        var pdata = RNDecryptor.decryptData(edata, withPassword: key, error: nil)
-        var pstring: String = MyRNEncryptor.stringFromData(pdata)
-        return pstring
-    }
-
 }
+            

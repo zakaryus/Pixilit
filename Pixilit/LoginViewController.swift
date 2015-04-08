@@ -45,10 +45,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             alertView.addButtonWithTitle("OK")
             alertView.show()
         } else {
+            
                     var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
-                    
-                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\"}"
-                 
+                    var encrypted = MyCrypt.encryptString(password)
+            
+                    password = "nothing to see here"
+            
+                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(MyCrypt.key + encrypted)\"}"
+              println(loginpost)
                     var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
                     var loginpostLength:NSString = String( loginpostData.length )
                     var reponseError: NSError?
