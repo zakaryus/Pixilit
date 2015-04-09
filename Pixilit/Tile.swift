@@ -14,6 +14,7 @@ class Tile: NSObject {
     var Photo: String?
     var BusinessID: String?
     var Pixd: Bool?
+    var tags: [String] = []
     
     override init() { }
     
@@ -33,6 +34,13 @@ class Tile: NSObject {
         
         if let pixd = json["pixd"].string {
             self.Pixd = pixd == "1"
+        }
+        if let tags = json["Tags"].array {
+        
+            for tag in tags {
+                self.tags.append(tag.string!)
+                println("Tag: \(tag)")
+            }
         }
     }
 }
