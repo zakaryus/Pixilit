@@ -16,8 +16,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         println(User.Username)
         
         if User.Role != AccountType.Anonymous {
-            performSegueWithIdentifier("LoginSuccess", sender: "")
+            performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
         }
+    }
+    
+    @IBAction func createAccountTapped(sender: AnyObject) {
+        self.performSegueWithIdentifier("CreateAccountSegue", sender: "CreateAccountSegue")
     }
     
     override func viewDidLoad() {
@@ -90,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
                         User.userSetup(userjson)
 
-                        self.performSegueWithIdentifier("LoginSuccess", sender: "")
+                        self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
                    
                     }
             }
@@ -113,9 +117,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false;
     }
     
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
+        var segueType = sender as String
+    
+        if segueType == "LoginSuccess"
+        {
         var uvc = segue.destinationViewController as UserViewController
+        }
+        else if segueType == "CreateAccountSegue"
+        {
+            var uvc = segue.destinationViewController as CreateAccountViewController
+        }
+        
+        
     }
    
 }

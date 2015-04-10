@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>BusinessRegistrationURL</key>
+	<string>http://104.236.227.190/business/register</string>
+	<key>UserRegistrationURL</key>
+	<string>http://104.236.227.190/user/register</string>
 	<key>RestUserLogin</key>
 	<string>http://104.236.227.190/rest/user/login</string>
 	<key>UserFlagsJson</key>

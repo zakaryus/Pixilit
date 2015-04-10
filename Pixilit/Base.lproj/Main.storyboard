@@ -349,7 +349,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="TabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
@@ -432,6 +432,15 @@
                                     <action selector="signinTapped:" destination="tgs-hF-zE0" eventType="touchUpInside" id="GLR-MU-WPi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLf-am-RsQ">
+                                <rect key="frame" x="220" y="313" width="161" height="30"/>
+                                <state key="normal" title="Create Account">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createAccountTapped:" destination="tgs-hF-zE0" eventType="touchUpInside" id="kh4-Bm-rJQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -441,7 +450,9 @@
                             <constraint firstItem="M0A-Uo-eVj" firstAttribute="top" secondItem="s5c-YX-Hmz" secondAttribute="bottom" constant="8" id="JwW-fE-QSh"/>
                             <constraint firstItem="7w2-vk-oIw" firstAttribute="top" secondItem="IMA-uL-NuS" secondAttribute="bottom" constant="8" id="Nmh-J1-Oyc"/>
                             <constraint firstItem="5FX-dq-RNF" firstAttribute="top" secondItem="M0A-Uo-eVj" secondAttribute="bottom" constant="8" id="RCP-fN-Nzg"/>
+                            <constraint firstItem="nLf-am-RsQ" firstAttribute="top" secondItem="5FX-dq-RNF" secondAttribute="bottom" constant="22" id="cbm-Hs-BPA"/>
                             <constraint firstItem="pSw-lY-4AU" firstAttribute="top" secondItem="7w2-vk-oIw" secondAttribute="bottom" constant="8" id="e9z-dD-xeT"/>
+                            <constraint firstAttribute="centerX" secondItem="nLf-am-RsQ" secondAttribute="centerX" id="gGi-8X-eMb"/>
                             <constraint firstAttribute="centerX" secondItem="5FX-dq-RNF" secondAttribute="centerX" id="kKU-dB-Bha"/>
                             <constraint firstAttribute="centerX" secondItem="7w2-vk-oIw" secondAttribute="centerX" id="lTN-VW-gDF"/>
                             <constraint firstAttribute="centerX" secondItem="s5c-YX-Hmz" secondAttribute="centerX" id="mac-WX-OCr"/>
@@ -454,11 +465,61 @@
                         <outlet property="inpassword" destination="M0A-Uo-eVj" id="zL5-A0-ZOD"/>
                         <outlet property="inusername" destination="BVk-8v-gLS" id="oVq-dz-29u"/>
                         <segue destination="8rJ-Kc-sve" kind="show" identifier="LoginSuccess" id="ZX0-pe-6I2"/>
+                        <segue destination="827-CU-Xem" kind="show" identifier="CreateAccountSegue" id="ieH-kb-Ajb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52d-l1-3bK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-826" y="2022"/>
+        </scene>
+        <!--Create Account View Controller-->
+        <scene sceneID="yZC-Pg-TFx">
+            <objects>
+                <viewController id="827-CU-Xem" customClass="CreateAccountViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Eg-Kb-uOO"/>
+                        <viewControllerLayoutGuide type="bottom" id="fid-eH-UGs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qrm-HF-Wjg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JCY-MH-biG">
+                                <rect key="frame" x="0.0" y="107" width="615" height="450"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="827-CU-Xem" id="MMh-i0-e2A"/>
+                                </connections>
+                            </webView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Fe-1I-zDF">
+                                <rect key="frame" x="220" y="72" width="161" height="29"/>
+                                <segments>
+                                    <segment title="User"/>
+                                    <segment title="Business"/>
+                                </segments>
+                                <connections>
+                                    <action selector="SelectionChanged:" destination="827-CU-Xem" eventType="valueChanged" id="zpL-12-mYF"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JCY-MH-biG" firstAttribute="top" secondItem="3Fe-1I-zDF" secondAttribute="bottom" constant="7" id="2PT-5U-YBh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JCY-MH-biG" secondAttribute="trailing" constant="-31" id="73H-Qz-3UK"/>
+                            <constraint firstAttribute="centerX" secondItem="3Fe-1I-zDF" secondAttribute="centerX" id="Vso-vB-Q07"/>
+                            <constraint firstItem="JCY-MH-biG" firstAttribute="leading" secondItem="Qrm-HF-Wjg" secondAttribute="leadingMargin" constant="-16" id="WsL-ls-Qxp"/>
+                            <constraint firstItem="3Fe-1I-zDF" firstAttribute="top" secondItem="5Eg-Kb-uOO" secondAttribute="bottom" constant="8" id="mzl-Cq-ogf"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="JCY-MH-biG" secondAttribute="bottom" constant="43" id="ziH-dz-2C6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scAccountSelection" destination="3Fe-1I-zDF" id="sb2-B5-OMl"/>
+                        <outlet property="wvAccountCreation" destination="JCY-MH-biG" id="hFB-ju-5mJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5G-sJ-h3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826" y="2754"/>
         </scene>
         <!--Main Feed-->
         <scene sceneID="gtS-xj-7xs">
@@ -559,7 +620,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cv4-N5-dRY">
-                                <rect key="frame" x="279" y="138" width="42" height="30"/>
+                                <rect key="frame" x="279" y="285" width="42" height="30"/>
                                 <state key="normal" title="About">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
