@@ -87,12 +87,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
         
-        cell.Desc2.editable = true
-        cell.Desc2.text = tiles[indexPath.row].tile.Description!
-        cell.Desc2.editable = false
-        println(cell.Desc2.text)
-        
-        cell.Photo.image = tiles[indexPath.row].photo
+        cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
         
         
         return cell

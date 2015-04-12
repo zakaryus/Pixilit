@@ -10,16 +10,29 @@ import UIKit
 
 class TileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Photo: UIImageView!
-    @IBOutlet weak var Description: UILabel!
-    @IBOutlet weak var Desc2: UITextView!
+    //@IBOutlet weak var Description: UILabel!
+    //@IBOutlet weak var Desc2: UITextView!
     //var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singletap")
     
-//    init(tile: Tile) {
-//        super.init()
-//    }
-//
-//    required init(coder aDecoder: NSCoder) {
-//        super.init()
-//        //fatalError("init(coder:) has not been implemented")
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setup(tile: Tile, img: UIImage)
+    {
+        //Desc2.editable = true
+        //Desc2.text = tile.Description!
+        //Desc2.editable = false
+        
+        //autoresizesSubviews = true
+
+        //Photo.contentMode = .ScaleToFill
+        //Photo.frame = contentView.bounds
+        //Photo.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        Photo.image = img
+    }
 }

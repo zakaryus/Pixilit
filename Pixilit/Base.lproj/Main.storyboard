@@ -538,34 +538,27 @@
                                 <color key="backgroundColor" red="1" green="0.80000001192092896" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewLayout key="collectionViewLayout" id="wX0-gh-gvh" customClass="CollectionViewWaterfallLayout" customModule="Pixilit" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="tileCollectionViewCell" id="L8b-po-GgN" customClass="TileCollectionViewCell" customModule="Pixilit" customModuleProvider="target">
+                                    <collectionViewCell multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="tileCollectionViewCell" id="L8b-po-GgN" customClass="TileCollectionViewCell" customModule="Pixilit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="228"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="228" height="267"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bE5-1y-tVo">
-                                                    <rect key="frame" x="-6" y="0.0" width="198" height="230"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bE5-1y-tVo">
+                                                    <rect key="frame" x="-6" y="0.0" width="234" height="267"/>
                                                 </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.34999999999999964" contentMode="bottom" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NbE-Fh-owf">
-                                                    <rect key="frame" x="0.0" y="88" width="187" height="42"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="NbE-Fh-owf" firstAttribute="leading" secondItem="L8b-po-GgN" secondAttribute="leadingMargin" constant="-8" id="MUw-jN-1sm"/>
-                                            <constraint firstAttribute="centerY" secondItem="NbE-Fh-owf" secondAttribute="centerY" id="U53-Te-Piu"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="NbE-Fh-owf" secondAttribute="trailing" constant="-8" id="ysy-ZX-RaB"/>
+                                            <constraint firstItem="bE5-1y-tVo" firstAttribute="top" secondItem="L8b-po-GgN" secondAttribute="top" id="9jW-49-R7o"/>
+                                            <constraint firstItem="bE5-1y-tVo" firstAttribute="leading" secondItem="L8b-po-GgN" secondAttribute="leading" id="bwH-cg-BXj"/>
+                                            <constraint firstAttribute="trailing" secondItem="bE5-1y-tVo" secondAttribute="trailing" id="fYR-Ld-eF7"/>
+                                            <constraint firstAttribute="bottom" secondItem="bE5-1y-tVo" secondAttribute="bottom" id="jfc-WC-Vmd"/>
                                         </constraints>
-                                        <size key="customSize" width="187" height="228"/>
+                                        <size key="customSize" width="228" height="267"/>
                                         <connections>
-                                            <outlet property="Desc2" destination="NbE-Fh-owf" id="wKp-bb-yAl"/>
                                             <outlet property="Photo" destination="bE5-1y-tVo" id="ftX-Im-MMh"/>
                                         </connections>
                                     </collectionViewCell>

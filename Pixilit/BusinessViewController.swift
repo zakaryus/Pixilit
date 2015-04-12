@@ -69,7 +69,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         {
             Tile in
             
-            cell.Description.text = Tile.Description
+            //cell.Description.text = Tile.Description
             
             Helper.UrlToImage(Tile.Photo!) {
                 Photo in

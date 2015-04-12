@@ -72,30 +72,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
- 
-        cell.Desc2.editable = true
-        cell.Desc2.text = tiles[indexPath.row].tile.Description!
-        cell.Desc2.editable = false
-        println(cell.Desc2.text)
         
-        
-        //println("photo.frame:\(cell.Photo.frame) cell.frame:\(cell.frame)")
-        //cell.Photo.frame = cell.frame
-        //println("photo.frame:\(cell.Photo.frame) cell.frame:\(cell.frame)")
-
-        //cell.Photo.contentMode = .ScaleAspectFill
-//        cell.Photo.autoresizingMask = ( .FlexibleBottomMargin
-//                                        | .FlexibleHeight
-//                                        | .FlexibleLeftMargin
-//                                        | .FlexibleRightMargin
-//                                        | .FlexibleTopMargin
-//                                        | .FlexibleWidth )
-        cell.Photo.image = tiles[indexPath.row].photo
+        cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
         
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
         Helper.UrlToImage(tiles[indexPath.row].tile.Photo!) {
             Photo in
             self.tiles[indexPath.row].photo = Photo
@@ -105,8 +89,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         let imageH = tiles[indexPath.row].photo.size.height
         println("width: \(imageW), height: \(imageH)")
         
-        let screenW = self.view.frame.width / 2.2
-        let screenH = (screenW * imageH) / imageW
+        let screenW = ceil(self.view.frame.width / 2.15)
+        let screenH = ceil((screenW * imageH) / imageW)
         
         return CGSizeMake(screenW, screenH)
     }
