@@ -14,12 +14,12 @@ class TileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var Desc2: UITextView!
     //var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singletap")
     
-    init(tile: Tile) {
-        super.init()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        super.init()
-        //fatalError("init(coder:) has not been implemented")
-    }
+//    init(tile: Tile) {
+//        super.init()
+//    }
+//
+//    required init(coder aDecoder: NSCoder) {
+//        super.init()
+//        //fatalError("init(coder:) has not been implemented")
+//    }
 }

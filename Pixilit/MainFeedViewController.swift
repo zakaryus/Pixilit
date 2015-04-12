@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MainFeedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+public class MainFeedViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate
 {
     
     @IBOutlet var collectionView: UICollectionView!
@@ -78,31 +78,48 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         cell.Desc2.editable = false
         println(cell.Desc2.text)
         
-        cell.Photo.image = tiles[indexPath.row].photo
+        
+        //println("photo.frame:\(cell.Photo.frame) cell.frame:\(cell.frame)")
+        //cell.Photo.frame = cell.frame
+        //println("photo.frame:\(cell.Photo.frame) cell.frame:\(cell.frame)")
 
+        //cell.Photo.contentMode = .ScaleAspectFill
+//        cell.Photo.autoresizingMask = ( .FlexibleBottomMargin
+//                                        | .FlexibleHeight
+//                                        | .FlexibleLeftMargin
+//                                        | .FlexibleRightMargin
+//                                        | .FlexibleTopMargin
+//                                        | .FlexibleWidth )
+        cell.Photo.image = tiles[indexPath.row].photo
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView!,
-        layout collectionViewLayout: UICollectionViewLayout!,
-        sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-            var tile = tiles[indexPath.row].tile
-            
-            Helper.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-                Photo in
-                self.tiles[indexPath.row].photo = Photo
-            }
-            
-            println("width: \(tiles[indexPath.row].photo.size.width), height: \(tiles[indexPath.row].photo.size.height)")
-            
-            return CGSize(width: tiles[indexPath.row].photo.size.width, height: tiles[indexPath.row].photo.size.height)
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        Helper.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+            Photo in
+            self.tiles[indexPath.row].photo = Photo
+        }
+        
+        let imageW = tiles[indexPath.row].photo.size.width
+        let imageH = tiles[indexPath.row].photo.size.height
+        println("width: \(imageW), height: \(imageH)")
+        
+        let screenW = self.view.frame.width / 2.2
+        let screenH = (screenW * imageH) / imageW
+        
+        return CGSizeMake(screenW, screenH)
     }
     
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: UICollectionViewLayout!,
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             return sectionInsets
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+
+        return UICollectionReusableView()
     }
 
 }
