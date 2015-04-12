@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MainFeedViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate
+public class MainFeedViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate, CustomIOS7AlertViewDelegate
 {
     
     @IBOutlet var collectionView: UICollectionView!
@@ -17,6 +17,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
+    var fullScreenImgView: UIImageView = UIImageView()
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -105,5 +106,58 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
         return UICollectionReusableView()
     }
-
+    
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        //collectionView.collectionViewLayout.invalidateLayout()
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as TileCollectionViewCell
+        println("index: \(indexPath.row) tapped: \(cell.frame.height)")
+        
+        let buttons = ["Cancel", "Pix", "Business"]
+        
+        // Create a new AlertView instance
+        let alertView = CustomIOS7AlertView()
+        
+        // Set the button titles array
+        alertView.buttonTitles = buttons
+        
+        // Set a custom container view
+        alertView.containerView = createContainerView(cell, img: tiles[indexPath.row].photo)
+        
+        // Set self as the delegate
+        alertView.delegate = self
+        
+        // Or, use a closure
+        alertView.onButtonTouchUpInside = { (alertView: CustomIOS7AlertView, buttonIndex: Int) -> Void in
+            println("CLOSURE: Button '\(buttons[buttonIndex])' touched")
+        }
+        
+        // Show time!
+        alertView.show()
+    }
+    
+    // Handle button touches
+    func customIOS7AlertViewButtonTouchUpInside(alertView: CustomIOS7AlertView, buttonIndex: Int) {
+        //println("DELEGATE: Button '\(buttons[buttonIndex])' touched")
+        alertView.close()
+    }
+    
+    // Create a custom container view
+    func createContainerView(cell: UICollectionViewCell, img: UIImage) -> UIView {
+        var containerView = UIView(frame: CGRectMake(0, 0, cell.frame.width * 2, cell.frame.height * 2))
+        containerView.autoresizesSubviews = true
+        containerView.contentMode = .ScaleAspectFit
+        containerView.autoresizingMask = .FlexibleHeight
+        
+        var ivFullScreen = UIImageView()
+        ivFullScreen.frame = CGRectMake(0, 0, containerView.frame.width, containerView.frame.height)
+        ivFullScreen.center = CGPoint(x: containerView.frame.width / 2, y: containerView.frame.height / 2)
+        ivFullScreen.autoresizesSubviews = true
+        ivFullScreen.contentMode = .ScaleAspectFit
+        ivFullScreen.autoresizingMask = .FlexibleHeight
+        ivFullScreen.image = img
+        
+        containerView.addSubview(ivFullScreen)
+        return containerView
+    }
 }
