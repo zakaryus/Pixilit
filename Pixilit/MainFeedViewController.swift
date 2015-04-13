@@ -38,7 +38,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
-        Helper.RestMainFeedRequest() {
+        HelperREST.RestMainFeedRequest() {
             Tiles in
             
             println(Tiles.count)
@@ -78,7 +78,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        Helper.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+        HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
             Photo in
             self.tiles[indexPath.row].photo = Photo
         }

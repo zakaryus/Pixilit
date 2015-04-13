@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31150CB11A905AC100FB1183 /* ContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31150CB01A905AC100FB1183 /* ContentType.swift */; };
 		316A9F1E1A9007BA00694B2B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 316A9F1D1A9007BA00694B2B /* Config.plist */; };
 		316A9F201A900A0000694B2B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F1F1A900A0000694B2B /* Config.swift */; };
-		316A9F221A900FFA00694B2B /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F211A900FFA00694B2B /* Helper.swift */; };
 		3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE61A903D6F00E6D1B4 /* Business.swift */; };
 		3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE81A903FB600E6D1B4 /* Section.swift */; };
 		3178DEEB1A9044B200E6D1B4 /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEEA1A9044B200E6D1B4 /* Sections.swift */; };
@@ -22,13 +20,15 @@
 		3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3185E1311A79D3E600037B10 /* LaunchScreen.xib */; };
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
-		31B7D63A1A98FFA1000936CE /* RestParameteredQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */; };
 		31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */; };
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
 		327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
+		32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA54681ADC51FE0099DD87 /* HelperURLs.swift */; };
+		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
+		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
@@ -59,10 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		31150CB01A905AC100FB1183 /* ContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentType.swift; sourceTree = "<group>"; };
 		316A9F1D1A9007BA00694B2B /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		316A9F1F1A900A0000694B2B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		316A9F211A900FFA00694B2B /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		3178DEE61A903D6F00E6D1B4 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		3178DEE81A903FB600E6D1B4 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		3178DEEA1A9044B200E6D1B4 /* Sections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
@@ -79,12 +77,14 @@
 		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
-		31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestParameteredQuery.swift; sourceTree = "<group>"; };
 		31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3212E7231AD88CBD008593CE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		329E419F1ACB3EBA002131FD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		32BA54681ADC51FE0099DD87 /* HelperURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperURLs.swift; sourceTree = "<group>"; };
+		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
+		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
 		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
 		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
 		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
@@ -151,26 +151,16 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
-				3184E3B41ADADF4F00E10B89 /* CustomIOS7AlertView.swift */,
-				31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */,
-				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
-				32FBED701AD475FB00B99783 /* RNCryptor */,
-				4293ACC51AAE53600089F441 /* UserViewController.swift */,
-				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
-				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
-				3185E12C1A79D3E600037B10 /* Main.storyboard */,
-				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
-				42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */,
-				429616871AA7C06400BE167B /* NewsPageViewController.swift */,
-				42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */,
-				42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */,
-				32FBEDB51AD4794A00B99783 /* MyCrypt.swift */,
-				3185E12F1A79D3E600037B10 /* Images.xcassets */,
-				329E419F1ACB3EBA002131FD /* SettingsViewController.swift */,
-				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
+				32BA54631ADC506F0099DD87 /* Libraries */,
+				32BA54641ADC508B0099DD87 /* Controllers */,
+				32BA54651ADC50BC0099DD87 /* Models */,
+				32BA54661ADC51930099DD87 /* Configuration */,
+				32BA54671ADC51BE0099DD87 /* Helpers */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
-				3212E71E1AD87985008593CE /* CreateAccountViewController.swift */,
-				3212E7231AD88CBD008593CE /* TabBarController.swift */,
+				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
+				3185E12F1A79D3E600037B10 /* Images.xcassets */,
+				3185E12C1A79D3E600037B10 /* Main.storyboard */,
+				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 			);
 			path = Pixilit;
 			sourceTree = "<group>";
@@ -178,22 +168,10 @@
 		3185E1241A79D3E600037B10 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				4293ACC31AAE533D0089F441 /* LoginViewController.swift */,
-				4293ACC11AAE53010089F441 /* User.swift */,
 				D0CD32EB1A8C236B00538B9B /* CustomCell.swift */,
 				D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */,
-				3185E1251A79D3E600037B10 /* Info.plist */,
-				316A9F1D1A9007BA00694B2B /* Config.plist */,
-				316A9F1F1A900A0000694B2B /* Config.swift */,
-				31ABEB931A981A04001815F9 /* Tile.swift */,
-				3178DEE61A903D6F00E6D1B4 /* Business.swift */,
-				316A9F211A900FFA00694B2B /* Helper.swift */,
 				3178DEE81A903FB600E6D1B4 /* Section.swift */,
 				3178DEEA1A9044B200E6D1B4 /* Sections.swift */,
-				31150CB01A905AC100FB1183 /* ContentType.swift */,
-				31B7D6391A98FFA1000936CE /* RestParameteredQuery.swift */,
-				42F848C61AA4D468009D4AD9 /* NewsPage.swift */,
-				3212E7201AD88327008593CE /* Region.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -215,6 +193,67 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		32BA54631ADC506F0099DD87 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				32FBED701AD475FB00B99783 /* RNCryptor */,
+				3184E3B41ADADF4F00E10B89 /* CustomIOS7AlertView.swift */,
+				31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */,
+				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		32BA54641ADC508B0099DD87 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4293ACC31AAE533D0089F441 /* LoginViewController.swift */,
+				4293ACC51AAE53600089F441 /* UserViewController.swift */,
+				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
+				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
+				42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */,
+				429616871AA7C06400BE167B /* NewsPageViewController.swift */,
+				42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */,
+				42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */,
+				329E419F1ACB3EBA002131FD /* SettingsViewController.swift */,
+				3212E71E1AD87985008593CE /* CreateAccountViewController.swift */,
+				3212E7231AD88CBD008593CE /* TabBarController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		32BA54651ADC50BC0099DD87 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3212E7201AD88327008593CE /* Region.swift */,
+				4293ACC11AAE53010089F441 /* User.swift */,
+				31ABEB931A981A04001815F9 /* Tile.swift */,
+				3178DEE61A903D6F00E6D1B4 /* Business.swift */,
+				42F848C61AA4D468009D4AD9 /* NewsPage.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		32BA54661ADC51930099DD87 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3185E1251A79D3E600037B10 /* Info.plist */,
+				316A9F1D1A9007BA00694B2B /* Config.plist */,
+				316A9F1F1A900A0000694B2B /* Config.swift */,
+			);
+			name = Configuration;
+			sourceTree = "<group>";
+		};
+		32BA54671ADC51BE0099DD87 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				32BA54681ADC51FE0099DD87 /* HelperURLs.swift */,
+				32BA546A1ADC52540099DD87 /* HelperStrings.swift */,
+				32BA546C1ADC52920099DD87 /* HelperREST.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		32FBED701AD475FB00B99783 /* RNCryptor */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +270,7 @@
 				32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */,
 				32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */,
 				32FBEDB21AD478B900B99783 /* MyRNEncryptor.h */,
+				32FBEDB51AD4794A00B99783 /* MyCrypt.swift */,
 			);
 			name = RNCryptor;
 			sourceTree = "<group>";
@@ -336,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */,
 				3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */,
 				3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */,
 				3184E3B51ADADF4F00E10B89 /* CustomIOS7AlertView.swift in Sources */,
@@ -343,21 +384,20 @@
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
 				3212E7211AD88327008593CE /* Region.swift in Sources */,
 				4293ACC21AAE53010089F441 /* User.swift in Sources */,
-				31B7D63A1A98FFA1000936CE /* RestParameteredQuery.swift in Sources */,
 				316A9F201A900A0000694B2B /* Config.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */,
 				D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */,
+				32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */,
 				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
 				42E524F41AAA4B16004E93D5 /* MainFeedTagsViewController.swift in Sources */,
 				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
-				316A9F221A900FFA00694B2B /* Helper.swift in Sources */,
+				32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
 				3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */,
 				3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */,
 				32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */,
-				31150CB11A905AC100FB1183 /* ContentType.swift in Sources */,
 				329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */,
 				31ABEB941A981A04001815F9 /* Tile.swift in Sources */,
 				32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */,

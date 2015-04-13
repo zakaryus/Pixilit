@@ -34,7 +34,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func RefreshList()
     {
-        Helper.RestBusinessesRequest
+        HelperREST.RestBusinessesRequest
         {
                 bus in
                 
@@ -65,7 +65,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         var business: Business = self.sections.data[indexPath.section].data[indexPath.row]
         
         if let logo = business.Logo {
-            Helper.UrlToImage(logo)
+            HelperURLs.UrlToImage(logo)
             {
                 Image in
                 

@@ -36,7 +36,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func RefreshList()
     {
-        Helper.RestMainNewsPageRequest()
+        HelperREST.RestMainNewsPageRequest()
             {
                 newspage in
                 
@@ -66,7 +66,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
         var newspage: NewsPage = self.sections.data[indexPath.section].data[indexPath.row]
         //var newspage: NewsPage = self.listOfNewsPages[indexPath.row]
         
-        cell.textLabel?.text = "\(newspage.Title!) \(Helper.NSDateToString(newspage.Date!))"
+        cell.textLabel?.text = "\(newspage.Title!) \(HelperStrings.NSDateToString(newspage.Date!))"
         cell.detailTextLabel?.text = newspage.Body
         
         return cell
@@ -146,7 +146,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
             
             if !term {
                 if let date = newspage.Date {
-                    let stringMatch = Helper.NSDateToString(date).lowercaseString.rangeOfString(searchText.lowercaseString)
+                    let stringMatch = HelperStrings.NSDateToString(date).lowercaseString.rangeOfString(searchText.lowercaseString)
                     term = stringMatch != nil
                 }
             }

@@ -26,7 +26,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBAction func shareButton(sender: AnyObject)
     {
         let firstActivityItem = "Look what I found in Pixilit!"
-        let businessUrl = Helper.UidToUserUrl(business.Uid!)
+        let businessUrl = HelperURLs.UidToUserUrl(business.Uid!)
         var array: [AnyObject] = [AnyObject]()
         array.append(firstActivityItem)
         //array.append(businessUrl!)
@@ -65,13 +65,13 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
         
-        Helper.NidToTile(business.Pix[indexPath.row])
+        HelperREST.RestNidToTile(business.Pix[indexPath.row])
         {
             Tile in
             
             //cell.Description.text = Tile.Description
             
-            Helper.UrlToImage(Tile.Photo!) {
+            HelperURLs.UrlToImage(Tile.Photo!) {
                 Photo in
                 cell.Photo.image = Photo
             }
@@ -156,7 +156,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         }
         
         if let logo = business.Logo {
-            Helper.UrlToImage(logo)
+            HelperURLs.UrlToImage(logo)
             {
                 Image in
                 self.businessLogo.image = Image

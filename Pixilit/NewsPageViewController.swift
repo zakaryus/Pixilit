@@ -33,7 +33,7 @@ class NewsPageViewController: UIViewController {
         }
         
         if let date = newspage.Date {
-            self.Date.text = Helper.NSDateToString(date)
+            self.Date.text = HelperStrings.NSDateToString(date)
         }
         
         if let body = newspage.Body {

@@ -50,7 +50,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func Refresh()
     {
-        Helper.userFlags(User.Uid)
+        HelperREST.RestUserFlags(User.Uid)
             {
                 Tiles in
                 
@@ -98,7 +98,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
             var tile = tiles[indexPath.row].tile
             
-            Helper.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
                 self.tiles[indexPath.row].photo = Photo
             }

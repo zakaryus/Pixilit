@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -56,6 +56,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Businesses" id="Eed-v9-22L"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="searchBar" destination="aau-gE-Z4P" id="KvG-S0-xF1"/>
                         <outlet property="searchDisplayController" destination="aOr-kL-JBh" id="YhY-2t-Czt"/>
@@ -236,6 +237,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="businessDescription" destination="hbe-iV-AOI" id="TAC-7j-k9R"/>
                         <outlet property="businessEmail" destination="3mz-bx-jNH" id="fpj-ye-Jlm"/>
@@ -578,6 +580,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main Feed" id="qct-il-VNm"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="T17-UD-6xE" id="CGl-Rm-G0H"/>
                     </connections>
@@ -693,6 +696,7 @@ Other "about" stuff here</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O7M-fy-MB9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Businesses" image="first" id="acW-dT-cKf"/>
                     <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vOf-2c-sQj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
