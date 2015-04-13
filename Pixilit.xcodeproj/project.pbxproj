@@ -24,6 +24,10 @@
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
+		3227F3321ADC8A57008073F6 /* RegionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3227F3311ADC8A57008073F6 /* RegionsView.xib */; };
+		3227F3341ADC8A87008073F6 /* AccountInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3227F3331ADC8A87008073F6 /* AccountInfoView.xib */; };
+		3227F3361ADC8B11008073F6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227F3351ADC8B11008073F6 /* AboutViewController.swift */; };
+		3227F3381ADC8B75008073F6 /* RegionsViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3227F3371ADC8B75008073F6 /* RegionsViewHandler.swift */; };
 		327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
 		32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA54681ADC51FE0099DD87 /* HelperURLs.swift */; };
@@ -81,6 +85,10 @@
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3212E7231AD88CBD008593CE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		3227F3311ADC8A57008073F6 /* RegionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegionsView.xib; sourceTree = "<group>"; };
+		3227F3331ADC8A87008073F6 /* AccountInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountInfoView.xib; sourceTree = "<group>"; };
+		3227F3351ADC8B11008073F6 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		3227F3371ADC8B75008073F6 /* RegionsViewHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionsViewHandler.swift; sourceTree = "<group>"; };
 		329E419F1ACB3EBA002131FD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		32BA54681ADC51FE0099DD87 /* HelperURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperURLs.swift; sourceTree = "<group>"; };
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
@@ -151,6 +159,7 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
+				3227F3301ADC8A40008073F6 /* Views */,
 				32BA54631ADC506F0099DD87 /* Libraries */,
 				32BA54641ADC508B0099DD87 /* Controllers */,
 				32BA54651ADC50BC0099DD87 /* Models */,
@@ -193,6 +202,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3227F3301ADC8A40008073F6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3227F3311ADC8A57008073F6 /* RegionsView.xib */,
+				3227F3331ADC8A87008073F6 /* AccountInfoView.xib */,
+				3227F3371ADC8B75008073F6 /* RegionsViewHandler.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		32BA54631ADC506F0099DD87 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +237,7 @@
 				329E419F1ACB3EBA002131FD /* SettingsViewController.swift */,
 				3212E71E1AD87985008593CE /* CreateAccountViewController.swift */,
 				3212E7231AD88CBD008593CE /* TabBarController.swift */,
+				3227F3351ADC8B11008073F6 /* AboutViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -355,8 +375,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3227F3341ADC8A87008073F6 /* AccountInfoView.xib in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
+				3227F3321ADC8A57008073F6 /* RegionsView.xib in Resources */,
 				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,
 				3185E1301A79D3E600037B10 /* Images.xcassets in Resources */,
 			);
@@ -379,6 +401,7 @@
 				32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */,
 				3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */,
 				3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */,
+				3227F3361ADC8B11008073F6 /* AboutViewController.swift in Sources */,
 				3184E3B51ADADF4F00E10B89 /* CustomIOS7AlertView.swift in Sources */,
 				3178DEEB1A9044B200E6D1B4 /* Sections.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
@@ -386,6 +409,7 @@
 				4293ACC21AAE53010089F441 /* User.swift in Sources */,
 				316A9F201A900A0000694B2B /* Config.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
+				3227F3381ADC8B75008073F6 /* RegionsViewHandler.swift in Sources */,
 				42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */,
 				D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */,
 				32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */,
