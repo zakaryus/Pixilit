@@ -17,28 +17,27 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
-    var fullScreenImgView: UIImageView = UIImageView()
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-             // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
-        collectionView.addSubview(refresh)
-        refresh.beginRefreshing()
-        Refresh()
+        Setup()
     }
     
     override public func viewWillAppear(animated: Bool) {        
+        Setup()
+    }
+    
+    func Setup() {
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
         Refresh()
     }
     
-    func Refresh()
-    {
+    func Refresh() {
         Helper.RestMainFeedRequest() {
             Tiles in
             
@@ -55,7 +54,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
     }
 
-    
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -65,7 +63,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
         return 1
     }
-    
     
     public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.tiles.count
@@ -85,15 +82,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             Photo in
             self.tiles[indexPath.row].photo = Photo
         }
-        
-        let imageW = tiles[indexPath.row].photo.size.width
-        let imageH = tiles[indexPath.row].photo.size.height
-        println("width: \(imageW), height: \(imageH)")
-        
-        let screenW = ceil(self.view.frame.width / 2.15)
-        let screenH = ceil((screenW * imageH) / imageW)
-        
-        return CGSizeMake(screenW, screenH)
+
+        return scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
     }
     
     func collectionView(collectionView: UICollectionView!,
@@ -107,13 +97,12 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         return UICollectionReusableView()
     }
     
-    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-    {
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //collectionView.collectionViewLayout.invalidateLayout()
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as TileCollectionViewCell
         println("index: \(indexPath.row) tapped: \(cell.frame.height)")
         
-        let buttons = ["Cancel", "Pix", "Business"]
+        let buttons = ["Back", "Pix", "Business"]
         
         // Create a new AlertView instance
         let alertView = CustomIOS7AlertView()
@@ -127,37 +116,75 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         // Set self as the delegate
         alertView.delegate = self
         
-        // Or, use a closure
-        alertView.onButtonTouchUpInside = { (alertView: CustomIOS7AlertView, buttonIndex: Int) -> Void in
-            println("CLOSURE: Button '\(buttons[buttonIndex])' touched")
-        }
-        
         // Show time!
         alertView.show()
     }
     
     // Handle button touches
     func customIOS7AlertViewButtonTouchUpInside(alertView: CustomIOS7AlertView, buttonIndex: Int) {
-        //println("DELEGATE: Button '\(buttons[buttonIndex])' touched")
+        println("DELEGATE: Button '\(alertView.buttonTitles![buttonIndex])' touched")
         alertView.close()
     }
     
     // Create a custom container view
     func createContainerView(cell: UICollectionViewCell, img: UIImage) -> UIView {
-        var containerView = UIView(frame: CGRectMake(0, 0, cell.frame.width * 2, cell.frame.height * 2))
-        containerView.autoresizesSubviews = true
-        containerView.contentMode = .ScaleAspectFit
-        containerView.autoresizingMask = .FlexibleHeight
+        var rect = scale(ScaleSize.FullScreen, img: img)
         
+        //create the imageview of appropriate size
         var ivFullScreen = UIImageView()
-        ivFullScreen.frame = CGRectMake(0, 0, containerView.frame.width, containerView.frame.height)
-        ivFullScreen.center = CGPoint(x: containerView.frame.width / 2, y: containerView.frame.height / 2)
+        ivFullScreen.frame = CGRectMake(0, 0, rect.width, rect.height)
         ivFullScreen.autoresizesSubviews = true
         ivFullScreen.contentMode = .ScaleAspectFit
         ivFullScreen.autoresizingMask = .FlexibleHeight
         ivFullScreen.image = img
         
-        containerView.addSubview(ivFullScreen)
+        //create the container of appropriate size
+        //the container width is always 85% of the screen width
+        //the container height is the minimum of the screen height
+        //or the image height
+        var maxW = self.view.frame.width * 0.85
+        var maxH = min(rect.height, self.view.frame.height * 0.85)
+        var containerView = UIView(frame: CGRectMake(0, 0, maxW, maxH))
+        containerView.autoresizesSubviews = true
+        containerView.clipsToBounds = true
+        containerView.contentMode = .ScaleAspectFit
+        containerView.autoresizingMask = .FlexibleHeight
+        
+        //if the imageview is longer than the container
+        if(maxH != rect.width) {
+            //add a scrollview for the imageview
+            var scroll = UIScrollView()
+            scroll.frame = containerView.frame
+            scroll.showsHorizontalScrollIndicator = false
+            scroll.showsVerticalScrollIndicator = true
+            scroll.scrollEnabled = true
+            scroll.userInteractionEnabled = true
+            scroll.contentSize = rect
+            scroll.addSubview(ivFullScreen)
+            containerView.addSubview(scroll)
+        }
+        else {
+            containerView.addSubview(ivFullScreen)
+        }
+        
         return containerView
+    }
+    
+    enum ScaleSize {
+        case HalfScreen
+        case FullScreen
+    }
+    
+    //assumes constant width
+    func scale(size: ScaleSize, img: UIImage) -> CGSize {
+        let scale: CGFloat = size == ScaleSize.HalfScreen ? 0.475 : 0.875
+        
+        let imgW = img.size.width
+        let imgH = img.size.height
+        
+        let newImgW = ceil(self.view.frame.width * scale)
+        let newImgH = ceil((newImgW * imgH) / imgW)
+        
+        return CGSizeMake(newImgW, newImgH)
     }
 }
