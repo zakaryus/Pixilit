@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Business: NSObject
+class Business: NSObject, IRestful
 {
     var Title: String?
     var Thoroughfare: String?
@@ -24,10 +24,10 @@ class Business: NSObject
     var Pix: [String] = []
     var Uid: String?
     
-    override init() { }
+   override init() { }
     
 //based on parsing from pixilit.com/rest/businesses.json
-    init(json: JSON)
+    required init(json: JSON)
     {
         if let title = json["title"].string {
             self.Title = title

@@ -1,5 +1,5 @@
 //
-//  AboutViewController.swift
+//  AccountInfoViewController.swift
 //  Pixilit
 //
 //  Created by SPT Pixilit on 4/14/15.
@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-class AboutViewController : UIViewController{
+class AccountInfoViewController : UIViewController {
     
 }

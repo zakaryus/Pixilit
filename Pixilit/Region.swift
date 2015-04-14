@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Region: NSObject
+class Region: NSObject, IRestful
 {
     var Name: String?
     var TID: Int?
@@ -17,17 +17,20 @@ class Region: NSObject
     
     override init() { }
     
-    init(json: JSON) {
-        if let name = json["name"].string {
+    required init(json: JSON) {
+        if let name = json["region"].string {
             self.Name = name
         }
         
-        if let tid = json["tid"].int {
-            self.TID = tid
+        if let tid = json["tid"].string {
+            var num : Int = tid.toInt()!
+            self.TID = num
         }
         
-        if let pid = json["pid"].int{
-            self.PID = pid
+        self.PID = 0
+        if let pid = json["pid"].string {
+            var num : Int = pid.toInt()!
+            self.PID = num
         }
     }
     

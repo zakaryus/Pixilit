@@ -10,6 +10,38 @@ import UIKit
 
 struct HelperREST
 {
+    
+    static func RestRegionsRequest(CompletionHandler: (Regions: [Region]) -> ()) {
+        var tmpRegions = [Region]()
+        
+        let urlPath = Config.RestRegionsJson
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            //println(json)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                //println(subJson)
+                
+                var region = Region(json: subJson)
+                tmpRegions.append(region)
+            }
+            
+            //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+            
+            CompletionHandler(Regions: tmpRegions)
+        })
+        task.resume()
+    }
+
     //REST
     static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {
         var tmpBusinesses = [Business]()

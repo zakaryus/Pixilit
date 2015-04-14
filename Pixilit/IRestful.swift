@@ -1,5 +1,5 @@
 //
-//  AboutViewController.swift
+//  IRestful.swift
 //  Pixilit
 //
 //  Created by SPT Pixilit on 4/14/15.
@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import UIKit
 
-class AboutViewController : UIViewController{
+protocol IRestful {
     
+    init (json : JSON)
 }

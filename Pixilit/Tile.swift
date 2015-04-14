@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Tile: NSObject {
+class Tile: NSObject, IRestful {
     
     var Description: String?
     var Photo: String?
@@ -19,7 +19,7 @@ class Tile: NSObject {
     override init() { }
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
-    init(json: JSON) {
+    required init(json: JSON) {
         if let title = json["description"].string {
             self.Description = title
         }

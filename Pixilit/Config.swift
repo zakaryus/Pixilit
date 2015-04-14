@@ -8,7 +8,7 @@
 
 import UIKit
 
-let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!)
+private let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!)
 
 struct Config
 {
@@ -26,4 +26,5 @@ struct Config
     static let RestUserLogin: String = dict?.objectForKey("RestUserLogin") as String
     static let UserRegistrationURL: String = dict?.objectForKey("UserRegistrationURL") as String
     static let BusinessRegistrationURL: String = dict?.objectForKey("BusinessRegistrationURL") as String
+    static let RestRegionsJson: String = dict?.objectForKey("RestRegionsJson") as String
 }

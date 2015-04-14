@@ -74,7 +74,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-354" y="-130"/>
+            <point key="canvasLocation" x="-2058" y="134"/>
         </scene>
         <!--Title-->
         <scene sceneID="myc-6U-yoR">
@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nF2-ja-VKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351" y="-130"/>
+            <point key="canvasLocation" x="-1353" y="134"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -346,13 +346,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="95" y="2022"/>
+            <point key="canvasLocation" x="-1209" y="892"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="TabBarController" sceneMemberID="viewController">
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -362,14 +362,14 @@
                     </tabBar>
                     <connections>
                         <segue destination="hzJ-st-WfM" kind="relationship" relationship="viewControllers" id="uvN-6K-yvp"/>
-                        <segue destination="tEw-5W-eT0" kind="relationship" relationship="viewControllers" id="JOi-Sv-AjL"/>
                         <segue destination="O7M-fy-MB9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="tEw-5W-eT0" kind="relationship" relationship="viewControllers" id="JOi-Sv-AjL"/>
                         <segue destination="EU8-cc-i8l" kind="relationship" relationship="viewControllers" id="yu2-g7-NSh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1888" y="442"/>
+            <point key="canvasLocation" x="-5052" y="2054"/>
         </scene>
         <!--Account-->
         <scene sceneID="sdg-iQ-rP6">
@@ -473,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52d-l1-3bK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-826" y="2022"/>
+            <point key="canvasLocation" x="-2046" y="892"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="yZC-Pg-TFx">
@@ -522,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w5G-sJ-h3X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-826" y="2754"/>
+            <point key="canvasLocation" x="-2038" y="1558"/>
         </scene>
         <!--Main Feed-->
         <scene sceneID="gtS-xj-7xs">
@@ -533,7 +533,7 @@
                         <viewControllerLayoutGuide type="bottom" id="F0w-2J-IhT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cfe-U3-A8g">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T17-UD-6xE">
@@ -588,12 +588,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tc-Qw-G6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1044" y="579"/>
+            <point key="canvasLocation" x="-3092" y="-601"/>
         </scene>
         <!--AboutViewController-->
         <scene sceneID="Cex-y3-eet">
             <objects>
-                <viewController title="AboutViewController" id="0Pg-IP-wOC" sceneMemberID="viewController">
+                <viewController title="AboutViewController" id="0Pg-IP-wOC" customClass="AboutViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nEB-y3-3dB"/>
                         <viewControllerLayoutGuide type="bottom" id="iJJ-Mx-OLK"/>
@@ -625,7 +625,85 @@ Other "about" stuff here</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YoU-pR-SDS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1535" y="1314"/>
+            <point key="canvasLocation" x="-1245" y="2290"/>
+        </scene>
+        <!--Region View Controller-->
+        <scene sceneID="pcf-gq-zDX">
+            <objects>
+                <viewController id="cuc-fV-f4Z" customClass="RegionViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="imr-sC-9nz"/>
+                        <viewControllerLayoutGuide type="bottom" id="GS9-YG-kRa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qpI-bY-Lun">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Region" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5S-WA-XtP">
+                                <rect key="frame" x="227" y="104" width="54" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wad-hb-ivI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1245" y="2944"/>
+        </scene>
+        <!--Payment View Controller-->
+        <scene sceneID="L04-og-2lK">
+            <objects>
+                <viewController id="lSU-Hg-WKM" customClass="PaymentViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="he2-ce-lP6"/>
+                        <viewControllerLayoutGuide type="bottom" id="eGL-vu-Nf6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HGM-Ct-4g0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Payment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keT-IP-QxD">
+                                <rect key="frame" x="279" y="71" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awv-0C-6VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1245" y="4277"/>
+        </scene>
+        <!--Account Info View Controller-->
+        <scene sceneID="msp-8H-bND">
+            <objects>
+                <viewController id="sKV-uA-06W" customClass="AccountInfoViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CUX-t3-i6a"/>
+                        <viewControllerLayoutGuide type="bottom" id="kz7-OI-uWm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eBa-Uq-CcH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AccountInfo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PM-z4-CTa">
+                                <rect key="frame" x="238" y="113" width="93" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3M-zO-UVU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1245" y="3617"/>
         </scene>
         <!--Account-->
         <scene sceneID="MTf-fP-woj">
@@ -644,7 +722,7 @@ Other "about" stuff here</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fA9-kr-eu2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1565" y="2028"/>
+            <point key="canvasLocation" x="-3124" y="876"/>
         </scene>
         <!--Businesses-->
         <scene sceneID="hcw-up-eRj">
@@ -664,7 +742,7 @@ Other "about" stuff here</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cfq-5Q-0sY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1044" y="-130"/>
+            <point key="canvasLocation" x="-3084" y="122"/>
         </scene>
         <!--News Page List View Controller-->
         <scene sceneID="qbv-AU-sAk">
@@ -736,7 +814,7 @@ Other "about" stuff here</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="843" y="2022"/>
+            <point key="canvasLocation" x="-349" y="892"/>
         </scene>
         <!--News Page View Controller-->
         <scene sceneID="blC-cg-6kv">
@@ -797,7 +875,7 @@ Other "about" stuff here</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcp-iK-lr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="2022"/>
+            <point key="canvasLocation" x="582" y="898"/>
         </scene>
         <!--Settings-->
         <scene sceneID="rJE-4X-mdy">
@@ -896,12 +974,15 @@ Other "about" stuff here</string>
                     <navigationItem key="navigationItem" title="Settings" id="8w8-pU-MXu"/>
                     <connections>
                         <outlet property="tvSettings" destination="InO-nZ-IW7" id="LoV-bA-LKr"/>
-                        <segue destination="0Pg-IP-wOC" kind="show" identifier="RegionSegue" id="Yt6-ih-HL5"/>
+                        <segue destination="0Pg-IP-wOC" kind="show" identifier="AboutSegue" id="5c5-IO-U87"/>
+                        <segue destination="cuc-fV-f4Z" kind="show" identifier="RegionSegue" id="HIR-4Q-9Zz"/>
+                        <segue destination="sKV-uA-06W" kind="show" identifier="AccountInfoSegue" id="Oot-ku-oNk"/>
+                        <segue destination="lSU-Hg-WKM" kind="show" identifier="PaymentSegue" id="PFR-FC-V9u"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wf2-Bd-2iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="529" y="1314"/>
+            <point key="canvasLocation" x="-2058" y="2442"/>
         </scene>
         <!--Settings-->
         <scene sceneID="LRn-F5-iyh">
@@ -920,7 +1001,7 @@ Other "about" stuff here</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BLS-Rh-w5m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-247" y="1314"/>
+            <point key="canvasLocation" x="-3147" y="2442"/>
         </scene>
     </scenes>
     <resources>
