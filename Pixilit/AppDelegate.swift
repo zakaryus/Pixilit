@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as UITabBarController
+        let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         if self.window != nil {
             self.window!.rootViewController = rootcontroller
         }

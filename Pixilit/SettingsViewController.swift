@@ -60,19 +60,19 @@ class SettingsViewController: UITableViewController
         
         if segueName == "RegionSegue"
         {
-            var a = segue.destinationViewController as RegionViewController
+            var a = segue.destinationViewController as! RegionViewController
         }
         else if segueName == "AccountInfoSegue"
         {
-            var a = segue.destinationViewController as AccountInfoViewController
+            var a = segue.destinationViewController as! AccountInfoViewController
         }
         else if segueName == "PaymentSegue"
         {
-            var a = segue.destinationViewController as PaymentViewController
+            var a = segue.destinationViewController as! PaymentViewController
         }
         else if segueName == "AboutSegue"
         {
-            var a = segue.destinationViewController as AboutViewController
+            var a = segue.destinationViewController as! AboutViewController
         }
        
         

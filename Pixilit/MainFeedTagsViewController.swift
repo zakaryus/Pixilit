@@ -20,7 +20,7 @@ class MainFeedTagsViewController: UIViewController
     
     private func configureSplitVC() {
         
-        let splitVC = self.childViewControllers[0] as UISplitViewController
+        let splitVC = self.childViewControllers[0] as! UISplitViewController
         setOverrideTraitCollection(UITraitCollection(horizontalSizeClass: .Regular), forChildViewController: splitVC)
     }
 }
