@@ -118,11 +118,15 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         // Show time!
         alertView.show()
+        
     }
     
     // Handle button touches
     func customIOS7AlertViewButtonTouchUpInside(alertView: CustomIOS7AlertView, buttonIndex: Int) {
         println("DELEGATE: Button '\(alertView.buttonTitles![buttonIndex])' touched")
+        //if alertView.buttonTitles![buttonIndex] == "Business"
+        //else if alertView.buttonTitles![buttonIndex] == "Pix"
+        //else if alertView.buttonTitles![buttonIndex] == "Back"
         alertView.close()
     }
     

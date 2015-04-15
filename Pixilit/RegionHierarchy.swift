@@ -10,27 +10,7 @@ import Foundation
 
 class RegionHierarchy {
     
-    var parents : [parent] = []
-    
-    struct parent {
-        var childRegions : [Region] = []
-        var parentRegion : Region
-        
-        init(region: Region, children : [Region])
-        {
-            childRegions = children
-            parentRegion = region
-        }
-        func printme()
-        {
-            println(parentRegion.Name!)
-           for child in childRegions
-           {
-                println(" -- " + child.Name!.capitalizedString)
-            }
-            
-        }
-    }
+    var Heirarchy : [RegionKvp] = []
     
     init(regions : [Region])
     {
@@ -39,37 +19,24 @@ class RegionHierarchy {
         {
             if region.PID == 0
             {
-                tempParents.append(region)
+                Heirarchy.append(RegionKvp(parent: region))
             }
         }
         
-        var dict = Dictionary<Int, [Region]>()
-        for parent in tempParents
+        for item in Heirarchy
         {
-            var parentsChildren : [Region] = []
             for region in regions
             {
-                
-                if region.PID == parent.TID
+                if region.PID == item.Parent.TID
                 {
-                    parentsChildren.append(region)
-                    
+                    item.AddChild(region)
                 }
             }
-            dict[parent.TID!] = parentsChildren
-            
         }
-        
-        
-        for par in tempParents
-        {
-            var p = parent(region: par, children: dict[par.TID!]!)
-            parents.append(p)
-            
-        }
-        for parent in parents
-        {
-            parent.printme()
-        }
+                
+//        for parent in Heirarchy
+//        {
+//            parent.printme()
+//        }
     }
 }

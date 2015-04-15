@@ -19,8 +19,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as UITabBarController
         if self.window != nil {
             self.window!.rootViewController = rootcontroller
+            var tabBar : UITabBar = rootcontroller.tabBar
+            var tabBarItem1 : UITabBarItem = tabBar.items![0] as UITabBarItem
+//            var tabBarItem2 = tabBar.items[1]
+   //         var tabBarItem3 = tabBar.items[2]
+//            var tabBarItem4 = tabBar.items[3]
+//            
+         //  tabBarItem1.title = "Main Feed"
+//            tabBarItem2.title = "Businesses"
+//            tabBarItem3.title = "Account"
+//            tabBarItem4.title = "Settings"
+              // tabBarItem1.image = UIImage(named: "Slice 1-2.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+          //  tabBarItem1.selectedImage = UIImage(named: "Slice 1-2.png")
+         
+            tabBar.selectedImageTintColor = UIColor.whiteColor()
+            
+     //      tabBarItem1.image = UIImage(named: "Slice 1-2.png")
+           // [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
+          ////  [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
+           /// [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
+           /// [tabBarItem4 setFinishedSelectedImage:[UIImage imageNamed:@"settings_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"settings.png"]];
+            
+            
+            // Change the tab bar background
+           // UIImage* tabBarBackground = [UIImage imageNamed:@"tabbar.png"];
+           // [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+          //  [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"tabbar_selected.png"]];
+       ///////////     tabBar.backgroundColor = UIColor(red: 132/255, green: 216/255, blue: 203/255, alpha: 1)
+            tabBar.selectionIndicatorImage = getImageWithColor(UIColor(red: 0, green: 172/255, blue: 146/255, alpha: 1), size: CGSize(width:  rootcontroller.view.frame.width / 4, height: 49))
+            // Change the title color of tab bar items
+            
+         
+            
+//            [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//            [UIColor whiteColor], UITextAttributeTextColor,
+//            nil] forState:UIControlStateNormal];
+//            UIColor *titleHighlightedColor = [UIColor colorWithRed:153/255.0 green:192/255.0 blue:48/255.0 alpha:1.0];
+//            [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//            titleHighlightedColor, UITextAttributeTextColor,
+//            nil] forState:UIControlStateHighlighted];
+
         }
+        
+    
+        
+        
+  
+        
         return true
+    }
+    
+    func getImageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        var rect = CGRectMake(0, 0, size.width, size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -45,6 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
 
 
 }

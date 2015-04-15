@@ -28,7 +28,7 @@ class SettingsViewController: UITableViewController
     {
         if indexPath.row == Section1.Region.rawValue && indexPath.section == 0 {
             println("Region")
-            performSegueWithIdentifier("RegionSegue", sender: self)
+            performSegueWithIdentifier("SavedRegionSegue", sender: self)
         }
         else if indexPath.row == Section1.AccountInfo.rawValue && indexPath.section == 0 {
             println("Account info")
@@ -58,9 +58,9 @@ class SettingsViewController: UITableViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var segueName = segue.identifier
         
-        if segueName == "RegionSegue"
+        if segueName == "SavedRegionSegue"
         {
-            var a = segue.destinationViewController as RegionViewController
+            var a = segue.destinationViewController as SavedRegionViewController
         }
         else if segueName == "AccountInfoSegue"
         {
