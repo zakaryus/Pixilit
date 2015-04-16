@@ -12,7 +12,7 @@ class NewsPageViewController: UIViewController {
 
     @IBOutlet weak var Body: UITextView!
     @IBOutlet weak var Date: UILabel!
-    @IBOutlet weak var Title: UITextView!
+    @IBOutlet weak var Heading: UITextView!
     var newspage: NewsPage = NewsPage()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class NewsPageViewController: UIViewController {
 
     func setUpPage(newspage: NewsPage) {
         if let title = newspage.Title {
-            self.Title.text = title
+            self.Heading.text = title
         }
         
         if let date = newspage.Date {

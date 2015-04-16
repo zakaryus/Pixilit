@@ -81,8 +81,8 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
 
-        var nvc: NewsPageViewController = segue.destinationViewController as NewsPageViewController
-        nvc.newspage = sender as NewsPage
+        var nvc: NewsPageViewController = segue.destinationViewController as! NewsPageViewController
+        nvc.newspage = sender as! NewsPage
     }
     
     /**************************************************************************************/

@@ -24,7 +24,6 @@
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
-		327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
 		32B51DC61ADD9EB70014ECCC /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DC51ADD9EB70014ECCC /* RegionViewController.swift */; };
 		32B51DC81ADDA0980014ECCC /* AccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DC71ADDA0980014ECCC /* AccountInfoViewController.swift */; };
@@ -35,6 +34,7 @@
 		32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA54681ADC51FE0099DD87 /* HelperURLs.swift */; };
 		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
 		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
+		32E0E1A31AE0466900891C0C /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0E1A21AE0466900891C0C /* PixilitTests.swift */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
@@ -79,8 +79,6 @@
 		3185E12F1A79D3E600037B10 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3185E1321A79D3E600037B10 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3185E1381A79D3E600037B10 /* PixilitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PixilitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3185E13D1A79D3E600037B10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3185E13E1A79D3E600037B10 /* PixilitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
@@ -97,6 +95,7 @@
 		32BA54681ADC51FE0099DD87 /* HelperURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperURLs.swift; sourceTree = "<group>"; };
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
 		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
+		32E0E1A21AE0466900891C0C /* PixilitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PixilitTests.swift; sourceTree = "<group>"; };
 		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
 		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
 		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
@@ -146,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				3185E1231A79D3E600037B10 /* Pixilit */,
-				3185E13B1A79D3E600037B10 /* PixilitTests */,
 				3185E1221A79D3E600037B10 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +161,7 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
+				32E0E1A41AE0466F00891C0C /* Tests */,
 				32BA54631ADC506F0099DD87 /* Libraries */,
 				32BA54641ADC508B0099DD87 /* Controllers */,
 				32BA54651ADC50BC0099DD87 /* Models */,
@@ -185,23 +184,6 @@
 				D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */,
 				3178DEE81A903FB600E6D1B4 /* Section.swift */,
 				3178DEEA1A9044B200E6D1B4 /* Sections.swift */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3185E13B1A79D3E600037B10 /* PixilitTests */ = {
-			isa = PBXGroup;
-			children = (
-				3185E13E1A79D3E600037B10 /* PixilitTests.swift */,
-				3185E13C1A79D3E600037B10 /* Supporting Files */,
-			);
-			path = PixilitTests;
-			sourceTree = "<group>";
-		};
-		3185E13C1A79D3E600037B10 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3185E13D1A79D3E600037B10 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -270,6 +252,14 @@
 				32BA546C1ADC52920099DD87 /* HelperREST.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		32E0E1A41AE0466F00891C0C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				32E0E1A21AE0466900891C0C /* PixilitTests.swift */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 		32FBED701AD475FB00B99783 /* RNCryptor */ = {
@@ -413,6 +403,7 @@
 				42E524F41AAA4B16004E93D5 /* MainFeedTagsViewController.swift in Sources */,
 				32B51DC81ADDA0980014ECCC /* AccountInfoViewController.swift in Sources */,
 				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
+				32E0E1A31AE0466900891C0C /* PixilitTests.swift in Sources */,
 				32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
 				32B51DCA1ADDA0E40014ECCC /* PaymentViewController.swift in Sources */,
@@ -441,7 +432,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,11 +552,13 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Pixilit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pixilit/Pixilit-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Pixilit/Pixilit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -577,9 +569,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Pixilit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pixilit/Pixilit-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -595,7 +589,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = PixilitTests/Info.plist;
+				INFOPLIST_FILE = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pixilit.app/Pixilit";
@@ -610,7 +604,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = PixilitTests/Info.plist;
+				INFOPLIST_FILE = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pixilit.app/Pixilit";
