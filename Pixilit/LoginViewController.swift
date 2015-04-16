@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         } else {
             
                     var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
-                    var encrypted = MyCrypt.encryptString(password)
+                    var encrypted = MyCrypt.encryptString(password as String)
             
                     password = "nothing to see here"
             
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     var loginrequest:NSMutableURLRequest = NSMutableURLRequest(URL: loginurl)
                     loginrequest.HTTPMethod = "POST"
                     loginrequest.HTTPBody = loginpostData
-                    loginrequest.setValue(loginpostLength, forHTTPHeaderField: "Content-Length")
+                    loginrequest.setValue(loginpostLength as String, forHTTPHeaderField: "Content-Length")
                     loginrequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                     loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
                     var loginData: NSData? = NSURLConnection.sendSynchronousRequest(loginrequest, returningResponse:&response, error:&reponseError)
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             if(loginData != nil) {
                     var userjson = JSON(data: loginData!)
-                    var name = userjson["user"]["name"].string?
+                    var name = userjson["user"]["name"].string
             
                     if (name == nil) {
                         var alertView:UIAlertView = UIAlertView()
@@ -111,7 +111,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool
+    func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         self.view.endEditing(true)
         return false;
@@ -121,15 +121,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var segueType = sender as String
+        var segueType = sender as! String
     
         if segueType == "LoginSuccess"
         {
-        var uvc = segue.destinationViewController as UserViewController
+        var uvc = segue.destinationViewController as! UserViewController
         }
         else if segueType == "CreateAccountSegue"
         {
-            var uvc = segue.destinationViewController as CreateAccountViewController
+            var uvc = segue.destinationViewController as! CreateAccountViewController
         }
         
         

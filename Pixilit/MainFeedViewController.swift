@@ -60,7 +60,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         // Dispose of any resources that can be recreated.
     }
 
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
         return 1
     }
     
@@ -69,7 +69,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as TileCollectionViewCell
+        let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
         cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
         
@@ -92,14 +92,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             return sectionInsets
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
 
         return UICollectionReusableView()
     }
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //collectionView.collectionViewLayout.invalidateLayout()
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as TileCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell
         println("index: \(indexPath.row) tapped: \(cell.frame.height)")
         
         let buttons = ["Back", "Pix", "Business"]
@@ -140,8 +140,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var bvc = segue.destinationViewController as BusinessViewController
-        bvc.business = sender as Business
+        var bvc = segue.destinationViewController as! BusinessViewController
+        bvc.business = sender as! Business
     }
     
     // Create a custom container view

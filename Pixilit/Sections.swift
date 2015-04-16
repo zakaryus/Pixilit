@@ -10,7 +10,7 @@ import UIKit
 
 class Sections <T: AnyObject>
 {
-    let collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
+    let collation = UILocalizedIndexedCollation.currentCollation() as! UILocalizedIndexedCollation
     var data: [Section<T>] = [Section<T>]()
     
     init(){    }
@@ -56,7 +56,7 @@ class Sections <T: AnyObject>
         
         // sort each section
         for section in sections {
-            section.data = collation.sortedArrayFromArray(section.data, collationStringSelector: key) as [T]
+            section.data = collation.sortedArrayFromArray(section.data, collationStringSelector: key) as! [T]
         }
         
         _sections = sections

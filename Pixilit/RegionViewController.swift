@@ -59,11 +59,11 @@ class RegionViewController : UIViewController, UITableViewDelegate {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var srvc = segue.destinationViewController as SubRegionViewController
-        srvc.region = sender as [Region]
+        var srvc = segue.destinationViewController as! SubRegionViewController
+        srvc.region = sender as! [Region]
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("\(indexPath.row) tapped")
         var region: [Region] = Parents[indexPath.row].Children
         self.performSegueWithIdentifier("SubRegionSegue", sender: region)

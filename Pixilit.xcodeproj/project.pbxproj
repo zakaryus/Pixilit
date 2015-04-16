@@ -44,6 +44,7 @@
 		32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA54681ADC51FE0099DD87 /* HelperURLs.swift */; };
 		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
 		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
+		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
@@ -115,6 +116,7 @@
 		32BA54681ADC51FE0099DD87 /* HelperURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperURLs.swift; sourceTree = "<group>"; };
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
 		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
+		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
 		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
 		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
 		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
@@ -188,7 +190,7 @@
 				32BA54671ADC51BE0099DD87 /* Helpers */,
 				3185E1241A79D3E600037B10 /* Supporting Files */,
 				3185E1261A79D3E600037B10 /* AppDelegate.swift */,
-				325CEC361ADF205E00AEBC56 /* images */,
+				325CEC361ADF205E00AEBC56 /* Images */,
 				3185E12F1A79D3E600037B10 /* Images.xcassets */,
 				3185E12C1A79D3E600037B10 /* Main.storyboard */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
@@ -225,9 +227,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		325CEC361ADF205E00AEBC56 /* images */ = {
+		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				32E0E1AB1AE0669E00891C0C /* app icons */,
 				325CEC431ADF2E2100AEBC56 /* homeIcon.png */,
 				325CEC411ADF2E0000AEBC56 /* Slice 3.png */,
 				325CEC3D1ADF2D3500AEBC56 /* business.png */,
@@ -235,7 +238,7 @@
 				325CEC3A1ADF23CA00AEBC56 /* Slice 2.png */,
 				325CEC341ADF205900AEBC56 /* Slice 1.png */,
 			);
-			name = images;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		32BA54631ADC506F0099DD87 /* Libraries */ = {
@@ -412,6 +415,7 @@
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
+				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
 				325CEC3B1ADF23CA00AEBC56 /* Slice 1-2.png in Resources */,
 				325CEC351ADF205900AEBC56 /* Slice 1.png in Resources */,
@@ -602,6 +606,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -618,6 +623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = Pixilit/Info.plist;

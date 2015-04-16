@@ -32,7 +32,7 @@ class CustomIOS7AlertView: UIView {
     weak var delegate: CustomIOS7AlertViewDelegate?
     var onButtonTouchUpInside: ((alertView: CustomIOS7AlertView, buttonIndex: Int) -> Void)?
     
-    override init() {
+    init() {
         super.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height))
         setObservers()
     }
@@ -83,7 +83,7 @@ class CustomIOS7AlertView: UIView {
             self.backgroundColor = UIColor(white: 0, alpha: 0.4)
             self.alertView.layer.opacity = 1
             self.alertView.layer.transform = CATransform3DMakeScale(1, 1, 1)
-        }, completion)
+        }, completion: completion)
     }
     
     // Close the alertView, remove views
@@ -105,7 +105,7 @@ class CustomIOS7AlertView: UIView {
             self.alertView.layer.transform = CATransform3DConcat(currentTransform, CATransform3DMakeScale(0.6, 0.6, 1))
             self.alertView.layer.opacity = 0
         }, completion: { (finished: Bool) in
-            for view in self.subviews as [UIView] {
+            for view in self.subviews as! [UIView] {
                 view.removeFromSuperview()
             }
             
@@ -117,9 +117,9 @@ class CustomIOS7AlertView: UIView {
     // Enables or disables the specified button
     // Should be used after the alert view is displayed
     internal func setButtonEnabled(enabled: Bool, buttonName: String) {
-        for subview in alertView.subviews as [UIView] {
+        for subview in alertView.subviews as! [UIView] {
             if subview is UIButton {
-                let button = subview as UIButton
+                let button = subview as! UIButton
                 
                 if button.currentTitle == buttonName {
                     button.enabled = enabled
@@ -223,7 +223,7 @@ class CustomIOS7AlertView: UIView {
         let buttonWidth = container.bounds.size.width / CGFloat(buttonTitles!.count)
         
         for buttonIndex in 0...(buttonTitles!.count - 1) {
-            let button = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+            let button = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
             
             button.frame = CGRectMake(
                 CGFloat(buttonIndex) * CGFloat(buttonWidth),
@@ -336,7 +336,7 @@ class CustomIOS7AlertView: UIView {
         
         UIView.animateWithDuration(0.2, delay: 0, options: UIViewAnimationOptions.TransitionNone, animations: {
             self.alertView.transform = rotation
-            }, nil)
+            }, completion: nil)
         
         // Fix errors caused by being rotated one too many times
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {

@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as UITabBarController
+        let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         if self.window != nil {
             self.window!.rootViewController = rootcontroller
             var tabBar : UITabBar = rootcontroller.tabBar
-            var tabBarItem1 : UITabBarItem = tabBar.items![0] as UITabBarItem
+            var tabBarItem1 : UITabBarItem = tabBar.items![0] as! UITabBarItem
 //            var tabBarItem2 = tabBar.items[1]
    //         var tabBarItem3 = tabBar.items[2]
 //            var tabBarItem4 = tabBar.items[3]

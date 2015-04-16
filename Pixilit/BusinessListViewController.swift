@@ -85,7 +85,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         return cell
     }
    
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         var b: Business = self.sections.data[indexPath.section].data[indexPath.row] as Business
         self.performSegueWithIdentifier("BusinessShowSegue", sender: b)
@@ -93,8 +93,8 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var bvc = segue.destinationViewController as BusinessViewController
-        bvc.business = sender as Business
+        var bvc = segue.destinationViewController as! BusinessViewController
+        bvc.business = sender as! Business
     }
     
     /**************************************************************************************/
@@ -116,7 +116,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     {
             // do not display empty `Section`s
             if !self.sections.data[section].data.isEmpty {
-                return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as String
+                return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as! String
             }
             return ""
     }
@@ -147,13 +147,13 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         self.sections = Sections<Business>(list: self.filteredListOfBusinesses, key: "Title")
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
     {
         self.filterContentForSearchText(searchString)
         return true
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool
     {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
