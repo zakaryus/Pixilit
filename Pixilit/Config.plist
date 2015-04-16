@@ -34,5 +34,7 @@
 	<string>http://104.236.227.190/rest/businesses.json</string>
 	<key>RestMainNewsPageJson</key>
 	<string>http://104.236.227.190/rest/main-news-page.json</string>
+	<key>RestBusinessJson</key>
+	<string>http://104.236.227.190/rest/business.json?uid=</string>
 </dict>
 </plist>

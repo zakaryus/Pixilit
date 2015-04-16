@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nF2-ja-VKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1353" y="134"/>
+            <point key="canvasLocation" x="-1209" y="134"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="wg7-f3-ORb">
@@ -586,11 +586,12 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="T17-UD-6xE" id="CGl-Rm-G0H"/>
+                        <segue destination="Ers-J0-bCH" kind="show" identifier="FeedToBusinessSegue" id="Sgr-hd-hEV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tc-Qw-G6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3092" y="-601"/>
+            <point key="canvasLocation" x="-3084" y="-588"/>
         </scene>
         <!--AboutViewController-->
         <scene sceneID="Cex-y3-eet">
@@ -1125,5 +1126,8 @@ Other "about" stuff here</string>
         <image name="business.png" width="71" height="25"/>
         <image name="homeIcon.png" width="19" height="35"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Sgr-hd-hEV"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.93725496530532837" green="0.42352944612503052" blue="0.22745099663734436" alpha="1" colorSpace="deviceRGB"/>
 </document>

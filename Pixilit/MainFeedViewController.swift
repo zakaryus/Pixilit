@@ -13,7 +13,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     @IBOutlet var collectionView: UICollectionView!
     var tiles:[(tile: Tile, photo: UIImage)]=[]
-    
+    var selectedTile: Tile = Tile()
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
@@ -118,16 +118,30 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         // Show time!
         alertView.show()
-        
+        selectedTile = tiles[indexPath.row].tile
     }
     
     // Handle button touches
     func customIOS7AlertViewButtonTouchUpInside(alertView: CustomIOS7AlertView, buttonIndex: Int) {
         println("DELEGATE: Button '\(alertView.buttonTitles![buttonIndex])' touched")
-        //if alertView.buttonTitles![buttonIndex] == "Business"
+        if alertView.buttonTitles![buttonIndex] == "Business" {
+            var businessid = selectedTile.BusinessID
+            HelperREST.RestBusinessRequest(businessid!) {
+                business in
+                
+                self.performSegueWithIdentifier("FeedToBusinessSegue", sender: business)
+            }
+        }
+        
         //else if alertView.buttonTitles![buttonIndex] == "Pix"
         //else if alertView.buttonTitles![buttonIndex] == "Back"
         alertView.close()
+    }
+    
+    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var bvc = segue.destinationViewController as BusinessViewController
+        bvc.business = sender as Business
     }
     
     // Create a custom container view

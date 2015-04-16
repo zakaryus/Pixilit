@@ -74,6 +74,38 @@ struct HelperREST
         task.resume()
     }
     
+    static func RestBusinessRequest(Uid: String, CompletionHandler: (Business: Business) -> ()) {
+        var business = Business()
+        
+        let urlPath = Config.RestBusinessJson + Uid
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            //println(json)
+
+            for (index: String, subJson: JSON) in json {
+                
+                //println(subJson)
+                
+                business = Business(json: subJson)
+                break
+            }
+  
+            
+            //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+            
+            CompletionHandler(Business: business)
+        })
+        task.resume()
+    }
+    
     static func RestMainNewsPageRequest(CompletionHandler: (newspage: [NewsPage]) -> ()) {
         var tmpNewsPages = [NewsPage]()
         
