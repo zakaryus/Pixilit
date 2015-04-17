@@ -41,6 +41,49 @@ struct HelperREST
         })
         task.resume()
     }
+    
+    static func RestFlag(entityID : String, pixd : Bool, CompletionHandler: (Success : Bool) -> ()) {
+        
+        let urlPath = Config.RestFlagJson
+        let url: NSURL = NSURL(string: urlPath)!
+        
+        var flagged: String = "flag"
+        if pixd == true {
+            flagged = "unflag"
+        }
+        
+        
+        
+        var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
+        println(post)
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length )
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+      
+        
+        var json = JSON(data: data!)
+        var success : Bool = false
+        
+        for (index: String, subJson: JSON) in json {
+        
+        //success = subJson[0]
+        println(subJson)
+
+        break
+        }
+        
+        
+    }
 
     //REST
     static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {

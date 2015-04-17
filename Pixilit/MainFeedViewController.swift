@@ -101,8 +101,16 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         //collectionView.collectionViewLayout.invalidateLayout()
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell
         println("index: \(indexPath.row) tapped: \(cell.frame.height)")
+        selectedTile = tiles[indexPath.row].tile
+        var pixDescription = "Pix"
+        println(selectedTile.Pixd!)
+        if selectedTile.Pixd == true
+        {
+            pixDescription = "Unpix"
+        }
         
-        let buttons = ["Back", "Pix", "Business"]
+        let buttons = ["Back", pixDescription, "Business"]
+        
         
         // Create a new AlertView instance
         let alertView = CustomIOS7AlertView()
@@ -118,7 +126,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         // Show time!
         alertView.show()
-        selectedTile = tiles[indexPath.row].tile
+        
     }
     
     // Handle button touches
@@ -133,7 +141,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             }
         }
         
-        //else if alertView.buttonTitles![buttonIndex] == "Pix"
+        else if alertView.buttonTitles![buttonIndex] == "Pix"
+        {
+            println(selectedTile.Nid)
+            HelperREST.RestFlag(selectedTile.Nid!, pixd : selectedTile.Pixd!) { suc in }
+            
+            
+        }
         //else if alertView.buttonTitles![buttonIndex] == "Back"
         alertView.close()
     }

@@ -12,6 +12,7 @@ class Tile: NSObject, IRestful {
     
     var Description: String?
     var Photo: String?
+    var Nid : String?
     var BusinessID: String?
     var Pixd: Bool?
     var tags: [String] = []
@@ -26,6 +27,10 @@ class Tile: NSObject, IRestful {
         
         if let photo = json["photo"].string {
             self.Photo = photo
+        }
+        
+        if let nid = json["nid"].string {
+            self.Nid = nid
         }
         
         if let businessid = json["parent_uid"].string {
