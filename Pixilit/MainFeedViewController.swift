@@ -14,20 +14,23 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet var collectionView: UICollectionView!
     var tiles:[(tile: Tile, photo: UIImage)]=[]
     var selectedTile: Tile = Tile()
-    let reuseId = "tileCollectionViewCell"
+    let reuseId = "fancyTileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
+    var page: Int = 0
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
+        //collectionView!.registerNib(UINib(nibName: "FancyTileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseId)
+
         Setup()
     }
     
     override public func viewWillAppear(animated: Bool) {        
-        Setup()
+        //Setup()
     }
     
     func Setup() {
@@ -38,7 +41,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
-        HelperREST.RestMainFeedRequest() {
+        HelperREST.RestMainFeedRequest(page) {
             Tiles in
             
             println(Tiles.count)
@@ -60,7 +63,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         // Dispose of any resources that can be recreated.
     }
 
-    public func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
@@ -69,10 +72,63 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
+        var cell: FancyTileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! FancyTileCollectionViewCell
         
-        cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
+        if cell.businessPhoto == nil {
+            cell = FancyTileCollectionViewCell()
+        }
         
+        if (indexPath.item < tiles.count) {
+            
+            // pre-fetch the next 'page' of data.
+            if(indexPath.item == (tiles.count - 8 + 1)){
+                fetchMoreItems()
+            }
+            
+            cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
+        } else {
+            fetchMoreItems()
+            return loadingCellForIndexPath(indexPath)
+        }
+
+        //cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
+        
+        return cell
+    }
+    
+    func fetchMoreItems()
+    {
+        HelperREST.RestMainFeedRequest(++page) {
+            Tiles in
+            
+            println(Tiles.count)
+            //self.tiles = []
+            
+            if Tiles.count == 0 {
+                self.page = -1
+                return
+            }
+            
+            for tile in Tiles {
+                self.tiles.append(tile: tile, photo: UIImage())
+            }
+            
+            self.collectionView.reloadData()
+            //self.refresh.endRefreshing()
+        }
+    }
+    
+    func loadingCellForIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell {
+    
+        let cell: FancyTileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! FancyTileCollectionViewCell
+    
+        var activityIndicator = UIActivityIndicatorView()
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
+        activityIndicator.center = cell.center;
+        cell.addSubview(activityIndicator)
+    
+        activityIndicator.startAnimating()
+    
         return cell
     }
     
@@ -92,14 +148,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             return sectionInsets
     }
     
-    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String!, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
 
         return UICollectionReusableView()
     }
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //collectionView.collectionViewLayout.invalidateLayout()
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FancyTileCollectionViewCell
         println("index: \(indexPath.row) tapped: \(cell.frame.height)")
         
         let buttons = ["Back", "Pix", "Business"]

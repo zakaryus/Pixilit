@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fancyTileCollectionViewCell" id="GRH-tf-fsU" customClass="FancyTileCollectionViewCell" customModule="Pixilit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="202" height="307"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="202" height="307"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdj-TO-Rpw">
+                        <rect key="frame" x="8" y="8" width="186" height="183"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4sh-iR-d53">
+                        <rect key="frame" x="0.0" y="256" width="51" height="51"/>
+                    </imageView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="photo description" translatesAutoresizingMaskIntoConstraints="NO" id="Uge-Ig-hAZ">
+                        <rect key="frame" x="0.0" y="190" width="202" height="41"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="tags" translatesAutoresizingMaskIntoConstraints="NO" id="bW5-NO-Os1">
+                        <rect key="frame" x="0.0" y="221" width="202" height="33"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Business name" translatesAutoresizingMaskIntoConstraints="NO" id="hxN-Ow-hg5">
+                        <rect key="frame" x="49" y="256" width="153" height="51"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="4sh-iR-d53" firstAttribute="top" secondItem="bW5-NO-Os1" secondAttribute="bottom" constant="2" id="2c2-cf-2Yb"/>
+                <constraint firstAttribute="trailing" secondItem="hxN-Ow-hg5" secondAttribute="trailing" id="6Vt-ht-Q0k"/>
+                <constraint firstAttribute="trailing" secondItem="bW5-NO-Os1" secondAttribute="trailing" id="C6v-IL-ySW"/>
+                <constraint firstItem="hxN-Ow-hg5" firstAttribute="top" secondItem="bW5-NO-Os1" secondAttribute="bottom" constant="2" id="GTa-aN-N6I"/>
+                <constraint firstAttribute="bottom" secondItem="4sh-iR-d53" secondAttribute="bottom" id="I9v-P2-baE"/>
+                <constraint firstItem="hdj-TO-Rpw" firstAttribute="top" secondItem="GRH-tf-fsU" secondAttribute="top" constant="8" id="Jha-7Q-R7o"/>
+                <constraint firstItem="Uge-Ig-hAZ" firstAttribute="top" secondItem="hdj-TO-Rpw" secondAttribute="bottom" constant="-1" id="PKl-ea-gZN"/>
+                <constraint firstItem="Uge-Ig-hAZ" firstAttribute="leading" secondItem="GRH-tf-fsU" secondAttribute="leading" id="RbG-RU-7fE"/>
+                <constraint firstAttribute="trailing" secondItem="Uge-Ig-hAZ" secondAttribute="trailing" id="WzT-sV-Cu5"/>
+                <constraint firstItem="hdj-TO-Rpw" firstAttribute="leading" secondItem="GRH-tf-fsU" secondAttribute="leading" constant="8" id="YmU-Ye-rwn"/>
+                <constraint firstItem="bW5-NO-Os1" firstAttribute="top" secondItem="Uge-Ig-hAZ" secondAttribute="bottom" constant="-10" id="cVl-R8-aZJ"/>
+                <constraint firstAttribute="trailing" secondItem="hdj-TO-Rpw" secondAttribute="trailing" constant="8" id="nZw-w7-owf"/>
+                <constraint firstItem="bW5-NO-Os1" firstAttribute="leading" secondItem="GRH-tf-fsU" secondAttribute="leading" id="q24-aJ-NDP"/>
+                <constraint firstItem="4sh-iR-d53" firstAttribute="leading" secondItem="GRH-tf-fsU" secondAttribute="leading" id="rq8-dp-xGa"/>
+                <constraint firstAttribute="bottom" secondItem="hxN-Ow-hg5" secondAttribute="bottom" id="yb5-PT-f4e"/>
+            </constraints>
+            <size key="customSize" width="202" height="307"/>
+            <point key="canvasLocation" x="541" y="565.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
