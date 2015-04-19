@@ -14,7 +14,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet var collectionView: UICollectionView!
     var tiles:[(tile: Tile, photo: UIImage)]=[]
     var selectedTile: Tile = Tile()
-    let reuseId = "fancyTileCollectionViewCell"
+    let reuseId = "fancyTile"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
     var page: Int = 0
@@ -24,7 +24,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
-        //collectionView!.registerNib(UINib(nibName: "FancyTileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseId)
+        collectionView!.registerNib(UINib(nibName: "FancyTileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseId)
 
         Setup()
     }
@@ -74,8 +74,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cell: FancyTileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! FancyTileCollectionViewCell
         
-        if cell.businessPhoto == nil {
-            cell = FancyTileCollectionViewCell()
+//        if cell.businessPhoto == nil {
+//            cell = FancyTileCollectionViewCell()
+//        }
+        
+        HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+            Photo in
+            self.tiles[indexPath.row].photo = Photo
         }
         
         if (indexPath.item < tiles.count) {
@@ -92,7 +97,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         }
 
         //cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
-        
+        cell.sizeToFit()
         return cell
     }
     
@@ -140,6 +145,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         }
 
         return scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
+        
+        //return CGSize(width: 0, height: 0);
     }
     
     func collectionView(collectionView: UICollectionView!,
