@@ -14,18 +14,16 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     @IBOutlet var collectionView: UICollectionView!
     var tiles:[(tile: Tile, photo: UIImage)]=[]
     var selectedTile: Tile = Tile()
-    let reuseId = "fancyTile"
+    let reuseId = "tile"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
     var page: Int = 0
-    var measuringCell: FancyTileCollectionViewCell?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
-        collectionView!.registerNib(UINib(nibName: "FancyTileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseId)
 
         Setup()
     }
@@ -73,33 +71,29 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell: FancyTileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! FancyTileCollectionViewCell
+        var cell: TileCVC = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCVC
         
-//        if cell.businessPhoto == nil {
-//            cell = FancyTileCollectionViewCell()
-//        }
+        var tile = tiles[indexPath.row].tile
+        var photo = tiles[indexPath.row].photo
         
-//        HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-//            Photo in
-//            self.tiles[indexPath.row].photo = Photo
-//        }
-//        
-//        if (indexPath.item < tiles.count) {
-//            
-//            // pre-fetch the next 'page' of data.
-//            if(indexPath.item == (tiles.count - 8 + 1)){
-//                fetchMoreItems()
-//            }
-            var rect = scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
+        var rect = scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
+        println("cell photo width: \(rect.width) height: \(rect.height)")
 
-            cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo, rect: rect)
-//        } else {
-//            fetchMoreItems()
-//            return loadingCellForIndexPath(indexPath)
-//        }
-
-        //cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
-        //cell.sizeToFit()
+        cell.Photo.frame = CGRectMake(0, 0, cell.frame.size.width - 16, rect.height)
+        cell.Photo.autoresizesSubviews = true
+        cell.Photo.contentMode = .ScaleAspectFit
+        cell.Photo.autoresizingMask = .FlexibleHeight
+        cell.Photo.image = photo
+        
+        cell.Description.text = tile.Description == nil ? "<Empty>" : tile.Description
+        cell.Tags.text = ""
+        for tag in tile.tags {
+            cell.Tags.text! += "\(tag), "
+        }
+        cell.Business.text = tile.BusinessName == nil ? "<Empty>" : tile.BusinessName
+        
+        println("cell width: \(cell.frame.size.width) height: \(cell.frame.size.height)")
+        
         return cell
     }
     
@@ -127,7 +121,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     func loadingCellForIndexPath(indexPath: NSIndexPath) -> UICollectionViewCell {
     
-        let cell: FancyTileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! FancyTileCollectionViewCell
+        let cell: TileCVC = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCVC
     
         var activityIndicator = UIActivityIndicatorView()
         activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.WhiteLarge
@@ -145,22 +139,10 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             Photo in
             self.tiles[indexPath.row].photo = Photo
         }
-        
-        var cell = measuringCell
-        if cell == nil {
-            cell = NSBundle.mainBundle().loadNibNamed("FancyTileCollectionViewCell", owner: self, options: nil)[0] as? FancyTileCollectionViewCell
-            measuringCell = cell
-        }
 
         var rect = scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
         
-        println("rect width: \(rect.width) height: \(rect.height)")
-        measuringCell?.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo, rect: rect)
-
-        println("width: \(measuringCell!.frame.size.width) height: \(measuringCell!.frame.size.height)")
-        //return measuringCell!.frame.size
-        
-        return measuringCell!.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
+        return CGSize(width: rect.width + 16, height: rect.height + 200)
     }
     
     func collectionView(collectionView: UICollectionView!,
@@ -176,7 +158,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //collectionView.collectionViewLayout.invalidateLayout()
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! FancyTileCollectionViewCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TileCVC
         println("index: \(indexPath.row) tapped: \(cell.frame.height)")
         
         let buttons = ["Back", "Pix", "Business"]

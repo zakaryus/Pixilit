@@ -21,8 +21,7 @@
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
 		31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */; };
-		320DC8141AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320DC8121AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift */; };
-		320DC8151AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 320DC8131AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib */; };
+		31D575F21AE43CBC004BB01B /* TileCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D575F11AE43CBC004BB01B /* TileCVC.swift */; };
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
@@ -96,8 +95,7 @@
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
-		320DC8121AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyTileCollectionViewCell.swift; sourceTree = "<group>"; };
-		320DC8131AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FancyTileCollectionViewCell.xib; sourceTree = "<group>"; };
+		31D575F11AE43CBC004BB01B /* TileCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileCVC.swift; sourceTree = "<group>"; };
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3212E7231AD88CBD008593CE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
-				31BD3AB41AE400AA00E86D24 /* Views */,
 				32BA54631ADC506F0099DD87 /* Libraries */,
 				32BA54641ADC508B0099DD87 /* Controllers */,
 				32BA54651ADC50BC0099DD87 /* Models */,
@@ -200,6 +197,7 @@
 				3185E12C1A79D3E600037B10 /* Main.storyboard */,
 				3185E1311A79D3E600037B10 /* LaunchScreen.xib */,
 				32B51DCD1ADDA4D90014ECCC /* IRestful.swift */,
+				31D575F11AE43CBC004BB01B /* TileCVC.swift */,
 			);
 			path = Pixilit;
 			sourceTree = "<group>";
@@ -230,16 +228,6 @@
 				3185E13D1A79D3E600037B10 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		31BD3AB41AE400AA00E86D24 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				320DC8121AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift */,
-				320DC8131AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib */,
-			);
-			name = Views;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		325CEC361ADF205E00AEBC56 /* Images */ = {
@@ -428,7 +416,6 @@
 			files = (
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
-				320DC8151AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
@@ -469,7 +456,6 @@
 				325CEC331ADF027200AEBC56 /* SubRegionViewController.swift in Sources */,
 				32B51DD01ADDA9A80014ECCC /* RegionHierarchy.swift in Sources */,
 				D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */,
-				320DC8141AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift in Sources */,
 				32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */,
 				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
@@ -478,6 +464,7 @@
 				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
 				32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
+				31D575F21AE43CBC004BB01B /* TileCVC.swift in Sources */,
 				325CEC2F1ADEF0AC00AEBC56 /* RegionKvp.swift in Sources */,
 				32B51DCA1ADDA0E40014ECCC /* PaymentViewController.swift in Sources */,
 				32B51DC61ADD9EB70014ECCC /* RegionViewController.swift in Sources */,
