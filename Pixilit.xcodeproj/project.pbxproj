@@ -169,8 +169,6 @@
 		3185E1181A79D3E600037B10 = {
 			isa = PBXGroup;
 			children = (
-				320DC8121AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift */,
-				320DC8131AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib */,
 				3185E1231A79D3E600037B10 /* Pixilit */,
 				3185E13B1A79D3E600037B10 /* PixilitTests */,
 				3185E1221A79D3E600037B10 /* Products */,
@@ -189,6 +187,7 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
+				31BD3AB41AE400AA00E86D24 /* Views */,
 				32BA54631ADC506F0099DD87 /* Libraries */,
 				32BA54641ADC508B0099DD87 /* Controllers */,
 				32BA54651ADC50BC0099DD87 /* Models */,
@@ -231,6 +230,16 @@
 				3185E13D1A79D3E600037B10 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31BD3AB41AE400AA00E86D24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				320DC8121AE1B19000B3C0A2 /* FancyTileCollectionViewCell.swift */,
+				320DC8131AE1B19000B3C0A2 /* FancyTileCollectionViewCell.xib */,
+			);
+			name = Views;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		325CEC361ADF205E00AEBC56 /* Images */ = {

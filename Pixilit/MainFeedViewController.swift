@@ -18,6 +18,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
     var page: Int = 0
+    var measuringCell: FancyTileCollectionViewCell?
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -78,26 +79,27 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 //            cell = FancyTileCollectionViewCell()
 //        }
         
-        HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-            Photo in
-            self.tiles[indexPath.row].photo = Photo
-        }
-        
-        if (indexPath.item < tiles.count) {
-            
-            // pre-fetch the next 'page' of data.
-            if(indexPath.item == (tiles.count - 8 + 1)){
-                fetchMoreItems()
-            }
-            
-            cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
-        } else {
-            fetchMoreItems()
-            return loadingCellForIndexPath(indexPath)
-        }
+//        HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+//            Photo in
+//            self.tiles[indexPath.row].photo = Photo
+//        }
+//        
+//        if (indexPath.item < tiles.count) {
+//            
+//            // pre-fetch the next 'page' of data.
+//            if(indexPath.item == (tiles.count - 8 + 1)){
+//                fetchMoreItems()
+//            }
+            var rect = scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
+
+            cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo, rect: rect)
+//        } else {
+//            fetchMoreItems()
+//            return loadingCellForIndexPath(indexPath)
+//        }
 
         //cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
-        cell.sizeToFit()
+        //cell.sizeToFit()
         return cell
     }
     
@@ -143,10 +145,20 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             Photo in
             self.tiles[indexPath.row].photo = Photo
         }
-
-        return scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
         
-        //return CGSize(width: 0, height: 0);
+        var cell = measuringCell
+        if cell == nil {
+            cell = NSBundle.mainBundle().loadNibNamed("FancyTileCollectionViewCell", owner: self, options: nil)[0] as? FancyTileCollectionViewCell
+            measuringCell = cell
+        }
+
+        var rect = scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
+        
+        
+        measuringCell?.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo, rect: rect)
+
+        println("width: \(measuringCell!.frame.size.width) height: \(measuringCell!.frame.size.height)")
+        return measuringCell!.frame.size
     }
     
     func collectionView(collectionView: UICollectionView!,

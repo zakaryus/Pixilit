@@ -18,34 +18,24 @@ class FancyTileCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        mainImage = UIImageView()
-//        photoDescription = UITextView()
-//        tags = UITextView()
-//        businessPhoto = UIImageView()
-//        businessName = UITextView()
+        self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        self.layer.masksToBounds = true
     }
-//    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        mainImage = UIImageView()
-//        photoDescription = UITextView()
-//        tags = UITextView()
-//        businessPhoto = UIImageView()
-//        businessName = UITextView()
-//    }
-//    
-//    required init(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        mainImage = UIImageView()
-//        photoDescription = UITextView()
-//        tags = UITextView()
-//        businessPhoto = UIImageView()
-//        businessName = UITextView()
-//    }
-    
-    func setup(tile: Tile, img: UIImage) {
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
+        self.frame = CGRectMake(0, self.frame.origin.y, self.frame.size.width, self.frame.size.height)
+    }
+    
+    func setup(tile: Tile, img: UIImage, rect: CGSize) {
+
+        mainImage.frame = CGRectMake(0, 0, rect.width, rect.height)
+        mainImage.autoresizesSubviews = true
+        mainImage.contentMode = .ScaleAspectFit
+        mainImage.autoresizingMask = .FlexibleHeight
         mainImage.image = img
+
         photoDescription.text = "new photo description" //tile.description
 //        for tag in tile.tags {
 //            tags.text? += tag
@@ -61,7 +51,11 @@ class FancyTileCollectionViewCell: UICollectionViewCell {
 //            self.businessPhoto.image = Photo
 //        }
         businessName.text = "new business name" //tile.BusinessName
-        
+        self.layoutIfNeeded()
+        self.setNeedsLayout()
+        self.contentView.setNeedsLayout()
+        self.contentView.bounds = self.bounds
+        println("bounds width: \(self.bounds.width) height: \(self.bounds.height)")
     }
 
 }
