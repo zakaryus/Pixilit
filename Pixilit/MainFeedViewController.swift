@@ -154,11 +154,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
         var rect = scale(ScaleSize.HalfScreen, img: tiles[indexPath.row].photo)
         
-        
+        println("rect width: \(rect.width) height: \(rect.height)")
         measuringCell?.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo, rect: rect)
 
         println("width: \(measuringCell!.frame.size.width) height: \(measuringCell!.frame.size.height)")
-        return measuringCell!.frame.size
+        //return measuringCell!.frame.size
+        
+        return measuringCell!.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
     }
     
     func collectionView(collectionView: UICollectionView!,

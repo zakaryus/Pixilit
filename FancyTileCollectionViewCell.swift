@@ -18,14 +18,16 @@ class FancyTileCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        self.autoresizesSubviews = true
+        self.contentMode = .ScaleAspectFit
+        self.contentView.autoresizingMask = .FlexibleHeight
         self.layer.masksToBounds = true
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.frame = CGRectMake(0, self.frame.origin.y, self.frame.size.width, self.frame.size.height)
+//        self.frame = CGRectMake(0, self.frame.origin.y, self.frame.size.width, self.frame.size.height)
     }
     
     func setup(tile: Tile, img: UIImage, rect: CGSize) {
@@ -35,6 +37,8 @@ class FancyTileCollectionViewCell: UICollectionViewCell {
         mainImage.contentMode = .ScaleAspectFit
         mainImage.autoresizingMask = .FlexibleHeight
         mainImage.image = img
+        
+        println("mainImage width: \(mainImage.frame.size.width) height: \(mainImage.frame.size.height)")
 
         photoDescription.text = "new photo description" //tile.description
 //        for tag in tile.tags {
@@ -53,9 +57,14 @@ class FancyTileCollectionViewCell: UICollectionViewCell {
         businessName.text = "new business name" //tile.BusinessName
         self.layoutIfNeeded()
         self.setNeedsLayout()
-        self.contentView.setNeedsLayout()
-        self.contentView.bounds = self.bounds
+        //self.contentView.setNeedsLayout()
+        //self.contentView.bounds = self.bounds
         println("bounds width: \(self.bounds.width) height: \(self.bounds.height)")
+    }
+    
+    override func preferredLayoutAttributesFittingAttributes(layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes! {
+        let toReturn = super.preferredLayoutAttributesFittingAttributes(layoutAttributes)
+        return toReturn
     }
 
 }

@@ -282,38 +282,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userPhotoCollectionViewCell" id="I76-1v-OFr" customClass="TileCollectionViewCell" customModule="Pixilit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="149" height="179"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Wh-Le-sss">
-                                                    <rect key="frame" x="0.0" y="0.0" width="149" height="179"/>
-                                                </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.34999999999999964" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Gdv-3u-qVo">
-                                                    <rect key="frame" x="0.0" y="45" width="149" height="87"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <color key="textColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="Gdv-3u-qVo" firstAttribute="leading" secondItem="I76-1v-OFr" secondAttribute="leadingMargin" constant="-8" id="Beg-4J-DLz"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="Gdv-3u-qVo" secondAttribute="trailing" constant="-8" id="IlO-6O-8cY"/>
-                                            <constraint firstAttribute="centerY" secondItem="Gdv-3u-qVo" secondAttribute="centerY" id="spX-Qr-NeS"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="Desc2" destination="Gdv-3u-qVo" id="D8x-53-3dF"/>
-                                            <outlet property="Photo" destination="8Wh-Le-sss" id="bEJ-OY-BsV"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="8rJ-Kc-sve" id="X7X-fY-niz"/>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="FAz-5o-sOB"/>
