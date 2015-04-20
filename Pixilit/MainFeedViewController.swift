@@ -21,6 +21,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+        self.presentingViewController?.providesPresentationContextTransitionStyle = true
+        self.presentingViewController?.definesPresentationContext = true
+        //self.presentingViewController?.modalPresentationStyle = m
+        //self.presentingViewController.set
+//        self.presentingController.providesPresentationContextTransitionStyle = YES;
+//        presentingController.definesPresentationContext = YES;
+//        
+//        [presentingController setModalPresentationStyle:UIModalPresentationOverCurrentContext];
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
         Setup()
@@ -113,7 +121,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         
         // Create a new AlertView instance
-        let alertView = CustomIOS7AlertView()
+        /*let alertView = CustomIOS7AlertView()
         
         // Set the button titles array
         alertView.buttonTitles = buttons
@@ -125,7 +133,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         alertView.delegate = self
         
         // Show time!
-        alertView.show()
+        alertView.show()*/
+        self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
     }
     
@@ -154,8 +163,12 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var bvc = segue.destinationViewController as! BusinessViewController
-        bvc.business = sender as! Business
+        var tpvc = segue.destinationViewController as! TilePopupViewController
+        var index = sender as! Int
+        tpvc.SelectedTile = tiles[index].tile
+        tpvc.SelectedImage = tiles[index].photo
+        //var bvc = segue.destinationViewController as! BusinessViewController
+        //bvc.business = sender as! Business
     }
     
     // Create a custom container view
