@@ -14,13 +14,18 @@ class Tile: NSObject, IRestful {
     private(set) var Photo: String?
     private(set) var Nid : String?
     private(set) var BusinessID: String?
-    private(set) var Pixd: Bool?
+    private var _Pixd: Bool?
+    var Pixd: Bool? {
+        get { return _Pixd }
+        set(value) { _Pixd = value }
+    }
     private(set) var tags: [String] = []
     
     override init() { }
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
     required init(json: JSON) {
+        super.init()
         if let title = json["description"].string {
             self.Description = title
         }
@@ -39,8 +44,7 @@ class Tile: NSObject, IRestful {
         
         if let pixd = json["pixd"].string {
             self.Pixd = HelperREST.RestIsFlagged(self.Nid!)
-            println("\(self.Pixd) pixd in the tile")
-        }
+                   }
         if let tags = json["Tags"].array {
         
             for tag in tags {

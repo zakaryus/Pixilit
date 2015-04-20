@@ -146,7 +146,23 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         else if alertView.buttonTitles![buttonIndex].lowercaseString.rangeOfString("pix") != nil
         {
             println(selectedTile.Nid)
-            HelperREST.RestFlag(selectedTile.Nid!, pixd : selectedTile.Pixd!) { suc in }
+            HelperREST.RestFlag(selectedTile.Nid!, pixd : selectedTile.Pixd!) {
+                suc in
+                println("\(suc) this sucs")
+                if suc == true
+                {
+                    
+
+                    if self.selectedTile.Pixd == true
+                    {
+                        self.selectedTile.Pixd = false
+                    }
+                    else
+                    {
+                        self.selectedTile.Pixd = true
+                    }
+                }
+            }
             
             
         }

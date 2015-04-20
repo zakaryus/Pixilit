@@ -49,8 +49,7 @@ struct HelperREST
         
         var flagged: String = "flag"
       
-        println("right before pixd == true \(pixd)")
-        if  pixd == true {
+              if  pixd == true {
             flagged = "unflag"
         }
         
@@ -74,10 +73,14 @@ struct HelperREST
         
         for (index: String, subJson: JSON) in json {
         
-        // success = subJson[0]
+            if subJson.stringValue == "true"
+            {
+                success = true
+            }
 
         break
         }
+        CompletionHandler(Success: success)
         
         
     }
@@ -107,11 +110,7 @@ struct HelperREST
         println(json)
         for (index: String, subJson: JSON) in json {
             
-            println("\(subJson) subjson")
-            println("\(subJson.string) subjson.string")
-            println("\(subJson.stringValue) subjson.stringValue")
-            println("\(subJson.bool) subjson.bool")
-            
+                     
             
             if subJson.stringValue == "true"
             {
