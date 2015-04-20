@@ -48,11 +48,11 @@ struct HelperREST
         let url: NSURL = NSURL(string: urlPath)!
         
         var flagged: String = "flag"
-        if pixd == true {
+      
+        println("right before pixd == true \(pixd)")
+        if  pixd == true {
             flagged = "unflag"
         }
-        
-        
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
         println(post)
@@ -69,21 +69,62 @@ struct HelperREST
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
         
-      
-        
         var json = JSON(data: data!)
         var success : Bool = false
         
         for (index: String, subJson: JSON) in json {
         
-        //success = subJson[0]
-        println(subJson)
+        // success = subJson[0]
 
         break
         }
         
         
     }
+    
+    static func RestIsFlagged(entityID : String) -> Bool {
+        
+        let urlPath = Config.RestIsFlagged
+        let url: NSURL = NSURL(string: urlPath)!
+        
+        var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
+        println(post)
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length )
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+        var json = JSON(data: data!)
+        var success : Bool = false
+        println(json)
+        for (index: String, subJson: JSON) in json {
+            
+            println("\(subJson) subjson")
+            println("\(subJson.string) subjson.string")
+            println("\(subJson.stringValue) subjson.stringValue")
+            println("\(subJson.bool) subjson.bool")
+            
+            
+            if subJson.stringValue == "true"
+            {
+                success = true
+            }
+      
+        }
+        return success
+        
+        
+    }
+    
+    
 
     //REST
     static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {

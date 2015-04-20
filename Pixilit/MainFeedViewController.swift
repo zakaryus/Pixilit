@@ -103,12 +103,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         println("index: \(indexPath.row) tapped: \(cell.frame.height)")
         selectedTile = tiles[indexPath.row].tile
         var pixDescription = "Pix"
-        println(selectedTile.Pixd!)
+  
         if selectedTile.Pixd == true
         {
             pixDescription = "Unpix"
         }
         
+        println(selectedTile.Pixd)
+        println(pixDescription)
         let buttons = ["Back", pixDescription, "Business"]
         
         
@@ -141,7 +143,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             }
         }
         
-        else if alertView.buttonTitles![buttonIndex] == "Pix"
+        else if alertView.buttonTitles![buttonIndex].lowercaseString.rangeOfString("pix") != nil
         {
             println(selectedTile.Nid)
             HelperREST.RestFlag(selectedTile.Nid!, pixd : selectedTile.Pixd!) { suc in }

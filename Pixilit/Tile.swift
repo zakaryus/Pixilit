@@ -38,7 +38,8 @@ class Tile: NSObject, IRestful {
         }
         
         if let pixd = json["pixd"].string {
-            self.Pixd = pixd == "1"
+            self.Pixd = HelperREST.RestIsFlagged(self.Nid!)
+            println("\(self.Pixd) pixd in the tile")
         }
         if let tags = json["Tags"].array {
         

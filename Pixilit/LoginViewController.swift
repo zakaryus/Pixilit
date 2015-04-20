@@ -53,9 +53,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
                     var encrypted = MyCrypt.encryptString(password as String)
             println(encrypted)
-                    password = "nothing to see here"
+                    password = "pixilit"
             
-                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(MyCrypt.key + encrypted)\"}"
+                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(password)\"}"
               println(loginpost)
                     var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
                     var loginpostLength:NSString = String( loginpostData.length )

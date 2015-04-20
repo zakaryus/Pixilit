@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>RestIsFlagged</key>
+	<string>http://104.236.227.190/rest/flag/is_flagged.json</string>
 	<key>RestFlagJson</key>
 	<string>http://104.236.227.190/rest/flag/flag.json</string>
 	<key>RestRegionsJson</key>
