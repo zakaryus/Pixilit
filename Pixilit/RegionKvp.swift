@@ -8,9 +8,8 @@
 
 class RegionKvp {
 
-    var Parent : Region
-    var Children : [Region]
-    
+    private(set) var Parent : Region
+    private(set) var Children : [Region]
     
     init(parent: Region)
     {

@@ -10,10 +10,10 @@ enum AccountType : String{
 
 struct User
 {
-    static var Username: String!
-    static var Token: String!
-    static var Uid: String!
-    static var Role: AccountType!
+    private(set) static var Username: String!
+    private(set) static var Token: String!
+    private(set) static var Uid: String!
+    private(set) static var Role: AccountType!
     
     static func userSetup(json: JSON)
     {

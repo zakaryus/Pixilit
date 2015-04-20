@@ -10,7 +10,7 @@ import Foundation
 
 class RegionHierarchy {
     
-    var Heirarchy : [RegionKvp] = []
+    private(set) var Heirarchy : [RegionKvp] = []
     
     init(regions : [Region])
     {

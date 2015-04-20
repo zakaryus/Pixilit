@@ -10,10 +10,9 @@ import UIKit
 
 class Region: NSObject, IRestful
 {
-    var Name: String?
-    var TID: Int?
-    var PID: Int?
-    
+    private(set) var Name: String?
+    private(set) var TID: Int?
+    private(set) var PID: Int?
     
     override init() { }
     

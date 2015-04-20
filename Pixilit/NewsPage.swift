@@ -9,9 +9,10 @@
 import UIKit
 
 class NewsPage: NSObject, IRestful {
-    var Title: String?
-    var Body: String?
-    var Date: NSDate?
+    
+    private(set) var Title: String?
+    private(set) var Body: String?
+    private(set) var Date: NSDate?
     
     override init() { }
     

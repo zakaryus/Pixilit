@@ -10,12 +10,12 @@ import UIKit
 
 class Tile: NSObject, IRestful {
     
-    var Description: String?
-    var Photo: String?
-    var Nid : String?
-    var BusinessID: String?
-    var Pixd: Bool?
-    var tags: [String] = []
+    private(set) var Description: String?
+    private(set) var Photo: String?
+    private(set) var Nid : String?
+    private(set) var BusinessID: String?
+    private(set) var Pixd: Bool?
+    private(set) var tags: [String] = []
     
     override init() { }
     

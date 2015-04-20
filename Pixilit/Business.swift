@@ -10,19 +10,19 @@ import UIKit
 
 class Business: NSObject, IRestful
 {
-    var Title: String?
-    var Thoroughfare: String?
-    var Locality: String?
-    var AdministrativeArea: String?
-    var PostalCode: String?
-    var Phone: String?
-    var Email: String?
-    var Website: String?
-    var Hours: [String] = []
-    var Description: String?
-    var Logo: String?
-    var Pix: [String] = []
-    var Uid: String?
+    private(set) var Title: String?
+    private(set) var Thoroughfare: String?
+    private(set) var Locality: String?
+    private(set) var AdministrativeArea: String?
+    private(set) var PostalCode: String?
+    private(set) var Phone: String?
+    private(set) var Email: String?
+    private(set) var Website: String?
+    private(set) var Hours: [String] = []
+    private(set) var Description: String?
+    private(set) var Logo: String?
+    private(set) var Pix: [String] = []
+    private(set) var Uid: String?
     
    override init() { }
     
