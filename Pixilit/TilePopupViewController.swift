@@ -10,12 +10,12 @@ import UIKit
 
 class TilePopupViewController: UIViewController {
 
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var imageDescription: UITextView!
-    @IBOutlet weak var imageTags: UITextView!
-    @IBOutlet weak var businessLogo: UIImageView!
-    @IBOutlet weak var businessTitle: UITextView!
-    @IBOutlet weak var pictureView: UIView!
+//    @IBOutlet weak var image: UIImageView!
+//    @IBOutlet weak var imageDescription: UITextView!
+//    @IBOutlet weak var imageTags: UITextView!
+//    @IBOutlet weak var businessLogo: UIImageView!
+//    @IBOutlet weak var businessTitle: UITextView!
+//    @IBOutlet weak var pictureView: UIView!
     
     private var _SelectedTile: Tile?
     var SelectedTile : Tile {
@@ -49,22 +49,32 @@ class TilePopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //image.image = SelectedImage
-        createContainerView()
-        imageDescription.text = SelectedTile.Description
-        for tag in SelectedTile.tags {
-            imageTags.text! += "\(tag), "
-        }
-        if let logo = SelectedTile.BusinessLogo {
-            //rest request
-            HelperURLs.UrlToImage(logo) {
-                photo in
-                self.businessLogo.image = photo
-            }
-        }
+        var popupView = createContainerView()
+          self.view.addSubview(popupView)
+        println("SUBVIEWS: \(self.view.subviews)")
+        //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
+        popupView.center = self.view.center
+//        let xCenterConstraint = NSLayoutConstraint(item: popupView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+//        self.view.addConstraint(xCenterConstraint)
+//        
+//        let yCenterConstraint = NSLayoutConstraint(item: popupView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+//        self.view.addConstraint(yCenterConstraint)
         
-        if let businessname = SelectedTile.BusinessName {
-            businessTitle.text = SelectedTile.BusinessName
-        }
+//        imageDescription.text = SelectedTile.Description
+//        for tag in SelectedTile.tags {
+//            imageTags.text! += "\(tag), "
+//        }
+//        if let logo = SelectedTile.BusinessLogo {
+//            //rest request
+//            HelperURLs.UrlToImage(logo) {
+//                photo in
+//                self.businessLogo.image = photo
+//            }
+//        }
+//        
+//        if let businessname = SelectedTile.BusinessName {
+//            businessTitle.text = SelectedTile.BusinessName
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -72,7 +82,7 @@ class TilePopupViewController: UIViewController {
         var rect = scale(ScaleSize.FullScreen, img: SelectedImage)
         
         //create the imageview of appropriate size
-        //var ivFullScreen = UIImageView()
+        var image = UIImageView()
         image.frame = CGRectMake(0, 0, rect.width, rect.height)
         image.autoresizesSubviews = true
         image.contentMode = .ScaleAspectFit
@@ -86,7 +96,7 @@ class TilePopupViewController: UIViewController {
         var maxW = self.view.frame.width * 0.85
         var maxH = min(rect.height, self.view.frame.height * 0.85)
         println("max W: \(maxW) \n maxH: \(maxH)")
-        //pictureView = UIView(frame: CGRectMake(0, 0, maxW, maxH))
+        var pictureView = UIView(frame: CGRectMake(0, 0, maxW, maxH))
         pictureView.frame = CGRectMake(0, 0, maxW, maxH)
         pictureView.autoresizesSubviews = true
         pictureView.clipsToBounds = true
