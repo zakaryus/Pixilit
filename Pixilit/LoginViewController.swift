@@ -8,10 +8,13 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     @IBOutlet weak var inusername: UITextField!
     @IBOutlet weak var inpassword: UITextField!
-
+    
+    
+    
+    @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
     override func viewWillAppear(animated: Bool) {
         println(User.Username)
         
@@ -23,22 +26,53 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func createAccountTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("CreateAccountSegue", sender: "CreateAccountSegue")
     }
+
+    
+    
+    func loginButton(fbLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
+    {
+        
+        
+        if ((error) != nil) {
+           println("facebook error")
+        }
+        else if result.isCancelled {
+            // Handle cancellations
+            let loginManager = FBSDKLoginManager()
+            loginManager.logOut()
+            println("facebook cancelled") 
+            
+ 
+        }
+        else {
+            // Navigate to other view
+             println("facebook works")
+                    self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
+    {
+        println("facebook loggeout")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.inusername.delegate = self;
         self.inpassword.delegate = self;
-        // Do any additional setup after loading the view.
+        fbLoginButton.delegate = self;
+        
+        
+               // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
+    
+       override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func FacebookTapped(sender: UIButton) {
-        println("hello facebook")
-          }
+
    
     @IBAction func signinTapped(sender: UIButton) {
         var username:NSString = inusername.text
