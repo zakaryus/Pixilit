@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               // tabBarItem1.image = UIImage(named: "Slice 1-2.png")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
           //  tabBarItem1.selectedImage = UIImage(named: "Slice 1-2.png")
          
-            tabBar.selectedImageTintColor = UIColor.whiteColor()
+            tabBar.tintColor = UIColor.whiteColor()
             
      //      tabBarItem1.image = UIImage(named: "Slice 1-2.png")
            // [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
          
             
-//            [[UITabBarItem appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//            [[UITabBarItem appearance] set/Users/pixilit/Desktop/Pixilit/Pixilit.xcodeprojTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
 //            [UIColor whiteColor], UITextAttributeTextColor,
 //            nil] forState:UIControlStateNormal];
 //            UIColor *titleHighlightedColor = [UIColor colorWithRed:153/255.0 green:192/255.0 blue:48/255.0 alpha:1.0];
@@ -63,9 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     
         
-        
-  
-        
+               
         return true
     }
     
@@ -95,6 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         User.SetAnonymous()
+        //FBSDKAppEvents.activateApp()
+
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
@@ -104,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 
+    
 
 }
 

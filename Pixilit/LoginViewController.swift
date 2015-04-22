@@ -35,7 +35,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    @IBAction func FacebookTapped(sender: UIButton) {
+        println("hello facebook")
+          }
+   
     @IBAction func signinTapped(sender: UIButton) {
         var username:NSString = inusername.text
         var password:NSString = inpassword.text
