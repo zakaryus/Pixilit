@@ -51,4 +51,9 @@ struct User
     {
         SetAnonymous()
     }
+    
+    static func isLoggedIn() -> Bool
+    {
+        return Uid != "-1"
+    }
 }

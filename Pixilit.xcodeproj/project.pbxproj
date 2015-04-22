@@ -24,6 +24,8 @@
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
+		324B53A61AE863AE006220C0 /* pixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A41AE863AE006220C0 /* pixd.png */; };
+		324B53A71AE863AE006220C0 /* unpixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A51AE863AE006220C0 /* unpixd.png */; };
 		325CEC2F1ADEF0AC00AEBC56 /* RegionKvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */; };
 		325CEC311ADEF45E00AEBC56 /* SavedRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */; };
 		325CEC331ADF027200AEBC56 /* SubRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */; };
@@ -99,6 +101,8 @@
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3212E7231AD88CBD008593CE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		324B53A41AE863AE006220C0 /* pixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixd.png; sourceTree = "<group>"; };
+		324B53A51AE863AE006220C0 /* unpixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpixd.png; sourceTree = "<group>"; };
 		325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionKvp.swift; sourceTree = "<group>"; };
 		325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRegionViewController.swift; sourceTree = "<group>"; };
 		325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubRegionViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				324B53A41AE863AE006220C0 /* pixd.png */,
+				324B53A51AE863AE006220C0 /* unpixd.png */,
 				32FDB63F1AE5A0B90039A30E /* dimmed.png */,
 				32E0E1AB1AE0669E00891C0C /* app icons */,
 				325CEC431ADF2E2100AEBC56 /* homeIcon.png */,
@@ -423,8 +429,10 @@
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
+				324B53A71AE863AE006220C0 /* unpixd.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
+				324B53A61AE863AE006220C0 /* pixd.png in Resources */,
 				325CEC3B1ADF23CA00AEBC56 /* Slice 1-2.png in Resources */,
 				325CEC351ADF205900AEBC56 /* Slice 1.png in Resources */,
 				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,

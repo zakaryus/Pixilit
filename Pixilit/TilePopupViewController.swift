@@ -54,11 +54,7 @@ class TilePopupViewController: UIViewController {
         println("SUBVIEWS: \(self.view.subviews)")
         //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
         popupView.center = self.view.center
-//        let xCenterConstraint = NSLayoutConstraint(item: popupView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-//        self.view.addConstraint(xCenterConstraint)
-//        
-//        let yCenterConstraint = NSLayoutConstraint(item: popupView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-//        self.view.addConstraint(yCenterConstraint)
+
         
 //        imageDescription.text = SelectedTile.Description
 //        for tag in SelectedTile.tags {
@@ -80,14 +76,34 @@ class TilePopupViewController: UIViewController {
     
     func createContainerView() -> UIView {
         var rect = scale(ScaleSize.FullScreen, img: SelectedImage)
-        
+
         //create the imageview of appropriate size
-        var image = UIImageView()
-        image.frame = CGRectMake(0, 0, rect.width, rect.height)
-        image.autoresizesSubviews = true
-        image.contentMode = .ScaleAspectFit
-        image.autoresizingMask = .FlexibleHeight
-        image.image = SelectedImage
+//        var image = UIImageView()
+//        image.frame = CGRectMake(0, 0, rect.width, rect.height)
+//        image.autoresizesSubviews = true
+//        image.contentMode = .ScaleAspectFit
+//        image.autoresizingMask = .FlexibleHeight
+//        image.image = SelectedImage
+        
+        
+        
+        
+        
+        var pixdImage = UIImageView()
+        //if User.isLoggedIn() {
+        pixdImage.frame = CGRectMake(0, 0, rect.width, rect.height)
+        pixdImage.autoresizesSubviews = true
+        pixdImage.contentMode = .ScaleAspectFit
+        pixdImage.autoresizingMask = .FlexibleHeight
+            if SelectedTile.Pixd == true {
+                pixdImage.image = UIImage(named: "pixd.png")
+            }
+            else {
+                pixdImage.image = UIImage(named: "unpixd.png")
+            }
+            //image.addSubview(pixdImage)
+            //pixdImage.center = image.center
+        //}
         
         //create the container of appropriate size
         //the container width is always 85% of the screen width
@@ -113,13 +129,13 @@ class TilePopupViewController: UIViewController {
             scroll.scrollEnabled = true
             scroll.userInteractionEnabled = true
             scroll.contentSize = rect
-            scroll.addSubview(image)
+            scroll.addSubview(pixdImage)
             pictureView.addSubview(scroll)
         }
         else {
-            pictureView.addSubview(image)
+            pictureView.addSubview(pixdImage)
         }
-        
+
         return pictureView
     }
     
