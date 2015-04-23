@@ -78,32 +78,34 @@ class TilePopupViewController: UIViewController {
         var rect = scale(ScaleSize.FullScreen, img: SelectedImage)
 
         //create the imageview of appropriate size
-//        var image = UIImageView()
-//        image.frame = CGRectMake(0, 0, rect.width, rect.height)
-//        image.autoresizesSubviews = true
-//        image.contentMode = .ScaleAspectFit
-//        image.autoresizingMask = .FlexibleHeight
-//        image.image = SelectedImage
+        var image = UIImageView()
+        image.frame = CGRectMake(0, 0, rect.width, rect.height)
+        image.autoresizesSubviews = true
+        image.contentMode = .ScaleAspectFit
+        image.autoresizingMask = .FlexibleHeight
+        image.image = SelectedImage
         
         
         
         
         
         var pixdImage = UIImageView()
-        //if User.isLoggedIn() {
-        pixdImage.frame = CGRectMake(0, 0, rect.width, rect.height)
+        pixdImage.frame = CGRectMake(0, 0, rect.width * 0.1, rect.height * 0.1)
         pixdImage.autoresizesSubviews = true
         pixdImage.contentMode = .ScaleAspectFit
         pixdImage.autoresizingMask = .FlexibleHeight
+        
+        if User.isLoggedIn() {
             if SelectedTile.Pixd == true {
-                pixdImage.image = UIImage(named: "pixd.png")
+                pixdImage.image = UIImage(named: "pixd")
             }
             else {
-                pixdImage.image = UIImage(named: "unpixd.png")
+                pixdImage.image = UIImage(named: "unpixd")
             }
-            //image.addSubview(pixdImage)
-            //pixdImage.center = image.center
-        //}
+
+            image.addSubview(pixdImage)
+
+        }
         
         //create the container of appropriate size
         //the container width is always 85% of the screen width
@@ -129,13 +131,52 @@ class TilePopupViewController: UIViewController {
             scroll.scrollEnabled = true
             scroll.userInteractionEnabled = true
             scroll.contentSize = rect
-            scroll.addSubview(pixdImage)
+            scroll.addSubview(image)
             pictureView.addSubview(scroll)
         }
         else {
-            pictureView.addSubview(pixdImage)
+            pictureView.addSubview(image)
         }
 
+        //add everything else
+        var imageDescription = UITextView()
+        imageDescription.text = SelectedTile.Description
+        imageDescription.editable = false
+        imageDescription.frame = CGRectMake(0, maxH - (maxH * 0.1), maxW, maxH * 0.05)
+        imageDescription.autoresizesSubviews = true
+        imageDescription.clipsToBounds = true
+        imageDescription.contentMode = .ScaleAspectFit
+        imageDescription.autoresizingMask = .FlexibleHeight
+        
+        pictureView.addSubview(imageDescription)
+        
+        var tagsTextField = UITextView()
+        var tags = ""
+        for tag in SelectedTile.tags {
+            tags += "\(tag), "
+        }
+        //tags = tags.substringToIndex(String.Index(count(tags)))
+        tagsTextField.text = tags
+        tagsTextField.editable = false
+        tagsTextField.frame = CGRectMake(0, maxH - (maxH * 0.05), maxW, maxH * 0.05)
+        tagsTextField.autoresizesSubviews = true
+        tagsTextField.clipsToBounds = true
+        tagsTextField.contentMode = .ScaleAspectFit
+        tagsTextField.autoresizingMask = .FlexibleHeight
+        
+        pictureView.addSubview(tagsTextField)
+        
+//        var businessLogo = UIImageView()
+//        businessLogo.frame = CGRectMake(0, 0, rect.width * 0.1, rect.height * 0.1)
+//        businessLogo.autoresizesSubviews = true
+//        businessLogo.contentMode = .ScaleAspectFit
+//        businessLogo.autoresizingMask = .FlexibleHeight
+//        HelperURLs.UrlToImage(SelectedTile.BusinessLogo!) {
+//            photo in
+//            businessLogo.image = photo
+//        }
+        
+        
         return pictureView
     }
     
