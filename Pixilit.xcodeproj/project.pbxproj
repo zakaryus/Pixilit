@@ -24,6 +24,8 @@
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
+		324B53A61AE863AE006220C0 /* pixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A41AE863AE006220C0 /* pixd.png */; };
+		324B53A71AE863AE006220C0 /* unpixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A51AE863AE006220C0 /* unpixd.png */; };
 		325CEC2F1ADEF0AC00AEBC56 /* RegionKvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */; };
 		325CEC311ADEF45E00AEBC56 /* SavedRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */; };
 		325CEC331ADF027200AEBC56 /* SubRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */; };
@@ -51,6 +53,8 @@
 		32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDAB1AD4782900B99783 /* RNEncryptor.m */; };
 		32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */; };
 		32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB51AD4794A00B99783 /* MyCrypt.swift */; };
+		32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FDB63F1AE5A0B90039A30E /* dimmed.png */; };
+		32FDB6421AE5A3A80039A30E /* TilePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */; };
 		4293ACC21AAE53010089F441 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC11AAE53010089F441 /* User.swift */; };
 		4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC31AAE533D0089F441 /* LoginViewController.swift */; };
 		4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC51AAE53600089F441 /* UserViewController.swift */; };
@@ -97,6 +101,8 @@
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3212E7231AD88CBD008593CE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		324B53A41AE863AE006220C0 /* pixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixd.png; sourceTree = "<group>"; };
+		324B53A51AE863AE006220C0 /* unpixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpixd.png; sourceTree = "<group>"; };
 		325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionKvp.swift; sourceTree = "<group>"; };
 		325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRegionViewController.swift; sourceTree = "<group>"; };
 		325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubRegionViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +137,8 @@
 		32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRNEncryptor.m; sourceTree = "<group>"; };
 		32FBEDB21AD478B900B99783 /* MyRNEncryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyRNEncryptor.h; sourceTree = "<group>"; };
 		32FBEDB51AD4794A00B99783 /* MyCrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCrypt.swift; sourceTree = "<group>"; };
+		32FDB63F1AE5A0B90039A30E /* dimmed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = dimmed.png; path = ../dimmed.png; sourceTree = "<group>"; };
+		32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TilePopupViewController.swift; sourceTree = "<group>"; };
 		4293ACC11AAE53010089F441 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4293ACC31AAE533D0089F441 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4293ACC51AAE53600089F441 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +238,9 @@
 		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				324B53A41AE863AE006220C0 /* pixd.png */,
+				324B53A51AE863AE006220C0 /* unpixd.png */,
+				32FDB63F1AE5A0B90039A30E /* dimmed.png */,
 				32E0E1AB1AE0669E00891C0C /* app icons */,
 				325CEC431ADF2E2100AEBC56 /* homeIcon.png */,
 				325CEC411ADF2E0000AEBC56 /* Slice 3.png */,
@@ -272,6 +283,7 @@
 				32B51DCB1ADDA1E10014ECCC /* AboutViewController.swift */,
 				325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */,
 				325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */,
+				32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -413,11 +425,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
+				32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
+				324B53A71AE863AE006220C0 /* unpixd.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
+				324B53A61AE863AE006220C0 /* pixd.png in Resources */,
 				325CEC3B1ADF23CA00AEBC56 /* Slice 1-2.png in Resources */,
 				325CEC351ADF205900AEBC56 /* Slice 1.png in Resources */,
 				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,
@@ -477,6 +492,7 @@
 				429616881AA7C06400BE167B /* NewsPageViewController.swift in Sources */,
 				32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */,
 				32B51DCE1ADDA4D90014ECCC /* IRestful.swift in Sources */,
+				32FDB6421AE5A3A80039A30E /* TilePopupViewController.swift in Sources */,
 				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */,

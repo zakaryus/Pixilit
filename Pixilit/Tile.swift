@@ -20,6 +20,8 @@ class Tile: NSObject, IRestful {
         set(value) { _Pixd = value }
     }
     private(set) var tags: [String] = []
+    private(set) var BusinessName: String?
+    private(set) var BusinessLogo: String?
     
     override init() { }
     
@@ -51,6 +53,13 @@ class Tile: NSObject, IRestful {
                 self.tags.append(tag.string!)
                 println("Tag: \(tag)")
             }
+        }
+        if let businessname = json["parent_name"].string {
+            self.BusinessName = businessname
+        }
+        
+        if let businesslogo = json["parent_logo"].string {
+            self.BusinessLogo = businesslogo
         }
     }
 }
