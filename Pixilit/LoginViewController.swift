@@ -33,22 +33,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     {
         
         
-        if ((error) != nil) {
-           println("facebook error")
-        }
-        else if result.isCancelled {
+       // if ((error) != nil) {
+       //    println("facebook error")
+      //  }
+     //   else if result.isCancelled {
             // Handle cancellations
-            let loginManager = FBSDKLoginManager()
-            loginManager.logOut()
-            println("facebook cancelled") 
+      //      let loginManager = FBSDKLoginManager()
+      //      loginManager.logOut()
+      //      println("facebook cancelled")
+           
             
  
-        }
-        else {
-            // Navigate to other view
-             println("facebook works")
-                    self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
+     //   }
+     //   else {
+     //       // Navigate to other view
+      //       println("facebook works")
+                   // self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+      //  }
+        println("facebook log in")
+        
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
@@ -61,9 +64,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         
         self.inusername.delegate = self;
         self.inpassword.delegate = self;
-        fbLoginButton.delegate = self;
+        self.fbLoginButton.delegate = self;
         
-        
+        if ((FBSDKAccessToken.currentAccessToken()) != nil)
+        {
+            println("inside access facebook token")
+            println(FBSDKAccessToken.currentAccessToken())
+        }
+        else
+        {
+            
+            println("inside ELSE access facebook token")
+            println(FBSDKAccessToken.currentAccessToken())
+            let loginManager = FBSDKLoginManager()
+                  loginManager.logOut()
+        }
                // Do any additional setup after loading the view.
     }
     
@@ -73,6 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
 
 
+   
    
     @IBAction func signinTapped(sender: UIButton) {
         var username:NSString = inusername.text
