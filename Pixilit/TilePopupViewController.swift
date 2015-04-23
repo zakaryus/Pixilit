@@ -16,7 +16,8 @@ class TilePopupViewController: UIViewController {
 //    @IBOutlet weak var businessLogo: UIImageView!
 //    @IBOutlet weak var businessTitle: UITextView!
 //    @IBOutlet weak var pictureView: UIView!
-    
+    var pixdButton = UIButton()
+
     private var _SelectedTile: Tile?
     var SelectedTile : Tile {
         get {
@@ -75,7 +76,7 @@ class TilePopupViewController: UIViewController {
     }
     
     func createContainerView() -> UIView {
-        var rect = scale(ScaleSize.FullScreen, img: SelectedImage)
+        var rect = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, img: SelectedImage, containerWidth: self.view.frame.width)
 
         //create the imageview of appropriate size
         var image = UIImageView()
@@ -86,25 +87,34 @@ class TilePopupViewController: UIViewController {
         image.image = SelectedImage
         
         
+        pixdButton.frame = CGRectMake(0, 0, rect.width * 0.1, rect.height * 0.1)
+        pixdButton.autoresizesSubviews = true
+        pixdButton.contentMode = .ScaleAspectFit
+        pixdButton.autoresizingMask = .FlexibleHeight
         
         
         
         var pixdImage = UIImageView()
-        pixdImage.frame = CGRectMake(0, 0, rect.width * 0.1, rect.height * 0.1)
+        //pixdImage.frame = CGRectMake(0, 0, rect.width * 0.1, rect.height * 0.1)
         pixdImage.autoresizesSubviews = true
         pixdImage.contentMode = .ScaleAspectFit
         pixdImage.autoresizingMask = .FlexibleHeight
         
         if User.isLoggedIn() {
             if SelectedTile.Pixd == true {
-                pixdImage.image = UIImage(named: "pixd")
+                //pixdImage.image = UIImage(named: "pixd")
+                pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
             }
             else {
-                pixdImage.image = UIImage(named: "unpixd")
+                //pixdImage.image = UIImage(named: "unpixd")
+                pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
             }
-
-            image.addSubview(pixdImage)
-
+            
+            pixdButton.addTarget(self, action: "pixdButtonPressed:", forControlEvents:.TouchUpInside)
+            
+            //image.addSubview(pixdImage)
+            image.userInteractionEnabled = true
+            image.addSubview(pixdButton)
         }
         
         //create the container of appropriate size
@@ -180,22 +190,28 @@ class TilePopupViewController: UIViewController {
         return pictureView
     }
     
-    enum ScaleSize {
-        case HalfScreen
-        case FullScreen
-    }
-    
-    //assumes constant width
-    func scale(size: ScaleSize, img: UIImage) -> CGSize {
-        let scale: CGFloat = size == ScaleSize.HalfScreen ? 0.475 : 0.875
+    func pixdButtonPressed(sender:UIButton!)
+    {
+        println("pixd button pressed")
         
-        let imgW = img.size.width
-        let imgH = img.size.height
+        HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
+            success in
+            println("\(success) this sucs")
+            if success == true
+            {
+                self.SelectedTile.Pixd = self.SelectedTile.Pixd == true ? false : true
+            }
+        }
         
-        let newImgW = ceil(self.view.frame.width * scale)
-        let newImgH = ceil((newImgW * imgH) / imgW)
         
-        return CGSizeMake(newImgW, newImgH)
+        if SelectedTile.Pixd == true {
+            //pixdImage.image = UIImage(named: "pixd")
+            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+        }
+        else {
+            //pixdImage.image = UIImage(named: "unpixd")
+            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

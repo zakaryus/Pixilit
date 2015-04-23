@@ -14,6 +14,7 @@ struct User
     private(set) static var Token: String!
     private(set) static var Uid: String!
     private(set) static var Role: AccountType!
+    private(set) static var Regions:[String]!
     
     static func userSetup(json: JSON)
     {
@@ -37,6 +38,14 @@ struct User
                     Role = .User
             }
         }
+        if let regions = json["regions"].array {
+            
+            for region in regions {
+                self.Regions.append(region.string!)
+                println("Region: \(region)")
+            }
+        }
+
     }
     
     static func SetAnonymous()
