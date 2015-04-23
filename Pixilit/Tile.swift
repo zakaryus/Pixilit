@@ -48,7 +48,7 @@ class Tile: NSObject, IRestful {
             self.Pixd = HelperREST.RestIsFlagged(self.Nid!)
                    }
         if let tags = json["Tags"].array {
-        
+            println(json)
             for tag in tags {
                 self.tags.append(tag.string!)
                 println("Tag: \(tag)")
