@@ -15,13 +15,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     
     @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
+    
     override func viewWillAppear(animated: Bool) {
         println(User.Username)
         
         if User.Role != AccountType.Anonymous {
             performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
         }
+       
     }
+
     
     @IBAction func createAccountTapped(sender: AnyObject) {
         self.performSegueWithIdentifier("CreateAccountSegue", sender: "CreateAccountSegue")
@@ -31,32 +34,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func loginButton(fbLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
+  
+        if(FBSDKAccessToken.currentAccessToken()  != nil)
+        {
+            println("yes token")
+            println(FBSDKAccessToken.currentAccessToken() )
+        }
+        //fbLoginButton.readPermissions = ["public_profile", "email"]
+        //var userName = result.valueForKey("email") as! NSString!
+     //   println(userName)
+       //  s var facebookUserName = returnUserData()
+        //var facebookName = getFacebookUserData()
+      getFacebookUserData()
+               println("facebook log in")
         
-        
-       // if ((error) != nil) {
-       //    println("facebook error")
-      //  }
-     //   else if result.isCancelled {
-            // Handle cancellations
-      //      let loginManager = FBSDKLoginManager()
-      //      loginManager.logOut()
-      //      println("facebook cancelled")
-           
-            
- 
-     //   }
-     //   else {
-     //       // Navigate to other view
-      //       println("facebook works")
-                   // self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-      //  }
-        println("facebook log in")
+        self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
         
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
     {
         println("facebook loggeout")
+        User.Logout()
     }
     
     override func viewDidLoad() {
@@ -64,22 +63,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         
         self.inusername.delegate = self;
         self.inpassword.delegate = self;
+        fbLoginButton.center = self.view.center;
         self.fbLoginButton.delegate = self;
+
         
-        if ((FBSDKAccessToken.currentAccessToken()) != nil)
-        {
-            println("inside access facebook token")
-            println(FBSDKAccessToken.currentAccessToken())
-        }
-        else
-        {
+    
+    }
+    
+    
+    func getFacebookUserData()
+    {
+        
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath:  "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
-            println("inside ELSE access facebook token")
-            println(FBSDKAccessToken.currentAccessToken())
-            let loginManager = FBSDKLoginManager()
-                  loginManager.logOut()
+            if ((error) != nil)
+            {
+                // Process error
+                println("Error: \(error)")
+            }
+            else
+            {
+                let facebookName = (result.valueForKey("name") as? String)!
+                let facebookID = (result.valueForKey("id") as? String)!
+               
+                print("name is  ")
+                println(facebookName)
+                User.facebookUsernameSet(facebookName)
+                User.facebookIDSet(facebookID)
+            
+               
+            }
+            
+        
         }
-               // Do any additional setup after loading the view.
+        )
+       
+
     }
     
        override func didReceiveMemoryWarning() {
@@ -187,6 +207,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         }
         
         
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
    
 }

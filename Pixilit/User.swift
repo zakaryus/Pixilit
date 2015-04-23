@@ -26,6 +26,8 @@ struct User
         }
         if let token = json["token"].string {
            Token = token
+            println("TOKEN")
+            println(Token)
         }
         if let role = json["user"]["field_account_type"]["und"][0]["value"].string {
             switch role.lowercaseString {
@@ -39,6 +41,26 @@ struct User
         }
     }
     
+    static func facebookUsernameSet(newName: String)
+    {
+        Username = newName
+        Role = .User
+        println("INSIDE USER")
+        println(Username)
+        //Uid = "12345678"
+        
+        
+    }
+    static func facebookIDSet(uid: String)
+    {
+  
+        Uid = uid
+        println("INSIDE ID")
+        println(Uid)
+        
+    }
+    
+
     static func SetAnonymous()
     {
         Username = "Anonymous"
@@ -46,6 +68,8 @@ struct User
         Token = ""
         Role = .Anonymous
     }
+    
+
     
     static func Logout()
     {
