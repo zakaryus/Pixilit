@@ -40,7 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             println("yes token")
             facebookToken += FBSDKAccessToken.currentAccessToken().tokenString //getting the facebook access token
             HelperREST.RestFacebook(facebookToken)
-            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+          //  self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
             
         }
         
