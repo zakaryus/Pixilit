@@ -10,14 +10,15 @@ import UIKit
 
 class TilePopupViewController: UIViewController {
 
-//    @IBOutlet weak var image: UIImageView!
-//    @IBOutlet weak var imageDescription: UITextView!
-//    @IBOutlet weak var imageTags: UITextView!
-//    @IBOutlet weak var businessLogo: UIImageView!
-//    @IBOutlet weak var businessTitle: UITextView!
-//    @IBOutlet weak var pictureView: UIView!
-    var pixdButton = UIButton()
-
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var imageDescription: UITextView!
+    @IBOutlet weak var imageTags: UITextView!
+    @IBOutlet weak var businessLogo: UIImageView!
+    @IBOutlet weak var businessTitle: UITextView!
+    @IBOutlet weak var popupView: UIView!
+    //var pixdButton = UIButton()
+    @IBOutlet weak var pixdButton: UIButton!
+    
     private var _SelectedTile: Tile?
     var SelectedTile : Tile {
         get {
@@ -44,34 +45,50 @@ class TilePopupViewController: UIViewController {
         }
     }
     @IBAction func dismissViewController(sender: AnyObject) {
+        //SelectedTile.
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //image.image = SelectedImage
-        var popupView = createContainerView()
-          self.view.addSubview(popupView)
+
+        image.image = SelectedImage
+
+        var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, img: image.image!, containerWidth: popupView.frame.width)
+        image.frame.size = dimensions
+        //var popupView = createContainerView()
+          //self.view.addSubview(popupView)
         println("SUBVIEWS: \(self.view.subviews)")
         //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
-        popupView.center = self.view.center
+        //popupView.center = self.view.center
 
         
-//        imageDescription.text = SelectedTile.Description
-//        for tag in SelectedTile.tags {
-//            imageTags.text! += "\(tag), "
-//        }
-//        if let logo = SelectedTile.BusinessLogo {
-//            //rest request
-//            HelperURLs.UrlToImage(logo) {
-//                photo in
-//                self.businessLogo.image = photo
-//            }
-//        }
-//        
-//        if let businessname = SelectedTile.BusinessName {
-//            businessTitle.text = SelectedTile.BusinessName
-//        }
+        imageDescription.text = SelectedTile.Description
+        for tag in SelectedTile.tags {
+            imageTags.text! += "\(tag), "
+        }
+        if let logo = SelectedTile.BusinessLogo {
+            //rest request
+            HelperURLs.UrlToImage(logo) {
+                photo in
+                self.businessLogo.image = photo
+            }
+        }
+        
+        if let businessname = SelectedTile.BusinessName {
+            businessTitle.text = SelectedTile.BusinessName
+        }
+        
+        if User.isLoggedIn() {
+            if SelectedTile.Pixd == true {
+                //pixdImage.image = UIImage(named: "pixd")
+                pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+            }
+            else {
+                //pixdImage.image = UIImage(named: "unpixd")
+                pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -86,8 +103,8 @@ class TilePopupViewController: UIViewController {
         image.autoresizingMask = .FlexibleHeight
         image.image = SelectedImage
         
-        
-        pixdButton.frame = CGRectMake(0, 0, rect.width * 0.1, rect.height * 0.1)
+        var bigger = max(rect.width * 0.1, rect.height * 0.1)
+        pixdButton.frame = CGRectMake(0, 0, bigger, bigger)
         pixdButton.autoresizesSubviews = true
         pixdButton.contentMode = .ScaleAspectFit
         pixdButton.autoresizingMask = .FlexibleHeight
@@ -122,7 +139,8 @@ class TilePopupViewController: UIViewController {
         //the container height is the minimum of the screen height
         //or the image height
         var maxW = self.view.frame.width * 0.85
-        var maxH = min(rect.height, self.view.frame.height * 0.85)
+        var maxH = min(rect.height, self.view.frame.height * 0.75)
+        maxH *= 1.2
         println("max W: \(maxW) \n maxH: \(maxH)")
         var pictureView = UIView(frame: CGRectMake(0, 0, maxW, maxH))
         pictureView.frame = CGRectMake(0, 0, maxW, maxH)
@@ -190,8 +208,7 @@ class TilePopupViewController: UIViewController {
         return pictureView
     }
     
-    func pixdButtonPressed(sender:UIButton!)
-    {
+    @IBAction func pixdButtonPressed(sender: AnyObject) {
         println("pixd button pressed")
         
         HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
@@ -212,6 +229,8 @@ class TilePopupViewController: UIViewController {
             //pixdImage.image = UIImage(named: "unpixd")
             pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
         }
+        
+        //notify observers
     }
 
     override func didReceiveMemoryWarning() {

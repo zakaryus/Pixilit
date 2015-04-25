@@ -17,7 +17,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
-
+    var selectedIndex = NSIndexPath()
     override public func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,6 +38,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
         Refresh()
+        
+        
     }
     
     func Refresh() {
@@ -46,7 +48,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             
             println(Tiles.count)
             self.tiles = []
-            
+          
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage())
             }
@@ -75,7 +77,15 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
         cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
+        var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
+        singleTap.numberOfTapsRequired = 1
+        var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
+        doubleTap.numberOfTapsRequired = 2
+
+        cell.addGestureRecognizer(singleTap)
+        cell.addGestureRecognizer(doubleTap)
         
+        singleTap.requireGestureRecognizerToFail(doubleTap)
         return cell
     }
     
@@ -100,9 +110,37 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         return UICollectionReusableView()
     }
     
+    func segueToPopup(sender: UITapGestureRecognizer!) {
+        self.performSegueWithIdentifier("FeedToBusinessSegue", sender: selectedIndex.row)
+    }
+    
+    func picDoubleTapped(sender: UITapGestureRecognizer!)
+    {
+        if !User.isLoggedIn() {
+            return
+        }
+        HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
+            success in
+            println("\(success) this sucs")
+            if success == true
+            {
+                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+            }
+        }
+        
+        setCellPix()
+        //tiles[self.selectedIndex.row].setPixd()
+    }
+
+    func setCellPix() {
+        var cell: TileCollectionViewCell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
+        cell.setPixd()
+    }
+    
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
-        self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
+        selectedIndex = indexPath
+        //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
     }
     

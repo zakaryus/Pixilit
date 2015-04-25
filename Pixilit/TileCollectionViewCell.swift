@@ -40,29 +40,7 @@ class TileCollectionViewCell: UICollectionViewCell {
         currentTile = tile
         setPixd();
         
-        var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
-        doubleTap.numberOfTapsRequired = 2
-        Photo.addGestureRecognizer(doubleTap)
-        //pixd.addGestureRecognizer(doubleTap)
-    }
-    
-    func picDoubleTapped(sender: UITapGestureRecognizer!)
-    {
-        if !User.isLoggedIn() {
-            return
         }
-        HelperREST.RestFlag(currentTile.Nid!, pixd : currentTile.Pixd!) {
-            success in
-            println("\(success) this sucs")
-            if success == true
-            {
-                self.currentTile.Pixd = self.currentTile.Pixd == true ? false : true
-            }
-        }
-        
-        
-        setPixd()
-    }
     
     func setPixd()
     {
