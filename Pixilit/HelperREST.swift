@@ -88,6 +88,8 @@ struct HelperREST
     static func RestIsFlagged(entityID : String) -> Bool {
         
         let urlPath = Config.RestIsFlagged
+        println("inside flagg")
+        println(User.Uid)
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
@@ -122,6 +124,39 @@ struct HelperREST
         
         
     }
+    
+    
+    
+    
+    
+    static func RestFacebook(accessToken: String) {
+        
+        let urlPath = Config.RestFacebookConnect
+        let url: NSURL = NSURL(string: urlPath)!
+        
+        var post:NSString = "{\"access_token\":\"\(accessToken)\"}"
+        println(post)
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length )
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+        var json = JSON(data: data!)
+        var success : Bool = false
+        println(json)
+        User.userSetup(json)
+        println("USEIJRISJDIJFIJSDF")
+        println(User.Uid)
+    }
+
     
     
 

@@ -11,14 +11,14 @@ import UIKit
 class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     @IBOutlet weak var inusername: UITextField!
     @IBOutlet weak var inpassword: UITextField!
-    
+    var facebookToken = ""
     
     
     @IBOutlet weak var fbLoginButton: FBSDKLoginButton!
     
     override func viewWillAppear(animated: Bool) {
         println(User.Username)
-        
+       
         if User.Role != AccountType.Anonymous {
             performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
         }
@@ -34,23 +34,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func loginButton(fbLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
-  
+        var facebookToken = ""
         if(FBSDKAccessToken.currentAccessToken()  != nil)
         {
             println("yes token")
-            println(FBSDKAccessToken.currentAccessToken() )
+            facebookToken += FBSDKAccessToken.currentAccessToken().tokenString //getting the facebook access token
+            HelperREST.RestFacebook(facebookToken)
+            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+            
         }
+        
+        
+  
+        
         //fbLoginButton.readPermissions = ["public_profile", "email"]
         //var userName = result.valueForKey("email") as! NSString!
      //   println(userName)
        //  s var facebookUserName = returnUserData()
         //var facebookName = getFacebookUserData()
-      getFacebookUserData()
-               println("facebook log in")
+     // getFacebookUserData()
+           //    println("facebook log in")
         
-        self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
         
     }
+    
+ 
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
     {
@@ -71,36 +79,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     
-    func getFacebookUserData()
-    {
-        
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath:  "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                println("Error: \(error)")
-            }
-            else
-            {
-                let facebookName = (result.valueForKey("name") as? String)!
-                let facebookID = (result.valueForKey("id") as? String)!
-               
-                print("name is  ")
-                println(facebookName)
-                User.facebookUsernameSet(facebookName)
-                User.facebookIDSet(facebookID)
-            
-               
-            }
-            
-        
-        }
-        )
-       
-
-    }
+//    func getFacebookUserData()
+//    {
+//        
+//        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath:  "me", parameters: nil)
+//        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+//            
+//            if ((error) != nil)
+//            {
+//                // Process error
+//                println("Error: \(error)")
+//            }
+//            else
+//            {
+//                let facebookName = (result.valueForKey("name") as? String)!
+//                let facebookID = (result.valueForKey("id") as? String)!
+//               
+//                print("name is  ")
+//                println(facebookName)
+//                User.facebookUsernameSet(facebookName)
+//                User.facebookIDSet(facebookID)
+//            
+//               
+//            }
+//            
+//        
+//        }
+//        )
+//       
+//
+//    }
     
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -119,6 +119,8 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setName() {
 
         usernameField.text = User.Username
+        println("IN SETNAME OF USERVIEW")
+        println(User.Username)
     }
     
     

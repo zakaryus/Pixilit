@@ -29,5 +29,9 @@ struct Config
     static let UserRegistrationURL: String = dict?.objectForKey("UserRegistrationURL") as! String
     static let BusinessRegistrationURL: String = dict?.objectForKey("BusinessRegistrationURL") as! String
     static let RestRegionsJson: String = dict?.objectForKey("RestRegionsJson") as! String
+    static let RestFacebookConnect: String = dict?.objectForKey("RestFacebookConnect") as! String
     static let RestBusinessJson: String = dict?.objectForKey("RestBusinessJson") as! String
+
+    
+   
 }

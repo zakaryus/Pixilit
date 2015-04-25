@@ -41,24 +41,24 @@ struct User
         }
     }
     
-    static func facebookUsernameSet(newName: String)
-    {
-        Username = newName
-        Role = .User
-        println("INSIDE USER")
-        println(Username)
-        //Uid = "12345678"
-        
-        
-    }
-    static func facebookIDSet(uid: String)
-    {
-  
-        Uid = uid
-        println("INSIDE ID")
-        println(Uid)
-        
-    }
+//    static func facebookUsernameSet(newName: String)
+//    {
+//        Username = newName
+//        Role = .User
+//        println("INSIDE USER")
+//        println(Username)
+//        //Uid = "12345678"
+//        
+//        
+//    }
+//    static func facebookIDSet(uid: String)
+//    {
+//  
+//        Uid = uid
+//        println("INSIDE ID")
+//        println(Uid)
+//        
+//    }
     
 
     static func SetAnonymous()
