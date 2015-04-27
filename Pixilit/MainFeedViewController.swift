@@ -12,7 +12,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 {
     
     @IBOutlet var collectionView: UICollectionView!
-    var tiles:[(tile: Tile, photo: UIImage)]=[]
+    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize)]=[]
     var selectedTile: Tile = Tile()
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -50,7 +50,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             self.tiles = []
           
             for tile in Tiles {
-                self.tiles.append(tile: tile, photo: UIImage())
+                self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0))
             }
             
             self.collectionView.reloadData()
@@ -76,7 +76,16 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
-        cell.setup(tiles[indexPath.row].tile, img: tiles[indexPath.row].photo)
+        //if(tiles[indexPath.row].photo == UIImage()) {
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+                Photo in
+                self.tiles[indexPath.row].photo = Photo
+                
+            }
+        //}
+        
+        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+        
         var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
         singleTap.numberOfTapsRequired = 1
         var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
@@ -90,13 +99,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
-        HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-            Photo in
-            self.tiles[indexPath.row].photo = Photo
-        }
 
-        return HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, img: tiles[indexPath.row].photo, containerWidth: self.view.frame.width)
+        var size = tiles[indexPath.row].photoSize
+        if size == CGSize(width: 0, height: 0) {
+            tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+        }
+        
+        return tiles[indexPath.row].photoSize
     }
     
     func collectionView(collectionView: UICollectionView!,

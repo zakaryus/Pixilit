@@ -23,6 +23,8 @@ class Tile: NSObject, IRestful {
     private(set) var BusinessName: String?
     private(set) var BusinessLogo: String?
     
+    private(set) var PhotoMetadata: CGSize?
+    
     override init() { }
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
@@ -60,6 +62,22 @@ class Tile: NSObject, IRestful {
         
         if let businesslogo = json["parent_logo"].string {
             self.BusinessLogo = businesslogo
+        }
+        
+        if let photowidth = json["photo_metadata"]["width"].string {
+            if let photoheight = json["photo_metadata"]["height"].string {
+                if let width = NSNumberFormatter().numberFromString(photowidth) {
+                    if let height = NSNumberFormatter().numberFromString(photoheight) {
+                        
+                        println("photo width: \(width), height: \(height)")
+                        var w = CGFloat(width)
+                        var h = CGFloat(height)
+                        PhotoMetadata = CGSizeMake(w, h)
+                    }
+                }
+            }
+        } else {
+            PhotoMetadata = CGSizeMake(0, 0)
         }
     }
 }

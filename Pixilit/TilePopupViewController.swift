@@ -54,7 +54,7 @@ class TilePopupViewController: UIViewController {
 
         image.image = SelectedImage
 
-        var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, img: image.image!, containerWidth: popupView.frame.width)
+        var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: image.image!.size, containerWidth: popupView.frame.width)
         image.frame.size = dimensions
         //var popupView = createContainerView()
           //self.view.addSubview(popupView)
@@ -93,7 +93,7 @@ class TilePopupViewController: UIViewController {
     }
     
     func createContainerView() -> UIView {
-        var rect = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, img: SelectedImage, containerWidth: self.view.frame.width)
+        var rect = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: SelectedImage.size, containerWidth: self.view.frame.width)
 
         //create the imageview of appropriate size
         var image = UIImageView()

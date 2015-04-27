@@ -16,15 +16,15 @@ struct HelperTransformations
         }
     
         //assumes constant width
-        static func Scale(size: ScaleSize, img: UIImage, containerWidth: CGFloat) -> CGSize {
+        static func Scale(size: ScaleSize, itemToScale: CGSize, containerWidth: CGFloat) -> CGSize {
             let scale: CGFloat = size == ScaleSize.HalfScreen ? 0.475 : 0.875
     
-            let imgW = img.size.width
-            let imgH = img.size.height
+            let itemW = itemToScale.width
+            let itemH = itemToScale.height
     
-            let newImgW = ceil(containerWidth * scale)
-            let newImgH = ceil((newImgW * imgH) / imgW)
+            let newItemW = ceil(containerWidth * scale)
+            let newItemH = ceil((newItemW * itemH) / itemW)
     
-            return CGSizeMake(newImgW, newImgH)
+            return CGSize(width: newItemW, height: newItemH)
         }
 }
