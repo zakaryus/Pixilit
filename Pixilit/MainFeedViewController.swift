@@ -20,10 +20,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-
+        println("inside mainFeedcontroller viewdidload, before setup")
+        println(User.Uid)
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
         Setup()
+        println("inside mainFeedcontroller viewdidload,after setup")
+        println(User.Uid)
     }
     
     override public func viewWillAppear(animated: Bool) {        
@@ -237,4 +240,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         return CGSizeMake(newImgW, newImgH)
     }
+    
+    
 }

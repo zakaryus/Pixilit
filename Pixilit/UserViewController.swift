@@ -40,16 +40,16 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         super.viewDidLoad()
         self.setName() //update username
-       // collectVC.collectionView = collectionView
-        
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
         Refresh()
+     
     }
     
     func Refresh()
     {
+      
         HelperREST.RestUserFlags(User.Uid)
             {
                 Tiles in
@@ -119,10 +119,10 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     func setName() {
 
         usernameField.text = User.Username
-        println("IN SETNAME OF USERVIEW")
-        println(User.Username)
+
     }
     
+  
     
 }
 

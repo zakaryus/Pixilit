@@ -22,4 +22,5 @@ struct HelperStrings
         
         return "\(month)/\(day)/\(year)"
     }
-}
+    
+    }

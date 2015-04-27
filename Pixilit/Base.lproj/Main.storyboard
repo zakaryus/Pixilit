@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -453,6 +453,12 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMZ-wC-f9j">
+                                <rect key="frame" x="155" y="407" width="145" height="30"/>
+                                <state key="normal" title="Facebook Action">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725496530532837" green="0.96862751245498657" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -474,7 +480,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="Is6-49-IcE"/>
                     <connections>
-                        <outlet property="fbLoginButton" destination="1cm-Fu-Kbw" id="Vj5-8z-A9V"/>
+                        <outlet property="fbLoginButton" destination="1cm-Fu-Kbw" id="cXb-Mz-ucO"/>
                         <outlet property="inpassword" destination="M0A-Uo-eVj" id="zL5-A0-ZOD"/>
                         <outlet property="inusername" destination="BVk-8v-gLS" id="oVq-dz-29u"/>
                         <segue destination="8rJ-Kc-sve" kind="show" identifier="LoginSuccess" id="ZX0-pe-6I2"/>

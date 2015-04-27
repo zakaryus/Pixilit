@@ -90,6 +90,9 @@ struct HelperREST
         let urlPath = Config.RestIsFlagged
         println("inside flagg")
         println(User.Uid)
+        println("THE uid IS PRINTED RIGHT ABOVE")
+        println(User.Token)
+          println("THE token IS PRINTED RIGHT ABOVE")
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
@@ -127,7 +130,7 @@ struct HelperREST
     
     
     
-    
+ 
     
     static func RestFacebook(accessToken: String) {
         
@@ -251,6 +254,8 @@ struct HelperREST
     }
     
     static func RestMainFeedRequest(CompletionHandler: (tiles: [Tile]) -> ()) {
+        println("inside RestMainFeedRequest")
+        println(User.Uid)
         var tmpTiles = [Tile]()
         
         let urlPath = Config.RestMainFeedJson
@@ -305,6 +310,8 @@ struct HelperREST
     }
     
     static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+        println("inside restUserFlagged")
+        println(User.Uid)
         var tmpTiles = [Tile]()
         let urlPath = Config.UserFlagsJson + Uid
         
@@ -335,4 +342,6 @@ struct HelperREST
         
         
     }
+    
+    
 }
