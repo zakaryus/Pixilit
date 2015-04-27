@@ -85,17 +85,20 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         }
         
         cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        
+        registerTaps(cell)
+        return cell
+    }
+    
+    func registerTaps(cell: TileCollectionViewCell) {
         var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
         singleTap.numberOfTapsRequired = 1
         var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
         doubleTap.numberOfTapsRequired = 2
-
+        
         cell.addGestureRecognizer(singleTap)
         cell.addGestureRecognizer(doubleTap)
         
         singleTap.requireGestureRecognizerToFail(doubleTap)
-        return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -131,8 +134,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
             success in
             println("\(success) this sucs")
-            if success == true
-            {
+            if success == true {
                 self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
             }
         }

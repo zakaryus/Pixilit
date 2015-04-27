@@ -37,6 +37,8 @@ class TileCollectionViewCell: UICollectionViewCell {
         //Photo.frame = contentView.bounds
         //Photo.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         Photo.image = img
+        Photo.layer.cornerRadius = 8.0
+        Photo.clipsToBounds = true
         currentTile = tile
         setPixd();
         
