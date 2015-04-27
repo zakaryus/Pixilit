@@ -261,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				32FBED701AD475FB00B99783 /* RNCryptor */,
-				3184E3B41ADADF4F00E10B89 /* CustomIOS7AlertView.swift */,
 				31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */,
 				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
 			);
@@ -342,6 +341,7 @@
 				32FBEDAA1AD4782900B99783 /* RNEncryptor.h */,
 				32FBEDAB1AD4782900B99783 /* RNEncryptor.m */,
 				32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */,
+				3184E3B41ADADF4F00E10B89 /* CustomIOS7AlertView.swift */,
 				32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */,
 				32FBEDB21AD478B900B99783 /* MyRNEncryptor.h */,
 				32FBEDB51AD4794A00B99783 /* MyCrypt.swift */,

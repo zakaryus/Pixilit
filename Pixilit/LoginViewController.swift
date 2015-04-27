@@ -55,7 +55,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             println(encrypted)
                     password = "nothing to see here"
             
-                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(MyCrypt.key + encrypted)\"}"
+            
+                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(encrypted.0 + encrypted.1)\"}"
               println(loginpost)
                     var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
                     var loginpostLength:NSString = String( loginpostData.length )
@@ -93,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         alertView.show()
 
                         User.userSetup(userjson)
-                        HelperREST.RestBasicProfile(User.Uid)
+                        
                     
 
                         self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")

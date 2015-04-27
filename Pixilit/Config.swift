@@ -12,7 +12,8 @@ private let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForRes
 
 struct Config
 {
-    static let RestBasicProfile : String = dict?.objectForKey("RestBasicProfile") as! String
+    static let RestUserToken : String = dict?.objectForKey("RestUserProfile") as! String
+    static let RestUserProfile : String = dict?.objectForKey("RestUserProfile") as! String
     static let RestIsFlagged : String = dict?.objectForKey("RestIsFlagged") as! String
     static let RestFlagJson: String = dict?.objectForKey("RestFlagJson") as! String
     static let RestBusinessTileJson: String = dict?.objectForKey("RestBusinessTileJson") as! String

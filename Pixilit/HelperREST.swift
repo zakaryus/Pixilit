@@ -11,10 +11,69 @@ import UIKit
 struct HelperREST
 {
     
-    static func RestRegionsRequest(CompletionHandler: (Regions: [Region]) -> ()) {
+  /*  static func RestIsFlagged(pid : String) -> Bool {
+        
+        let urlPath = Config.RestUserProfile + pid
+        let url: NSURL = NSURL(string: urlPath)!
+        
+        var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
+        println(post)
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length )
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "PUT"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+        var json = JSON(data: data!)
+        var success : Bool = false
+        println(json)
+        for (index: String, subJson: JSON) in json {
+            
+            
+            
+            if subJson.stringValue == "true"
+            {
+                success = true
+            }
+            
+        }
+        return success
+        
+        
+    }*/
+    
+  /*  static func RestUserLogin(token : String, encrypted : String, username : String) {
+    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(encrypted.0 + encrypted.1)\"}"
+    println(loginpost)
+    var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
+    var loginpostLength:NSString = String( loginpostData.length )
+    var reponseError: NSError?
+    var response: NSURLResponse?
+    
+    var loginrequest:NSMutableURLRequest = NSMutableURLRequest(URL: loginurl)
+    loginrequest.HTTPMethod = "POST"
+    loginrequest.HTTPBody = loginpostData
+    loginrequest.setValue(loginpostLength as String, forHTTPHeaderField: "Content-Length")
+    loginrequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        loginrequest.setValue(User.Token, forHTTPHeaderField: "X-CSRF-Token")
+    var loginData: NSData? = NSURLConnection.sendSynchronousRequest(loginrequest, returningResponse:&response, error:&reponseError)
+    
+    }*/
+
+
+
+    static func RestRegionsRequest(tid : String = "all", CompletionHandler: (Regions: [Region]) -> ()) {
         var tmpRegions = [Region]()
         
-        let urlPath = Config.RestRegionsJson
+        let urlPath = Config.RestRegionsJson + tid
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -189,9 +248,9 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestBasicProfile(Uid: String) {
+    static func RestUserProfile(Uid: String) {
         
-        let urlPath = Config.RestBasicProfile + Uid
+        let urlPath = Config.RestUserProfile + Uid
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()

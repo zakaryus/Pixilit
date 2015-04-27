@@ -2,14 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>RestBasicProfile</key>
-	<string>http://104.236.227.190/rest/basicprofile.json?uid=</string>
+	<key>RestUserToken</key>
+	<string>http://104.236.227.190/rest/user/token</string>
+	<key>RestUserProfile</key>
+	<string>http://104.236.227.190/rest/profile2/</string>
 	<key>RestIsFlagged</key>
 	<string>http://104.236.227.190/rest/flag/is_flagged.json</string>
 	<key>RestFlagJson</key>
 	<string>http://104.236.227.190/rest/flag/flag.json</string>
 	<key>RestRegionsJson</key>
-	<string>http://104.236.227.190/rest/regions.json</string>
+	<string>http://104.236.227.190/rest/regions.json?tid=</string>
 	<key>BusinessRegistrationURL</key>
 	<string>http://104.236.227.190/business/register</string>
 	<key>UserRegistrationURL</key>

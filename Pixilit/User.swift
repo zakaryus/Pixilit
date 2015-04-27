@@ -14,7 +14,8 @@ struct User
     private(set) static var Token: String!
     private(set) static var Uid: String!
     private(set) static var Role: AccountType!
-    private(set) static var Regions:[String] = []
+    private(set) static var Regions:[Region] = []
+    private(set) static var Pid: String!
     
     static func userSetup(json: JSON)
     {
@@ -38,18 +39,42 @@ struct User
                     Role = .User
             }
         }
+        var abc = json["user"]["profile"]["regions"]
+        
+   
+        if let tids = json["user"]["profile"]["regions"].array {
+            var tidHolder : String = ""
+            var first = true
+            for tid in tids {
+                var tmpTid = tid["tid"].stringValue
+                if first {
+                    tidHolder += tmpTid
+                    first = false
+                }
+                else {
+                    tidHolder += ",\(tmpTid)"
+                }
+            }
+            
+            HelperREST.RestRegionsRequest(tid: tidHolder) {
+                Regs in
+                self.Regions = Regs
+                for fuck in self.Regions {
+                    println(fuck.Name)
+                }
+            }
+        }
+        if let pid = json["pid"].string {
+            Pid = pid
+
+        }
     }
     
     static func UserProfile(json: JSON)
     {
-        println(json)
-        if let regions = json["regions"].array {
-         
-            for region in regions {
-                self.Regions.append(region.stringValue)
-                println("Region: \(region)")
-            }
-        }
+        
+        
+        
     }
     
     static func SetAnonymous()
