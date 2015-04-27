@@ -12,7 +12,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 {
     
     @IBOutlet var collectionView: UICollectionView!
-    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize)]=[]
+    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     var selectedTile: Tile = Tile()
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -50,7 +50,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             self.tiles = []
           
             for tile in Tiles {
-                self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0))
+                self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }
             
             self.collectionView.reloadData()
@@ -76,13 +76,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
-        //if(tiles[indexPath.row].photo == UIImage()) {
+        if !tiles[indexPath.row].hasImage {
             HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
                 self.tiles[indexPath.row].photo = Photo
-                
+                self.tiles[indexPath.row].hasImage = true
             }
-        //}
+        }
         
         cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
         
