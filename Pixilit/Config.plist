@@ -33,7 +33,7 @@
 	<key>ContentTypeBusiness</key>
 	<string>business</string>
 	<key>RestBusinessTileJson</key>
-	<string>http://104.236.227.190/rest/businesstile.json?nid=</string>
+	<string>http://104.236.227.190/rest/business-pix.json?uid=</string>
 	<key>RestBusinessesJson</key>
 	<string>http://104.236.227.190/rest/businesses.json</string>
 	<key>RestMainNewsPageJson</key>

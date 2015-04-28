@@ -123,7 +123,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
 
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]
     {
-            return UILocalizedIndexedCollation.currentCollation().sectionIndexTitles
+        return UILocalizedIndexedCollation.currentCollation().sectionIndexTitles
     }
     
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int

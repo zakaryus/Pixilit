@@ -21,7 +21,6 @@ class Business: NSObject, IRestful
     private(set) var Hours: [String] = []
     private(set) var Description: String?
     private(set) var Logo: String?
-    private(set) var Pix: [String] = []
     private(set) var Uid: String?
     
    override init() { }
@@ -69,15 +68,6 @@ class Business: NSObject, IRestful
         
         if let logo = json["logo"].string {
             self.Logo = logo
-        }
-        
-        if let pix = json["pix"].array {
-            for p in pix {
-                if let nid = p["target_id"].string {
-                    self.Pix.append(nid)
-                    println(nid)
-                }
-            }
         }
         
         if let uid = json["uid"].string {

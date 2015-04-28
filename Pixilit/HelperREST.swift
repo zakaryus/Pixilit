@@ -269,8 +269,8 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestNidToTile(Nid: String, CompletionHandler: (tile: Tile) -> ()) {
-        let urlPath = Config.RestBusinessTileJson + Nid
+    static func RestBusinessTiles(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+        let urlPath = Config.RestBusinessTileJson + Uid
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -281,6 +281,7 @@ struct HelperREST
             }
             
             var json = JSON(data: data)
+            var tmpTiles: [Tile] = []
             var tmpTile: Tile = Tile()
             
             for (index: String, subJson: JSON) in json {
@@ -288,10 +289,10 @@ struct HelperREST
                 //println(subJson)
                 
                 tmpTile = Tile(json: subJson)
-                break
+                tmpTiles.append(tmpTile)
             }
             
-            CompletionHandler(tile: tmpTile)
+            CompletionHandler(tiles: tmpTiles)
         })
         task.resume()
     }

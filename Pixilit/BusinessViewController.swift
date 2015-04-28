@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class BusinessViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate {
     
     @IBOutlet weak var businessNavBar: UINavigationItem!
     @IBOutlet weak var businessName: UILabel!
@@ -22,11 +22,16 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet var collectionView: UICollectionView!
     
     var business: Business = Business()
-    
+    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    var selectedTile: Tile = Tile()
+    let reuseId = "tileCollectionViewCell"
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var refresh = UIRefreshControl()
+    var selectedIndex = NSIndexPath()
     @IBAction func shareButton(sender: AnyObject)
     {
-        let firstActivityItem = "Look what I found in Pixilit!"
         let businessUrl = HelperURLs.UidToUserUrl(business.Uid!)
+        let firstActivityItem = "Look what I found in Pixilit! " + businessUrl
         var array: [AnyObject] = [AnyObject]()
         array.append(firstActivityItem)
         //array.append(businessUrl!)
@@ -36,8 +41,8 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     //****************************
-    let reuseId = "businessPhotoCollectionViewCell"
-    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    //let reuseId = "businessPhotoCollectionViewCell"
+    //let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     //****************************
     
     override func viewDidLoad() {
@@ -53,44 +58,73 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         // Dispose of any resources that can be recreated.
     }
     
+    override public func viewWillAppear(animated: Bool) {
+        Setup()
+    }
+    
+    func Setup() {
+        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
+        Refresh()
+        
+        
+    }
+    
+    func Refresh() {
+        HelperREST.RestBusinessTiles(business.Uid!) {
+            Tiles in
+            
+            println(Tiles.count)
+            self.tiles = []
+            
+            for tile in Tiles {
+                self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
+            }
+            
+            self.collectionView.reloadData()
+            self.refresh.endRefreshing()
+        }
+        
+    }
     //****************************
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.business.Pix.count
+        return self.tiles.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
-        HelperREST.RestNidToTile(business.Pix[indexPath.row])
-        {
-            Tile in
-            
-            //cell.Description.text = Tile.Description
-            
-            HelperURLs.UrlToImage(Tile.Photo!) {
+        if !tiles[indexPath.row].hasImage {
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
-                cell.Photo.image = Photo
+                self.tiles[indexPath.row].photo = Photo
+                self.tiles[indexPath.row].hasImage = true
             }
         }
+        
+        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
         
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        var size = tiles[indexPath.row].photoSize
+        if size == CGSize(width: 0, height: 0) {
+            tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+        }
+        
+        return tiles[indexPath.row].photoSize
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
         
-    }
-
-    
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: 198, height: 288)
     }
     
     func collectionView(collectionView: UICollectionView,
