@@ -20,13 +20,12 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-        println("inside mainFeedcontroller viewdidload, before setup")
-        println(User.Uid)
+    
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
         Setup()
-        println("inside mainFeedcontroller viewdidload,after setup")
-        println(User.Uid)
+      //  //println("inside mainFeedcontroller viewdidload,after setup")
+       // //println(User.Uid)
     }
     
     override public func viewWillAppear(animated: Bool) {        
@@ -44,7 +43,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         HelperREST.RestMainFeedRequest() {
             Tiles in
             
-            println(Tiles.count)
+          //  //println(Tiles.count)
             self.tiles = []
             
             for tile in Tiles {
@@ -103,7 +102,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         //collectionView.collectionViewLayout.invalidateLayout()
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell
-        println("index: \(indexPath.row) tapped: \(cell.frame.height)")
+      //  //println("index: \(indexPath.row) tapped: \(cell.frame.height)")
         selectedTile = tiles[indexPath.row].tile
         var pixDescription = "Pix"
   
@@ -112,8 +111,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             pixDescription = "Unpix"
         }
         
-        println(selectedTile.Pixd)
-        println(pixDescription)
+        ////println(selectedTile.Pixd)
+       // //println(pixDescription)
         let buttons = ["Back", pixDescription, "Business"]
         
         
@@ -136,7 +135,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     // Handle button touches
     func customIOS7AlertViewButtonTouchUpInside(alertView: CustomIOS7AlertView, buttonIndex: Int) {
-        println("DELEGATE: Button '\(alertView.buttonTitles![buttonIndex])' touched")
+       // //println("DELEGATE: Button '\(alertView.buttonTitles![buttonIndex])' touched")
         if alertView.buttonTitles![buttonIndex] == "Business" {
             var businessid = selectedTile.BusinessID
             HelperREST.RestBusinessRequest(businessid!) {
@@ -148,10 +147,10 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         else if alertView.buttonTitles![buttonIndex].lowercaseString.rangeOfString("pix") != nil
         {
-            println(selectedTile.Nid)
+           // //println(selectedTile.Nid)
             HelperREST.RestFlag(selectedTile.Nid!, pixd : selectedTile.Pixd!) {
                 suc in
-                println("\(suc) this sucs")
+                //println("\(suc) this sucs")
                 if suc == true
                 {
                     

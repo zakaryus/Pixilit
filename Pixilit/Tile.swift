@@ -49,7 +49,7 @@ class Tile: NSObject, IRestful {
         
             for tag in tags {
                 self.tags.append(tag.string!)
-                println("Tag: \(tag)")
+                ////println("Tag: \(tag)")
             }
         }
     }

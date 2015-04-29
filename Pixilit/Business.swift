@@ -75,7 +75,7 @@ class Business: NSObject, IRestful
             for p in pix {
                 if let nid = p["target_id"].string {
                     self.Pix.append(nid)
-                    println(nid)
+                    //println(nid)
                 }
             }
         }

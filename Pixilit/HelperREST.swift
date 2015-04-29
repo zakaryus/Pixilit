@@ -21,15 +21,15 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
-            //println(json)
+            ////println(json)
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                ////println(subJson)
                 
                 var region = Region(json: subJson)
                 tmpRegions.append(region)
@@ -54,7 +54,7 @@ struct HelperREST
         }
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
-        println(post)
+        //println(post)
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
         var reponseError: NSError?
@@ -88,15 +88,11 @@ struct HelperREST
     static func RestIsFlagged(entityID : String) -> Bool {
         
         let urlPath = Config.RestIsFlagged
-        println("inside flagg")
-        println(User.Uid)
-        println("THE uid IS PRINTED RIGHT ABOVE")
-        println(User.Token)
-          println("THE token IS PRINTED RIGHT ABOVE")
+
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
-        println(post)
+        //println(post)
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
         var reponseError: NSError?
@@ -112,7 +108,7 @@ struct HelperREST
         
         var json = JSON(data: data!)
         var success : Bool = false
-        println(json)
+        //println(json)
         for (index: String, subJson: JSON) in json {
             
                      
@@ -138,7 +134,7 @@ struct HelperREST
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"access_token\":\"\(accessToken)\"}"
-        println(post)
+    
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
         var reponseError: NSError?
@@ -152,12 +148,22 @@ struct HelperREST
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
         
-        var json = JSON(data: data!)
-        var success : Bool = false
-        println(json)
-        User.userSetup(json)
-        println("USEIJRISJDIJFIJSDF")
-        println(User.Uid)
+        if (data != nil)
+        {
+            var json = JSON(data: data!)
+             User.userSetup(json)
+            //println("User id is" + User.Uid)
+        }
+       
+        else
+        {
+            //println("loginData is nil in RestFacebook")
+        }
+       
+       
+      
+        
+        
     }
 
     
@@ -174,15 +180,15 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
-            //println(json)
+            ////println(json)
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                ////println(subJson)
                 
                 var business = Business(json: subJson)
                 tmpBusinesses.append(business)
@@ -205,15 +211,15 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
-            //println(json)
+            ////println(json)
 
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                ////println(subJson)
                 
                 business = Business(json: subJson)
                 break
@@ -237,7 +243,7 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
@@ -254,8 +260,7 @@ struct HelperREST
     }
     
     static func RestMainFeedRequest(CompletionHandler: (tiles: [Tile]) -> ()) {
-        println("inside RestMainFeedRequest")
-        println(User.Uid)
+ 
         var tmpTiles = [Tile]()
         
         let urlPath = Config.RestMainFeedJson
@@ -265,14 +270,14 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
             
             for (index: String, subJson: JSON) in json {
                 
-                println(subJson)
+                //println(subJson)
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
             }
@@ -290,7 +295,7 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
@@ -298,7 +303,7 @@ struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                ////println(subJson)
                 
                 tmpTile = Tile(json: subJson)
                 break
@@ -310,8 +315,7 @@ struct HelperREST
     }
     
     static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
-        println("inside restUserFlagged")
-        println(User.Uid)
+       
         var tmpTiles = [Tile]()
         let urlPath = Config.UserFlagsJson + Uid
         
@@ -320,13 +324,13 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                println(error.localizedDescription)
+                //println(error.localizedDescription)
             }
             var json = JSON(data: data)
             
             for (index: String, subJson: JSON) in json {
                 
-                println(subJson)
+                //println(subJson)
                 
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)

@@ -26,8 +26,8 @@ struct User
         }
         if let token = json["token"].string {
            Token = token
-            println("TOKEN")
-            println(Token)
+           // //println("TOKEN")
+           // //println(Token)
         }
         if let role = json["user"]["field_account_type"]["und"][0]["value"].string {
             switch role.lowercaseString {
@@ -46,8 +46,8 @@ struct User
 //    {
 //        Username = newName
 //        Role = .User
-//        println("INSIDE USER")
-//        println(Username)
+//        //println("INSIDE USER")
+//        //println(Username)
 //        //Uid = "12345678"
 //        
 //        
@@ -56,8 +56,8 @@ struct User
 //    {
 //  
 //        Uid = uid
-//        println("INSIDE ID")
-//        println(Uid)
+//        //println("INSIDE ID")
+//        //println(Uid)
 //        
 //    }
     

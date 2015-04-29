@@ -18,9 +18,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBOutlet var fbLoginButton: FBSDKLoginButton!
     
     override func viewWillAppear(animated: Bool) {
-        println(User.Username)
+        //println("User name in viewWillAppear is "+User.Username)
+        //println("User UID in viewWillAppear is "+User.Uid)
        
         if User.Role != AccountType.Anonymous {
+       
             performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
         }
        
@@ -33,10 +35,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
     
     @IBAction func facebookAction(sender: AnyObject) {
-//        println("FACEBOOK ACTION CLICKED")
+//        //println("FACEBOOK ACTION CLICKED")
 //        if(FBSDKAccessToken.currentAccessToken()  != nil)
 //        {
-//            println("yes token")
+//            //println("yes token")
 //        facebookToken += FBSDKAccessToken.currentAccessToken().tokenString
 //                    HelperREST.RestFacebook(facebookToken)
 //            //              self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
@@ -52,89 +54,55 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func loginButton(fbLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
-        //facebookToken = ""
-//        if(FBSDKAccessToken.currentAccessToken()  != nil)
-//        {
-//            println("yes token")
-//        facebookToken += FBSDKAccessToken.currentAccessToken().tokenString //getting the facebook access token
-//          HelperREST.RestFacebook(facebookToken)
-        
-           // HelperREST.RestFacebook(facebookToken)
-    // self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-            
-//            let urlPath = Config.RestFacebookConnect
-//            let url: NSURL = NSURL(string: urlPath)!
-//            
-//            var post:NSString = "{\"access_token\":\"\(facebookToken)\"}"
-//            println(post)
-//            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-//            var postLength:NSString = String(postData.length )
-//            var reponseError: NSError?
-//            var response: NSURLResponse?
-//            
-//            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-//            request.HTTPMethod = "POST"
-//            request.HTTPBody = postData
-//            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-//            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//            request.setValue("application/json", forHTTPHeaderField: "Accept")
-//            var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-//            
-//            var json = JSON(data: data!)
-//            var name = json["user"]["name"].string
-//            println(json)
-//            User.userSetup(json)
-//            println("USEIJRISJDIJFIJSDF")
-//            println(User.Uid)
-//            
-//            if(name != nil)
-//            {
-//            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-//            }
-//            else
-//            {
-//                println("something is wrong. name is nil in facebook login")
-//            }
-//            
-  //    }
-//        
-//        
-//  
-        
-        //fbLoginButton.readPermissions = ["public_profile", "email"]
-        //var userName = result.valueForKey("email") as! NSString!
-     //   println(userName)
-       //  s var facebookUserName = returnUserData()
-        //var facebookName = getFacebookUserData()
-     // getFacebookUserData()
-           //    println("facebook log in")
-        
-        
-        if ((error) != nil)
-        {
-           println("THERE IS AN ERROR WITH FBLOGINBUTTON")
-        }
-        else if result.isCancelled {
-            println("USER CANCELLED FB LOGIN")
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-           // if result.grantedPermissions.contains("email")
-           // {
-                // Do work
-           // }
-            println("IN THE ELSE OF FB BUTTON")
-           // HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
-           // self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
-        
-        
-        
+
+                
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
-            HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
-            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+           
+            var accessToken =  FBSDKAccessToken.currentAccessToken().tokenString
+            //println("accessToke is "+accessToken)
+            let urlPath = Config.RestFacebookConnect
+            let url: NSURL = NSURL(string: urlPath)!
+            
+            var post:NSString = "{\"access_token\":\"\(accessToken)\"}"
+            
+            var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+            var postLength:NSString = String(postData.length )
+            var reponseError: NSError?
+            var response: NSURLResponse?
+            
+            var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+            request.HTTPMethod = "POST"
+            request.HTTPBody = postData
+            request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+            
+            if (data != nil)
+            {
+                var json = JSON(data: data!)
+                User.userSetup(json)
+                println("json inside fb button \(json)")
+                println("User name is " + User.Username)
+                println("User id is " + User.Uid)
+                self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+            }
+                
+            else
+            {
+                println("loginData is nil in RestFacebook")
+            }
+            
+            
+
+            
+            
+        }//end big if
+            
+        else
+        {
+            println("BUTTON SAYS NO TOKEN")
         }
         
 
@@ -145,18 +113,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
     {
-        facebookToken = ""
-        println("facebook loggeout")
-       // User.Logout()
+     
+       FBSDKLoginManager().logOut()
+        //println("facebook loggeout")
+        User.Logout()
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+         super.viewDidLoad()
         
         self.inusername.delegate = self;
         self.inpassword.delegate = self;
-       // fbLoginButton.center = self.view.center;
-        //self.fbLoginButton.delegate = self;
+        self.fbLoginButton.center = self.view.center;
+        self.fbLoginButton.delegate = self;
+
+        
 
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -165,46 +136,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         }
         else
         {
+            //println("ARE YOU EVER IN THE ELSE")
             let loginView : FBSDKLoginButton = fbLoginButton
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
         }
-    
+   
     }
     
     
-//    func getFacebookUserData()
-//    {
-//        
-//        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath:  "me", paramet"ers: nil)
-//        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-//            
-//            if ((error) != nil)
-//            {
-//                // Process error
-//                println("Error: \(error)")
-//            }
-//            else
-//            {
-//                let facebookName = (result.valueForKey("name") as? String)!
-//                let facebookID = (result.valueForKey("id") as? String)!
-//               
-//                print("name is  ")
-//                println(facebookName)
-//                User.facebookUsernameSet(facebookName)
-//                User.facebookIDSet(facebookID)
-//            
-//               
-//            }
-//            
-//        
-//        }
-//        )
-//       
-//
-//    }
     
        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -230,11 +172,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             
                     var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
                     var encrypted = MyCrypt.encryptString(password as String)
-            println(encrypted)
+            //println(encrypted)
                     password = "nothing to see here"
             
                     var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(MyCrypt.key + encrypted)\"}"
-              println(loginpost)
+              //println(loginpost)
                     var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
                     var loginpostLength:NSString = String( loginpostData.length )
                     var reponseError: NSError?
