@@ -14,6 +14,7 @@ struct User
     private(set) static var Token: String!
     private(set) static var Uid: String!
     private(set) static var Role: AccountType!
+    private(set) static var Regions:[String] = []
     
     static func userSetup(json: JSON)
     {
@@ -21,47 +22,36 @@ struct User
             Uid = uid
         }
         if let name = json["user"]["name"].string {
-           Username = name
-    
+            Username = name
+            
         }
         if let token = json["token"].string {
-           Token = token
-           // //println("TOKEN")
-           // //println(Token)
+            Token = token
         }
         if let role = json["user"]["field_account_type"]["und"][0]["value"].string {
             switch role.lowercaseString {
-                case "business" :
-                    Role = .Business
-                case "user" :
-                    Role = .User
-                default :
-                    Role = .User
-                
+            case "business" :
+                Role = .Business
+            case "user" :
+                Role = .User
+            default :
+                Role = .User
             }
         }
     }
     
-//    static func facebookUsernameSet(newName: String)
-//    {
-//        Username = newName
-//        Role = .User
-//        //println("INSIDE USER")
-//        //println(Username)
-//        //Uid = "12345678"
-//        
-//        
-//    }
-//    static func facebookIDSet(uid: String)
-//    {
-//  
-//        Uid = uid
-//        //println("INSIDE ID")
-//        //println(Uid)
-//        
-//    }
+    static func UserProfile(json: JSON)
+    {
+        println(json)
+        if let regions = json["regions"].array {
+            
+            for region in regions {
+                self.Regions.append(region.stringValue)
+                println("Region: \(region)")
+            }
+        }
+    }
     
-
     static func SetAnonymous()
     {
         Username = "Anonymous"
@@ -70,10 +60,13 @@ struct User
         Role = .Anonymous
     }
     
-
-    
     static func Logout()
     {
         SetAnonymous()
+    }
+    
+    static func isLoggedIn() -> Bool
+    {
+        return Uid != "-1"
     }
 }
