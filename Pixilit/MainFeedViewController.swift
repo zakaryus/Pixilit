@@ -20,10 +20,10 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     var selectedIndex = NSIndexPath()
     override public func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
-        
+
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
         Setup()
@@ -64,7 +64,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         // Dispose of any resources that can be recreated.
     }
-    
+
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -102,7 +102,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        
+
         var size = tiles[indexPath.row].photoSize
         if size == CGSize(width: 0, height: 0) {
             tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
@@ -118,7 +118,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        
+
         return UICollectionReusableView()
     }
     
@@ -138,17 +138,29 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
                 self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
             }
         }
+        HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
+            success in
+            println("\(success) this sucs")
+            if success == true {
+                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+            }
+        }
         
         setCellPix()
         //tiles[self.selectedIndex.row].setPixd()
     }
-    
+
     func setCellPix() {
         var cell: TileCollectionViewCell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
         cell.setPixd()
     }
     
+
+    
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        selectedIndex = indexPath
+        //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
         selectedIndex = indexPath
         //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
