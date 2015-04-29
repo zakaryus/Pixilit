@@ -92,7 +92,7 @@ struct HelperREST
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
-        //println(post)
+        println(post)
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
         var reponseError: NSError?

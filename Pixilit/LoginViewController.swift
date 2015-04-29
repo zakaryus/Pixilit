@@ -129,20 +129,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
         
 
-        if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
-            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
-        else
-        {
-            //println("ARE YOU EVER IN THE ELSE")
-            let loginView : FBSDKLoginButton = fbLoginButton
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email", "user_friends"]
-            loginView.delegate = self
-        }
+//        if (FBSDKAccessToken.currentAccessToken() != nil)
+//        {
+//            HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
+//            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+//        }
+//        else
+//        {
+//            //println("ARE YOU EVER IN THE ELSE")
+//            let loginView : FBSDKLoginButton = fbLoginButton
+//            self.view.addSubview(loginView)
+//            loginView.center = self.view.center
+//            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+//            loginView.delegate = self
+//        }
    
     }
     

@@ -70,14 +70,14 @@ class Business: NSObject, IRestful
             self.Logo = logo
         }
         
-        if let pix = json["pix"].array {
-            for p in pix {
-                if let nid = p["target_id"].string {
-                    self.Pix.append(nid)
-                    //println(nid)
-                }
-            }
-        }
+//        if let pix = json["pix"].array {
+//            for p in pix {
+//                if let nid = p["target_id"].string {
+//                    self.Pix.append(nid)
+//                    //println(nid)
+//                }
+//            }
+//        }
         
         if let uid = json["uid"].string {
             self.Uid = uid
