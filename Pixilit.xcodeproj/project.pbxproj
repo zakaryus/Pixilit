@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		316A9F1E1A9007BA00694B2B /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 316A9F1D1A9007BA00694B2B /* Config.plist */; };
 		316A9F201A900A0000694B2B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316A9F1F1A900A0000694B2B /* Config.swift */; };
 		3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE61A903D6F00E6D1B4 /* Business.swift */; };
 		3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3178DEE81A903FB600E6D1B4 /* Section.swift */; };
@@ -33,6 +32,7 @@
 		325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */ = {isa = PBXBuildFile; fileRef = 325CEC3D1ADF2D3500AEBC56 /* business.png */; };
 		325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 325CEC411ADF2E0000AEBC56 /* Slice 3.png */; };
 		325CEC441ADF2E2100AEBC56 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 325CEC431ADF2E2100AEBC56 /* homeIcon.png */; };
+		32778E4D1AF18BD4002B81E5 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32778E4C1AF18BD4002B81E5 /* Config.plist */; };
 		327832441ACA06C6001F1D72 /* PixilitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E13E1A79D3E600037B10 /* PixilitTests.swift */; };
 		327BDEB51AE6E90F00F116FC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327BDEB41AE6E90F00F116FC /* SystemConfiguration.framework */; };
 		327BDEB71AE6E91700F116FC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 327BDEB61AE6E91700F116FC /* StoreKit.framework */; };
@@ -88,7 +88,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		316A9F1D1A9007BA00694B2B /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		316A9F1F1A900A0000694B2B /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		3178DEE61A903D6F00E6D1B4 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		3178DEE81A903FB600E6D1B4 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		325CEC3D1ADF2D3500AEBC56 /* business.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business.png; sourceTree = "<group>"; };
 		325CEC411ADF2E0000AEBC56 /* Slice 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slice 3.png"; sourceTree = "<group>"; };
 		325CEC431ADF2E2100AEBC56 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
+		32778E4C1AF18BD4002B81E5 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		327BDEB41AE6E90F00F116FC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		327BDEB61AE6E91700F116FC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		327BDEB81AE6E92000F116FC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -346,7 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				3185E1251A79D3E600037B10 /* Info.plist */,
-				316A9F1D1A9007BA00694B2B /* Config.plist */,
+				32778E4C1AF18BD4002B81E5 /* Config.plist */,
 				316A9F1F1A900A0000694B2B /* Config.swift */,
 			);
 			name = Configuration;
@@ -465,10 +465,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
-				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
+				32778E4D1AF18BD4002B81E5 /* Config.plist in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
 				325CEC3B1ADF23CA00AEBC56 /* Slice 1-2.png in Resources */,
 				325CEC351ADF205900AEBC56 /* Slice 1.png in Resources */,
