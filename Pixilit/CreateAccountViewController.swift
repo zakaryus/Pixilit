@@ -13,13 +13,13 @@ class CreateAccountViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var wvAccountCreation: UIWebView!
     @IBOutlet weak var scAccountSelection: UISegmentedControl!
     var URL : String = ""
-   override func viewDidLoad(){
+   override func viewDidLoad() {
         
         super.viewDidLoad()
-    URL = Config.UserRegistrationURL
-    let U = NSURL(string: URL)
-    let req = NSURLRequest(URL: U!)
-    wvAccountCreation.loadRequest(req)
+        URL = Config.UserRegistrationURL
+        let U = NSURL(string: URL)
+        let req = NSURLRequest(URL: U!)
+        wvAccountCreation.loadRequest(req)
     }
     
     override func didReceiveMemoryWarning() {

@@ -20,6 +20,10 @@ class Tile: NSObject, IRestful {
         set(value) { _Pixd = value }
     }
     private(set) var tags: [String] = []
+    private(set) var BusinessName: String?
+    private(set) var BusinessLogo: String?
+    
+    private(set) var PhotoMetadata: CGSize?
     
     override init() { }
     
@@ -46,11 +50,34 @@ class Tile: NSObject, IRestful {
             self.Pixd = HelperREST.RestIsFlagged(self.Nid!)
                    }
         if let tags = json["Tags"].array {
-        
+            println(json)
             for tag in tags {
                 self.tags.append(tag.string!)
                 ////println("Tag: \(tag)")
             }
+        }
+        if let businessname = json["parent_name"].string {
+            self.BusinessName = businessname
+        }
+        
+        if let businesslogo = json["parent_logo"].string {
+            self.BusinessLogo = businesslogo
+        }
+        
+        if let photowidth = json["photo_metadata"]["width"].string {
+            if let photoheight = json["photo_metadata"]["height"].string {
+                if let width = NSNumberFormatter().numberFromString(photowidth) {
+                    if let height = NSNumberFormatter().numberFromString(photoheight) {
+                        
+                        println("photo width: \(width), height: \(height)")
+                        var w = CGFloat(width)
+                        var h = CGFloat(height)
+                        PhotoMetadata = CGSizeMake(w, h)
+                    }
+                }
+            }
+        } else {
+            PhotoMetadata = CGSizeMake(0, 0)
         }
     }
 }

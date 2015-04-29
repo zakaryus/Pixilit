@@ -21,7 +21,6 @@ class Business: NSObject, IRestful
     private(set) var Hours: [String] = []
     private(set) var Description: String?
     private(set) var Logo: String?
-    private(set) var Pix: [String] = []
     private(set) var Uid: String?
     
    override init() { }

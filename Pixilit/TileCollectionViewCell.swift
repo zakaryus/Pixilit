@@ -16,7 +16,7 @@ class TileCollectionViewCell: UICollectionViewCell {
     //@IBOutlet weak var Description: UILabel!
     //@IBOutlet weak var Desc2: UITextView!
     //var tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singletap")
-    
+  
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

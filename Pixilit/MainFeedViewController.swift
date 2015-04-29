@@ -48,7 +48,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             
             println(Tiles.count)
             self.tiles = []
-            
+          
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }

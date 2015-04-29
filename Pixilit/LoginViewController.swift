@@ -213,6 +213,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         alertView.show()
 
                         User.userSetup(userjson)
+                        HelperREST.RestBasicProfile(User.Uid)
+                    
 
                         self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
                    
