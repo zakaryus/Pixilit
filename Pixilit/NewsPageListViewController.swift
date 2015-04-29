@@ -72,7 +72,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
         return cell
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         var np: NewsPage = self.sections.data[indexPath.section].data[indexPath.row] as NewsPage
         self.performSegueWithIdentifier("NewsPageShowSegue", sender: np)
@@ -157,7 +157,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
         self.sections = Sections<NewsPage>(list: self.filteredListOfNewsPages)
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
     {
         self.filterContentForSearchText(searchString)
         return true

@@ -18,7 +18,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         User.SetAnonymous()
         
     }
- 
+    
     //var user : String = ""
     var tiles:[(tile: Tile, photo: UIImage)]=[]
     let reuseId = "userPhotoCollectionViewCell"
@@ -35,26 +35,26 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
             newsButton.enabled = false
         }
     }
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         self.setName() //update username
+        // collectVC.collectionView = collectionView
+        
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
         Refresh()
-     
     }
     
     func Refresh()
     {
-      
         HelperREST.RestUserFlags(User.Uid)
             {
                 Tiles in
                 
-                //println(Tiles.count)
+                println(Tiles.count)
                 self.tiles = []
                 
                 for tile in Tiles {
@@ -64,16 +64,16 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.collectionView.reloadData()
                 self.refresh.endRefreshing()
         }
-
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
+        
         //Dispose of any resources that can be recreated.
     }
     
-
+    
     func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
         return 1
     }
@@ -103,7 +103,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.tiles[indexPath.row].photo = Photo
             }
             
-            //println("width: \(tiles[indexPath.row].photo.size.width), height: \(tiles[indexPath.row].photo.size.height)")
+            println("width: \(tiles[indexPath.row].photo.size.width), height: \(tiles[indexPath.row].photo.size.height)")
             
             return CGSize(width: tiles[indexPath.row].photo.size.width, height: tiles[indexPath.row].photo.size.height)
     }
@@ -113,16 +113,14 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
             return sectionInsets
     }
-
-
+    
+    
     
     func setName() {
-
+        
         usernameField.text = User.Username
-
     }
     
-  
     
 }
 
