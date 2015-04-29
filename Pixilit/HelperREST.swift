@@ -286,7 +286,7 @@ struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                println(subJson)
                 
                 tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)

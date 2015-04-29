@@ -116,7 +116,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         
         var size = tiles[indexPath.row].photoSize
         if size == CGSize(width: 0, height: 0) {
-            tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+            tiles[indexPath.row].photoSize = HelperTransformations.Scale(.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
         }
         
         return tiles[indexPath.row].photoSize

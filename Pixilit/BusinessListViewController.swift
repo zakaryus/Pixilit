@@ -104,21 +104,21 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-                return self.sections.data.count
+        return self.sections.data.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-            return self.sections.data[section].data.count
+        return self.sections.data[section].data.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
     {
-            // do not display empty `Section`s
-            if !self.sections.data[section].data.isEmpty {
-                return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as! String
-            }
-            return ""
+        // do not display empty `Section`s
+        if !self.sections.data[section].data.isEmpty {
+            return UILocalizedIndexedCollation.currentCollation().sectionTitles[section] as! String
+        }
+        return ""
     }
 
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [AnyObject]
