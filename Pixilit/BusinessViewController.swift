@@ -21,6 +21,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     @IBOutlet weak var businessLogo: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     
+    var mintyForest = UIColor.clearColor()//(red: 228, green: 247, blue: 242, alpha: 1)
     var business: Business = Business()
     var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     var selectedTile: Tile = Tile()
@@ -117,6 +118,9 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         var size = tiles[indexPath.row].photoSize
         if size == CGSize(width: 0, height: 0) {
             tiles[indexPath.row].photoSize = HelperTransformations.Scale(.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+            var ps = tiles[indexPath.row].photoSize
+            println("Business View width: \(ps.width), height: \(ps.height)")
+            
         }
         
         return tiles[indexPath.row].photoSize
@@ -138,7 +142,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     {
         if let title = business.Title {
             self.businessName.text = title
-            self.businessName.backgroundColor = UIColor.whiteColor()
+            self.businessName.backgroundColor = mintyForest
             self.businessNavBar.title = title
         }
         
@@ -164,29 +168,29 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         
         if locality != "" && administrativearea != "" && postalcode != "" {
             self.businessLocalityAdminZip.text = "\(locality), \(administrativearea) \(postalcode)"
-            self.businessLocalityAdminZip.backgroundColor = UIColor.whiteColor()
+            self.businessLocalityAdminZip.backgroundColor = mintyForest
         }
         
         if let phone = business.Phone {
             self.businessPhone.text = phone
-            self.businessPhone.backgroundColor = UIColor.whiteColor()
+            self.businessPhone.backgroundColor = mintyForest
         }
         
         if let email = business.Email {
             self.businessEmail.text = email
-            self.businessEmail.backgroundColor = UIColor.whiteColor()
+            self.businessEmail.backgroundColor = mintyForest
         }
         
         if let website = business.Website {
             self.businessWebsite.text = website
-            self.businessWebsite.backgroundColor = UIColor.whiteColor()
+            self.businessWebsite.backgroundColor = mintyForest
         }
         
         //self.Hours = [String]()
         
         if let description = business.Description {
             self.businessDescription.text = description
-            self.businessDescription.backgroundColor = UIColor.whiteColor()
+            self.businessDescription.backgroundColor = self.mintyForest
         }
         
         if let logo = business.Logo {
@@ -194,22 +198,22 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
             {
                 Image in
                 self.businessLogo.image = Image
-                self.businessLogo.backgroundColor = UIColor.whiteColor()
+                self.businessLogo.backgroundColor = self.mintyForest
             }
         }
         
-        SetWhiteBackground()
+        SetMintyForestBackground()
     }
     
-    func SetWhiteBackground()
+    func SetMintyForestBackground()
     {
-        businessName.backgroundColor = UIColor.whiteColor()
-        businessThoroughfare.backgroundColor = UIColor.whiteColor()
-        businessLocalityAdminZip.backgroundColor = UIColor.whiteColor()
-        businessPhone.backgroundColor = UIColor.whiteColor()
-        businessEmail.backgroundColor = UIColor.whiteColor()
-        businessWebsite.backgroundColor = UIColor.whiteColor()
-        businessDescription.backgroundColor = UIColor.whiteColor()
-        businessLogo.backgroundColor = UIColor.whiteColor()
+        self.businessName.backgroundColor = mintyForest
+        businessThoroughfare.backgroundColor = mintyForest
+        businessLocalityAdminZip.backgroundColor = mintyForest
+        businessPhone.backgroundColor = mintyForest
+        businessEmail.backgroundColor = mintyForest
+        businessWebsite.backgroundColor = mintyForest
+        businessDescription.backgroundColor = mintyForest
+        businessLogo.backgroundColor = mintyForest
     }
 }

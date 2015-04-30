@@ -28,7 +28,7 @@ struct User
         if let token = json["token"].string {
            Token = token
         }
-        if let role = json["user"]["field_account_type"]["und"][0]["value"].string {
+        if let role = json["user"]["profile"]["und"][0]["value"].string {
             switch role.lowercaseString {
                 case "business" :
                     Role = .Business

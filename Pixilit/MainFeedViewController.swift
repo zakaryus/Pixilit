@@ -106,6 +106,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         var size = tiles[indexPath.row].photoSize
         if size == CGSize(width: 0, height: 0) {
             tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+            var ps = tiles[indexPath.row].photoSize
+            println("Mainfeed width: \(ps.width), height: \(ps.height)")
         }
         
         return tiles[indexPath.row].photoSize

@@ -28,6 +28,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     var refresh = UIRefreshControl()
     
     override func viewWillAppear(animated: Bool) {
+        println("USER ROLE: \(User.Role.rawValue)")
         if User.Role == AccountType.Business || User.Role == AccountType.Admin {
             newsButton.enabled = true
         }
