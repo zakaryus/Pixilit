@@ -45,7 +45,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
                 
                 dispatch_async(dispatch_get_main_queue(),
                     {
-                      //  //println(self.listOfNewsPages)
+                      //  ////println(self.listOfNewsPages)
                         self.tableView.reloadData()
                         self.refresh.endRefreshing()
                 })

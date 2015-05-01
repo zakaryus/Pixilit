@@ -46,7 +46,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         HelperREST.RestMainFeedRequest() {
             Tiles in
             
-            println(Tiles.count)
+           // //println(Tiles.count)
             self.tiles = []
           
             for tile in Tiles {
@@ -133,14 +133,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         }
         HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
             success in
-            println("\(success) this sucs")
+            //println("\(success) this sucs")
             if success == true {
                 self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
             }
         }
         HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
             success in
-            println("\(success) this sucs")
+            //println("\(success) this sucs")
             if success == true {
                 self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
             }
@@ -162,8 +162,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         selectedIndex = indexPath
         //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
-        selectedIndex = indexPath
-        //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
     }
     

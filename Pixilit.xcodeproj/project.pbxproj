@@ -23,7 +23,6 @@
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
-		3221E5881AEB06F400BA23F6 /* default1px.png in Resources */ = {isa = PBXBuildFile; fileRef = 3221E5871AEB06F400BA23F6 /* default1px.png */; };
 		322DD18E1AE97DA100058A5E /* HelperTransformations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322DD18D1AE97DA100058A5E /* HelperTransformations.swift */; };
 		324B53A61AE863AE006220C0 /* pixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A41AE863AE006220C0 /* pixd.png */; };
 		324B53A71AE863AE006220C0 /* unpixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A51AE863AE006220C0 /* unpixd.png */; };
@@ -68,7 +67,6 @@
 		32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDAB1AD4782900B99783 /* RNEncryptor.m */; };
 		32FBEDB11AD4788E00B99783 /* MyRNEncryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB01AD4788E00B99783 /* MyRNEncryptor.m */; };
 		32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDB51AD4794A00B99783 /* MyCrypt.swift */; };
-		32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */ = {isa = PBXBuildFile; fileRef = 32FDB63F1AE5A0B90039A30E /* dimmed.png */; };
 		32FDB6421AE5A3A80039A30E /* TilePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */; };
 		4293ACC21AAE53010089F441 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC11AAE53010089F441 /* User.swift */; };
 		4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC31AAE533D0089F441 /* LoginViewController.swift */; };
@@ -333,8 +331,8 @@
 				42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */,
 				329E419F1ACB3EBA002131FD /* SettingsViewController.swift */,
 				3212E71E1AD87985008593CE /* CreateAccountViewController.swift */,
-				3212E7231AD88CBD008593CE /* TabBarController.swift */,
 				32B51DC51ADD9EB70014ECCC /* RegionViewController.swift */,
+				3212E7231AD88CBD008593CE /* TabBarController.swift */,
 				32B51DC71ADDA0980014ECCC /* AccountInfoViewController.swift */,
 				32B51DC91ADDA0E40014ECCC /* PaymentViewController.swift */,
 				32B51DCB1ADDA1E10014ECCC /* AboutViewController.swift */,

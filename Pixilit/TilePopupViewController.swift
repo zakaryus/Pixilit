@@ -58,7 +58,7 @@ class TilePopupViewController: UIViewController {
         image.frame.size = dimensions
         //var popupView = createContainerView()
           //self.view.addSubview(popupView)
-        println("SUBVIEWS: \(self.view.subviews)")
+        //println("SUBVIEWS: \(self.view.subviews)")
         //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
         //popupView.center = self.view.center
 
@@ -141,7 +141,7 @@ class TilePopupViewController: UIViewController {
         var maxW = self.view.frame.width * 0.85
         var maxH = min(rect.height, self.view.frame.height * 0.75)
         maxH *= 1.2
-        println("max W: \(maxW) \n maxH: \(maxH)")
+        //println("max W: \(maxW) \n maxH: \(maxH)")
         var pictureView = UIView(frame: CGRectMake(0, 0, maxW, maxH))
         pictureView.frame = CGRectMake(0, 0, maxW, maxH)
         pictureView.autoresizesSubviews = true
@@ -209,11 +209,11 @@ class TilePopupViewController: UIViewController {
     }
     
     @IBAction func pixdButtonPressed(sender: AnyObject) {
-        println("pixd button pressed")
+        //println("pixd button pressed")
         
         HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
             success in
-            println("\(success) this sucs")
+            //println("\(success) this sucs")
             if success == true
             {
                 self.SelectedTile.Pixd = self.SelectedTile.Pixd == true ? false : true

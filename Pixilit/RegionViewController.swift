@@ -64,7 +64,7 @@ class RegionViewController : UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //println("\(indexPath.row) tapped")
+        ////println("\(indexPath.row) tapped")
         var region: [Region] = Parents[indexPath.row].Children
         self.performSegueWithIdentifier("SubRegionSegue", sender: region)
     }

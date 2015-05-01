@@ -75,7 +75,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         HelperREST.RestBusinessTiles(business.Uid!) {
             Tiles in
             
-            println(Tiles.count)
+            //println(Tiles.count)
             self.tiles = []
             
             for tile in Tiles {

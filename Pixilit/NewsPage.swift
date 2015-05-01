@@ -18,7 +18,7 @@ class NewsPage: NSObject, IRestful {
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
     required init(json: JSON) {
-       // //println(json)
+       // ////println(json)
         
         if let title = json["title"].string {
             self.Title = title

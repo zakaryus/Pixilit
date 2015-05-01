@@ -42,12 +42,12 @@ struct User
     
     static func UserProfile(json: JSON)
     {
-        println(json)
+        //println(json)
         if let regions = json["regions"].array {
          
             for region in regions {
                 self.Regions.append(region.stringValue)
-                println("Region: \(region)")
+                //println("Region: \(region)")
             }
         }
     }

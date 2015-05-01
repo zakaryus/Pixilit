@@ -21,15 +21,15 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
-            ////println(json)
+            //////println(json)
             
             for (index: String, subJson: JSON) in json {
                 
-                ////println(subJson)
+                //////println(subJson)
                 
                 var region = Region(json: subJson)
                 tmpRegions.append(region)
@@ -54,7 +54,7 @@ struct HelperREST
         }
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
-        //println(post)
+        ////println(post)
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
         var reponseError: NSError?
@@ -92,7 +92,7 @@ struct HelperREST
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
-        println(post)
+       // //println(post)
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
         var reponseError: NSError?
@@ -108,7 +108,7 @@ struct HelperREST
         
         var json = JSON(data: data!)
         var success : Bool = false
-        //println(json)
+        ////println(json)
         for (index: String, subJson: JSON) in json {
             
                      
@@ -152,12 +152,12 @@ struct HelperREST
         {
             var json = JSON(data: data!)
              User.userSetup(json)
-            //println("User id is" + User.Uid)
+            ////println("User id is" + User.Uid)
         }
        
         else
         {
-            //println("loginData is nil in RestFacebook")
+            ////println("loginData is nil in RestFacebook")
         }
        
        
@@ -180,15 +180,15 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
-            ////println(json)
+            //////println(json)
             
             for (index: String, subJson: JSON) in json {
                 
-                ////println(subJson)
+                //////println(subJson)
                 
                 var business = Business(json: subJson)
                 tmpBusinesses.append(business)
@@ -211,15 +211,15 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
-            ////println(json)
+            //////println(json)
 
             for (index: String, subJson: JSON) in json {
                 
-                ////println(subJson)
+                //////println(subJson)
                 
                 business = Business(json: subJson)
                 break
@@ -270,7 +270,7 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
@@ -297,14 +297,14 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                ////println(subJson)
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
             }
@@ -322,7 +322,7 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             
             var json = JSON(data: data)
@@ -331,7 +331,7 @@ struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                ////println(subJson)
+                //////println(subJson)
                 
                 tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
@@ -352,13 +352,13 @@ struct HelperREST
         let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
             if((error) != nil) {
                 //If there is an error in the web request, print it to the console
-                //println(error.localizedDescription)
+                ////println(error.localizedDescription)
             }
             var json = JSON(data: data)
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+              //  println(subJson)
                 
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)

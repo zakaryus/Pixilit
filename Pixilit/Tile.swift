@@ -50,10 +50,10 @@ class Tile: NSObject, IRestful {
             self.Pixd = HelperREST.RestIsFlagged(self.Nid!)
                    }
         if let tags = json["Tags"].array {
-            println(json)
+            //println(json)
             for tag in tags {
                 self.tags.append(tag.string!)
-                ////println("Tag: \(tag)")
+             //println("Tag: \(tag)")
             }
         }
         if let businessname = json["parent_name"].string {
@@ -69,7 +69,7 @@ class Tile: NSObject, IRestful {
                 if let width = NSNumberFormatter().numberFromString(photowidth) {
                     if let height = NSNumberFormatter().numberFromString(photoheight) {
                         
-                        println("photo width: \(width), height: \(height)")
+                        //println("photo width: \(width), height: \(height)")
                         var w = CGFloat(width)
                         var h = CGFloat(height)
                         PhotoMetadata = CGSizeMake(w, h)

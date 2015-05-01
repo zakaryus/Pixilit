@@ -54,7 +54,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
             {
                 Tiles in
                 
-                println(Tiles.count)
+                //println(Tiles.count)
                 self.tiles = []
                 
                 for tile in Tiles {
@@ -103,7 +103,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
                 self.tiles[indexPath.row].photo = Photo
             }
             
-            println("width: \(tiles[indexPath.row].photo.size.width), height: \(tiles[indexPath.row].photo.size.height)")
+            //println("width: \(tiles[indexPath.row].photo.size.width), height: \(tiles[indexPath.row].photo.size.height)")
             
             return CGSize(width: tiles[indexPath.row].photo.size.width, height: tiles[indexPath.row].photo.size.height)
     }

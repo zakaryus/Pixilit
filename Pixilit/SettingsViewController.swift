@@ -27,23 +27,23 @@ class SettingsViewController: UITableViewController
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         if indexPath.row == Section1.Region.rawValue && indexPath.section == 0 {
-            //println("Region")
+            ////println("Region")
             performSegueWithIdentifier("SavedRegionSegue", sender: self)
         }
         else if indexPath.row == Section1.AccountInfo.rawValue && indexPath.section == 0 {
-            //println("Account info")
+            ////println("Account info")
             performSegueWithIdentifier("AccountInfoSegue", sender: self)
         }
         else if indexPath.row == Section1.Payment.rawValue && indexPath.section == 0 {
-            //println("Payment")
+            ////println("Payment")
             performSegueWithIdentifier("PaymentSegue", sender: self)
         }
         else if indexPath.row == Section2.About.rawValue && indexPath.section == 1 {
-            //println("About")
+            ////println("About")
             performSegueWithIdentifier("AboutSegue", sender: self)
         }
         else if indexPath.row == Section2.Logout.rawValue && indexPath.section == 1 {
-            //println("Logged out")
+            ////println("Logged out")
             User.SetAnonymous()
           
             if let tbc = self.tabBarController {

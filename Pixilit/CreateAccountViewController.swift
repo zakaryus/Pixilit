@@ -46,7 +46,7 @@ class CreateAccountViewController: UIViewController, UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) {
         
         if let currenturl = webView.request?.URL!.absoluteString {
-            //println(currenturl)
+            ////println(currenturl)
             
             if currenturl != Config.UserRegistrationURL && currenturl != Config.BusinessRegistrationURL && currenturl != "webViewDidFinishLoad:" {
                 if let tbc = self.tabBarController {
@@ -55,7 +55,7 @@ class CreateAccountViewController: UIViewController, UIWebViewDelegate {
                 }
             }
         }
-        ////println(webView.request?.URL.absoluteString)
+        //////println(webView.request?.URL.absoluteString)
     }
 
 }
