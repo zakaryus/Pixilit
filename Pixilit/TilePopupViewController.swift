@@ -88,11 +88,9 @@ class TilePopupViewController: UIViewController {
         
         if User.isLoggedIn() {
             if SelectedTile.Pixd == true {
-                //pixdImage.image = UIImage(named: "pixd")
                 pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
             }
             else {
-                //pixdImage.image = UIImage(named: "unpixd")
                 pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
             }
         }
@@ -119,23 +117,24 @@ class TilePopupViewController: UIViewController {
         
         
         if SelectedTile.Pixd == true {
-            //pixdImage.image = UIImage(named: "pixd")
             pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
         }
         else {
-            //pixdImage.image = UIImage(named: "unpixd")
             pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
         }
         
         //notify observers
     }
 
+    func disablePictureInteraction()
+    {
+        image.userInteractionEnabled = false;
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
     
     // MARK: - Navigation
 

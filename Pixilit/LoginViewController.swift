@@ -42,12 +42,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         if ( username.isEqualToString("") || password.isEqualToString("") ){
             
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Login Failed"
-            alertView.message = "Re-enter username and password"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
+            showAlert("Login Failed", message: "Re-enter username and password")
+
         } else {
             
                     var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
@@ -76,22 +72,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     var name = userjson["user"]["name"].string
             
                     if (name == nil) {
-                        var alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Login Failed"
-                        alertView.message = "Re-enter username and password"
-                        alertView.delegate = self
-                        
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
+                        showAlert("Login Failed", message: "Re-enter username and password")
                     }
                   
                     else {
-                        var alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Welcome, \(name!)"
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
-
+                        showAlert("Welcome, \(name!)", message: "")
                         User.userSetup(userjson)
                         HelperREST.RestBasicProfile(User.Uid)
                     
@@ -101,18 +86,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
             }
             else {
-                var alertView:UIAlertView = UIAlertView()
-                alertView.title = "Network Issues"
-                alertView.message = "Please try again later"
-                alertView.delegate = self
-                
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
+                showAlert("Network Issues", message: "Please try again later")
             }
         }
 
     }
     
+    func showAlert(title: NSString, message: NSString) {
+        var alertView:UIAlertView = UIAlertView()
+        alertView.title = title as String
+        alertView.message = message as String
+        alertView.delegate = self
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+
+    }
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         self.view.endEditing(true)

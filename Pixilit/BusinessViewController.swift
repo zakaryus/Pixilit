@@ -41,6 +41,9 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
+    @IBAction func GoBackPushed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
     //****************************
     //let reuseId = "businessPhotoCollectionViewCell"
     //let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -109,7 +112,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         }
         
         cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        
+        registerTaps(cell)
         return cell
     }
     
@@ -203,6 +206,18 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         }
         
         SetMintyForestBackground()
+    }
+    
+    func registerTaps(cell: TileCollectionViewCell) {
+        var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
+        singleTap.numberOfTapsRequired = 1
+        var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
+        doubleTap.numberOfTapsRequired = 2
+        
+        cell.addGestureRecognizer(singleTap)
+        cell.addGestureRecognizer(doubleTap)
+        
+        singleTap.requireGestureRecognizerToFail(doubleTap)
     }
     
     func SetMintyForestBackground()
