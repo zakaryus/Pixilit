@@ -12,7 +12,9 @@ private let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForRes
 
 struct Config
 {
-    static let RestUserToken : String = dict?.objectForKey("RestUserProfile") as! String
+    static let RestUserLogout : String = dict?.objectForKey("RestUserLogout") as! String
+    static let RestSystemConnect : String = dict?.objectForKey("RestSystemConnect") as! String
+    static let RestUserToken : String = dict?.objectForKey("RestUserToken") as! String
     static let RestUserProfile : String = dict?.objectForKey("RestUserProfile") as! String
     static let RestIsFlagged : String = dict?.objectForKey("RestIsFlagged") as! String
     static let RestFlagJson: String = dict?.objectForKey("RestFlagJson") as! String

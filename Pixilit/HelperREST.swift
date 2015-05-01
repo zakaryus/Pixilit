@@ -11,63 +11,70 @@ import UIKit
 struct HelperREST
 {
     
-  /*  static func RestIsFlagged(pid : String) -> Bool {
+    enum HTTPMethod : String {
+        case Post = "POST"
+        case Get = "GET"
+        case Put = "PUT"
+        case Delete = "DELETE"
+    }
+    
+    static func RestRequest(url : String, content : String?, method : HTTPMethod, headerValues : [(String, String)]?) -> JSON {
+        
+        let urlPath = url
+        var loginurl:NSURL = NSURL(string: urlPath)!
+        var loginpost:NSString = ""
+        if content != nil {
+            loginpost = content!
+        }
+        var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
+        var loginpostLength:NSString = String( loginpostData.length )
+        var responseError: NSError?
+        var response: NSURLResponse?
+        var loginrequest:NSMutableURLRequest = NSMutableURLRequest(URL: loginurl)
+        loginrequest.HTTPMethod = method.rawValue
+        loginrequest.HTTPBody = loginpostData
+        
+        
+        loginrequest.setValue(loginpostLength as String, forHTTPHeaderField: "Content-Length")
+        loginrequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        if headerValues != nil {
+            
+            for header in headerValues! {
+                loginrequest.setValue(header.1, forHTTPHeaderField: header.0)
+            }
+        }
+        
+        var loginData: NSData? = NSURLConnection.sendSynchronousRequest(loginrequest, returningResponse:&response, error:&responseError)
+        var json = JSON(data: loginData!)
+        return json
+    }
+    
+    static func RestUpdateProfile(pid : String) -> Bool {
         
         let urlPath = Config.RestUserProfile + pid
         let url: NSURL = NSURL(string: urlPath)!
         
-        var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
-        println(post)
-        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-        var postLength:NSString = String(postData.length )
-        var reponseError: NSError?
+        var put: NSString = NSString(data: JSON(User.Profile).rawData(options: NSJSONWritingOptions.allZeros, error: nil)!, encoding: NSUTF8StringEncoding)!
+        println(put)
+        var putData:NSData = put.dataUsingEncoding(NSASCIIStringEncoding)!
+        var putLength:NSString = String(putData.length )
+        var responseError: NSError?
         var response: NSURLResponse?
         
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "PUT"
-        request.HTTPBody = postData
-        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.HTTPBody = putData
+        request.setValue(putLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        request.setValue(User.Token, forHTTPHeaderField: "X-CSRF-Token")
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
         
-        var json = JSON(data: data!)
-        var success : Bool = false
-        println(json)
-        for (index: String, subJson: JSON) in json {
-            
-            
-            
-            if subJson.stringValue == "true"
-            {
-                success = true
-            }
-            
-        }
-        return success
+        return responseError == nil
         
-        
-    }*/
-    
-  /*  static func RestUserLogin(token : String, encrypted : String, username : String) {
-    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(encrypted.0 + encrypted.1)\"}"
-    println(loginpost)
-    var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
-    var loginpostLength:NSString = String( loginpostData.length )
-    var reponseError: NSError?
-    var response: NSURLResponse?
-    
-    var loginrequest:NSMutableURLRequest = NSMutableURLRequest(URL: loginurl)
-    loginrequest.HTTPMethod = "POST"
-    loginrequest.HTTPBody = loginpostData
-    loginrequest.setValue(loginpostLength as String, forHTTPHeaderField: "Content-Length")
-    loginrequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
-        loginrequest.setValue(User.Token, forHTTPHeaderField: "X-CSRF-Token")
-    var loginData: NSData? = NSURLConnection.sendSynchronousRequest(loginrequest, returningResponse:&response, error:&reponseError)
-    
-    }*/
-
+    }
 
 
     static func RestRegionsRequest(tid : String = "all", CompletionHandler: (Regions: [Region]) -> ()) {
@@ -88,7 +95,7 @@ struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                //println(subJson)
+                println(subJson)
                 
                 var region = Region(json: subJson)
                 tmpRegions.append(region)
@@ -113,10 +120,10 @@ struct HelperREST
         }
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
-        println(post)
+       
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
-        var reponseError: NSError?
+        var responseError: NSError?
         var response: NSURLResponse?
         
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -125,7 +132,7 @@ struct HelperREST
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
         
         var json = JSON(data: data!)
         var success : Bool = false
@@ -150,10 +157,10 @@ struct HelperREST
         let url: NSURL = NSURL(string: urlPath)!
         
         var post:NSString = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(entityID)\",\"uid\":\"\(User.Uid)\"}"
-        println(post)
+     
         var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength:NSString = String(postData.length )
-        var reponseError: NSError?
+        var responseError: NSError?
         var response: NSURLResponse?
         
         var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -162,11 +169,12 @@ struct HelperREST
         request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
-        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&responseError)
         
         var json = JSON(data: data!)
         var success : Bool = false
-        println(json)
+
+    
         for (index: String, subJson: JSON) in json {
             
                      
@@ -318,7 +326,7 @@ struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                println(subJson)
+              
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
             }

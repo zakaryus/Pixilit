@@ -43,8 +43,8 @@ class SettingsViewController: UITableViewController
             performSegueWithIdentifier("AboutSegue", sender: self)
         }
         else if indexPath.row == Section2.Logout.rawValue && indexPath.section == 1 {
-            println("Logged out")
-            User.SetAnonymous()
+            
+            User.Logout()
             if let tbc = self.tabBarController {
                 tbc.selectedIndex = 0
             }

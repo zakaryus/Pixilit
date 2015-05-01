@@ -60,7 +60,7 @@ class RegionViewController : UIViewController, UITableViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         var srvc = segue.destinationViewController as! SubRegionViewController
-        srvc.region = sender as! [Region]
+        srvc.regions = sender as! [Region]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

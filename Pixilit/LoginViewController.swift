@@ -37,81 +37,122 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signinTapped(sender: UIButton) {
-        var username:NSString = inusername.text
-        var password:NSString = inpassword.text
         
-        if ( username.isEqualToString("") || password.isEqualToString("") ){
+        if ( inusername.text == "" || inpassword.text == "" ){
             
-            var alertView:UIAlertView = UIAlertView()
-            alertView.title = "Login Failed"
-            alertView.message = "Re-enter username and password"
-            alertView.delegate = self
-            alertView.addButtonWithTitle("OK")
-            alertView.show()
-        } else {
-            
-                    var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
-                    var encrypted = MyCrypt.encryptString(password as String)
-            println(encrypted)
-                    password = "nothing to see here"
-            
-            
-                    var loginpost:NSString = "{\"username\":\"\(username)\",\"password\":\"\(encrypted.0 + encrypted.1)\"}"
-              println(loginpost)
-                    var loginpostData:NSData = loginpost.dataUsingEncoding(NSASCIIStringEncoding)!
-                    var loginpostLength:NSString = String( loginpostData.length )
-                    var reponseError: NSError?
-                    var response: NSURLResponse?
-            
-                    var loginrequest:NSMutableURLRequest = NSMutableURLRequest(URL: loginurl)
-                    loginrequest.HTTPMethod = "POST"
-                    loginrequest.HTTPBody = loginpostData
-                    loginrequest.setValue(loginpostLength as String, forHTTPHeaderField: "Content-Length")
-                    loginrequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    loginrequest.setValue("application/json", forHTTPHeaderField: "Accept")
-                    var loginData: NSData? = NSURLConnection.sendSynchronousRequest(loginrequest, returningResponse:&response, error:&reponseError)
-            
-            
-            if(loginData != nil) {
-                    var userjson = JSON(data: loginData!)
-                    var name = userjson["user"]["name"].string
-            
-                    if (name == nil) {
-                        var alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Login Failed"
-                        alertView.message = "Re-enter username and password"
-                        alertView.delegate = self
-                        
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
-                    }
-                  
-                    else {
-                        var alertView:UIAlertView = UIAlertView()
-                        alertView.title = "Welcome, \(name!)"
-                        alertView.delegate = self
-                        alertView.addButtonWithTitle("OK")
-                        alertView.show()
-
-                        User.userSetup(userjson)
-                        
-                    
-
-                        self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-                   
-                    }
-            }
-            else {
-                var alertView:UIAlertView = UIAlertView()
-                alertView.title = "Network Issues"
-                alertView.message = "Please try again later"
-                alertView.delegate = self
-                
-                alertView.addButtonWithTitle("OK")
-                alertView.show()
-            }
+            LoginFailed()
         }
+        else {
+            
+            var json : JSON!
+            var networkissues: Bool = false
+            
+            // GET TOKEN
+            json = HelperREST.RestRequest(Config.RestUserToken, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: nil)
+            networkissues = NilJsonHandler(json, handler: UserToken)
+            if networkissues { return }
+           
+            // SYSTEM CONNECT
+            json = HelperREST.RestRequest(Config.RestSystemConnect, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
+            networkissues = NilJsonHandler(json, handler: SystemConnect)
+            if networkissues { return }
 
+            
+            var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
+            var encrypted = MyCrypt.encryptString(inpassword.text)
+            println(encrypted)
+            var loginString = "{\"username\":\"\(inusername.text)\", \"password\":\"\(encrypted)\"}"
+            inpassword.text = "nothing to see here"
+            inpassword.text = ""
+
+            var uid = json["user"]["uid"].int!
+          
+            
+            if uid == 0 //NO SESSION - Log in
+            {
+                println(loginString)
+                json = HelperREST.RestRequest(Config.RestUserLogin, content: loginString, method: HelperREST.HTTPMethod.Post, headerValues: nil)
+                networkissues = NilJsonHandler(json, handler: LoginHelper)
+                if networkissues { return }
+                println(json)
+                var name = json["user"]["name"].string
+                
+                if (name == nil) {
+                    LoginFailed()
+                    return
+                }
+            }
+            
+            User.userSetup(json)
+            
+            LoginSucceeded()
+           
+            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+        }
+    }
+    
+    func NilJsonHandler(json: JSON, handler: (JSON) -> ()) -> Bool {
+        if json != nil {
+            handler(json)
+            return false
+        }
+        else {
+            NetworkIssues()
+            return true
+        }
+    }
+    
+    func UserToken(json: JSON) {
+        println("usertoken: \(json)")
+        var token = json["token"].string!
+        User.setToken(token)
+    }
+    
+    func SystemConnect(json: JSON) {
+        var sessname = json["session_name"].string!
+        var sessid = json["sessid"].string!
+        User.SetSession(sessname, sessid: sessid)
+    }
+    
+    func LoginHelper(json: JSON) {
+        println(json)
+        var sessname = json["session_name"].string!
+        var sessid = json["sessid"].string!
+        User.SetSession(sessname, sessid: sessid)
+        var token = json["token"].string!
+        User.setToken(token)
+    }
+    
+    func LoginFailed()
+    {
+        var alertView:UIAlertView = UIAlertView()
+        alertView.title = "Login Failed"
+        alertView.message = "Re-enter username and password"
+        alertView.delegate = self
+        
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+    }
+    
+    func LoginSucceeded()
+    {
+        var alertView:UIAlertView = UIAlertView()
+        alertView.title = "Welcome, \(User.Username)"
+        alertView.delegate = self
+        
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
+    }
+    
+    func NetworkIssues()
+    {
+        var alertView:UIAlertView = UIAlertView()
+        alertView.title = "Network Issues"
+        alertView.message = "Please try again later"
+        alertView.delegate = self
+        
+        alertView.addButtonWithTitle("OK")
+        alertView.show()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -119,8 +160,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return false;
     }
-    
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
@@ -134,8 +173,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         {
             var uvc = segue.destinationViewController as! CreateAccountViewController
         }
-        
-        
     }
-   
 }

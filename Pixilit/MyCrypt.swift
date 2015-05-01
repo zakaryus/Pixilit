@@ -11,14 +11,14 @@ import Foundation
 
 struct MyCrypt{
     
-    static func encryptString(estring: String) -> (String, String) {
+    static func encryptString(estring: String) -> String {
         var rtn:(key: String, password: String)
         
         rtn.key = MyCrypt.randomStringWithLength(20)
         var edata = MyRNEncryptor.encryptData(estring.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true), password: rtn.key, error: nil)
         rtn.password = edata.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
         
-        return rtn
+        return rtn.0 + rtn.1
     }
     
     

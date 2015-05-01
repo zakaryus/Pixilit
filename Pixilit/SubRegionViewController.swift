@@ -11,7 +11,7 @@ import UIKit
 class SubRegionViewController: UIViewController {
 
     @IBOutlet weak var tvSubRegions: UITableView!
-    var region : [Region] = []
+    var regions : [Region] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +26,7 @@ class SubRegionViewController: UIViewController {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = region[indexPath.row].Name?.capitalizedString
+        cell.textLabel?.text = regions[indexPath.row].Name?.capitalizedString
         
         return cell
     }
@@ -40,7 +40,11 @@ class SubRegionViewController: UIViewController {
         if cell?.accessoryType == UITableViewCellAccessoryType.Checkmark {
             cell?.accessoryType = UITableViewCellAccessoryType.None
         } else {
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            
+            if User.AddRegion("\(regions[indexPath.row].TID!)") {
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            }
+       
         }
         
     }
@@ -50,7 +54,7 @@ class SubRegionViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return region.count
+        return regions.count
     }
     
 

@@ -49,6 +49,13 @@
 		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
 		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
 		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
+		32F578BD1AF18EA600BFB16B /* JSONArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B61AF18EA600BFB16B /* JSONArray.swift */; };
+		32F578BE1AF18EA600BFB16B /* JSONDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B71AF18EA600BFB16B /* JSONDictionary.swift */; };
+		32F578BF1AF18EA600BFB16B /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B81AF18EA600BFB16B /* JSONParser.swift */; };
+		32F578C01AF18EA600BFB16B /* JSONSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B91AF18EA600BFB16B /* JSONSearch.swift */; };
+		32F578C11AF18EA600BFB16B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BA1AF18EA600BFB16B /* StringExtensions.swift */; };
+		32F578C21AF18EA600BFB16B /* ValueEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BB1AF18EA600BFB16B /* ValueEnum.swift */; };
+		32F578C31AF18EA600BFB16B /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BC1AF18EA600BFB16B /* XMLParser.swift */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
@@ -127,6 +134,13 @@
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
 		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
 		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
+		32F578B61AF18EA600BFB16B /* JSONArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONArray.swift; sourceTree = "<group>"; };
+		32F578B71AF18EA600BFB16B /* JSONDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDictionary.swift; sourceTree = "<group>"; };
+		32F578B81AF18EA600BFB16B /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		32F578B91AF18EA600BFB16B /* JSONSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSearch.swift; sourceTree = "<group>"; };
+		32F578BA1AF18EA600BFB16B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		32F578BB1AF18EA600BFB16B /* ValueEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueEnum.swift; sourceTree = "<group>"; };
+		32F578BC1AF18EA600BFB16B /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
 		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
 		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
@@ -260,6 +274,7 @@
 		32BA54631ADC506F0099DD87 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				32F578B51AF18CE800BFB16B /* Aldywch */,
 				32FBED701AD475FB00B99783 /* RNCryptor */,
 				31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */,
 				3185E1481A79E82900037B10 /* SwiftyJSON.swift */,
@@ -325,6 +340,20 @@
 				322DD18D1AE97DA100058A5E /* HelperTransformations.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		32F578B51AF18CE800BFB16B /* Aldywch */ = {
+			isa = PBXGroup;
+			children = (
+				32F578B61AF18EA600BFB16B /* JSONArray.swift */,
+				32F578B71AF18EA600BFB16B /* JSONDictionary.swift */,
+				32F578B81AF18EA600BFB16B /* JSONParser.swift */,
+				32F578B91AF18EA600BFB16B /* JSONSearch.swift */,
+				32F578BA1AF18EA600BFB16B /* StringExtensions.swift */,
+				32F578BB1AF18EA600BFB16B /* ValueEnum.swift */,
+				32F578BC1AF18EA600BFB16B /* XMLParser.swift */,
+			);
+			name = Aldywch;
 			sourceTree = "<group>";
 		};
 		32FBED701AD475FB00B99783 /* RNCryptor */ = {
@@ -464,6 +493,7 @@
 			files = (
 				32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */,
 				3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */,
+				32F578BF1AF18EA600BFB16B /* JSONParser.swift in Sources */,
 				3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */,
 				3184E3B51ADADF4F00E10B89 /* CustomIOS7AlertView.swift in Sources */,
 				3178DEEB1A9044B200E6D1B4 /* Sections.swift in Sources */,
@@ -482,17 +512,22 @@
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
 				42E524F41AAA4B16004E93D5 /* MainFeedTagsViewController.swift in Sources */,
 				32B51DC81ADDA0980014ECCC /* AccountInfoViewController.swift in Sources */,
+				32F578C01AF18EA600BFB16B /* JSONSearch.swift in Sources */,
+				32F578C11AF18EA600BFB16B /* StringExtensions.swift in Sources */,
 				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
 				32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
+				32F578BE1AF18EA600BFB16B /* JSONDictionary.swift in Sources */,
 				325CEC2F1ADEF0AC00AEBC56 /* RegionKvp.swift in Sources */,
 				32B51DCA1ADDA0E40014ECCC /* PaymentViewController.swift in Sources */,
 				32B51DC61ADD9EB70014ECCC /* RegionViewController.swift in Sources */,
 				3178DEE71A903D7000E6D1B4 /* Business.swift in Sources */,
 				3178DEE91A903FB600E6D1B4 /* Section.swift in Sources */,
+				32F578C31AF18EA600BFB16B /* XMLParser.swift in Sources */,
 				32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */,
 				329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */,
 				31ABEB941A981A04001815F9 /* Tile.swift in Sources */,
+				32F578BD1AF18EA600BFB16B /* JSONArray.swift in Sources */,
 				32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */,
 				32B51DCC1ADDA1E10014ECCC /* AboutViewController.swift in Sources */,
 				32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */,
@@ -505,6 +540,7 @@
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */,
 				4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */,
+				32F578C21AF18EA600BFB16B /* ValueEnum.swift in Sources */,
 				42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */,
 				3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */,
 			);
