@@ -155,15 +155,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         alertView.show()
     }
     
-    func showAlert(title: NSString, message: NSString) {
-        var alertView:UIAlertView = UIAlertView()
-        alertView.title = title as String
-        alertView.message = message as String
-        alertView.delegate = self
-        alertView.addButtonWithTitle("OK")
-        alertView.show()
-
-    }
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         self.view.endEditing(true)

@@ -226,7 +226,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     func picDoubleTapped(sender: UITapGestureRecognizer!)
     {
-        if !User.isLoggedIn() {
+        if !User.IsLoggedIn() {
             return
         }
         HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
