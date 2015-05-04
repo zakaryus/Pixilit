@@ -18,36 +18,63 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
     var selectedIndex = NSIndexPath()
+    var hasLoggedIn = false
+    var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+
     override public func viewDidLoad() {
         super.viewDidLoad()
+         Loading()
 
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
 
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
-        Setup()
+ 
     }
     
-    override public func viewWillAppear(animated: Bool) {        
+    
+    override public func viewWillAppear(animated: Bool) {
+        
+        if hasLoggedIn == false && User.IsLoggedIn()
+        {
+            hasLoggedIn = true
+            Loading()
+        }
+        else if hasLoggedIn == true && !User.IsLoggedIn()
+        {
+            hasLoggedIn = false
+            Loading()
+
+        }
+        
+    }
+    
+    func Loading()
+    {
+        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        actInd.center = self.view.center
+        actInd.hidesWhenStopped = true
+        actInd.color = UIColor(red: 122, green: 0, blue: 156, alpha: 1)
+        actInd.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        
+        view.addSubview(actInd)
+        actInd.startAnimating()
         Setup()
     }
+
     
     func Setup() {
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
         Refresh()
-        
-        
     }
     
     func Refresh() {
         HelperREST.RestMainFeedRequest() {
             Tiles in
-            
-        
-        
+
             self.tiles = []
           
             for tile in Tiles {
@@ -56,6 +83,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
+            self.actInd.stopAnimating()
         }
 
     }
@@ -126,17 +154,19 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     func picDoubleTapped(sender: UITapGestureRecognizer!)
     {
-        if !User.isLoggedIn() {
+        if !User.IsLoggedIn() {
             return
         }
-        HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
-            success in
-           
-            if success == true
-            {
-                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
-            }
+        
+        var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
+        var content = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(tiles[selectedIndex.row].tile.Nid!)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
+        var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
+        
+        if success[0].stringValue == "true"
+        {
+            self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
         }
+        
         
         setCellPix()
         //tiles[self.selectedIndex.row].setPixd()

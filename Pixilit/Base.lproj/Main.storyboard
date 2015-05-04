@@ -1102,6 +1102,7 @@ Other "about" stuff here</string>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.94509803921568625" green="0.47843137254901963" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="aCK-7r-vzI" firstAttribute="trailing" secondItem="3gM-zQ-qqi" secondAttribute="trailingMargin" id="8og-pq-uwT"/>
                             <constraint firstItem="aCK-7r-vzI" firstAttribute="leading" secondItem="3gM-zQ-qqi" secondAttribute="leadingMargin" id="EQt-4O-2Dc"/>
@@ -1124,7 +1125,7 @@ Other "about" stuff here</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcp-iK-lr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="898"/>
+            <point key="canvasLocation" x="582" y="892"/>
         </scene>
         <!--Settings-->
         <scene sceneID="rJE-4X-mdy">

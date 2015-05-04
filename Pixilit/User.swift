@@ -12,7 +12,7 @@ struct User
 {
     private(set) static var Username: String!
     private(set) static var Token: String!
-    private(set) static var Uid: String!
+    private(set) static var Uid: String! = "-1"
     private(set) static var Role: AccountType!
     private(set) static var Regions:[Region] = []
     private(set) static var Pid: String!
@@ -22,7 +22,7 @@ struct User
  
     private(set) static var Profile : NSMutableDictionary!
     
-    static func userSetup(json: JSON)
+    static func Setup(json: JSON)
     {
         
         var data = json.rawData(options: NSJSONWritingOptions.PrettyPrinted, error: nil)
@@ -79,12 +79,8 @@ struct User
         }
     }
     
-    static func UserProfile(json: JSON)
-    {
-        
-        
-        
-    }
+
+    
     
     static func SetAnonymous()
     {
@@ -106,7 +102,7 @@ struct User
         SetAnonymous()
     }
     
-    static func isLoggedIn() -> Bool
+    static func IsLoggedIn() -> Bool
     {
         return Uid != "-1"
     }

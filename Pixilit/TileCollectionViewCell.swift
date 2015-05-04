@@ -44,12 +44,16 @@ class TileCollectionViewCell: UICollectionViewCell {
     
     func setPixd()
     {
-        if User.isLoggedIn() {
+        if User.IsLoggedIn() {
             if currentTile.Pixd == true {
                 pixd.image = UIImage(named: "pixd")
             } else {
                 pixd.image = UIImage(named: "unpixd")
             }
+        }
+        else {
+            pixd.image = UIImage()
+            
         }
     }
 }

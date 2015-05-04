@@ -79,7 +79,7 @@ class TilePopupViewController: UIViewController {
             businessTitle.text = SelectedTile.BusinessName
         }
         
-        if User.isLoggedIn() {
+        if User.IsLoggedIn() {
             if SelectedTile.Pixd == true {
                 //pixdImage.image = UIImage(named: "pixd")
                 pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
@@ -117,7 +117,7 @@ class TilePopupViewController: UIViewController {
         pixdImage.contentMode = .ScaleAspectFit
         pixdImage.autoresizingMask = .FlexibleHeight
         
-        if User.isLoggedIn() {
+        if User.IsLoggedIn() {
             if SelectedTile.Pixd == true {
                 //pixdImage.image = UIImage(named: "pixd")
                 pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)

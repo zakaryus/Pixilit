@@ -272,7 +272,7 @@ struct HelperREST
         
             for (index: String, subJson: JSON) in json {
                 
-                User.UserProfile(subJson)
+                User.Setup(subJson)
             
                 break
             }

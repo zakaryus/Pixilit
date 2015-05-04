@@ -14,10 +14,10 @@ class Tile: NSObject, IRestful {
     private(set) var Photo: String?
     private(set) var Nid : String?
     private(set) var BusinessID: String?
-    private var _Pixd: Bool?
+    private var _Pixd: Bool = false
     var Pixd: Bool? {
         get { return _Pixd }
-        set(value) { _Pixd = value }
+        set(value) { _Pixd = value! }
     }
     private(set) var tags: [String] = []
     private(set) var BusinessName: String?
@@ -47,8 +47,20 @@ class Tile: NSObject, IRestful {
         }
         
         if let pixd = json["pixd"].string {
-            self.Pixd = HelperREST.RestIsFlagged(self.Nid!)
-                   }
+          
+            if(User.IsLoggedIn())
+            {
+                var content = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(self.Nid!)\",\"uid\":\"\(User.Uid)\"}"
+                var success = HelperREST.RestRequest(Config.RestIsFlagged, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
+
+                if success[0].stringValue == "true"
+                {
+                    self.Pixd = true
+                }
+            }
+         
+            
+        }
         if let tags = json["Tags"].array {
            
             for tag in tags {

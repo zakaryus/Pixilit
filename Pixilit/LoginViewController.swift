@@ -65,10 +65,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             inpassword.text = "nothing to see here"
             inpassword.text = ""
 
-            var uid = json["user"]["uid"].int!
+            var uid = json["user"]["uid"].string!
           
             
-            if uid == 0 //NO SESSION - Log in
+            if uid == "0" //NO SESSION - Log in
             {
                 println(loginString)
                 json = HelperREST.RestRequest(Config.RestUserLogin, content: loginString, method: HelperREST.HTTPMethod.Post, headerValues: nil)
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            User.userSetup(json)
+            User.Setup(json)
             
             LoginSucceeded()
            
