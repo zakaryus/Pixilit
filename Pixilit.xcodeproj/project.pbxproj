@@ -49,6 +49,9 @@
 		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
 		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
 		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
+		32EFB2EA1AF8301F00BB176B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2E91AF8301F00BB176B /* Bolts.framework */; };
+		32EFB2EC1AF8302A00BB176B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; };
+		32EFB2EE1AF8303000BB176B /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2ED1AF8303000BB176B /* FBSDKLoginKit.framework */; };
 		32F578BD1AF18EA600BFB16B /* JSONArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B61AF18EA600BFB16B /* JSONArray.swift */; };
 		32F578BE1AF18EA600BFB16B /* JSONDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B71AF18EA600BFB16B /* JSONDictionary.swift */; };
 		32F578BF1AF18EA600BFB16B /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578B81AF18EA600BFB16B /* JSONParser.swift */; };
@@ -134,6 +137,9 @@
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
 		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
 		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
+		32EFB2E91AF8301F00BB176B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		32EFB2ED1AF8303000BB176B /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		32F578B61AF18EA600BFB16B /* JSONArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONArray.swift; sourceTree = "<group>"; };
 		32F578B71AF18EA600BFB16B /* JSONDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONDictionary.swift; sourceTree = "<group>"; };
 		32F578B81AF18EA600BFB16B /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
@@ -175,6 +181,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32EFB2EA1AF8301F00BB176B /* Bolts.framework in Frameworks */,
+				32EFB2EC1AF8302A00BB176B /* FBSDKCoreKit.framework in Frameworks */,
+				32EFB2EE1AF8303000BB176B /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +200,8 @@
 		3185E1181A79D3E600037B10 = {
 			isa = PBXGroup;
 			children = (
+				32EFB2ED1AF8303000BB176B /* FBSDKLoginKit.framework */,
+				32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */,
 				3185E1231A79D3E600037B10 /* Pixilit */,
 				3185E13B1A79D3E600037B10 /* PixilitTests */,
 				3185E1221A79D3E600037B10 /* Products */,
@@ -209,6 +220,7 @@
 		3185E1231A79D3E600037B10 /* Pixilit */ = {
 			isa = PBXGroup;
 			children = (
+				32EFB2E91AF8301F00BB176B /* Bolts.framework */,
 				32BA54631ADC506F0099DD87 /* Libraries */,
 				32BA54641ADC508B0099DD87 /* Controllers */,
 				32BA54651ADC50BC0099DD87 /* Models */,
@@ -672,6 +684,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pixilit",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pixilit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -691,6 +708,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pixilit",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pixilit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
