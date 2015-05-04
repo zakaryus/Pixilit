@@ -395,4 +395,46 @@ struct HelperREST
         
         
     }
+    
+    
+    
+    static func RestFacebook(accessToken: String) {
+        
+        let urlPath = Config.RestFacebookConnect
+        let url: NSURL = NSURL(string: urlPath)!
+        
+        var post:NSString = "{\"access_token\":\"\(accessToken)\"}"
+        
+        var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
+        var postLength:NSString = String(postData.length )
+        var reponseError: NSError?
+        var response: NSURLResponse?
+        
+        var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.HTTPBody = postData
+        request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        
+        if (data != nil)
+        {
+           
+            var json = JSON(data: data!)
+             println(json)
+               User.Setup(json)
+            ////println("User id is" + User.Uid)
+        }
+            
+        else
+        {
+            ////println("loginData is nil in RestFacebook")
+        }
+        
+        
+        
+        
+        
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -539,6 +539,12 @@
                                     <action selector="createAccountTapped:" destination="tgs-hF-zE0" eventType="touchUpInside" id="kh4-Bm-rJQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WyQ-8g-2fl" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="261" y="351" width="86" height="30"/>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725496530532837" green="0.96862751245498657" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -560,6 +566,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="Is6-49-IcE"/>
                     <connections>
+                        <outlet property="facebookButton" destination="WyQ-8g-2fl" id="np6-2s-1rn"/>
                         <outlet property="inpassword" destination="M0A-Uo-eVj" id="zL5-A0-ZOD"/>
                         <outlet property="inusername" destination="BVk-8v-gLS" id="oVq-dz-29u"/>
                         <segue destination="8rJ-Kc-sve" kind="show" identifier="LoginSuccess" id="ZX0-pe-6I2"/>
@@ -568,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="52d-l1-3bK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2046" y="892"/>
+            <point key="canvasLocation" x="-2005" y="885"/>
         </scene>
         <!--Create Account View Controller-->
         <scene sceneID="yZC-Pg-TFx">
@@ -1237,7 +1244,7 @@ Other "about" stuff here</string>
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="FD6D5F2D-D270-46EA-8C1D-FA689B14C645" id="qct-il-VNm"/>
+                    <tabBarItem key="tabBarItem" title="Main Feed" image="881AF287-724A-4712-B303-1FBE92C5C7BC" id="qct-il-VNm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1256,7 +1263,7 @@ Other "about" stuff here</string>
         </scene>
     </scenes>
     <resources>
-        <image name="FD6D5F2D-D270-46EA-8C1D-FA689B14C645" width="19" height="35">
+        <image name="881AF287-724A-4712-B303-1FBE92C5C7BC" width="19" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
