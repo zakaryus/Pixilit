@@ -114,17 +114,20 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         }
         
         cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        
+        registerTaps(cell)
+        return cell
+    }
+    
+    func registerTaps(cell: TileCollectionViewCell) {
         var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
         singleTap.numberOfTapsRequired = 1
         var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
         doubleTap.numberOfTapsRequired = 2
-
+        
         cell.addGestureRecognizer(singleTap)
         cell.addGestureRecognizer(doubleTap)
         
         singleTap.requireGestureRecognizerToFail(doubleTap)
-        return cell
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -132,6 +135,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         var size = tiles[indexPath.row].photoSize
         if size == CGSize(width: 0, height: 0) {
             tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+            var ps = tiles[indexPath.row].photoSize
+            println("Mainfeed width: \(ps.width), height: \(ps.height)")
         }
         
         return tiles[indexPath.row].photoSize

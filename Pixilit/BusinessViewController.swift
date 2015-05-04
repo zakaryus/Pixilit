@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BusinessViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class BusinessViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate {
     
     @IBOutlet weak var businessNavBar: UINavigationItem!
     @IBOutlet weak var businessName: UILabel!
@@ -21,8 +21,14 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var businessLogo: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
     
+    var mintyForest = UIColor.clearColor()//(red: 228, green: 247, blue: 242, alpha: 1)
     var business: Business = Business()
-    
+    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    var selectedTile: Tile = Tile()
+    let reuseId = "tileCollectionViewCell"
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var refresh = UIRefreshControl()
+    var selectedIndex = NSIndexPath()
     @IBAction func shareButton(sender: AnyObject)
     {
         let businessUrl = HelperURLs.UidToUserUrl(business.Uid!)
@@ -35,9 +41,12 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         self.presentViewController(activityViewController, animated: true, completion: nil)
     }
     
+    @IBAction func GoBackPushed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
     //****************************
-    let reuseId = "businessPhotoCollectionViewCell"
-    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    //let reuseId = "businessPhotoCollectionViewCell"
+    //let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     //****************************
     
     override func viewDidLoad() {
@@ -53,44 +62,76 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         // Dispose of any resources that can be recreated.
     }
     
+    override public func viewWillAppear(animated: Bool) {
+        Setup()
+    }
+    
+    func Setup() {
+        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
+        Refresh()
+        
+        
+    }
+    
+    func Refresh() {
+        HelperREST.RestBusinessTiles(business.Uid!) {
+            Tiles in
+            
+            println(Tiles.count)
+            self.tiles = []
+            
+            for tile in Tiles {
+                self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
+            }
+            
+            self.collectionView.reloadData()
+            self.refresh.endRefreshing()
+        }
+        
+    }
     //****************************
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.business.Pix.count
+        return self.tiles.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
-        HelperREST.RestNidToTile(business.Pix[indexPath.row])
-        {
-            Tile in
-            
-            //cell.Description.text = Tile.Description
-            
-            HelperURLs.UrlToImage(Tile.Photo!) {
+        if !tiles[indexPath.row].hasImage {
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
-                cell.Photo.image = Photo
+                self.tiles[indexPath.row].photo = Photo
+                self.tiles[indexPath.row].hasImage = true
             }
         }
         
+        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+        registerTaps(cell)
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        var size = tiles[indexPath.row].photoSize
+        if size == CGSize(width: 0, height: 0) {
+            tiles[indexPath.row].photoSize = HelperTransformations.Scale(.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
+            var ps = tiles[indexPath.row].photoSize
+            println("Business View width: \(ps.width), height: \(ps.height)")
+            
+        }
+        
+        return tiles[indexPath.row].photoSize
+    }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        
-    }
-
-    
-    func collectionView(collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-            return CGSize(width: 198, height: 288)
+        selectedIndex = indexPath
     }
     
     func collectionView(collectionView: UICollectionView,
@@ -104,7 +145,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
     {
         if let title = business.Title {
             self.businessName.text = title
-            self.businessName.backgroundColor = UIColor.whiteColor()
+            self.businessName.backgroundColor = mintyForest
             self.businessNavBar.title = title
         }
         
@@ -130,29 +171,29 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
         
         if locality != "" && administrativearea != "" && postalcode != "" {
             self.businessLocalityAdminZip.text = "\(locality), \(administrativearea) \(postalcode)"
-            self.businessLocalityAdminZip.backgroundColor = UIColor.whiteColor()
+            self.businessLocalityAdminZip.backgroundColor = mintyForest
         }
         
         if let phone = business.Phone {
             self.businessPhone.text = phone
-            self.businessPhone.backgroundColor = UIColor.whiteColor()
+            self.businessPhone.backgroundColor = mintyForest
         }
         
         if let email = business.Email {
             self.businessEmail.text = email
-            self.businessEmail.backgroundColor = UIColor.whiteColor()
+            self.businessEmail.backgroundColor = mintyForest
         }
         
         if let website = business.Website {
             self.businessWebsite.text = website
-            self.businessWebsite.backgroundColor = UIColor.whiteColor()
+            self.businessWebsite.backgroundColor = mintyForest
         }
         
         //self.Hours = [String]()
         
         if let description = business.Description {
             self.businessDescription.text = description
-            self.businessDescription.backgroundColor = UIColor.whiteColor()
+            self.businessDescription.backgroundColor = self.mintyForest
         }
         
         if let logo = business.Logo {
@@ -160,22 +201,72 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, UICo
             {
                 Image in
                 self.businessLogo.image = Image
-                self.businessLogo.backgroundColor = UIColor.whiteColor()
+                self.businessLogo.backgroundColor = self.mintyForest
             }
         }
         
-        SetWhiteBackground()
+        SetMintyForestBackground()
     }
     
-    func SetWhiteBackground()
-    {
-        businessName.backgroundColor = UIColor.whiteColor()
-        businessThoroughfare.backgroundColor = UIColor.whiteColor()
-        businessLocalityAdminZip.backgroundColor = UIColor.whiteColor()
-        businessPhone.backgroundColor = UIColor.whiteColor()
-        businessEmail.backgroundColor = UIColor.whiteColor()
-        businessWebsite.backgroundColor = UIColor.whiteColor()
-        businessDescription.backgroundColor = UIColor.whiteColor()
-        businessLogo.backgroundColor = UIColor.whiteColor()
+    func registerTaps(cell: TileCollectionViewCell) {
+        var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
+        singleTap.numberOfTapsRequired = 1
+        var doubleTap = UITapGestureRecognizer(target: self, action: "picDoubleTapped:")
+        doubleTap.numberOfTapsRequired = 2
+        
+        cell.addGestureRecognizer(singleTap)
+        cell.addGestureRecognizer(doubleTap)
+        
+        singleTap.requireGestureRecognizerToFail(doubleTap)
     }
+    
+    func segueToPopup(sender: UITapGestureRecognizer!) {
+        self.performSegueWithIdentifier("popupSegue", sender: selectedIndex.row)
+    }
+    
+    func picDoubleTapped(sender: UITapGestureRecognizer!)
+    {
+        if !User.isLoggedIn() {
+            return
+        }
+        HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
+            success in
+            println("\(success) this sucs")
+            if success == true {
+                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+            }
+        }
+        
+        setCellPix()
+        //tiles[self.selectedIndex.row].setPixd()
+    }
+    
+    func setCellPix() {
+        var cell: TileCollectionViewCell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
+        cell.setPixd()
+    }
+    
+    
+    func SetMintyForestBackground()
+    {
+        self.businessName.backgroundColor = mintyForest
+        businessThoroughfare.backgroundColor = mintyForest
+        businessLocalityAdminZip.backgroundColor = mintyForest
+        businessPhone.backgroundColor = mintyForest
+        businessEmail.backgroundColor = mintyForest
+        businessWebsite.backgroundColor = mintyForest
+        businessDescription.backgroundColor = mintyForest
+        businessLogo.backgroundColor = mintyForest
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var tpvc = segue.destinationViewController as! TilePopupViewController
+        var index = sender as! Int
+        tpvc.SelectedTile = tiles[index].tile
+        tpvc.SelectedImage = tiles[index].photo
+
+        tpvc.disablePictureInteraction()
+    }
+
 }

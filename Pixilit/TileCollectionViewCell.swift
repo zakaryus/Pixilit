@@ -31,12 +31,14 @@ class TileCollectionViewCell: UICollectionViewCell {
         //Desc2.text = tile.Description!
         //Desc2.editable = false
         
-        //autoresizesSubviews = true
+        autoresizesSubviews = true
 
-        //Photo.contentMode = .ScaleToFill
-        //Photo.frame = contentView.bounds
-        //Photo.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+        Photo.contentMode = .ScaleToFill
+        Photo.frame = contentView.bounds
+        Photo.autoresizingMask = .FlexibleWidth | .FlexibleHeight
         Photo.image = img
+        Photo.layer.cornerRadius = 8.0
+        Photo.clipsToBounds = true
         currentTile = tile
         setPixd();
         
