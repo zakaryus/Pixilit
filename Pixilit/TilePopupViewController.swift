@@ -20,6 +20,7 @@ class TilePopupViewController: UIViewController {
     @IBOutlet weak var pixdButton: UIButton!
     var business: Business?
     private var _SelectedTile: Tile?
+    var userInteraction = true
     var SelectedTile : Tile {
         get {
             return _SelectedTile!
@@ -56,7 +57,7 @@ class TilePopupViewController: UIViewController {
             self.business = business
         }
         image.image = SelectedImage
-        
+        image.userInteractionEnabled = userInteraction
         
         var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: image.image!.size, containerWidth: popupView.frame.width)
         image.frame.size = dimensions
@@ -72,8 +73,10 @@ class TilePopupViewController: UIViewController {
         
         imageDescription.text = SelectedTile.Description
         for tag in SelectedTile.tags {
-            imageTags.text! += "\(tag), "
+            var modifiedString = tag.stringByReplacingOccurrencesOfString("&amp;", withString: "&", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            imageTags.text! += "\(modifiedString), "
         }
+        
         if let logo = SelectedTile.BusinessLogo {
             //rest request
             HelperURLs.UrlToImage(logo) {
@@ -128,7 +131,7 @@ class TilePopupViewController: UIViewController {
 
     func disablePictureInteraction()
     {
-        image.userInteractionEnabled = false;
+        userInteraction = false;
     }
     
     override func didReceiveMemoryWarning() {

@@ -131,7 +131,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
-        
+        selectedIndex = indexPath
     }
     
     func collectionView(collectionView: UICollectionView,
@@ -220,6 +220,33 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         singleTap.requireGestureRecognizerToFail(doubleTap)
     }
     
+    func segueToPopup(sender: UITapGestureRecognizer!) {
+        self.performSegueWithIdentifier("popupSegue", sender: selectedIndex.row)
+    }
+    
+    func picDoubleTapped(sender: UITapGestureRecognizer!)
+    {
+        if !User.isLoggedIn() {
+            return
+        }
+        HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
+            success in
+            println("\(success) this sucs")
+            if success == true {
+                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+            }
+        }
+        
+        setCellPix()
+        //tiles[self.selectedIndex.row].setPixd()
+    }
+    
+    func setCellPix() {
+        var cell: TileCollectionViewCell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
+        cell.setPixd()
+    }
+    
+    
     func SetMintyForestBackground()
     {
         self.businessName.backgroundColor = mintyForest
@@ -231,4 +258,15 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         businessDescription.backgroundColor = mintyForest
         businessLogo.backgroundColor = mintyForest
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        var tpvc = segue.destinationViewController as! TilePopupViewController
+        var index = sender as! Int
+        tpvc.SelectedTile = tiles[index].tile
+        tpvc.SelectedImage = tiles[index].photo
+
+        tpvc.disablePictureInteraction()
+    }
+
 }
