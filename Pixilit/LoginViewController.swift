@@ -34,9 +34,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         self.facebookButton.center = self.view.center;
         self.facebookButton.delegate = self;
         
-        
-        
-        if (FBSDKAccessToken.currentAccessToken() != nil)
+     /*   if (FBSDKAccessToken.currentAccessToken() != nil)
         {
             HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
             self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
@@ -49,7 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email"]
             loginView.delegate = self
-        }
+        }*/
         
     }
 
@@ -59,12 +57,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     
-    
     func loginButton(fbLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)
     {
-        
-                println("User Logged In")
-        
         if ((error) != nil)
         {
             // Process error
@@ -72,81 +66,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         else if result.isCancelled {
             // Handle cancellations
         }
+            
+
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                // Do work
-                println("ACCESS TOKEN IS " + FBSDKAccessToken.currentAccessToken().tokenString)
-                var accessToken =  FBSDKAccessToken.currentAccessToken().tokenString
-                println("accessToke is " + accessToken)
-                let urlPath = Config.RestFacebookConnect
-                let url: NSURL = NSURL(string: urlPath)!
-                
-                var post:NSString = "{\"access_token\":\"\(accessToken)\"}"
-                
-                var postData:NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
-                var postLength:NSString = String(postData.length )
-                var reponseError: NSError?
-                var response: NSURLResponse?
-                
-                var request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
-                request.HTTPMethod = "POST"
-                request.HTTPBody = postData
-                request.setValue(postLength as String, forHTTPHeaderField: "Content-Length")
-                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                request.setValue("application/json", forHTTPHeaderField: "Accept")
-                var data: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
-                
-                if (data != nil)
-                {
-                    var json = JSON(data: data!)
-                    println(json)
-                    User.Setup(json)
-                    
-                 //   HelperREST.RestBasicProfile(User.Uid)
-                    println("json inside fb button \(json)")
-                    println("User name is " + User.Username)
-                    println("User id is " + User.Uid)
-                    self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-                }
-                
+                Login(facebookLoginHelper)
             }
         }
-        
-        
-        
-        //        }//end big if
-        //
-        //        else
-        //        {
-        //            //println("BUTTON SAYS NO TOKEN")
-        //        }
-        
-        
-        
+        println(User.Uid)
     }//end FBlogin button
     
+    func facebookLoginHelper() -> JSON {
+        var accessToken = "{\"access_token\":\"\(FBSDKAccessToken.currentAccessToken().tokenString )\"}"
+        var json = HelperREST.RestRequest(Config.RestFacebookConnect, content: accessToken, method: HelperREST.HTTPMethod.Post, headerValues: nil)
+        return json
+    }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
     {
-        
         FBSDKLoginManager().logOut()
-        ////println("facebook loggeout")
         User.Logout()
     }
     
-    
-    
-    
     @IBAction func signinTapped(sender: UIButton) {
-        
         if ( inusername.text == "" || inpassword.text == "" ){
             
             LoginFailed()
         }
-        else {
+        else
+        {
+        Login(signinLoginHelper)
+        }
+    }
+    
+    func Login(handler: () -> JSON) {
+        
+      
             
             var json : JSON!
             var networkissues: Bool = false
@@ -155,33 +113,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             json = HelperREST.RestRequest(Config.RestUserToken, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: nil)
             networkissues = NilJsonHandler(json, handler: UserToken)
             if networkissues { return }
-           
+            
             // SYSTEM CONNECT
             json = HelperREST.RestRequest(Config.RestSystemConnect, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
             networkissues = NilJsonHandler(json, handler: SystemConnect)
             if networkissues { return }
-
             
-            var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
-            var encrypted = MyCrypt.encryptString(inpassword.text)
-            println(encrypted)
-            var loginString = "{\"username\":\"\(inusername.text)\", \"password\":\"\(encrypted)\"}"
-            inpassword.text = "nothing to see here"
-            inpassword.text = ""
-
             var uid = json["user"]["uid"].string!
-          
             
             if uid == "0" //NO SESSION - Log in
             {
-                println(loginString)
-                json = HelperREST.RestRequest(Config.RestUserLogin, content: loginString, method: HelperREST.HTTPMethod.Post, headerValues: nil)
-                
+                json = handler()
+                println(json)
                 var name: String? = nil
                 if let tkn = json["token"].string {
-                    networkissues = NilJsonHandler(json, handler: LoginHelper)
+                    networkissues = NilJsonHandler(json, handler: TokenSession)
                     if networkissues { return }
-                    println(json)
+                  //  println(json)
                     name = json["user"]["name"].string
                 }
                 
@@ -192,11 +140,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             }
             
             User.Setup(json)
+
             
             LoginSucceeded()
-           
+            
             self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
+        
+    }
+    
+    func signinLoginHelper() -> JSON {
+        var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
+        var encrypted = MyCrypt.encryptString(inpassword.text)
+       // println(encrypted)
+        var loginString = "{\"username\":\"\(inusername.text)\", \"password\":\"\(encrypted)\"}"
+        inpassword.text = "nothing to see here"
+        inpassword.text = ""
+        
+       // println(loginString)
+        var json = HelperREST.RestRequest(Config.RestUserLogin, content: loginString, method: HelperREST.HTTPMethod.Post, headerValues: nil)
+        return json
     }
     
     func NilJsonHandler(json: JSON, handler: (JSON) -> ()) -> Bool {
@@ -211,7 +173,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     func UserToken(json: JSON) {
-        println("usertoken: \(json)")
+     
         var token = json["token"].string!
         User.setToken(token)
     }
@@ -222,8 +184,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         User.SetSession(sessname, sessid: sessid)
     }
     
-    func LoginHelper(json: JSON) {
-        println(json)
+    func TokenSession(json: JSON) {
+   //     println(json)
         var sessname = json["session_name"].string!
         var sessid = json["sessid"].string!
         User.SetSession(sessname, sessid: sessid)

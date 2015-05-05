@@ -32,5 +32,4 @@ class Region: NSObject, IRestful
             self.PID = num
         }
     }
-    
 }

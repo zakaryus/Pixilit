@@ -14,10 +14,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet weak var usernameField: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var newsButton: UIBarButtonItem!
-    @IBAction func btnLogout(sender: AnyObject) {
-        User.SetAnonymous()
-        
-    }
+
  
     //var user : String = ""
     var tiles:[(tile: Tile, photo: UIImage)]=[]
@@ -40,6 +37,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        println(User.Uid)
         self.setName() //update username
        // collectVC.collectionView = collectionView
         
@@ -55,7 +53,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
             {
                 Tiles in
                 
-                println(Tiles.count)
+            
                 self.tiles = []
                 
                 for tile in Tiles {

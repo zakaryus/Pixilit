@@ -12,7 +12,7 @@ struct User
 {
     private(set) static var Username: String!
     private(set) static var Token: String!
-    private(set) static var Uid: String! = "-1"
+    private(set) static var Uid: String!
     private(set) static var Role: AccountType!
     private(set) static var Regions:[Region] = []
     private(set) static var Pid: String!
@@ -24,7 +24,7 @@ struct User
     
     static func Setup(json: JSON)
     {
-        
+        println(json)
         var data = json.rawData(options: NSJSONWritingOptions.PrettyPrinted, error: nil)
         var tmpDict = (NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers, error: nil) as! NSMutableDictionary)["user"] as! NSMutableDictionary!
         tmpDict = tmpDict["profile"] as! NSMutableDictionary!
@@ -128,7 +128,8 @@ struct User
             if let und = regions["und"] as? NSMutableArray
             {
                 und.addObject(["tid":"\(tid)"])
-                println(Pid)
+               
+                
                 if HelperREST.RestUpdateProfile(Pid) {
                     Profile = tmpProfile
                     return true

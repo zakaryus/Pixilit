@@ -95,7 +95,7 @@ struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                println(subJson)
+              //  println(subJson)
                 
                 var region = Region(json: subJson)
                 tmpRegions.append(region)

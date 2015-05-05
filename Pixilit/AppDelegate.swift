@@ -21,15 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window!.rootViewController = rootcontroller
             var tabBar : UITabBar = rootcontroller.tabBar
             var tabBarItem1 : UITabBarItem = tabBar.items![0] as! UITabBarItem
-            tabBar.selectedImageTintColor = UIColor.whiteColor()
+         //   tabBar.selectedImageTintColor = UIColor.whiteColor()
              tabBar.selectionIndicatorImage = getImageWithColor(UIColor(red: 0, green: 172/255, blue: 146/255, alpha: 1), size: CGSize(width:  rootcontroller.view.frame.width / 4, height: 49))
            
         }
         
-    
+        User.SetAnonymous()
+
         
         
-  
+
           return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -57,8 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
     func applicationDidBecomeActive(application: UIApplication) {
-        User.SetAnonymous()
-        FBSDKAppEvents.activateApp()
+            // FBSDKAppEvents.activateApp()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 

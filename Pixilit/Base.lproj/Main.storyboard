@@ -444,7 +444,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="TabBarController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="TabBarController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
@@ -1244,7 +1244,7 @@ Other "about" stuff here</string>
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="881AF287-724A-4712-B303-1FBE92C5C7BC" id="qct-il-VNm"/>
+                    <tabBarItem key="tabBarItem" title="Main Feed" image="7DC81EB1-EEB3-441F-A54B-02478FC609FC" id="qct-il-VNm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1263,7 +1263,7 @@ Other "about" stuff here</string>
         </scene>
     </scenes>
     <resources>
-        <image name="881AF287-724A-4712-B303-1FBE92C5C7BC" width="19" height="35">
+        <image name="7DC81EB1-EEB3-441F-A54B-02478FC609FC" width="19" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

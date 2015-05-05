@@ -35,7 +35,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     
     override public func viewWillAppear(animated: Bool) {
-        
+        println(User.Uid)
         if hasLoggedIn == false && User.IsLoggedIn()
         {
             hasLoggedIn = true
