@@ -44,7 +44,7 @@ struct User
             switch role.lowercaseString {
                 case "business" :
                     Role = .Business
-                case "user" :
+                case "basic" :
                     Role = .User
                 default :
                     Role = .Admin
@@ -129,7 +129,10 @@ struct User
             {
                 und.addObject(["tid":"\(tid)"])
                
-                
+                var put: NSString = NSString(data: JSON(tmpProfile).rawData(options: NSJSONWritingOptions.allZeros, error: nil)!, encoding: NSUTF8StringEncoding)!
+                println(put)
+                var json = HelperREST.RestRequest(Config.RestUserProfile + Pid, content: put as String, method: HelperREST.HTTPMethod.Put, headerValues: [("X-CSRF-Token", User.Token)])
+            
                 if HelperREST.RestUpdateProfile(Pid) {
                     Profile = tmpProfile
                     return true

@@ -28,6 +28,8 @@ class RegionViewController : UIViewController, UITableViewDelegate {
         RefreshList()
     }
     
+
+    
     func RefreshList()
     {
         HelperREST.RestRegionsRequest {
