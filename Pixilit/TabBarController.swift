@@ -8,11 +8,12 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //self.tabBarController = tabBarController!
+        self.tabBarController?.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +22,9 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        println("fuck you")
+    }
     /*
     // MARK: - Navigation
 

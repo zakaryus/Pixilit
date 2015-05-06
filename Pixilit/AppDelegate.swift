@@ -16,7 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
+        let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! TabBarController
+        //rootcontroller.tabBarController?.delegate = self
         if self.window != nil {
             self.window!.rootViewController = rootcontroller
             var tabBar : UITabBar = rootcontroller.tabBar
@@ -25,8 +26,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
              tabBar.selectionIndicatorImage = getImageWithColor(UIColor(red: 0, green: 172/255, blue: 146/255, alpha: 1), size: CGSize(width:  rootcontroller.view.frame.width / 4, height: 49))
            
         }
+        if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? String, let encryptedPassword = NSUserDefaults.standardUserDefaults().objectForKey("encryptedPassword") as? String
+        {
+            println(username)
+            println(encryptedPassword)
+                //login
+            User.SetAnonymous()
+        }
+            
+        else if let facebookToken = NSUserDefaults.standardUserDefaults().objectForKey("facebookToken") as? String
+        {
+            println(facebookToken)
+            User.SetAnonymous()
+        }
         
-        User.SetAnonymous()
+        else {User.SetAnonymous()}
 
         
         

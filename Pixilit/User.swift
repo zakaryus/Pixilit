@@ -93,6 +93,9 @@ struct User
         SessionName = ""
         Sessid = ""
         Cookie = ""
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("encrptedPassword")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("facebookToken")
     }
     
     static func Logout()

@@ -82,6 +82,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     func facebookLoginHelper() -> JSON {
         var accessToken = "{\"access_token\":\"\(FBSDKAccessToken.currentAccessToken().tokenString )\"}"
         var json = HelperREST.RestRequest(Config.RestFacebookConnect, content: accessToken, method: HelperREST.HTTPMethod.Post, headerValues: nil)
+        //maybe put NSUserDefaults stuff here
+        NSUserDefaults.standardUserDefaults().setObject(FBSDKAccessToken.currentAccessToken().tokenString, forKey: "facebookToken")
         return json
     }
     
@@ -155,7 +157,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         var loginString = "{\"username\":\"\(inusername.text)\", \"password\":\"\(encrypted)\"}"
         inpassword.text = "nothing to see here"
         inpassword.text = ""
-        
+        NSUserDefaults.standardUserDefaults().setObject(inusername.text, forKey: "username")
+        NSUserDefaults.standardUserDefaults().setObject(encrypted, forKey: "encryptedPassword")
        // println(loginString)
         var json = HelperREST.RestRequest(Config.RestUserLogin, content: loginString, method: HelperREST.HTTPMethod.Post, headerValues: nil)
         return json
