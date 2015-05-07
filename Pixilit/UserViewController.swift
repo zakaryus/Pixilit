@@ -25,25 +25,29 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     var refresh = UIRefreshControl()
     
     override func viewWillAppear(animated: Bool) {
+  
         println("USER ROLE: \(User.Role.rawValue)")
-        if User.Role == AccountType.Business || User.Role == AccountType.Admin {
-            newsButton.enabled = true
-        }
-        else {
+
+            if User.Role == AccountType.Business || User.Role == AccountType.Admin {
+                newsButton.enabled = true
+                
+            }
+            else {
             newsButton.enabled = false
-        }
+            }
+        
     }
 
     override func viewDidLoad() {
-        
+       
         super.viewDidLoad()
         println(User.Uid)
-        self.setName() //update username
-       // collectVC.collectionView = collectionView
-        
+        self.setName()
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
+        
+        
         Refresh()
     }
     

@@ -31,23 +31,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         
         self.inusername.delegate = self;
         self.inpassword.delegate = self;
-        self.facebookButton.center = self.view.center;
         self.facebookButton.delegate = self;
+        self.facebookButton.center = self.view.center;
         
-     /*   if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
-            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
-        else
-        {
-            ////println("ARE YOU EVER IN THE ELSE")
-            let loginView : FBSDKLoginButton = facebookButton
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email"]
-            loginView.delegate = self
-        }*/
+//      if (FBSDKAccessToken.currentAccessToken() != nil)
+//        {
+//            HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
+//            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+//        }
+//        else
+//        {
+//            //println("ARE YOU EVER IN THE ELSE")
+//            let loginView : FBSDKLoginButton = facebookButton
+//            self.view.addSubview(loginView)
+//            loginView.center = self.view.center
+//            loginView.readPermissions = ["public_profile", "email"]
+//            loginView.delegate = self
+//        }
         
     }
 

@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {User.SetAnonymous()}
 
         
-        
+        //return true
 
           return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }

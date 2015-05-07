@@ -45,6 +45,7 @@ class SettingsViewController: UITableViewController
         else if indexPath.row == Section2.Logout.rawValue && indexPath.section == 1 {
             
             User.Logout()
+           
             if let tbc = self.tabBarController {
                 tbc.selectedIndex = 0
             }
