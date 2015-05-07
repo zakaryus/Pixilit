@@ -80,6 +80,41 @@ struct User
     }
     
 
+    private static func SetRegions() {
+        
+        if let regions = Profile["field_user_regions"] as? NSMutableDictionary
+        {
+            if let und = regions["und"] as? NSMutableArray
+            {
+                var tidHolder = ""
+                var first = true
+                for tid in  und {
+                    var tmpTid = (tid as! NSDictionary).valueForKey("tid") as! String
+                    if first {
+                        tidHolder += tmpTid
+                        first = false
+                    }
+                    else {
+                        tidHolder += ",\(tmpTid)"
+                    }
+                }
+                
+                var semaphore = dispatch_semaphore_create(0)
+                
+              
+                    HelperREST.RestRegionsRequest(tid: tidHolder) {
+                        Regs in
+                        self.Regions = Regs
+                        dispatch_semaphore_signal(semaphore)
+                    }
+                
+                dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
+          
+            }
+        }
+
+        
+    }
     
     
     static func SetAnonymous()
@@ -119,6 +154,7 @@ struct User
     {
         Token = token
     }
+    
     static func AddRegion(tid: String) -> Bool {
        
         var tmpProfile = Profile
@@ -130,16 +166,35 @@ struct User
                 und.addObject(["tid":"\(tid)"])
                
                 var put: NSString = NSString(data: JSON(tmpProfile).rawData(options: NSJSONWritingOptions.allZeros, error: nil)!, encoding: NSUTF8StringEncoding)!
-                println(put)
                 var json = HelperREST.RestRequest(Config.RestUserProfile + Pid, content: put as String, method: HelperREST.HTTPMethod.Put, headerValues: [("X-CSRF-Token", User.Token)])
             
-                if HelperREST.RestUpdateProfile(Pid) {
-                    Profile = tmpProfile
-                    return true
-                }
+                Profile = tmpProfile
+                SetRegions()
+                return true
             }
 
         }
         return false 
+    }
+    
+    static func RemoveRegion(tid: String) -> Bool {
+        var tmpProfile = Profile
+        
+        if let regions = tmpProfile["field_user_regions"] as? NSMutableDictionary
+        {
+            if let und = regions["und"] as? NSMutableArray
+            {
+                und.removeObject(["tid":"\(tid)"])
+                
+                var put: NSString = NSString(data: JSON(tmpProfile).rawData(options: NSJSONWritingOptions.allZeros, error: nil)!, encoding: NSUTF8StringEncoding)!
+                var json = HelperREST.RestRequest(Config.RestUserProfile + Pid, content: put as String, method: HelperREST.HTTPMethod.Put, headerValues: [("X-CSRF-Token", User.Token)])
+                
+                Profile = tmpProfile
+                SetRegions()
+                return true
+            }
+            
+        }
+        return false
     }
 }

@@ -18,6 +18,9 @@ struct HelperURLs
         let imgUrl = NSURL(string: imgPath)
         if let imgData = NSData(contentsOfURL: imgUrl!) {
             tmpImage = UIImage(data: imgData)!
+            
+            var base64 = imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+            println("base64: \(base64)")
         }
         else {
             tmpImage = UIImage()

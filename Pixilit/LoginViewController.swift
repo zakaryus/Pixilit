@@ -16,16 +16,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     override func viewWillAppear(animated: Bool) {
         println(User.Username)
-        
-        if User.Role != AccountType.Anonymous {
-            performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
     }
     
     @IBAction func createAccountTapped(sender: AnyObject) {
-        self.performSegueWithIdentifier("CreateAccountSegue", sender: "CreateAccountSegue")
+        self.performSegueWithIdentifier("GoRegister", sender: self)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -143,8 +139,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
             
             LoginSucceeded()
-            
-            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
+            self.dismissViewControllerAnimated(true, completion: nil)
         
     }
     
@@ -233,7 +228,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        var segueType = sender as! String
+       /* var segueType = sender as! String
     
         if segueType == "LoginSuccess"
         {
@@ -242,6 +237,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         else if segueType == "CreateAccountSegue"
         {
             var uvc = segue.destinationViewController as! CreateAccountViewController
-        }
+        }*/
     }
 }

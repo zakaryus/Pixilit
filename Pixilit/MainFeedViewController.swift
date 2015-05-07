@@ -72,6 +72,9 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
+        
+     //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+  
         HelperREST.RestMainFeedRequest() {
             Tiles in
 

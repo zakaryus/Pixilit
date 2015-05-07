@@ -25,7 +25,11 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
     var refresh = UIRefreshControl()
     
     override func viewWillAppear(animated: Bool) {
-        println("USER ROLE: \(User.Role.rawValue)")
+        if !User.IsLoggedIn()
+        {
+              self.performSegueWithIdentifier("GoLogin", sender: self)
+        }
+        usernameField.text = User.Username
         if User.Role == AccountType.Business || User.Role == AccountType.Admin {
             newsButton.enabled = true
         }
@@ -38,7 +42,6 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         
         super.viewDidLoad()
         println(User.Uid)
-        self.setName() //update username
        // collectVC.collectionView = collectionView
         
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
@@ -113,13 +116,5 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
             return sectionInsets
     }
 
-
-    
-    func setName() {
-
-        usernameField.text = User.Username
-    }
-    
-    
 }
 

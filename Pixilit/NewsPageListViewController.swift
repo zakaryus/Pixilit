@@ -36,21 +36,25 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func RefreshList()
     {
-        HelperREST.RestMainNewsPageRequest()
-            {
-                newspage in
+        var json = HelperREST.RestRequest(Config.RestMainNewsPageJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        println(json)
+        if json != nil
+        {
+            for (index: String, subJson: JSON) in json {
                 
-                self.listOfNewsPages = newspage
-                self.sections = Sections<NewsPage>(list: self.listOfNewsPages)
-                
-                dispatch_async(dispatch_get_main_queue(),
-                    {
-                        println(self.listOfNewsPages)
-                        self.tableView.reloadData()
-                        self.refresh.endRefreshing()
-                })
+                var tmpNewsPage = NewsPage(json: subJson)
+                self.listOfNewsPages.append(tmpNewsPage)
+            }
+            
+            self.sections = Sections<NewsPage>(list: self.listOfNewsPages)
+            
+            dispatch_async(dispatch_get_main_queue(),
+                {
+                    println(self.listOfNewsPages)
+                    self.tableView.reloadData()
+                    self.refresh.endRefreshing()
+            })
         }
-        
     }
     
     override func didReceiveMemoryWarning()
@@ -72,7 +76,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
         return cell
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         var np: NewsPage = self.sections.data[indexPath.section].data[indexPath.row] as NewsPage
         self.performSegueWithIdentifier("NewsPageShowSegue", sender: np)
@@ -157,13 +161,13 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
         self.sections = Sections<NewsPage>(list: self.filteredListOfNewsPages)
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchString searchString: String!) -> Bool
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
     {
         self.filterContentForSearchText(searchString)
         return true
     }
     
-    func searchDisplayController(controller: UISearchDisplayController!, shouldReloadTableForSearchScope searchOption: Int) -> Bool
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool
     {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true

@@ -34,20 +34,22 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func RefreshList()
     {
-        HelperREST.RestBusinessesRequest
-        {
-                bus in
+        var tmpBusinesses = [Business]()
+        var json = HelperREST.RestRequest(Config.RestBusinessesJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        
+        if json != nil {
+        for (index: String, subJson: JSON) in json {
+            var business = Business(json: subJson)
+            tmpBusinesses.append(business)
+        }
+            self.listOfBusinesses = tmpBusinesses
+            self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
                 
-                println(bus.count)
-                
-                self.listOfBusinesses = bus
-                self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
-                
-                dispatch_async(dispatch_get_main_queue(),
-                {
-                        self.tableView.reloadData()
-                        self.refresh.endRefreshing()
-                })
+            dispatch_async(dispatch_get_main_queue(),
+            {
+                    self.tableView.reloadData()
+                    self.refresh.endRefreshing()
+            })
         }
         
     }

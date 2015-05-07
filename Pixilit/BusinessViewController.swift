@@ -62,7 +62,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         // Dispose of any resources that can be recreated.
     }
     
-    override public func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         Setup()
     }
     
@@ -76,19 +76,27 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     }
     
     func Refresh() {
-        HelperREST.RestBusinessTiles(business.Uid!) {
-            Tiles in
+        
+        var tmpTiles: [Tile] = []
+        var tmpTile: Tile = Tile()
+        var json = HelperREST.RestRequest(Config.RestBusinessTileJson + business.Uid!, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        if json != nil {
+        for (index: String, subJson: JSON) in json {
             
-            println(Tiles.count)
-            self.tiles = []
+            println(subJson)
             
-            for tile in Tiles {
-                self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
+            tmpTile = Tile(json: subJson)
+            tmpTiles.append(tmpTile)
+        }
+        
+            for tile in tmpTiles {
+                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }
             
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
         }
+        
         
     }
     //****************************
@@ -229,12 +237,13 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         if !User.IsLoggedIn() {
             return
         }
-        HelperREST.RestFlag(tiles[selectedIndex.row].tile.Nid!, pixd : tiles[selectedIndex.row].tile.Pixd!) {
-            success in
-            println("\(success) this sucs")
-            if success == true {
-                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
-            }
+        var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
+        var content = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(tiles[selectedIndex.row].tile.Nid!)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
+        var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
+        
+        if success[0].stringValue == "true"
+        {
+            self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
         }
         
         setCellPix()

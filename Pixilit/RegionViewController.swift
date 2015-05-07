@@ -32,6 +32,8 @@ class RegionViewController : UIViewController, UITableViewDelegate {
     
     func RefreshList()
     {
+       //var json = HelperREST.RestRequest(Config.RestRegionsJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        
         HelperREST.RestRegionsRequest {
             regions in
             var r = RegionHierarchy(regions: regions)

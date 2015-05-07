@@ -43,7 +43,7 @@
 	<key>RestBusinessesJson</key>
 	<string>http://104.236.227.190/rest/businesses.json</string>
 	<key>RestMainNewsPageJson</key>
-	<string>http://104.236.227.190/rest/main-news-page.json</string>
+	<string>http://104.236.227.190/rest/news-feed.json</string>
 	<key>RestFacebookConnect</key>
 	<string>http://104.236.227.190/rest/fboauth/connect.json</string>
 	<key>RestBusinessJson</key>

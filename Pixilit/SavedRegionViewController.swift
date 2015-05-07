@@ -11,10 +11,14 @@ import UIKit
 class SavedRegionViewController: UIViewController {
 
     @IBOutlet weak var savedRegions: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+      // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        savedRegions.reloadData();
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,9 +48,9 @@ class SavedRegionViewController: UIViewController {
     
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            println("you attempted to delete index: \(indexPath.row)")
+            User.RemoveRegion("\(User.Regions[indexPath.row].TID!)")
+            savedRegions.reloadData()
         }
     }
-    
     
 }

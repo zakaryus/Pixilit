@@ -12,6 +12,11 @@ class CreateAccountViewController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var wvAccountCreation: UIWebView!
     @IBOutlet weak var scAccountSelection: UISegmentedControl!
+    
+    @IBAction func AlreadyHasAccount(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     var URL : String = ""
    override func viewDidLoad() {
         
@@ -49,10 +54,8 @@ class CreateAccountViewController: UIViewController, UIWebViewDelegate {
             println(currenturl)
             
             if currenturl != Config.UserRegistrationURL && currenturl != Config.BusinessRegistrationURL && currenturl != "webViewDidFinishLoad:" {
-                if let tbc = self.tabBarController {
-                    SelectionChanged("")
-                    tbc.selectedIndex = 0
-                }
+                SelectionChanged("")
+                self.performSegueWithIdentifier("GoHome2", sender: self)
             }
         }
         //println(webView.request?.URL.absoluteString)
