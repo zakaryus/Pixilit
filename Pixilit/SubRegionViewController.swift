@@ -28,6 +28,10 @@ class SubRegionViewController: UIViewController {
         
         cell.textLabel?.text = regions[indexPath.row].Name?.capitalizedString
         
+        if UserHasRegion(regions[indexPath.row]) {
+            cell.accessoryType = .Checkmark
+        }
+        
         return cell
     }
     
@@ -37,16 +41,9 @@ class SubRegionViewController: UIViewController {
 //        self.performSegueWithIdentifier("SubRegionSegue", sender: region)
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if cell?.accessoryType == UITableViewCellAccessoryType.Checkmark {
-            cell?.accessoryType = UITableViewCellAccessoryType.None
-        } else {
-            
-            if User.AddRegion("\(regions[indexPath.row].TID!)") {
-                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            }
-       
+        if User.AddRegion("\(regions[indexPath.row].TID!)") {
+            cell?.accessoryType = .Checkmark
         }
-        
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -57,7 +54,14 @@ class SubRegionViewController: UIViewController {
         return regions.count
     }
     
-
+    func UserHasRegion(region: Region) -> Bool {
+        for r in User.Regions {
+            if r.TID == region.TID {
+                return true
+            }
+        }
+        return false
+    }
 
     /*
     // MARK: - Navigation

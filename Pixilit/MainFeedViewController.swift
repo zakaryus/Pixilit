@@ -23,10 +23,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-         Loading()
 
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
+        
+        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        collectionView.insertSubview(refresh, aboveSubview: collectionView)
 
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
@@ -39,40 +42,22 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         if hasLoggedIn == false && User.IsLoggedIn()
         {
             hasLoggedIn = true
-            Loading()
+            Refresh()
         }
         else if hasLoggedIn == true && !User.IsLoggedIn()
         {
             hasLoggedIn = false
-            Loading()
-
+            Refresh()
+        }
+        else if tiles.count == 0 {
+            Refresh()
         }
         
     }
     
-    func Loading()
-    {
-        actInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
-        actInd.center = self.view.center
-        actInd.hidesWhenStopped = true
-        actInd.color = UIColor(red: 122, green: 0, blue: 156, alpha: 1)
-        actInd.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-        
-        view.addSubview(actInd)
-        actInd.startAnimating()
-        Setup()
-    }
-
-    
-    func Setup() {
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
-        collectionView.addSubview(refresh)
-        refresh.beginRefreshing()
-        Refresh()
-    }
-    
     func Refresh() {
         
+        refresh.beginRefreshing()
      //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
   
         HelperREST.RestMainFeedRequest() {
@@ -86,9 +71,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
-            self.actInd.stopAnimating()
         }
-
     }
 
     override public func didReceiveMemoryWarning() {

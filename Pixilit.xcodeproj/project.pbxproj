@@ -21,6 +21,7 @@
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
 		31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */; };
+		3211000C1AFC14AF000FC1D9 /* HelperLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */; };
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
 		3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7231AD88CBD008593CE /* TabBarController.swift */; };
@@ -72,7 +73,6 @@
 		4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4293ACC51AAE53600089F441 /* UserViewController.swift */; };
 		429616881AA7C06400BE167B /* NewsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429616871AA7C06400BE167B /* NewsPageViewController.swift */; };
 		42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BCAB191A80214D000E9387 /* BusinessViewController.swift */; };
-		42E524F41AAA4B16004E93D5 /* MainFeedTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */; };
 		42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */; };
 		42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C61AA4D468009D4AD9 /* NewsPage.swift */; };
 		42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */; };
@@ -110,6 +110,7 @@
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLogin.swift; sourceTree = "<group>"; };
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
 		3212E7231AD88CBD008593CE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 		4293ACC51AAE53600089F441 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		429616871AA7C06400BE167B /* NewsPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPageViewController.swift; sourceTree = "<group>"; };
 		42BCAB191A80214D000E9387 /* BusinessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
-		42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedTagsViewController.swift; sourceTree = "<group>"; };
 		42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedViewController.swift; sourceTree = "<group>"; };
 		42F848C61AA4D468009D4AD9 /* NewsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPage.swift; sourceTree = "<group>"; };
 		42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPageListViewController.swift; sourceTree = "<group>"; };
@@ -302,7 +302,6 @@
 				3185E1281A79D3E600037B10 /* BusinessListViewController.swift */,
 				42BCAB191A80214D000E9387 /* BusinessViewController.swift */,
 				42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */,
-				42E524F31AAA4B16004E93D5 /* MainFeedTagsViewController.swift */,
 				429616871AA7C06400BE167B /* NewsPageViewController.swift */,
 				42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */,
 				329E419F1ACB3EBA002131FD /* SettingsViewController.swift */,
@@ -350,6 +349,7 @@
 				32BA546A1ADC52540099DD87 /* HelperStrings.swift */,
 				32BA546C1ADC52920099DD87 /* HelperREST.swift */,
 				322DD18D1AE97DA100058A5E /* HelperTransformations.swift */,
+				3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -522,7 +522,6 @@
 				322DD18E1AE97DA100058A5E /* HelperTransformations.swift in Sources */,
 				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
-				42E524F41AAA4B16004E93D5 /* MainFeedTagsViewController.swift in Sources */,
 				32B51DC81ADDA0980014ECCC /* AccountInfoViewController.swift in Sources */,
 				32F578C01AF18EA600BFB16B /* JSONSearch.swift in Sources */,
 				32F578C11AF18EA600BFB16B /* StringExtensions.swift in Sources */,
@@ -549,6 +548,7 @@
 				32B51DCE1ADDA4D90014ECCC /* IRestful.swift in Sources */,
 				32FDB6421AE5A3A80039A30E /* TilePopupViewController.swift in Sources */,
 				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
+				3211000C1AFC14AF000FC1D9 /* HelperLogin.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */,
 				4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */,

@@ -29,22 +29,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         self.inpassword.delegate = self;
         self.facebookButton.center = self.view.center;
         self.facebookButton.delegate = self;
-        
-     /*   if (FBSDKAccessToken.currentAccessToken() != nil)
-        {
-            HelperREST.RestFacebook(FBSDKAccessToken.currentAccessToken().tokenString)
-            self.performSegueWithIdentifier("LoginSuccess", sender: "LoginSuccess")
-        }
-        else
-        {
-            ////println("ARE YOU EVER IN THE ELSE")
-            let loginView : FBSDKLoginButton = facebookButton
-            self.view.addSubview(loginView)
-            loginView.center = self.view.center
-            loginView.readPermissions = ["public_profile", "email"]
-            loginView.delegate = self
-        }*/
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,24 +46,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         else if result.isCancelled {
             // Handle cancellations
         }
-            
-
         else {
             // If you ask for multiple permissions at once, you
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                Login(facebookLoginHelper)
+                HelperLogin.Login("", encryptedPass: "", vc: self, handler: HelperLogin.facebookLoginHelper)
             }
         }
         println(User.Uid)
     }//end FBlogin button
     
-    func facebookLoginHelper() -> JSON {
-        var accessToken = "{\"access_token\":\"\(FBSDKAccessToken.currentAccessToken().tokenString )\"}"
-        var json = HelperREST.RestRequest(Config.RestFacebookConnect, content: accessToken, method: HelperREST.HTTPMethod.Post, headerValues: nil)
-        return json
-    }
+    
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
     {
@@ -90,115 +68,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBAction func signinTapped(sender: UIButton) {
         if ( inusername.text == "" || inpassword.text == "" ){
             
-            LoginFailed()
+            HelperLogin.LoginFailed(self)
         }
         else
         {
-        Login(signinLoginHelper)
-        }
-    }
-    
-    func Login(handler: () -> JSON) {
-        
-      
-            
-            var json : JSON!
-            var networkissues: Bool = false
-            
-            // GET TOKEN
-            json = HelperREST.RestRequest(Config.RestUserToken, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: nil)
-            networkissues = NilJsonHandler(json, handler: UserToken)
-            if networkissues { return }
-            
-            // SYSTEM CONNECT
-            json = HelperREST.RestRequest(Config.RestSystemConnect, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
-            networkissues = NilJsonHandler(json, handler: SystemConnect)
-            if networkissues { return }
-            
-            var uid = json["user"]["uid"].string!
-            
-            if uid == "0" //NO SESSION - Log in
-            {
-                json = handler()
-                println(json)
-                var name: String? = nil
-                if let tkn = json["token"].string {
-                    networkissues = NilJsonHandler(json, handler: TokenSession)
-                    if networkissues { return }
-                  //  println(json)
-                    name = json["user"]["name"].string
-                }
-                
-                if (name == nil) {
-                    LoginFailed()
-                    return
-                }
-            }
-            
-            User.Setup(json)
-
-            
+            var encrypted = MyCrypt.encryptString(inpassword.text)
+            inpassword.text = "nothing to see here!"
+            inpassword.text = ""
+            HelperLogin.Login(inusername.text, encryptedPass: encrypted, vc: self, handler: HelperLogin.signinLoginHelper)
             LoginSucceeded()
             self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
-    
-    func signinLoginHelper() -> JSON {
-        var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
-        var encrypted = MyCrypt.encryptString(inpassword.text)
-       // println(encrypted)
-        var loginString = "{\"username\":\"\(inusername.text)\", \"password\":\"\(encrypted)\"}"
-        inpassword.text = "nothing to see here"
-        inpassword.text = ""
-        
-       // println(loginString)
-        var json = HelperREST.RestRequest(Config.RestUserLogin, content: loginString, method: HelperREST.HTTPMethod.Post, headerValues: nil)
-        return json
-    }
-    
-    func NilJsonHandler(json: JSON, handler: (JSON) -> ()) -> Bool {
-        if json != nil {
-            handler(json)
-            return false
-        }
-        else {
-            NetworkIssues()
-            return true
         }
     }
     
-    func UserToken(json: JSON) {
-     
-        var token = json["token"].string!
-        User.setToken(token)
-    }
-    
-    func SystemConnect(json: JSON) {
-        var sessname = json["session_name"].string!
-        var sessid = json["sessid"].string!
-        User.SetSession(sessname, sessid: sessid)
-    }
-    
-    func TokenSession(json: JSON) {
-   //     println(json)
-        var sessname = json["session_name"].string!
-        var sessid = json["sessid"].string!
-        User.SetSession(sessname, sessid: sessid)
-        var token = json["token"].string!
-        User.setToken(token)
-    }
-    
-    func LoginFailed()
-    {
-        var alertView:UIAlertView = UIAlertView()
-        alertView.title = "Login Failed"
-        alertView.message = "Re-enter username and password"
-        alertView.delegate = self
         
-        alertView.addButtonWithTitle("OK")
-        alertView.show()
-    }
-    
     func LoginSucceeded()
     {
         var alertView:UIAlertView = UIAlertView()
@@ -209,34 +92,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         alertView.show()
     }
     
-    func NetworkIssues()
-    {
-        var alertView:UIAlertView = UIAlertView()
-        alertView.title = "Network Issues"
-        alertView.message = "Please try again later"
-        alertView.delegate = self
-        
-        alertView.addButtonWithTitle("OK")
-        alertView.show()
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         self.view.endEditing(true)
         return false;
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
-    {
-       /* var segueType = sender as! String
-    
-        if segueType == "LoginSuccess"
-        {
-        var uvc = segue.destinationViewController as! UserViewController
-        }
-        else if segueType == "CreateAccountSegue"
-        {
-            var uvc = segue.destinationViewController as! CreateAccountViewController
-        }*/
     }
 }
