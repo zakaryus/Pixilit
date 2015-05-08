@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let rootcontroller = storyboard.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
         if self.window != nil {
@@ -41,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println(facebookToken)
             
             //login
-            HelperLogin.Login("", encryptedPass: "", vc: self.window!.rootViewController!, handler: HelperLogin.facebookLoginHelper)
+            HelperLogin.Login("", encryptedPass: facebookToken, vc: self.window!.rootViewController!, handler: HelperLogin.facebookLoginHelper)
             //User.SetAnonymous()
         }
             

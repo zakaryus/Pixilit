@@ -32,8 +32,10 @@ class UserViewController: UIViewController, UICollectionViewDataSource, UICollec
         usernameField.text = User.Username
         if User.Role == AccountType.Business || User.Role == AccountType.Admin {
             newsButton.enabled = true
+            newsButton.title = "News"
         }
         else {
+            newsButton.title = ""
             newsButton.enabled = false
         }
     }

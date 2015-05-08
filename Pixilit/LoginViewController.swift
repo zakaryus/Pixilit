@@ -51,7 +51,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             // should check if specific permissions missing
             if result.grantedPermissions.contains("email")
             {
-                HelperLogin.Login("", encryptedPass: "", vc: self, handler: HelperLogin.facebookLoginHelper)
+                HelperLogin.Login(nil, encryptedPass: nil, vc: self, handler: HelperLogin.facebookLoginHelper)
+                LoginSucceeded()
+                self.dismissViewControllerAnimated(true, completion: nil)
             }
         }
         println(User.Uid)

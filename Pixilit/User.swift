@@ -19,7 +19,6 @@ struct User
     private(set) static var SessionName : String!
     private(set) static var Sessid : String!
     private(set) static var Cookie : String!
- 
     private(set) static var Profile : NSMutableDictionary!
     
     static func Setup(json: JSON)
@@ -138,6 +137,7 @@ struct User
         var json : JSON = HelperREST.RestRequest(Config.RestUserLogout, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
         println("json: \(json)")
         SetAnonymous()
+        FBSDKLoginManager().logOut()
     }
     
     static func IsLoggedIn() -> Bool

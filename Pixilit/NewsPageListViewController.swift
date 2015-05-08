@@ -38,6 +38,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     {
         var json = HelperREST.RestRequest(Config.RestMainNewsPageJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
         println(json)
+        self.listOfNewsPages.removeAll(keepCapacity: false)
         if json != nil
         {
             for (index: String, subJson: JSON) in json {

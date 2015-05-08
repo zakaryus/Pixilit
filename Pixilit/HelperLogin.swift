@@ -9,14 +9,22 @@
 import Foundation
 struct HelperLogin {
     
-    static func facebookLoginHelper(username: String, encryptedPass: String) -> JSON {
-        var accessToken = "{\"access_token\":\"\(FBSDKAccessToken.currentAccessToken().tokenString )\"}"
-        var json = HelperREST.RestRequest(Config.RestFacebookConnect, content: accessToken, method: HelperREST.HTTPMethod.Post, headerValues: nil)
-        NSUserDefaults.standardUserDefaults().setObject(FBSDKAccessToken.currentAccessToken().tokenString, forKey: "facebookToken")
+    static func facebookLoginHelper(username: String?, encryptedPass: String?) -> JSON {
+        var accessToken: String!
+        if encryptedPass != nil {
+            accessToken = "{\"access_token\":\"\(encryptedPass)\"}"
+            NSUserDefaults.standardUserDefaults().setObject(encryptedPass, forKey: "facebookToken")
+        } else {
+            accessToken = "{\"access_token\":\"\(FBSDKAccessToken.currentAccessToken().tokenString)\"}"
+            NSUserDefaults.standardUserDefaults().setObject(FBSDKAccessToken.currentAccessToken().tokenString, forKey: "facebookToken")
+        }
+        
+        var json = HelperREST.RestRequest(Config.RestFacebookConnect, content: accessToken, method: HelperREST.HTTPMethod.Post, headerValues: nil)        
         return json
+            
     }
     
-    static func Login(username: String, encryptedPass: String, vc: UIViewController, handler: (String, String) -> JSON) {
+    static func Login(username: String?, encryptedPass: String?, vc: UIViewController, handler: (String?, String?) -> JSON) {
         
         var json : JSON!
         var networkissues: Bool = false
@@ -54,7 +62,7 @@ struct HelperLogin {
         User.Setup(json)
     }
     
-    static func signinLoginHelper(username: String, encryptedPass: String) -> JSON {
+    static func signinLoginHelper(username: String?, encryptedPass: String?) -> JSON {
         var loginurl:NSURL = NSURL(string: Config.RestUserLogin)!
         var loginString = "{\"username\":\"\(username)\", \"password\":\"\(encryptedPass)\"}"
         
