@@ -27,6 +27,7 @@ class TileCollectionViewCell: UICollectionViewCell {
     
     func setup(tile: Tile, img: UIImage)
     {
+        
         //Desc2.editable = true
         //Desc2.text = tile.Description!
         //Desc2.editable = false
@@ -46,6 +47,10 @@ class TileCollectionViewCell: UICollectionViewCell {
     
     func setPixd()
     {
+        if User.Role == AccountType.Business{
+        return
+        }
+        
         if User.IsLoggedIn() {
             if currentTile.Pixd == true {
                 pixd.image = UIImage(named: "pixd")

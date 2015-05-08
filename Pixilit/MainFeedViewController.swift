@@ -162,7 +162,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     func picDoubleTapped(sender: UITapGestureRecognizer!)
     {
-        if !User.IsLoggedIn() {
+        if (!User.IsLoggedIn() || User.Role == AccountType.Business) {
             return
         }
         

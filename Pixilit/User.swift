@@ -135,6 +135,7 @@ struct User
         var json : JSON = HelperREST.RestRequest(Config.RestUserLogout, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
         println("json: \(json)")
         SetAnonymous()
+      FBSDKLoginManager().logOut()
     }
     
     static func IsLoggedIn() -> Bool

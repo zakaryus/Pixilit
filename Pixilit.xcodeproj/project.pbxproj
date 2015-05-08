@@ -48,6 +48,7 @@
 		32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA54681ADC51FE0099DD87 /* HelperURLs.swift */; };
 		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
 		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
+		32DFFEB21AFD5F9900401798 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DFFEB11AFD5F9900401798 /* About.swift */; };
 		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
 		32EFB2EA1AF8301F00BB176B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2E91AF8301F00BB176B /* Bolts.framework */; };
 		32EFB2EC1AF8302A00BB176B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; };
@@ -136,6 +137,7 @@
 		32BA54681ADC51FE0099DD87 /* HelperURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperURLs.swift; sourceTree = "<group>"; };
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
 		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
+		32DFFEB11AFD5F9900401798 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
 		32EFB2E91AF8301F00BB176B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				42F848C61AA4D468009D4AD9 /* NewsPage.swift */,
 				32B51DCF1ADDA9A80014ECCC /* RegionHierarchy.swift */,
 				325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */,
+				32DFFEB11AFD5F9900401798 /* About.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */,
 				D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */,
 				31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */,
+				32DFFEB21AFD5F9900401798 /* About.swift in Sources */,
 				4293ACC61AAE53600089F441 /* UserViewController.swift in Sources */,
 				32F578C21AF18EA600BFB16B /* ValueEnum.swift in Sources */,
 				42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */,

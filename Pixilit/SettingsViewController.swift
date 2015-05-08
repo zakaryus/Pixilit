@@ -26,6 +26,8 @@ class SettingsViewController: UITableViewController
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+   
+     
         if indexPath.row == Section1.Region.rawValue && indexPath.section == 0 {
             println("Region")
             performSegueWithIdentifier("SavedRegionSegue", sender: self)
@@ -36,6 +38,17 @@ class SettingsViewController: UITableViewController
         }
         else if indexPath.row == Section1.Payment.rawValue && indexPath.section == 0 {
             println("Payment")
+            
+            if User.Role != AccountType.Business
+            {
+                var alertView:UIAlertView = UIAlertView()
+                alertView.title = "Only busisness have to pay!"
+                alertView.delegate = self
+                
+                alertView.addButtonWithTitle("OK")
+                alertView.show()
+                return
+            }
             performSegueWithIdentifier("PaymentSegue", sender: self)
         }
         else if indexPath.row == Section2.About.rawValue && indexPath.section == 1 {
@@ -52,6 +65,7 @@ class SettingsViewController: UITableViewController
             
            
         }
+    
     }
 
     

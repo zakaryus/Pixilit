@@ -35,4 +35,5 @@ struct Config
     static let RestRegionsJson: String = dict?.objectForKey("RestRegionsJson") as! String
     static let RestBusinessJson: String = dict?.objectForKey("RestBusinessJson") as! String
     static let RestFacebookConnect: String = dict?.objectForKey("RestFacebookConnect") as! String
+    static let RestAboutPixilit: String = dict?.objectForKey("RestAboutPixilit") as! String
 }

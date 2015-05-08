@@ -89,7 +89,7 @@ class TilePopupViewController: UIViewController {
             businessTitle.text = SelectedTile.BusinessName
         }
         
-        if User.IsLoggedIn() {
+        if (User.IsLoggedIn() ){
             if SelectedTile.Pixd == true {
                 pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
             }
@@ -107,6 +107,7 @@ class TilePopupViewController: UIViewController {
     }
     
     @IBAction func pixdButtonPressed(sender: AnyObject) {
+        
         println("pixd button pressed")
         
         HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
