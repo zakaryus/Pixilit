@@ -33,8 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println(encryptedPassword)
             
             //login
-            HelperLogin.Login(username, encryptedPass: encryptedPassword, vc: self.window!.rootViewController!, handler: HelperLogin.signinLoginHelper)
-            //User.SetAnonymous()
+            if !HelperLogin.Login(username, encryptedPass: encryptedPassword, vc: self.window!.rootViewController!, handler: HelperLogin.signinLoginHelper) {
+                User.SetAnonymous()
+            }
+            
         }
             
         else if let facebookToken = NSUserDefaults.standardUserDefaults().objectForKey("facebookToken") as? String
@@ -42,8 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println(facebookToken)
             
             //login
-            HelperLogin.Login("", encryptedPass: facebookToken, vc: self.window!.rootViewController!, handler: HelperLogin.facebookLoginHelper)
-            //User.SetAnonymous()
+            if !HelperLogin.Login("", encryptedPass: facebookToken, vc: self.window!.rootViewController!, handler: HelperLogin.facebookLoginHelper) {
+                User.SetAnonymous()
+            }
         }
             
         else {User.SetAnonymous()}
