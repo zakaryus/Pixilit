@@ -52,12 +52,21 @@ class TilePopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(User.Role == AccountType.Business)
+        {
+        pixdButton.hidden = true
+        }
+        
         HelperREST.RestBusinessRequest(SelectedTile.BusinessID!) {
             business in
             self.business = business
         }
+    
         image.image = SelectedImage
         image.userInteractionEnabled = userInteraction
+        
+        
         
         var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: image.image!.size, containerWidth: popupView.frame.width)
         image.frame.size = dimensions
