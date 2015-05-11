@@ -182,4 +182,5 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         tpvc.SelectedTile = tiles[index].tile
         tpvc.SelectedImage = tiles[index].photo
     }
-}
+    
+   }

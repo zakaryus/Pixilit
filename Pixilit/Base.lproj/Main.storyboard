@@ -955,12 +955,6 @@ Other "about" stuff here</string>
                                     <constraint firstAttribute="height" constant="289" id="Ooc-8W-BOd"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Description" translatesAutoresizingMaskIntoConstraints="NO" id="gft-LB-ejx">
-                                <rect key="frame" x="0.0" y="314" width="600" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHV-Uf-kfp">
                                 <rect key="frame" x="277" y="454" width="46" height="30"/>
                                 <state key="normal" title="Photo">
@@ -970,6 +964,12 @@ Other "about" stuff here</string>
                                     <action selector="BtnPhotoClicked:" destination="sKV-uA-06W" eventType="touchUpInside" id="rtj-2f-IsD"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter Description..." translatesAutoresizingMaskIntoConstraints="NO" id="gft-LB-ejx">
+                                <rect key="frame" x="0.0" y="318" width="600" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.92941182850000004" green="0.97647064920000004" blue="0.96862751250000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
@@ -991,6 +991,8 @@ Other "about" stuff here</string>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="BtnPhoto" destination="IHV-Uf-kfp" id="I6N-x1-gmc"/>
+                        <outlet property="BtnUpload" destination="jnN-s6-4i7" id="iFc-ob-MyR"/>
+                        <outlet property="TbDescription" destination="gft-LB-ejx" id="WzB-CM-3DD"/>
                         <outlet property="imageView" destination="sUd-80-LGH" id="qPR-HK-dzu"/>
                     </connections>
                 </viewController>
@@ -1303,7 +1305,7 @@ Other "about" stuff here</string>
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="73543CFB-AD67-4615-9BDC-7FC40992CA23" id="qct-il-VNm"/>
+                    <tabBarItem key="tabBarItem" title="Main Feed" image="712A6AB3-54F6-4529-AB39-51A433B4391F" id="qct-il-VNm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1322,7 +1324,7 @@ Other "about" stuff here</string>
         </scene>
     </scenes>
     <resources>
-        <image name="73543CFB-AD67-4615-9BDC-7FC40992CA23" width="19" height="35">
+        <image name="712A6AB3-54F6-4529-AB39-51A433B4391F" width="19" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

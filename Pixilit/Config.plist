@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>RestNodeCreate</key>
+	<string>http://104.236.227.190/rest/node</string>
+	<key>RestFileCreate</key>
+	<string>http://104.236.227.190/rest/file</string>
 	<key>RestUserLogout</key>
 	<string>http://104.236.227.190/rest/user/logout</string>
 	<key>RestSystemConnect</key>
