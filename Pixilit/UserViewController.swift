@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate{
+class UserViewController: UIViewController , UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate{
     
     
     @IBOutlet weak var usernameField: UILabel!
@@ -37,6 +37,7 @@ class UserViewController: UIViewController, UICollectionViewDataSource, Collecti
             newsButton.title = ""
             newsButton.enabled = false
         }
+        Refresh()
     }
 
     override func viewDidLoad() {
@@ -87,17 +88,18 @@ class UserViewController: UIViewController, UICollectionViewDataSource, Collecti
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
-        
-        if !tiles[indexPath.row].hasImage {
-            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-                Photo in
-                self.tiles[indexPath.row].photo = Photo
-                self.tiles[indexPath.row].hasImage = true
+        if User.IsLoggedIn() {
+            if !tiles[indexPath.row].hasImage {
+                HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+                    Photo in
+                    self.tiles[indexPath.row].photo = Photo
+                    self.tiles[indexPath.row].hasImage = true
+                }
             }
+            
+            cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+            registerTaps(cell)
         }
-        
-        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        registerTaps(cell)
         return cell
     }
     
@@ -164,16 +166,16 @@ class UserViewController: UIViewController, UICollectionViewDataSource, Collecti
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         selectedIndex = indexPath
-        //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
+
         
     }
     
     func segueToPopup(sender: UITapGestureRecognizer!) {
-        self.performSegueWithIdentifier("FeedToBusinessSegue", sender: selectedIndex.row)
+        self.performSegueWithIdentifier("userToPopupView", sender: selectedIndex.row)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "FeedToBusinessSegue" {
+        if segue.identifier == "userToPopupView" {
             var tpvc = segue.destinationViewController as! TilePopupViewController
             var index = sender as! Int
             tpvc.SelectedTile = tiles[index].tile
