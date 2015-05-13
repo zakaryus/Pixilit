@@ -16,19 +16,18 @@ struct HelperURLs
         var uri = Url
         var imgPath = uri.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
         let imgUrl = NSURL(string: imgPath)
-        if let imgData = NSData(contentsOfURL: imgUrl!) {
-            tmpImage = UIImage(data: imgData)!
-        }
-        else {
-            tmpImage = UIImage()
-        }
         
-        CompletionHandler(Image: tmpImage)
+        var imageRequest: NSURLRequest = NSURLRequest(URL: imgUrl!)
+        NSURLConnection.sendAsynchronousRequest(imageRequest, queue: NSOperationQueue.mainQueue(), completionHandler: {
+                response, data, error in
+                CompletionHandler(Image: UIImage(data: data)!)
+        })
     }
     
     static func UidToUserUrl(Uid: String) -> String {
         return Config.UserPath + Uid
     }
+    
     
 
 }

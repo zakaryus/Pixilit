@@ -8,10 +8,27 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController
+class SettingsViewController: UITableViewController, UITextViewDelegate
 {
 
     @IBOutlet var tvSettings: UITableView!
+    
+    override func viewDidAppear(animated: Bool) {
+        if User.Role == AccountType.Business {
+            ToggleRowVisibility(false, photo: true, payment: true, logout: true)
+        }
+        else if User.Role == AccountType.User || User.Role == AccountType.Admin {
+            ToggleRowVisibility(true, photo: false, payment: false, logout: true)
+        }
+        else if User.Role == AccountType.Anonymous {
+            ToggleRowVisibility(false, photo: false, payment: false, logout: false)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tvSettings.delegate = self
+    }
     
     enum Section1 : Int {
         case Region = 0
@@ -54,6 +71,14 @@ class SettingsViewController: UITableViewController
         }
     }
 
+    func ToggleRowVisibility(region: Bool, photo: Bool, payment: Bool, logout: Bool)
+    {
+         tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.hidden = !region
+         tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.hidden = !photo
+         tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))!.hidden = !payment
+         tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1))!.hidden = !logout
+    
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var segueName = segue.identifier
@@ -77,6 +102,8 @@ class SettingsViewController: UITableViewController
        
         
     }
+    
+   
     
   
     

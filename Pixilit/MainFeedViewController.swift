@@ -92,15 +92,30 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
         if !tiles[indexPath.row].hasImage {
+            
+            var loading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+            loading.center = cell.center
+            cell.addSubview(loading)
+            loading.startAnimating()
+            
             HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
-                self.tiles[indexPath.row].photo = Photo
-                self.tiles[indexPath.row].hasImage = true
+                
+                //var updatecell = self.collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
+                //if((updatecell) != nil) {
+                    self.tiles[indexPath.row].photo = Photo
+                    self.tiles[indexPath.row].hasImage = true
+                    //updatecell!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+                    //self.registerTaps(updatecell!)
+                    
+                //}
+                loading.stopAnimating()
             }
         }
-        
-        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        registerTaps(cell)
+//        else {
+            cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+            registerTaps(cell)
+//        }
         return cell
     }
     

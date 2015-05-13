@@ -14,20 +14,29 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
     var imagePicker = UIImagePickerController()
     var popover:UIPopoverController?=nil
     
-    @IBOutlet weak var BtnPhoto: UIButton!
+    var BtnPhoto: UIBarButtonItem!
+    var BtnUpload: UIBarButtonItem!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var BtnUpload: UIBarButtonItem!
     @IBOutlet weak var TbDescription: UITextView!
+    @IBOutlet weak var aiLoading: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         self.imagePicker.delegate = self
         self.TbDescription.delegate = self
-        self.BtnUpload.enabled = false
         self.TbDescription.hidden = true
+        self.TbDescription.text = "Enter Description..."
+        self.TbDescription.textColor = UIColor.lightGrayColor()
+        
+        BtnPhoto = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "BtnPhotoClicked:")
+        BtnPhoto.enabled = true
+        BtnUpload = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "BtnUploadClick:")
+        BtnUpload.enabled = false
+        self.navigationItem.rightBarButtonItem = BtnPhoto
     }
     
-    @IBAction func BtnPhotoClicked(sender: AnyObject) {
+    func BtnPhotoClicked(sender: UIBarButtonItem) {
         var alert:UIAlertController=UIAlertController(title: "Choose Image", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         var cameraAction = UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default)
@@ -36,6 +45,7 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
                 //self.Camera()
                 
                 self.imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                self.navigationItem.rightBarButtonItem = self.BtnUpload
                 self.presentViewController(self.imagePicker, animated: true, completion: nil)
         }
         var gallaryAction = UIAlertAction(title: "Photo Album", style: UIAlertActionStyle.Default)
@@ -43,12 +53,14 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
                 UIAlertAction in
                 //self.PhotoAlbum()
                 self.imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                self.navigationItem.rightBarButtonItem = self.BtnUpload
                 self.presentViewController(self.imagePicker, animated: true, completion: nil)
         }
         
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel)
             {
                 UIAlertAction in
+                self.navigationItem.rightBarButtonItem = self.BtnPhoto
                 
         }
         
@@ -65,33 +77,36 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
         else
         {
             popover = UIPopoverController(contentViewController: alert)
-            popover!.presentPopoverFromRect(BtnPhoto.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+            //popover!.presentPopoverFromRect(BtnPhoto.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
         }
+        
     }
     
-    @IBAction func BtnUploadClick(sender: AnyObject) {
+    func BtnUploadClick(sender: UIBarButtonItem) {
+        
+        aiLoading.hidden = false
+        aiLoading.startAnimating()
         
         var imgData: NSData = UIImageJPEGRepresentation(imageView.image, 1.0)
         
         var base64 = imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-           println(base64)
         var fileData = HelperStrings.RestFileJsonString(base64)
         var json = HelperREST.RestRequest(Config.RestFileCreate, content: fileData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
         
         var fid = json["fid"].string
         var nodeData =  HelperStrings.RestNodeJsonString(User.Uid, description: TbDescription.text, fid: fid!)
         
-     
-        println(nodeData)
         
         var json2 = HelperREST.RestRequest(Config.RestNodeCreate, content: nodeData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
-
-        println(json2)
         
         self.BtnUpload.enabled = false
         self.TbDescription.hidden = true
         self.TbDescription.text = "Enter Description..."
+        self.TbDescription.textColor = UIColor.lightGrayColor()
         self.imageView.image = UIImage()
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = BtnPhoto
+        aiLoading.stopAnimating()
+
     }
     
    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]){
@@ -99,12 +114,12 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
         picker.dismissViewControllerAnimated(true, completion: nil)
         var tmpImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         imageView.image = tmpImage
-        RotateImage()
+      //  RotateImage()
         imageView.contentMode = .ScaleAspectFit
         self.TbDescription.hidden = false
     }
     
-    func RotateImage() -> UIImage
+   /* func RotateImage() -> UIImage
     {
   
         if self.imageView.image!.imageOrientation == UIImageOrientation.Up {
@@ -136,7 +151,7 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
         
         self.imageView.transform = transform
         return imageView.image!
-    }
+    }*/
     
     func textViewDidChange(textView: UITextView) {
         if(!textView.text.isEmpty)
@@ -172,8 +187,26 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
         }
         else
         {
-            popover=UIPopoverController(contentViewController: imagePicker)
-            popover!.presentPopoverFromRect(BtnPhoto.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+            popover = UIPopoverController(contentViewController: imagePicker)
+            //popover!.presentPopoverFromRect(BtnPhoto.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
         }
     }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+
 }
