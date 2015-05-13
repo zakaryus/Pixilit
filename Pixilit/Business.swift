@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Business: NSObject, IRestful
+public class Business: NSObject, IRestful
 {
     private(set) var Title: String?
     private(set) var Thoroughfare: String?
@@ -26,7 +26,7 @@ class Business: NSObject, IRestful
    override init() { }
     
 //based on parsing from pixilit.com/rest/businesses.json
-    required init(json: JSON)
+    public required init(json: JSON)
     {
         if let title = json["title"].string {
             self.Title = title

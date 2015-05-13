@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let username = NSUserDefaults.standardUserDefaults().objectForKey("username") as? String, let encryptedPassword = NSUserDefaults.standardUserDefaults().objectForKey("encryptedPassword") as? String
         {
-            println(username)
-            println(encryptedPassword)
             
             //login
             if !HelperLogin.Login(username, encryptedPass: encryptedPassword, vc: self.window!.rootViewController!, handler: HelperLogin.signinLoginHelper) {
@@ -41,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         else if let facebookToken = NSUserDefaults.standardUserDefaults().objectForKey("facebookToken") as? String
         {
-            println(facebookToken)
             
             //login
             if !HelperLogin.Login("", encryptedPass: facebookToken, vc: self.window!.rootViewController!, handler: HelperLogin.facebookLoginHelper) {

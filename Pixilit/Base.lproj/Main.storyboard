@@ -276,7 +276,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="198" height="230"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pgx-9T-Ss5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -382,7 +382,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="228" height="267"/>
                                                 </imageView>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="default1px.png" translatesAutoresizingMaskIntoConstraints="NO" id="oVI-qX-S7O">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -679,7 +679,7 @@
                                                     <rect key="frame" x="-6" y="0.0" width="234" height="267"/>
                                                 </imageView>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KBc-f9-Sfg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1269,7 +1269,7 @@ Other "about" stuff here</string>
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="DAEA6C67-D361-4C78-9811-E7C45B676BE6" id="qct-il-VNm"/>
+                    <tabBarItem key="tabBarItem" title="Main Feed" image="A02C2562-4EBB-4719-860E-DFBD0E3F9120" id="qct-il-VNm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1288,7 +1288,7 @@ Other "about" stuff here</string>
         </scene>
     </scenes>
     <resources>
-        <image name="DAEA6C67-D361-4C78-9811-E7C45B676BE6" width="19" height="35">
+        <image name="A02C2562-4EBB-4719-860E-DFBD0E3F9120" width="19" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -1410,7 +1410,7 @@ GO8Y8hj3GP8ZAhkUGRcZHAAAAAAAAAIBAAAAAAAAAD8AAAAAAAAAAAAAAAAAABkeA
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j9a-4m-C1z"/>
-        <segue reference="pab-dI-ubp"/>
+        <segue reference="t4t-oZ-rbm"/>
         <segue reference="hic-tj-NmB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.93725496529999996" green="0.42352944609999998" blue="0.22745099660000001" alpha="1" colorSpace="deviceRGB"/>

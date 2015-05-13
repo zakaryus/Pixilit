@@ -8,17 +8,17 @@
 
 import UIKit
 
-struct HelperREST
+public struct HelperREST
 {
     
-    enum HTTPMethod : String {
+    public enum HTTPMethod : String {
         case Post = "POST"
         case Get = "GET"
         case Put = "PUT"
         case Delete = "DELETE"
     }
     
-    static func RestRequest(url : String, content : String?, method : HTTPMethod, headerValues : [(String, String)]?) -> JSON {
+    public static func RestRequest(url : String, content : String?, method : HTTPMethod, headerValues : [(String, String)]?) -> JSON {
         
         let urlPath = url
         var loginurl:NSURL = NSURL(string: urlPath)!
@@ -51,7 +51,7 @@ struct HelperREST
         return json
     }
     
-    static func RestUpdateProfile(pid : String) -> Bool {
+    public static func RestUpdateProfile(pid : String) -> Bool {
         
         let urlPath = Config.RestUserProfile + pid
         let url: NSURL = NSURL(string: urlPath)!
@@ -77,7 +77,7 @@ struct HelperREST
     }
 
 
-    static func RestRegionsRequest(tid : String = "all", CompletionHandler: (Regions: [Region]) -> ()) {
+    public static func RestRegionsRequest(tid : String = "all", CompletionHandler: (Regions: [Region]) -> ()) {
         var tmpRegions = [Region]()
         
         let urlPath = Config.RestRegionsJson + tid
@@ -108,7 +108,7 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestFlag(entityID : String, pixd : Bool, CompletionHandler: (Success : Bool) -> ()) {
+    public static func RestFlag(entityID : String, pixd : Bool, CompletionHandler: (Success : Bool) -> ()) {
         
         let urlPath = Config.RestFlagJson
         let url: NSURL = NSURL(string: urlPath)!
@@ -151,7 +151,7 @@ struct HelperREST
         
     }
     
-    static func RestIsFlagged(entityID : String) -> Bool {
+    public static func RestIsFlagged(entityID : String) -> Bool {
         
         let urlPath = Config.RestIsFlagged
         let url: NSURL = NSURL(string: urlPath)!
@@ -193,7 +193,7 @@ struct HelperREST
     
 
     //REST
-    static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {
+    public static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {
         var tmpBusinesses = [Business]()
         
         let urlPath = Config.RestBusinessesJson
@@ -224,7 +224,7 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestBusinessRequest(Uid: String, CompletionHandler: (Business: Business) -> ()) {
+    public static func RestBusinessRequest(Uid: String, CompletionHandler: (Business: Business) -> ()) {
         var business = Business()
         
         let urlPath = Config.RestBusinessJson + Uid
@@ -256,7 +256,7 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestUserProfile(Uid: String) {
+    public static func RestUserProfile(Uid: String) {
         
         let urlPath = Config.RestUserProfile + Uid
         
@@ -283,7 +283,7 @@ struct HelperREST
     }
 
     
-    static func RestMainNewsPageRequest(CompletionHandler: (newspage: [NewsPage]) -> ()) {
+    public static func RestMainNewsPageRequest(CompletionHandler: (newspage: [NewsPage]) -> ()) {
         var tmpNewsPages = [NewsPage]()
         
         let urlPath = Config.RestMainNewsPageJson
@@ -309,7 +309,7 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestMainFeedRequest(CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestMainFeedRequest(CompletionHandler: (tiles: [Tile]) -> ()) {
         var tmpTiles = [Tile]()
         
         let urlPath = Config.RestMainFeedJson
@@ -336,7 +336,7 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestBusinessTiles(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestBusinessTiles(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
         let urlPath = Config.RestBusinessTileJson + Uid
         
         let url: NSURL = NSURL(string: urlPath)!
@@ -364,7 +364,7 @@ struct HelperREST
         task.resume()
     }
     
-    static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
         var tmpTiles = [Tile]()
         let urlPath = Config.UserFlagsJson + Uid
         
@@ -398,7 +398,7 @@ struct HelperREST
     
     
     
-    static func RestFacebook(accessToken: String) {
+    public static func RestFacebook(accessToken: String) {
         
         let urlPath = Config.RestFacebookConnect
         let url: NSURL = NSURL(string: urlPath)!

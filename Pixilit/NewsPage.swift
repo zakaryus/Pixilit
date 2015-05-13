@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsPage: NSObject, IRestful {
+public class NewsPage: NSObject, IRestful {
     
     private(set) var Title: String?
     private(set) var Body: String?
@@ -17,7 +17,7 @@ class NewsPage: NSObject, IRestful {
     override init() { }
     
     //based on parsing from pixilit.com/rest/businesstile.json?nid=xxx
-    required init(json: JSON) {
+    public required init(json: JSON) {
         println(json)
         
         if let title = json["title"].string {

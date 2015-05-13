@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 PixilitSeniorProject. All rights reserved.
 //
 
-/*import UIKit
+import UIKit
 import XCTest
-
+import Pixilit
 
 class PixilitTests: XCTestCase {
 
@@ -45,7 +45,7 @@ class PixilitTests: XCTestCase {
     }
     
     func testMainFeedJsonRequest() {
-        Helper.RestMainFeedRequest() {
+        HelperREST.RestMainFeedRequest() {
             Tiles in
             println(Tiles.count)
             XCTAssert(Tiles.count > 0, "No pictures were grabbed")
@@ -54,7 +54,7 @@ class PixilitTests: XCTestCase {
     }
     
     func testBusinessListJson(){
-        Helper.RestBusinessesRequest() {
+        HelperREST.RestBusinessesRequest() {
             Businesses in
             println(Businesses.count)
             XCTAssert(Businesses.count > 0, "No businesses were grabbed from the website")
@@ -64,4 +64,4 @@ class PixilitTests: XCTestCase {
     /*func testalwaysFails() {
         XCTAssert(false, "this will always fail")
     }*/
-}*/
+}

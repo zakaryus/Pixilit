@@ -20,7 +20,6 @@ struct HelperURLs
             tmpImage = UIImage(data: imgData)!
             
             var base64 = imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-            println("base64: \(base64)")
         }
         else {
             tmpImage = UIImage()
