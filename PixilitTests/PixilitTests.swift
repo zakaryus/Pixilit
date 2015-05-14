@@ -45,18 +45,19 @@ class PixilitTests: XCTestCase {
     }
     
     func testMainFeedJsonRequest() {
+        var passed = false;
         HelperREST.RestMainFeedRequest() {
             Tiles in
-            println(Tiles.count)
-            XCTAssert(Tiles.count > 0, "No pictures were grabbed")
+            println("Number of Tiles:\(Tiles.count)")
+            passed = Tiles.count > 0
         }
-        
+        XCTAssert(passed, "No pictures were grabbed")
     }
     
     func testBusinessListJson(){
         HelperREST.RestBusinessesRequest() {
             Businesses in
-            println(Businesses.count)
+            println("Number of Businesses:\(Businesses.count)")
             XCTAssert(Businesses.count > 0, "No businesses were grabbed from the website")
         }
     }

@@ -1269,7 +1269,7 @@ Other "about" stuff here</string>
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="A02C2562-4EBB-4719-860E-DFBD0E3F9120" id="qct-il-VNm"/>
+                    <tabBarItem key="tabBarItem" title="Main Feed" image="5A9E1FEF-56FA-49DC-B29F-A989B1066225" id="qct-il-VNm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1288,7 +1288,7 @@ Other "about" stuff here</string>
         </scene>
     </scenes>
     <resources>
-        <image name="A02C2562-4EBB-4719-860E-DFBD0E3F9120" width="19" height="35">
+        <image name="5A9E1FEF-56FA-49DC-B29F-A989B1066225" width="19" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
