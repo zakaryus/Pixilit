@@ -97,25 +97,25 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             loading.center = cell.center
             cell.addSubview(loading)
             loading.startAnimating()
-            
+        
             HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
                 
-                //var updatecell = self.collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
-                //if((updatecell) != nil) {
+                var update = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
+                if(update != nil) {
                     self.tiles[indexPath.row].photo = Photo
                     self.tiles[indexPath.row].hasImage = true
-                    //updatecell!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-                    //self.registerTaps(updatecell!)
+                    update!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+                    self.registerTaps(update!)
                     
-                //}
+                }
                 loading.stopAnimating()
             }
         }
-//        else {
+        else {
             cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
             registerTaps(cell)
-//        }
+        }
         return cell
     }
     

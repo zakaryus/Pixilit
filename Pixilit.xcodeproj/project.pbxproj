@@ -49,6 +49,17 @@
 		32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA54681ADC51FE0099DD87 /* HelperURLs.swift */; };
 		32BA546B1ADC52540099DD87 /* HelperStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546A1ADC52540099DD87 /* HelperStrings.swift */; };
 		32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BA546C1ADC52920099DD87 /* HelperREST.swift */; };
+		32CB0BB71B0695C100737425 /* settingsgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BAF1B0695C100737425 /* settingsgreen.png */; };
+		32CB0BB81B0695C100737425 /* businessgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB01B0695C100737425 /* businessgreen.png */; };
+		32CB0BB91B0695C100737425 /* businessorange.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB11B0695C100737425 /* businessorange.png */; };
+		32CB0BBA1B0695C100737425 /* accountorange.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB21B0695C100737425 /* accountorange.png */; };
+		32CB0BBB1B0695C100737425 /* accountgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB31B0695C100737425 /* accountgreen.png */; };
+		32CB0BBC1B0695C100737425 /* settingsorange.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB41B0695C100737425 /* settingsorange.png */; };
+		32CB0BBD1B0695C100737425 /* mainfeedorange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB51B0695C100737425 /* mainfeedorange@2x.png */; };
+		32CB0BBE1B0695C100737425 /* mainfeedgreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BB61B0695C100737425 /* mainfeedgreen@2x.png */; };
+		32CB0BC01B069FCD00737425 /* test@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BBF1B069FCD00737425 /* test@2x.gif */; };
+		32CB0BC21B06A10900737425 /* Splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BC11B06A10900737425 /* Splashscreen.png */; };
+		32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BC51B06AA5F00737425 /* LaunchScreen1.xib */; };
 		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
 		32EFB2EA1AF8301F00BB176B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2E91AF8301F00BB176B /* Bolts.framework */; };
 		32EFB2EC1AF8302A00BB176B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; };
@@ -137,6 +148,17 @@
 		32BA54681ADC51FE0099DD87 /* HelperURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperURLs.swift; sourceTree = "<group>"; };
 		32BA546A1ADC52540099DD87 /* HelperStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperStrings.swift; sourceTree = "<group>"; };
 		32BA546C1ADC52920099DD87 /* HelperREST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperREST.swift; sourceTree = "<group>"; };
+		32CB0BAF1B0695C100737425 /* settingsgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsgreen.png; sourceTree = "<group>"; };
+		32CB0BB01B0695C100737425 /* businessgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = businessgreen.png; sourceTree = "<group>"; };
+		32CB0BB11B0695C100737425 /* businessorange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = businessorange.png; sourceTree = "<group>"; };
+		32CB0BB21B0695C100737425 /* accountorange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accountorange.png; sourceTree = "<group>"; };
+		32CB0BB31B0695C100737425 /* accountgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accountgreen.png; sourceTree = "<group>"; };
+		32CB0BB41B0695C100737425 /* settingsorange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsorange.png; sourceTree = "<group>"; };
+		32CB0BB51B0695C100737425 /* mainfeedorange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainfeedorange@2x.png"; sourceTree = "<group>"; };
+		32CB0BB61B0695C100737425 /* mainfeedgreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainfeedgreen@2x.png"; sourceTree = "<group>"; };
+		32CB0BBF1B069FCD00737425 /* test@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "test@2x.gif"; sourceTree = "<group>"; };
+		32CB0BC11B06A10900737425 /* Splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splashscreen.png; sourceTree = "<group>"; };
+		32CB0BC51B06AA5F00737425 /* LaunchScreen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen1.xib; sourceTree = "<group>"; };
 		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
 		32EFB2E91AF8301F00BB176B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -200,6 +222,7 @@
 		3185E1181A79D3E600037B10 = {
 			isa = PBXGroup;
 			children = (
+				32CB0BC51B06AA5F00737425 /* LaunchScreen1.xib */,
 				32EFB2ED1AF8303000BB176B /* FBSDKLoginKit.framework */,
 				32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */,
 				3185E1231A79D3E600037B10 /* Pixilit */,
@@ -268,6 +291,16 @@
 		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				32CB0BC11B06A10900737425 /* Splashscreen.png */,
+				32CB0BBF1B069FCD00737425 /* test@2x.gif */,
+				32CB0BAF1B0695C100737425 /* settingsgreen.png */,
+				32CB0BB01B0695C100737425 /* businessgreen.png */,
+				32CB0BB11B0695C100737425 /* businessorange.png */,
+				32CB0BB21B0695C100737425 /* accountorange.png */,
+				32CB0BB31B0695C100737425 /* accountgreen.png */,
+				32CB0BB41B0695C100737425 /* settingsorange.png */,
+				32CB0BB51B0695C100737425 /* mainfeedorange@2x.png */,
+				32CB0BB61B0695C100737425 /* mainfeedgreen@2x.png */,
 				3221E5871AEB06F400BA23F6 /* default1px.png */,
 				324B53A41AE863AE006220C0 /* pixd.png */,
 				324B53A51AE863AE006220C0 /* unpixd.png */,
@@ -471,18 +504,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32CB0BC01B069FCD00737425 /* test@2x.gif in Resources */,
+				32CB0BC21B06A10900737425 /* Splashscreen.png in Resources */,
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
 				3221E5881AEB06F400BA23F6 /* default1px.png in Resources */,
+				32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */,
 				32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
+				32CB0BBE1B0695C100737425 /* mainfeedgreen@2x.png in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
+				32CB0BBA1B0695C100737425 /* accountorange.png in Resources */,
+				32CB0BB71B0695C100737425 /* settingsgreen.png in Resources */,
 				324B53A71AE863AE006220C0 /* unpixd.png in Resources */,
+				32CB0BBB1B0695C100737425 /* accountgreen.png in Resources */,
+				32CB0BBD1B0695C100737425 /* mainfeedorange@2x.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
 				324B53A61AE863AE006220C0 /* pixd.png in Resources */,
+				32CB0BB91B0695C100737425 /* businessorange.png in Resources */,
+				32CB0BB81B0695C100737425 /* businessgreen.png in Resources */,
 				325CEC3B1ADF23CA00AEBC56 /* Slice 1-2.png in Resources */,
 				325CEC351ADF205900AEBC56 /* Slice 1.png in Resources */,
+				32CB0BBC1B0695C100737425 /* settingsorange.png in Resources */,
 				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,
 				3185E1301A79D3E600037B10 /* Images.xcassets in Resources */,
 				325CEC441ADF2E2100AEBC56 /* homeIcon.png in Resources */,
