@@ -63,6 +63,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         if(User.IsLoggedIn()) {
             var first = true
             if User.Regions.count != 0 {
+                tid = ""
                 for region in User.Regions {
                     if first {
                         tid += "\(region.TID!)"

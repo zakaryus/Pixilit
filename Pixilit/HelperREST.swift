@@ -313,6 +313,7 @@ public struct HelperREST
         var tmpTiles = [Tile]()
         
         let urlPath = Config.RestMainFeedRegionsJson + tids
+        println(urlPath)
         //let urlPath = Config.RestMainFeedJson
         
         let url: NSURL = NSURL(string: urlPath)!

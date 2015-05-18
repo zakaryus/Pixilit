@@ -67,10 +67,18 @@ public struct User
             }
 
             
-            HelperREST.RestRegionsRequest(tid: tidHolder) {
-                Regs in
-                self.Regions = Regs
+//            HelperREST.RestRegionsRequest(tid: tidHolder) {
+//                Regs in
+//                self.Regions = Regs
+//            }
+            
+            var regionJson = HelperREST.RestRequest(Config.RestRegionsJson + tidHolder, content: nil, method: HelperREST.HTTPMethod.Get, headerValues : [("X-CSRF-Token", User.Token)])
+            
+            for (index: String, subJson: JSON) in regionJson {
+                var region = Region(json: subJson)
+                Regions.append(region)
             }
+
         }
         if let pid = json["user"]["profile"]["all"]["pid"].string {
             Pid = pid
