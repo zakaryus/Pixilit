@@ -77,9 +77,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             var encrypted = MyCrypt.encryptString(inpassword.text)
             inpassword.text = "nothing to see here!"
             inpassword.text = ""
-            HelperLogin.Login(inusername.text, encryptedPass: encrypted, vc: self, handler: HelperLogin.signinLoginHelper)
-            LoginSucceeded()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            if HelperLogin.Login(inusername.text, encryptedPass: encrypted, vc: self, handler: HelperLogin.signinLoginHelper) {
+                LoginSucceeded()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
     

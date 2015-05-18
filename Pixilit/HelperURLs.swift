@@ -16,17 +16,6 @@ struct HelperURLs
         var uri = Url
         var imgPath = uri.stringByReplacingOccurrencesOfString(Config.FilePathPublicPlaceholder, withString: Config.FilePathPublicValue)
         let imgUrl = NSURL(string: imgPath)
-<<<<<<< HEAD
-=======
-        if let imgData = NSData(contentsOfURL: imgUrl!) {
-            tmpImage = UIImage(data: imgData)!
-            
-            var base64 = imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-        }
-        else {
-            tmpImage = UIImage()
-        }
->>>>>>> origin/PixilitCollectionView
         
         var imageRequest: NSURLRequest = NSURLRequest(URL: imgUrl!)
         NSURLConnection.sendAsynchronousRequest(imageRequest, queue: NSOperationQueue.mainQueue(), completionHandler: {

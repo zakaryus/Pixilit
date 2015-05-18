@@ -32,12 +32,12 @@ struct HelperLogin {
         // GET TOKEN
         json = HelperREST.RestRequest(Config.RestUserToken, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: nil)
         networkissues = NilJsonHandler(vc, json: json, handler: UserToken)
-        if networkissues { return false}
+        if networkissues { return false }
         
         // SYSTEM CONNECT
         json = HelperREST.RestRequest(Config.RestSystemConnect, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
         networkissues = NilJsonHandler(vc, json: json, handler: SystemConnect)
-        if networkissues { return false}
+        if networkissues { return false }
         
         var uid = json["user"]["uid"].string!
         
@@ -48,7 +48,7 @@ struct HelperLogin {
             var name: String? = nil
             if let tkn = json["token"].string {
                 networkissues = NilJsonHandler(vc, json: json, handler: TokenSession)
-                if networkissues { return false}
+                if networkissues { return false }
                 //  println(json)
                 name = json["user"]["name"].string
             }

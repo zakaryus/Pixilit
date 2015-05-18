@@ -1344,11 +1344,7 @@ to upload a picture</string>
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-<<<<<<< HEAD
                     <tabBarItem key="tabBarItem" title="" image="settingsgreen.png" selectedImage="settingsorange.png" id="qct-il-VNm"/>
-=======
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="F2FCC910-2165-4126-8CB5-80EC76601740" id="qct-il-VNm"/>
->>>>>>> origin/PixilitCollectionView
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1365,8 +1361,6 @@ to upload a picture</string>
         </scene>
     </scenes>
     <resources>
-<<<<<<< HEAD
-=======
         <image name="F2FCC910-2165-4126-8CB5-80EC76601740" width="19" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
@@ -1481,7 +1475,6 @@ AKIApACmAKgArQDEAMYAyBg+GEMYThhXGGoYbhiBGIwYlRiaGKIYpRiqGLkYvRjEGMwY2RjeGOAY4hjn
 GO8Y8hj3GP8ZAhkUGRcZHAAAAAAAAAIBAAAAAAAAAD8AAAAAAAAAAAAAAAAAABkeA
 </mutableData>
         </image>
->>>>>>> origin/PixilitCollectionView
         <image name="Slice 1-2.png" width="35" height="34"/>
         <image name="Slice 3.png" width="36" height="35"/>
         <image name="business.png" width="71" height="25"/>
@@ -1491,17 +1484,9 @@ GO8Y8hj3GP8ZAhkUGRcZHAAAAAAAAAIBAAAAAAAAAD8AAAAAAAAAAAAAAAAAABkeA
         <image name="settingsorange.png" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="Kjq-3T-UJ1"/>
         <segue reference="t4t-oZ-rbm"/>
         <segue reference="hic-tj-NmB"/>
     </inferredMetricsTieBreakers>
-    <color key="tintColor" red="0.94509804248809814" green="0.47843137383460999" blue="0.3490196168422699" alpha="1" colorSpace="calibratedRGB"/>
-=======
-        <segue reference="j9a-4m-C1z"/>
-        <segue reference="t4t-oZ-rbm"/>
-        <segue reference="hic-tj-NmB"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.93725496529999996" green="0.42352944609999998" blue="0.22745099660000001" alpha="1" colorSpace="deviceRGB"/>
->>>>>>> origin/PixilitCollectionView
 </document>
