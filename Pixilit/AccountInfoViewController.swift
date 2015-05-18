@@ -16,9 +16,10 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
     
     var BtnPhoto: UIBarButtonItem!
     var BtnUpload: UIBarButtonItem!
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var TbDescription: UITextView!
-    @IBOutlet weak var aiLoading: UIActivityIndicatorView!
+    @IBOutlet weak var tvInstructionPlaceholder: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
                 
                 self.imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
                 self.navigationItem.rightBarButtonItem = self.BtnUpload
+                self.tvInstructionPlaceholder.hidden = true
                 self.presentViewController(self.imagePicker, animated: true, completion: nil)
         }
         var gallaryAction = UIAlertAction(title: "Photo Album", style: UIAlertActionStyle.Default)
@@ -54,6 +56,7 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
                 //self.PhotoAlbum()
                 self.imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
                 self.navigationItem.rightBarButtonItem = self.BtnUpload
+                self.tvInstructionPlaceholder.hidden = true
                 self.presentViewController(self.imagePicker, animated: true, completion: nil)
         }
         
@@ -83,75 +86,46 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
     }
     
     func BtnUploadClick(sender: UIBarButtonItem) {
-        
-        aiLoading.hidden = false
-        aiLoading.startAnimating()
-        
-        var imgData: NSData = UIImageJPEGRepresentation(imageView.image, 1.0)
-        
-        var base64 = imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
-        var fileData = HelperStrings.RestFileJsonString(base64)
-        var json = HelperREST.RestRequest(Config.RestFileCreate, content: fileData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
-        
-        var fid = json["fid"].string
-        var nodeData =  HelperStrings.RestNodeJsonString(User.Uid, description: TbDescription.text, fid: fid!)
-        
-        
-        var json2 = HelperREST.RestRequest(Config.RestNodeCreate, content: nodeData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
-        
-        self.BtnUpload.enabled = false
-        self.TbDescription.hidden = true
-        self.TbDescription.text = "Enter Description..."
-        self.TbDescription.textColor = UIColor.lightGrayColor()
-        self.imageView.image = UIImage()
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = BtnPhoto
-        aiLoading.stopAnimating()
+        self.performSegueWithIdentifier("UploadingSegue", sender: self)
 
+        var downloadQueue = dispatch_queue_create("downloader", nil);
+        dispatch_async(downloadQueue, {
+            
+            
+            // do our long running process here
+            var imgData: NSData = UIImageJPEGRepresentation(self.imageView.image, 1.0)
+            var base64 = imgData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros)
+            var fileData = HelperStrings.RestFileJsonString(base64)
+            var json = HelperREST.RestRequest(Config.RestFileCreate, content: fileData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
+            var fid = json["fid"].string
+            var nodeData =  HelperStrings.RestNodeJsonString(User.Uid, description: self.TbDescription.text, fid: fid!)
+            var json2 = HelperREST.RestRequest(Config.RestNodeCreate, content: nodeData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
+            
+            
+            // do any UI stuff on the main UI thread
+            dispatch_async(dispatch_get_main_queue(), {
+                self.BtnUpload.enabled = false
+                self.TbDescription.hidden = true
+                self.TbDescription.text = "Enter Description..."
+                self.TbDescription.textColor = UIColor.lightGrayColor()
+                self.imageView.image = UIImage()
+                self.navigationController?.navigationBar.topItem?.rightBarButtonItem = self.BtnPhoto
+                self.tvInstructionPlaceholder.hidden = false
+                self.dismissViewControllerAnimated(true, completion: nil)
+            })
+            
+        })
     }
     
    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]){
     
         picker.dismissViewControllerAnimated(true, completion: nil)
-        var tmpImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        imageView.image = tmpImage
-      //  RotateImage()
+        var initialImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let orientedImage = HelperTransformations.FixOrientation(initialImage!)
+        imageView.image = orientedImage
         imageView.contentMode = .ScaleAspectFit
         self.TbDescription.hidden = false
     }
-    
-   /* func RotateImage() -> UIImage
-    {
-  
-        if self.imageView.image!.imageOrientation == UIImageOrientation.Up {
-            return imageView.image!
-        }
-        
-        // We need to calculate the proper transformation to make the image upright.
-        // We do it in 2 steps: Rotate if Left/Right/Down, and then flip if Mirrored.
-        var transform = CGAffineTransformIdentity
-        
-        switch self.imageView.image!.imageOrientation {
-            case UIImageOrientation.Down, UIImageOrientation.DownMirrored:
-                transform = CGAffineTransformTranslate(transform, self.imageView.image!.size.width, self.imageView.image!.size.height)
-                transform = CGAffineTransformRotate(transform, CGFloat(M_PI))
-                break
-            
-            case UIImageOrientation.Left, UIImageOrientation.LeftMirrored:
-                transform = CGAffineTransformTranslate(transform, self.imageView.image!.size.width, 0)
-                transform = CGAffineTransformRotate(transform, CGFloat(M_PI_2))
-                break
-                
-            case UIImageOrientation.Right, UIImageOrientation.RightMirrored:
-                transform = CGAffineTransformTranslate(transform, 0, self.imageView.image!.size.height)
-                transform = CGAffineTransformRotate(transform, -CGFloat(M_PI_2))
-                break
-            case UIImageOrientation.Up, UIImageOrientation.UpMirrored:
-                break
-        }
-        
-        self.imageView.transform = transform
-        return imageView.image!
-    }*/
     
     func textViewDidChange(textView: UITextView) {
         if(!textView.text.isEmpty)

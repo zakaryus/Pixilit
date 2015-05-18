@@ -23,7 +23,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
     override public func viewDidLoad() {
         super.viewDidLoad()
-
+       self.view.backgroundColor = UIColor.clearColor()
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
         
@@ -92,11 +92,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
         if !tiles[indexPath.row].hasImage {
-            
-            var loading = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-            loading.center = cell.center
-            cell.addSubview(loading)
-            loading.startAnimating()
+            cell.setup(nil, img: nil)
         
             HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
@@ -109,7 +105,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
                     self.registerTaps(update!)
                     
                 }
-                loading.stopAnimating()
             }
         }
         else {

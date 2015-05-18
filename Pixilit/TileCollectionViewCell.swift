@@ -25,24 +25,29 @@ class TileCollectionViewCell: UICollectionViewCell {
         super.init(coder: aDecoder)
     }
     
-    func setup(tile: Tile, img: UIImage)
+    func setup(tile: Tile?, img: UIImage?)
     {
-        //Desc2.editable = true
-        //Desc2.text = tile.Description!
-        //Desc2.editable = false
-        
         autoresizesSubviews = true
 
         Photo.contentMode = .ScaleToFill
         Photo.frame = contentView.bounds
         Photo.autoresizingMask = .FlexibleWidth | .FlexibleHeight
-        Photo.image = img
         Photo.layer.cornerRadius = 8.0
         Photo.clipsToBounds = true
-        currentTile = tile
-        setPixd();
         
+        if img != nil {
+            Photo.image = img!
+        } else {
+            Photo.image = UIImage()
+            Photo.backgroundColor = UIColor(red: 120, green: 120, blue: 120, alpha: 0.5)
         }
+        
+        if tile != nil {
+            currentTile = tile!
+            setPixd();
+        }
+        
+    }
     
     func setPixd()
     {

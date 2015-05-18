@@ -71,6 +71,9 @@
 		32F578C11AF18EA600BFB16B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BA1AF18EA600BFB16B /* StringExtensions.swift */; };
 		32F578C21AF18EA600BFB16B /* ValueEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BB1AF18EA600BFB16B /* ValueEnum.swift */; };
 		32F578C31AF18EA600BFB16B /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BC1AF18EA600BFB16B /* XMLParser.swift */; };
+		32F9F2421B0A5E0A00A9CBE8 /* HelperImageRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9F2411B0A5E0A00A9CBE8 /* HelperImageRotation.swift */; };
+		32F9F2441B0A775200A9CBE8 /* UploadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */; };
+		32F9F2461B0A8E0500A9CBE8 /* pixilitloading.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
@@ -170,6 +173,9 @@
 		32F578BA1AF18EA600BFB16B /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		32F578BB1AF18EA600BFB16B /* ValueEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueEnum.swift; sourceTree = "<group>"; };
 		32F578BC1AF18EA600BFB16B /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
+		32F9F2411B0A5E0A00A9CBE8 /* HelperImageRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperImageRotation.swift; sourceTree = "<group>"; };
+		32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingViewController.swift; sourceTree = "<group>"; };
+		32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixilitloading.png; sourceTree = "<group>"; };
 		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
 		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
 		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
@@ -291,6 +297,7 @@
 		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */,
 				32CB0BC11B06A10900737425 /* Splashscreen.png */,
 				32CB0BBF1B069FCD00737425 /* test@2x.gif */,
 				32CB0BAF1B0695C100737425 /* settingsgreen.png */,
@@ -347,6 +354,7 @@
 				325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */,
 				325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */,
 				32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */,
+				32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -383,6 +391,7 @@
 				32BA546C1ADC52920099DD87 /* HelperREST.swift */,
 				322DD18D1AE97DA100058A5E /* HelperTransformations.swift */,
 				3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */,
+				32F9F2411B0A5E0A00A9CBE8 /* HelperImageRotation.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
 				3221E5881AEB06F400BA23F6 /* default1px.png in Resources */,
 				32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */,
+				32F9F2461B0A8E0500A9CBE8 /* pixilitloading.png in Resources */,
 				32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
@@ -551,6 +561,7 @@
 				3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */,
 				32F578BF1AF18EA600BFB16B /* JSONParser.swift in Sources */,
 				3212E7241AD88CBD008593CE /* TabBarController.swift in Sources */,
+				32F9F2421B0A5E0A00A9CBE8 /* HelperImageRotation.swift in Sources */,
 				3184E3B51ADADF4F00E10B89 /* CustomIOS7AlertView.swift in Sources */,
 				3178DEEB1A9044B200E6D1B4 /* Sections.swift in Sources */,
 				3185E1271A79D3E600037B10 /* AppDelegate.swift in Sources */,
@@ -570,6 +581,7 @@
 				32F578C01AF18EA600BFB16B /* JSONSearch.swift in Sources */,
 				32F578C11AF18EA600BFB16B /* StringExtensions.swift in Sources */,
 				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
+				32F9F2441B0A775200A9CBE8 /* UploadingViewController.swift in Sources */,
 				32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
 				32F578BE1AF18EA600BFB16B /* JSONDictionary.swift in Sources */,

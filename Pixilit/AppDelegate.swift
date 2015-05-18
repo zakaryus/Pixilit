@@ -28,6 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             tabBarItem1.selectedImage = mainfeedselected
             tabBarItem1.image = mainfeed
+            
+            
+            UIGraphicsBeginImageContext(UIScreen.mainScreen().bounds.size)
+            UIImage(named: "pixilitloading")?.drawInRect(UIScreen.mainScreen().bounds)
+            
+            var img: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            
+            window!.backgroundColor = UIColor(patternImage: img)
+            
            
            
         }
