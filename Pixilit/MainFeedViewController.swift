@@ -56,11 +56,27 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
-        
+        var tid = "all"
         refresh.beginRefreshing()
      //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
   
-        HelperREST.RestMainFeedRequest() {
+        if(User.IsLoggedIn()) {
+            var first = true
+            if User.Regions.count != 0 {
+                for region in User.Regions {
+                    if first {
+                        tid += "\(region.TID!)"
+                        first = false
+                    }
+                    else {
+                        tid += ",\(region.TID!)"
+                        
+                    }
+                }
+            }
+        }
+       
+        HelperREST.RestMainFeedRequest(tid) {
             Tiles in
 
             self.tiles = []
@@ -72,8 +88,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
         }
+        
     }
-
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }

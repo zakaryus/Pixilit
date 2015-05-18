@@ -26,6 +26,8 @@
 	<string>http://104.236.227.190/rest/user-pix.json?uid=</string>
 	<key>RestMainFeedJson</key>
 	<string>http://104.236.227.190/rest/main-feed.json</string>
+	<key>RestMainFeedRegionsJson</key>
+	<string>http://pixilit.com/rest/main-feed-region.json?tid=</string>
 	<key>UserPath</key>
 	<string>http://104.236.227.190/user/</string>
 	<key>NodePath</key>

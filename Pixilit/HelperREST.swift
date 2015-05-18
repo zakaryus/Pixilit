@@ -309,10 +309,11 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestMainFeedRequest(CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestMainFeedRequest(tids: String, CompletionHandler: (tiles: [Tile]) -> ()) {
         var tmpTiles = [Tile]()
         
-        let urlPath = Config.RestMainFeedJson
+        let urlPath = Config.RestMainFeedRegionsJson + tids
+        //let urlPath = Config.RestMainFeedJson
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
