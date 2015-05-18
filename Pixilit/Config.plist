@@ -21,9 +21,9 @@
 	<key>RestRegionsJson</key>
 	<string>http://104.236.227.190/rest/regions.json?tid=</string>
 	<key>BusinessRegistrationURL</key>
-	<string>http://104.236.227.190/business/register</string>
+	<string>http://pixilit.com/business/register</string>
 	<key>UserRegistrationURL</key>
-	<string>http://104.236.227.190/user/register</string>
+	<string>http://pixilit.com/user/register</string>
 	<key>RestUserLogin</key>
 	<string>http://104.236.227.190/rest/user/login</string>
 	<key>UserFlagsJson</key>

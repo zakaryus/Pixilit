@@ -11,7 +11,7 @@ import UIKit
 class UserViewController: UIViewController , UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate{
     
     
-    @IBOutlet weak var usernameField: UILabel!
+    @IBOutlet weak var nbiHeader: UINavigationItem!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var newsButton: UIBarButtonItem!
     var selectedIndex = NSIndexPath()
@@ -27,8 +27,9 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
         if !User.IsLoggedIn()
         {
               self.performSegueWithIdentifier("GoLogin", sender: self)
+        } else {
+            nbiHeader.title = User.Username
         }
-        usernameField.text = User.Username
         if User.Role == AccountType.Business || User.Role == AccountType.Admin {
             newsButton.enabled = true
             newsButton.title = "News"
@@ -42,8 +43,8 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     }
 
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.clearColor()
         println(User.Uid)
        // collectVC.collectionView = collectionView
         
