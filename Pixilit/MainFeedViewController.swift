@@ -11,15 +11,16 @@ import UIKit
 public class MainFeedViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate
 {
     
-    @IBOutlet var collectionView: UICollectionView!
-    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
-    var selectedTile: Tile = Tile()
-    let reuseId = "tileCollectionViewCell"
-    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-    var refresh = UIRefreshControl()
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     var selectedIndex = NSIndexPath()
+    var selectedTile: Tile = Tile()
+    var refresh = UIRefreshControl()
     var hasLoggedIn = false
     var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
+    var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    let reuseId = "tileCollectionViewCell"
+    let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Main Feed"
- 
     }
     
     
@@ -56,11 +56,27 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
-        
+        var tid = "all"
         refresh.beginRefreshing()
      //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
   
-        HelperREST.RestMainFeedRequest() {
+        if(User.IsLoggedIn()) {
+            var first = true
+            if User.Regions.count != 0 {
+                for region in User.Regions {
+                    if first {
+                        tid += "\(region.TID!)"
+                        first = false
+                    }
+                    else {
+                        tid += ",\(region.TID!)"
+                        
+                    }
+                }
+            }
+        }
+       
+        HelperREST.RestMainFeedRequest(tid) {
             Tiles in
 
             self.tiles = []
@@ -72,14 +88,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
         }
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
         
-        // Dispose of any resources that can be recreated.
     }
-
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -127,12 +137,11 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func collectionView(collectionView: UICollectionView, layout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-
+        
         var size = tiles[indexPath.row].photoSize
         if size == CGSize(width: 0, height: 0) {
             tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
             var ps = tiles[indexPath.row].photoSize
-            println("Mainfeed width: \(ps.width), height: \(ps.height)")
         }
         
         return tiles[indexPath.row].photoSize
@@ -145,13 +154,10 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     public func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-
+        
         return UICollectionReusableView()
     }
     
-    func segueToPopup(sender: UITapGestureRecognizer!) {
-        self.performSegueWithIdentifier("FeedToBusinessSegue", sender: selectedIndex.row)
-    }
     
     func picDoubleTapped(sender: UITapGestureRecognizer!)
     {
@@ -172,18 +178,30 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         setCellPix()
         //tiles[self.selectedIndex.row].setPixd()
     }
-
+    
     func setCellPix() {
         var cell: TileCollectionViewCell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
         cell.setPixd()
     }
     
     public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
+        
         selectedIndex = indexPath
         //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
     }
+
+    
+    override public func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+        // Dispose of any resources that can be recreated.
+    }
+
+    func segueToPopup(sender: UITapGestureRecognizer!) {
+        self.performSegueWithIdentifier("FeedToBusinessSegue", sender: selectedIndex.row)
+    }
+    
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {

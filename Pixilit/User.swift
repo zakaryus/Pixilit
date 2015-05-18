@@ -8,21 +8,20 @@ enum AccountType : String{
     case Admin = "administrator"
 }
 
-struct User
+public struct User
 {
     private(set) static var Username: String!
     private(set) static var Token: String!
-    private(set) static var Uid: String!
+    private(set) public static var Uid: String!
     private(set) static var Role: AccountType!
     private(set) static var Regions:[Region] = []
     private(set) static var Pid: String!
     private(set) static var SessionName : String!
     private(set) static var Sessid : String!
     private(set) static var Cookie : String!
- 
     private(set) static var Profile : NSMutableDictionary!
     
-    static func Setup(json: JSON)
+    public static func Setup(json: JSON)
     {
         println(json)
         var data = json.rawData(options: NSJSONWritingOptions.PrettyPrinted, error: nil)
@@ -117,7 +116,7 @@ struct User
     }
     
     
-    static func SetAnonymous()
+    static public func SetAnonymous()
     {
         Username = "Anonymous"
         Token = ""
@@ -138,6 +137,7 @@ struct User
         var json : JSON = HelperREST.RestRequest(Config.RestUserLogout, content: nil, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
         println("json: \(json)")
         SetAnonymous()
+        FBSDKLoginManager().logOut()
     }
     
     static func IsLoggedIn() -> Bool

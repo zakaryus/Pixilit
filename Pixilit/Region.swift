@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Region: NSObject, IRestful
+public class Region: NSObject, IRestful
 {
     private(set) var Name: String?
     private(set) var TID: Int?
@@ -16,7 +16,7 @@ class Region: NSObject, IRestful
     
     override init() { }
     
-    required init(json: JSON) {
+    required public init(json: JSON) {
         if let name = json["region"].string {
             self.Name = name
         }

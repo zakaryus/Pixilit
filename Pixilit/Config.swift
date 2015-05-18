@@ -30,6 +30,7 @@ struct Config
     static let UserPath: String = dict?.objectForKey("UserPath") as! String
     static let RestMainNewsPageJson: String = dict?.objectForKey("RestMainNewsPageJson") as! String
     static let RestMainFeedJson: String = dict?.objectForKey("RestMainFeedJson") as! String
+    static let RestMainFeedRegionsJson: String = dict?.objectForKey("RestMainFeedRegionsJson") as! String
     static let UserFlagsJson: String = dict?.objectForKey("UserFlagsJson") as! String
     static let RestUserLogin: String = dict?.objectForKey("RestUserLogin") as! String
     static let UserRegistrationURL: String = dict?.objectForKey("UserRegistrationURL") as! String
