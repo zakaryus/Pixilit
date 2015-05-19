@@ -13,11 +13,11 @@ class TilePopupViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageDescription: UITextView!
     @IBOutlet weak var imageTags: UITextView!
-    @IBOutlet weak var businessLogo: UIImageView!
-    @IBOutlet weak var businessTitle: UITextView!
+  //  @IBOutlet weak var businessLogo: UIImageView!
+   // @IBOutlet weak var businessTitle: UITextView!
     @IBOutlet weak var popupView: UIView!
     //var pixdButton = UIButton()
-    @IBOutlet weak var pixdButton: UIButton!
+  //  @IBOutlet weak var pixdButton: UIButton!
     var business: Business?
     private var _SelectedTile: Tile?
     var userInteraction = true
@@ -53,10 +53,10 @@ class TilePopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(User.Role == AccountType.Business)
-        {
-        pixdButton.hidden = true
-        }
+//        if(User.Role == AccountType.Business)
+//        {
+//        pixdButton.hidden = true
+//        }
         
         HelperREST.RestBusinessRequest(SelectedTile.BusinessID!) {
             business in
@@ -86,26 +86,26 @@ class TilePopupViewController: UIViewController {
             imageTags.text! += "\(modifiedString), "
         }
         
-        if let logo = SelectedTile.BusinessLogo {
-            //rest request
-            HelperURLs.UrlToImage(logo) {
-                photo in
-                self.businessLogo.image = photo
-            }
-        }
+//        if let logo = SelectedTile.BusinessLogo {
+//            //rest request
+//            HelperURLs.UrlToImage(logo) {
+//                photo in
+//                self.businessLogo.image = photo
+//            }
+//        }
         
-        if let businessname = SelectedTile.BusinessName {
-            businessTitle.text = SelectedTile.BusinessName
-        }
+//        if let businessname = SelectedTile.BusinessName {
+//            businessTitle.text = SelectedTile.BusinessName
+//        }
         
-        if (User.IsLoggedIn() ){
-            if SelectedTile.Pixd == true {
-                pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
-            }
-            else {
-                pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
-            }
-        }
+//        if (User.IsLoggedIn() ){
+//            if SelectedTile.Pixd == true {
+//                pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+//            }
+//            else {
+//                pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+//            }
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -129,12 +129,12 @@ class TilePopupViewController: UIViewController {
         }
         
         
-        if SelectedTile.Pixd == true {
-            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
-        }
-        else {
-            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
-        }
+//        if SelectedTile.Pixd == true {
+//            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+//        }
+//        else {
+//            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+//        }
         
         //notify observers
     }
