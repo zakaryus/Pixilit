@@ -13,8 +13,8 @@ class TilePopupViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageDescription: UITextView!
     @IBOutlet weak var imageTags: UITextView!
-    @IBOutlet weak var businessLogo: UIImageView!
-    @IBOutlet weak var businessTitle: UITextView!
+  //  @IBOutlet weak var businessLogo: UIImageView!
+   // @IBOutlet weak var businessTitle: UITextView!
     @IBOutlet weak var popupView: UIView!
     //var pixdButton = UIButton()
     @IBOutlet weak var pixdButton: UIButton!
@@ -59,10 +59,11 @@ class TilePopupViewController: UIViewController {
         image.image = SelectedImage
         image.userInteractionEnabled = userInteraction
         
-        var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: image.image!.size, containerWidth: popupView.frame.width)
-        image.frame.size = dimensions
+       // var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: //image.image!.size, containerWidth: popupView.frame.width)
+      //  image.frame.size = dimensions
         var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
         pictureTapped.numberOfTapsRequired = 1
+        
         image.addGestureRecognizer(pictureTapped)
         //var popupView = createContainerView()
           //self.view.addSubview(popupView)
@@ -70,24 +71,24 @@ class TilePopupViewController: UIViewController {
         //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
         //popupView.center = self.view.center
 
-        
+       
         imageDescription.text = SelectedTile.Description
         for tag in SelectedTile.tags {
             var modifiedString = tag.stringByReplacingOccurrencesOfString("&amp;", withString: "&", options: NSStringCompareOptions.LiteralSearch, range: nil)
             imageTags.text! += "\(modifiedString), "
         }
         
-        if let logo = SelectedTile.BusinessLogo {
-            //rest request
-            HelperURLs.UrlToImage(logo) {
-                photo in
-                self.businessLogo.image = photo
-            }
-        }
-        
-        if let businessname = SelectedTile.BusinessName {
-            businessTitle.text = SelectedTile.BusinessName
-        }
+//        if let logo = SelectedTile.BusinessLogo {
+//            //rest request
+//            HelperURLs.UrlToImage(logo) {
+//                photo in
+//                self.businessLogo.image = photo
+//            }
+//        }
+//        
+//        if let businessname = SelectedTile.BusinessName {
+//            businessTitle.text = SelectedTile.BusinessName
+//        }
         
         if User.IsLoggedIn() {
             if SelectedTile.Pixd == true {
