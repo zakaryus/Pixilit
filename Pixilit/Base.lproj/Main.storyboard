@@ -986,7 +986,7 @@
         <scene sceneID="MTf-fP-woj">
             <objects>
                 <navigationController title="Account" automaticallyAdjustsScrollViewInsets="NO" id="tEw-5W-eT0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Account" image="account@5x.png" id="6aP-Ph-dc4"/>
+                    <tabBarItem key="tabBarItem" title="Account" image="accountV1" id="6aP-Ph-dc4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qmj-Tg-oj7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1006,7 +1006,7 @@
         <scene sceneID="hcw-up-eRj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O7M-fy-MB9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Businesses" image="business@5x.png" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Businesses" image="businessV1" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vOf-2c-sQj">
@@ -1267,7 +1267,7 @@
         <scene sceneID="LRn-F5-iyh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EU8-cc-i8l" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings@5x.png" id="iP1-iJ-i5l"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settingsV1" id="iP1-iJ-i5l"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="A6b-02-S1X">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1287,7 +1287,7 @@
         <scene sceneID="b9j-3d-k1c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FBu-jk-eWo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Main Feed" image="main@5x.png" id="qct-il-VNm"/>
+                    <tabBarItem key="tabBarItem" title="Main Feed" image="mainV1" id="qct-il-VNm"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MQH-FX-COG">
@@ -1311,13 +1311,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="account@5x.png" width="179" height="176"/>
-        <image name="business@5x.png" width="173" height="172"/>
+        <image name="accountV1" width="33" height="34"/>
+        <image name="businessV1" width="33" height="32"/>
         <image name="default1px.png" width="1" height="1"/>
         <image name="dimmed.png" width="320" height="460"/>
-        <image name="main@5x.png" width="177" height="174"/>
+        <image name="mainV1" width="33" height="34"/>
         <image name="pixilitOriginal.png" width="1024" height="1024"/>
-        <image name="settings@5x.png" width="177" height="178"/>
+        <image name="settingsV1" width="33" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j9a-4m-C1z"/>
