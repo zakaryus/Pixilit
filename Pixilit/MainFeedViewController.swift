@@ -191,6 +191,21 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
     }
+    
+//    func filterContentForSearchText(searchText: String)
+//    {
+//        // Filter the array using the filter method
+//        self.filteredListOfBusinesses = self.listOfBusinesses.filter({( business: Business) -> Bool in
+//            if let title = business.Title {
+//                let stringMatch = title.lowercaseString.rangeOfString(searchText.lowercaseString)
+//                return stringMatch != nil
+//            }
+//            return false
+//        })
+//        
+//        self.sections = Sections<Business>(list: self.filteredListOfBusinesses, key: "Title")
+//    }
+
 
     
     override public func didReceiveMemoryWarning() {

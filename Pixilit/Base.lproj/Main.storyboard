@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -119,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wZ-9x-th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1093" y="-614"/>
+            <point key="canvasLocation" x="-1013" y="-786"/>
         </scene>
         <!--Pixilit-->
         <scene sceneID="hNz-n2-bh7">
@@ -361,7 +361,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gMq-hm-Kvm">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="zMk-vq-xq1" customClass="CollectionViewWaterfallLayout" customModule="Pixilit" customModuleProvider="target"/>
                                 <cells>
@@ -404,9 +404,9 @@
                         <color key="backgroundColor" red="0.93725496530532837" green="0.96862751245498657" blue="0.96862751245498657" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gMq-hm-Kvm" secondAttribute="trailing" constant="-16" id="4gI-6U-MSk"/>
-                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="gMq-hm-Kvm" secondAttribute="bottom" id="6LO-Jn-PS3"/>
+                            <constraint firstItem="gMq-hm-Kvm" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="topMargin" id="9ug-Sk-rtW"/>
                             <constraint firstItem="gMq-hm-Kvm" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="-16" id="deo-uh-bYq"/>
-                            <constraint firstItem="gMq-hm-Kvm" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="sL5-XX-PxS"/>
+                            <constraint firstItem="gMq-hm-Kvm" firstAttribute="bottom" secondItem="QS5-Rx-YEW" secondAttribute="bottomMargin" id="q5Q-2q-LFU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RFN-Fr-co2">
@@ -1201,7 +1201,7 @@ to upload a picture</string>
                     <connections>
                         <outlet property="Body" destination="eKl-9s-yvt" id="YB8-lX-W2O"/>
                         <outlet property="Date" destination="aCK-7r-vzI" id="oMQ-Gq-IOA"/>
-                        <outlet property="Title" destination="j2G-t8-gA1" id="4Vl-q9-GoJ"/>
+                        <outlet property="Heading" destination="j2G-t8-gA1" id="6mv-HY-Gg7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zcp-iK-lr3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1367,7 +1367,7 @@ to upload a picture</string>
     <inferredMetricsTieBreakers>
         <segue reference="j9a-4m-C1z"/>
         <segue reference="pab-dI-ubp"/>
-        <segue reference="KhQ-4a-Iti"/>
+        <segue reference="hic-tj-NmB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.93725496529999996" green="0.42352944609999998" blue="0.22745099660000001" alpha="1" colorSpace="deviceRGB"/>
 </document>
