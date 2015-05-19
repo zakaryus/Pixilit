@@ -290,7 +290,6 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="QQo-Ns-ojY" secondAttribute="trailing" id="MnV-9E-DBg"/>
                                             <constraint firstItem="QQo-Ns-ojY" firstAttribute="top" secondItem="WXa-o6-hZ8" secondAttribute="top" id="aDf-dh-ZwM"/>
@@ -845,6 +844,8 @@ Other "about" stuff here</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GS9-YG-kRa" firstAttribute="top" secondItem="FtJ-aG-hNw" secondAttribute="bottom" id="68e-0Q-WOf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FtJ-aG-hNw" secondAttribute="trailing" constant="-16" id="9um-36-4vg"/>
+                            <constraint firstItem="FtJ-aG-hNw" firstAttribute="leading" secondItem="qpI-bY-Lun" secondAttribute="leadingMargin" constant="-16" id="ezB-O8-k0Q"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1368,9 +1369,9 @@ to upload a picture</string>
         <image name="newSettings" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KhQ-4a-Iti"/>
         <segue reference="j9a-4m-C1z"/>
         <segue reference="pab-dI-ubp"/>
+        <segue reference="hic-tj-NmB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94509804248809814" green="0.47843137383460999" blue="0.3490196168422699" alpha="1" colorSpace="calibratedRGB"/>
 </document>

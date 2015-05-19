@@ -14,6 +14,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     @IBOutlet var tvSettings: UITableView!
     
     override func viewDidAppear(animated: Bool) {
+        
         if User.Role == AccountType.Business {
             ToggleRowVisibility(false, photo: true, payment: true, logout: true)
         }
@@ -29,7 +30,10 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.scrollEnabled = false
         tvSettings.delegate = self
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
+
     }
     
     enum Section1 : Int {

@@ -81,7 +81,7 @@
 		32F578C31AF18EA600BFB16B /* XMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F578BC1AF18EA600BFB16B /* XMLParser.swift */; };
 		32F9F2421B0A5E0A00A9CBE8 /* HelperImageRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9F2411B0A5E0A00A9CBE8 /* HelperImageRotation.swift */; };
 		32F9F2441B0A775200A9CBE8 /* UploadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */; };
-		32F9F2461B0A8E0500A9CBE8 /* pixilitloading.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */; };
+		32F9F2461B0A8E0500A9CBE8 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 32F9F2451B0A8E0500A9CBE8 /* background.png */; };
 		32FBEDAC1AD4782900B99783 /* RNCryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA41AD4782900B99783 /* RNCryptor.m */; };
 		32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA71AD4782900B99783 /* RNCryptorEngine.m */; };
 		32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 32FBEDA91AD4782900B99783 /* RNDecryptor.m */; };
@@ -189,7 +189,7 @@
 		32F578BC1AF18EA600BFB16B /* XMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLParser.swift; sourceTree = "<group>"; };
 		32F9F2411B0A5E0A00A9CBE8 /* HelperImageRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperImageRotation.swift; sourceTree = "<group>"; };
 		32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadingViewController.swift; sourceTree = "<group>"; };
-		32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixilitloading.png; sourceTree = "<group>"; };
+		32F9F2451B0A8E0500A9CBE8 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		32FBEDA11AD4782900B99783 /* Pixilit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pixilit-Bridging-Header.h"; sourceTree = "<group>"; };
 		32FBEDA21AD4782900B99783 /* RNCryptor-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNCryptor-Prefix.pch"; sourceTree = "<group>"; };
 		32FBEDA31AD4782900B99783 /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 				32D94B6F1B0BDAB1000F1C06 /* logo180.png */,
 				32D94B6D1B0BDAAB000F1C06 /* logo270.png */,
 				32D94B6B1B0BD512000F1C06 /* logo.png */,
-				32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */,
+				32F9F2451B0A8E0500A9CBE8 /* background.png */,
 				32CB0BC11B06A10900737425 /* Splashscreen.png */,
 				32CB0BBF1B069FCD00737425 /* test@2x.gif */,
 				32CB0BAF1B0695C100737425 /* settingsgreen.png */,
@@ -542,7 +542,7 @@
 				3221E5881AEB06F400BA23F6 /* default1px.png in Resources */,
 				32D94B6C1B0BD512000F1C06 /* logo.png in Resources */,
 				32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */,
-				32F9F2461B0A8E0500A9CBE8 /* pixilitloading.png in Resources */,
+				32F9F2461B0A8E0500A9CBE8 /* background.png in Resources */,
 				32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,

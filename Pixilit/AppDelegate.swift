@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             UIGraphicsBeginImageContext(UIScreen.mainScreen().bounds.size)
-            UIImage(named: "pixilitloading")?.drawInRect(UIScreen.mainScreen().bounds)
+            UIImage(named: "background")?.drawInRect(UIScreen.mainScreen().bounds)
             
             var img: UIImage = UIGraphicsGetImageFromCurrentImageContext()
             
