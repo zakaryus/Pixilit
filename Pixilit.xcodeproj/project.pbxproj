@@ -62,6 +62,12 @@
 		32CB0BC01B069FCD00737425 /* test@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BBF1B069FCD00737425 /* test@2x.gif */; };
 		32CB0BC21B06A10900737425 /* Splashscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BC11B06A10900737425 /* Splashscreen.png */; };
 		32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32CB0BC51B06AA5F00737425 /* LaunchScreen1.xib */; };
+		32D94B6C1B0BD512000F1C06 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B6B1B0BD512000F1C06 /* logo.png */; };
+		32D94B6E1B0BDAAB000F1C06 /* logo270.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B6D1B0BDAAB000F1C06 /* logo270.png */; };
+		32D94B701B0BDAB1000F1C06 /* logo180.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B6F1B0BDAB1000F1C06 /* logo180.png */; };
+		32D94B721B0BDD05000F1C06 /* logo140.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B711B0BDD05000F1C06 /* logo140.png */; };
+		32D94B741B0BDD90000F1C06 /* logo210.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B731B0BDD90000F1C06 /* logo210.png */; };
+		32D94B761B0BE521000F1C06 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D94B751B0BE521000F1C06 /* CustomSegue.swift */; };
 		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
 		32EFB2EA1AF8301F00BB176B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2E91AF8301F00BB176B /* Bolts.framework */; };
 		32EFB2EC1AF8302A00BB176B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -164,6 +170,12 @@
 		32CB0BBF1B069FCD00737425 /* test@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "test@2x.gif"; sourceTree = "<group>"; };
 		32CB0BC11B06A10900737425 /* Splashscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splashscreen.png; sourceTree = "<group>"; };
 		32CB0BC51B06AA5F00737425 /* LaunchScreen1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen1.xib; sourceTree = "<group>"; };
+		32D94B6B1B0BD512000F1C06 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		32D94B6D1B0BDAAB000F1C06 /* logo270.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo270.png; sourceTree = "<group>"; };
+		32D94B6F1B0BDAB1000F1C06 /* logo180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo180.png; sourceTree = "<group>"; };
+		32D94B711B0BDD05000F1C06 /* logo140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo140.png; sourceTree = "<group>"; };
+		32D94B731B0BDD90000F1C06 /* logo210.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo210.png; sourceTree = "<group>"; };
+		32D94B751B0BE521000F1C06 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
 		32EFB2E91AF8301F00BB176B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -276,6 +288,7 @@
 				D0CD32EB1A8C236B00538B9B /* CustomCell.swift */,
 				D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */,
 				3178DEE81A903FB600E6D1B4 /* Section.swift */,
+				32D94B751B0BE521000F1C06 /* CustomSegue.swift */,
 				3178DEEA1A9044B200E6D1B4 /* Sections.swift */,
 			);
 			name = "Supporting Files";
@@ -301,6 +314,11 @@
 		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				32D94B731B0BDD90000F1C06 /* logo210.png */,
+				32D94B711B0BDD05000F1C06 /* logo140.png */,
+				32D94B6F1B0BDAB1000F1C06 /* logo180.png */,
+				32D94B6D1B0BDAAB000F1C06 /* logo270.png */,
+				32D94B6B1B0BD512000F1C06 /* logo.png */,
 				32F9F2451B0A8E0500A9CBE8 /* pixilitloading.png */,
 				32CB0BC11B06A10900737425 /* Splashscreen.png */,
 				32CB0BBF1B069FCD00737425 /* test@2x.gif */,
@@ -366,8 +384,8 @@
 		32BA54651ADC50BC0099DD87 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3212E7201AD88327008593CE /* Region.swift */,
 				4293ACC11AAE53010089F441 /* User.swift */,
+				3212E7201AD88327008593CE /* Region.swift */,
 				31ABEB931A981A04001815F9 /* Tile.swift */,
 				3178DEE61A903D6F00E6D1B4 /* Business.swift */,
 				42F848C61AA4D468009D4AD9 /* NewsPage.swift */,
@@ -519,19 +537,23 @@
 			files = (
 				32CB0BC01B069FCD00737425 /* test@2x.gif in Resources */,
 				32CB0BC21B06A10900737425 /* Splashscreen.png in Resources */,
+				32D94B741B0BDD90000F1C06 /* logo210.png in Resources */,
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
 				3221E5881AEB06F400BA23F6 /* default1px.png in Resources */,
+				32D94B6C1B0BD512000F1C06 /* logo.png in Resources */,
 				32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */,
 				32F9F2461B0A8E0500A9CBE8 /* pixilitloading.png in Resources */,
 				32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */,
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
+				32D94B6E1B0BDAAB000F1C06 /* logo270.png in Resources */,
 				32CB0BBE1B0695C100737425 /* mainfeedgreen@2x.png in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
 				32CB0BBA1B0695C100737425 /* accountorange.png in Resources */,
 				32CB0BB71B0695C100737425 /* settingsgreen.png in Resources */,
 				324B53A71AE863AE006220C0 /* unpixd.png in Resources */,
 				32CB0BBB1B0695C100737425 /* accountgreen.png in Resources */,
+				32D94B721B0BDD05000F1C06 /* logo140.png in Resources */,
 				32CB0BBD1B0695C100737425 /* mainfeedorange@2x.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
@@ -541,6 +563,7 @@
 				325CEC3B1ADF23CA00AEBC56 /* Slice 1-2.png in Resources */,
 				325CEC351ADF205900AEBC56 /* Slice 1.png in Resources */,
 				32CB0BBC1B0695C100737425 /* settingsorange.png in Resources */,
+				32D94B701B0BDAB1000F1C06 /* logo180.png in Resources */,
 				3185E1331A79D3E600037B10 /* LaunchScreen.xib in Resources */,
 				3185E1301A79D3E600037B10 /* Images.xcassets in Resources */,
 				325CEC441ADF2E2100AEBC56 /* homeIcon.png in Resources */,
@@ -574,6 +597,7 @@
 				316A9F201A900A0000694B2B /* Config.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */,
+				32D94B761B0BE521000F1C06 /* CustomSegue.swift in Sources */,
 				325CEC331ADF027200AEBC56 /* SubRegionViewController.swift in Sources */,
 				32B51DD01ADDA9A80014ECCC /* RegionHierarchy.swift in Sources */,
 				D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */,

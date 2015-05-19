@@ -24,6 +24,10 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        var logo = UIImage(named: "newLogo")
+        let imageView = UIImageView(image: logo)
+        self.navigationItem.titleView = imageView
+        
        self.view.backgroundColor = UIColor.clearColor()
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
@@ -33,7 +37,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         collectionView.insertSubview(refresh, aboveSubview: collectionView)
 
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "Main Feed"
+   
     }
     
     

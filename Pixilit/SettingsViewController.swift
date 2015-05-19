@@ -45,6 +45,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     {
         if indexPath.row == Section1.Region.rawValue && indexPath.section == 0 {
             println("Region")
+            
             performSegueWithIdentifier("SavedRegionSegue", sender: self)
         }
         else if indexPath.row == Section1.AccountInfo.rawValue && indexPath.section == 0 {

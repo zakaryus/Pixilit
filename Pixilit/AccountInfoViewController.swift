@@ -23,7 +23,7 @@ class AccountInfoViewController : UIViewController, UIImagePickerControllerDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       self.view.backgroundColor = UIColor.clearColor()
         self.imagePicker.delegate = self
         self.TbDescription.delegate = self
         self.TbDescription.hidden = true
