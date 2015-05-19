@@ -91,4 +91,19 @@ public class Tile: NSObject, IRestful {
             PhotoMetadata = CGSizeMake(0, 0)
         }
     }
+    
+    func TagList() -> String {
+        var str: String = ""
+        var first: Bool = true
+        
+        for tag in tags {
+            if first {
+                str = tag
+            } else {
+                str += ", \(tag)"
+            }
+        }
+        
+        return str
+    }
 }

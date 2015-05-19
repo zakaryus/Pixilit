@@ -133,13 +133,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aau-gE-Z4P">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="mWh-a2-Kj0"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gpZ-ZY-8cE">
                                 <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -159,6 +152,13 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="pwc-bZ-zsA"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="aau-gE-Z4P">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="mWh-a2-Kj0"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -651,8 +651,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="MDA-ok-evC">
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ubd-YP-uek"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="EhB-lC-HeE" id="Upg-Y6-hiF"/>
+                                </connections>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="T17-UD-6xE">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewLayout key="collectionViewLayout" id="wX0-gh-gvh" customClass="CollectionViewWaterfallLayout" customModule="Pixilit" customModuleProvider="target"/>
                                 <cells>
@@ -686,17 +696,21 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="hzJ-st-WfM" id="P64-GN-YGj"/>
-                                    <outlet property="delegate" destination="hzJ-st-WfM" id="ml8-an-Vc1"/>
+                                    <outlet property="dataSource" destination="hzJ-st-WfM" id="7VC-Wq-Oya"/>
+                                    <outlet property="delegate" destination="hzJ-st-WfM" id="uEI-AF-aPU"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="MDA-ok-evC" firstAttribute="top" secondItem="jkV-eu-4H6" secondAttribute="bottom" id="0nR-Us-zxi"/>
                             <constraint firstItem="T17-UD-6xE" firstAttribute="leading" secondItem="cfe-U3-A8g" secondAttribute="leadingMargin" constant="-16" id="3D1-Yg-89N"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MDA-ok-evC" secondAttribute="trailing" constant="-16" id="6IE-LN-PI7"/>
+                            <constraint firstItem="T17-UD-6xE" firstAttribute="top" secondItem="MDA-ok-evC" secondAttribute="bottom" id="CgW-KE-bbM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MDA-ok-evC" secondAttribute="trailing" constant="-16" id="Ckc-VM-bJy"/>
                             <constraint firstItem="T17-UD-6xE" firstAttribute="bottom" secondItem="cfe-U3-A8g" secondAttribute="bottomMargin" id="F0j-w1-omm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T17-UD-6xE" secondAttribute="trailing" constant="-16" id="MwV-Ty-3B4"/>
-                            <constraint firstItem="T17-UD-6xE" firstAttribute="top" secondItem="cfe-U3-A8g" secondAttribute="topMargin" id="iaI-T3-T4O"/>
+                            <constraint firstItem="MDA-ok-evC" firstAttribute="leading" secondItem="cfe-U3-A8g" secondAttribute="leadingMargin" constant="-16" id="QIu-Zz-Neg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wKX-Sj-Kkw"/>
@@ -704,10 +718,16 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="T17-UD-6xE" id="pQR-v1-zBM"/>
+                        <outlet property="searchDisplayController" destination="EhB-lC-HeE" id="gyS-BY-22i"/>
                         <segue destination="bB2-vR-l9d" kind="presentation" identifier="FeedToBusinessSegue" id="t4t-oZ-rbm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7tc-Qw-G6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="EhB-lC-HeE">
+                    <connections>
+                        <outlet property="delegate" destination="hzJ-st-WfM" id="SwM-76-cf0"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-2272" y="-588"/>
         </scene>
@@ -1365,9 +1385,9 @@ to upload a picture</string>
         <image name="settingsorange.png" width="80" height="80"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="KhQ-4a-Iti"/>
         <segue reference="j9a-4m-C1z"/>
-        <segue reference="pab-dI-ubp"/>
-        <segue reference="hic-tj-NmB"/>
+        <segue reference="t4t-oZ-rbm"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.93725496529999996" green="0.42352944609999998" blue="0.22745099660000001" alpha="1" colorSpace="deviceRGB"/>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MainFeedViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate
+public class MainFeedViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, CollectionViewWaterfallLayoutDelegate
 {
     
     
@@ -19,12 +19,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     var hasLoggedIn = false
     var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
     var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    var filteredTiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-       self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clearColor()
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
         
@@ -192,20 +193,35 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
     }
     
-//    func filterContentForSearchText(searchText: String)
-//    {
-//        // Filter the array using the filter method
-//        self.filteredListOfBusinesses = self.listOfBusinesses.filter({( business: Business) -> Bool in
-//            if let title = business.Title {
-//                let stringMatch = title.lowercaseString.rangeOfString(searchText.lowercaseString)
-//                return stringMatch != nil
-//            }
-//            return false
-//        })
-//        
-//        self.sections = Sections<Business>(list: self.filteredListOfBusinesses, key: "Title")
-//    }
+    func filterContentForSearchText(searchText: String)
+    {
+        // Filter the array using the filter method
+        var tmpFilter: [(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+        
+        for item in tiles {
+            if item.tile.TagList().lowercaseString.rangeOfString(searchText.lowercaseString) != nil {
+                tmpFilter.append(item)
+            }
+        }
+        
+        self.filteredTiles = tmpFilter
+    }
+    
+    public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
+    {
+        self.filterContentForSearchText(searchString)
+        return true
+    }
+    
+    public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool
+    {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
+    }
 
+    public func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        self.collectionView.reloadData()
+    }
 
     
     override public func didReceiveMemoryWarning() {
