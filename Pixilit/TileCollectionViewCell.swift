@@ -47,6 +47,12 @@ class TileCollectionViewCell: UICollectionViewCell {
             setPixd();
         }
         
+        if (User.Role == AccountType.Business)
+        {
+            pixd.hidden = true
+            pixd.userInteractionEnabled = false
+        }
+        
     }
     
     func setPixd()
