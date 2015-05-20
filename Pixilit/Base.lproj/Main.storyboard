@@ -27,17 +27,12 @@
                                             <constraint firstAttribute="height" constant="600" id="dJ2-iY-kNh"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8Q-WV-yrb">
-                                        <rect key="frame" x="8" y="22" width="95" height="30"/>
-                                        <state key="normal" title="Go Back">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dismissViewController:" destination="bB2-vR-l9d" eventType="touchUpInside" id="Pzt-Ud-gK3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVS-Bo-eUp">
-                                        <rect key="frame" x="540" y="22" width="40" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVS-Bo-eUp">
+                                        <rect key="frame" x="15" y="25" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ldi-Ga-Chw"/>
+                                            <constraint firstAttribute="width" constant="40" id="cO3-NX-kar"/>
+                                        </constraints>
                                         <state key="normal">
                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -49,26 +44,42 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" editable="NO" text="This is the picture descripton" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-Yt-FdY">
                                         <rect key="frame" x="27" y="528" width="547" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="547" placeholderIntrinsicHeight="33" editable="NO" text="Tags" translatesAutoresizingMaskIntoConstraints="NO" id="T4U-vo-EOU">
                                         <rect key="frame" x="27" y="493" width="547" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="textColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSw-n1-aYo" userLabel="Go Back">
+                                        <rect key="frame" x="534" y="25" width="48" height="47"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
+                                        </accessibility>
+                                        <state key="normal" image="goBackButton.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismissViewController:" destination="bB2-vR-l9d" eventType="touchUpInside" id="Xal-Jm-rud"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="aVS-Bo-eUp" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="25" id="40h-WM-IgY"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" id="AET-q9-lLu"/>
+                                    <constraint firstAttribute="trailing" secondItem="lSw-n1-aYo" secondAttribute="trailing" constant="18" id="Caa-hG-8BW"/>
+                                    <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="lSw-n1-aYo" secondAttribute="bottom" constant="-72" id="ELW-UK-QVS"/>
                                     <constraint firstAttribute="trailing" secondItem="bMZ-t5-K1D" secondAttribute="trailing" id="Fo9-rg-VZt"/>
-                                    <constraint firstAttribute="trailing" secondItem="aVS-Bo-eUp" secondAttribute="trailing" constant="20" id="dcz-Yg-VIy"/>
+                                    <constraint firstItem="aVS-Bo-eUp" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" constant="15" id="cro-YQ-Tgi"/>
                                     <constraint firstAttribute="bottom" secondItem="bMZ-t5-K1D" secondAttribute="bottom" id="knd-bH-Wnm"/>
+                                    <constraint firstItem="lSw-n1-aYo" firstAttribute="leading" secondItem="bMZ-t5-K1D" secondAttribute="trailing" constant="-66" id="n91-KQ-aid"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" id="nWj-sV-PrR"/>
-                                    <constraint firstItem="aVS-Bo-eUp" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="22" id="naP-t8-peO"/>
+                                    <constraint firstItem="lSw-n1-aYo" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="25" id="tEJ-fb-nta"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -81,6 +92,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="goBack" destination="lSw-n1-aYo" id="bfj-4g-2Vc"/>
                         <outlet property="image" destination="bMZ-t5-K1D" id="8gP-0d-wtc"/>
                         <outlet property="imageDescription" destination="fWD-Yt-FdY" id="zgk-Aa-foP"/>
                         <outlet property="imageTags" destination="T4U-vo-EOU" id="aBI-lV-NKA"/>
@@ -91,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8wZ-9x-th7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1093" y="-614"/>
+            <point key="canvasLocation" x="-1102" y="-607"/>
         </scene>
         <!--Pixilit-->
         <scene sceneID="hNz-n2-bh7">
@@ -1332,13 +1344,14 @@ to upload a picture</string>
         </scene>
     </scenes>
     <resources>
+        <image name="goBackButton.png" width="100" height="100"/>
         <image name="newAccount" width="33" height="34"/>
         <image name="newBusiness" width="36" height="37"/>
         <image name="newMainfeed" width="36" height="34"/>
         <image name="newSettings" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="j9a-4m-C1z"/>
+        <segue reference="Kjq-3T-UJ1"/>
         <segue reference="t4t-oZ-rbm"/>
         <segue reference="hic-tj-NmB"/>
     </inferredMetricsTieBreakers>

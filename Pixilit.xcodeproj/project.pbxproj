@@ -31,6 +31,9 @@
 		3235996D1B054A7400309D33 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; };
 		324B53A61AE863AE006220C0 /* pixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A41AE863AE006220C0 /* pixd.png */; };
 		324B53A71AE863AE006220C0 /* unpixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A51AE863AE006220C0 /* unpixd.png */; };
+		325845D21B0D371300F38507 /* goBackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 325845D11B0D371300F38507 /* goBackArrow.png */; };
+		325845D81B0D3D0300F38507 /* Back_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 325845D71B0D3D0300F38507 /* Back_Arrow.png */; };
+		325845E01B0D475900F38507 /* goBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 325845DF1B0D475900F38507 /* goBackButton.png */; };
 		325CEC2F1ADEF0AC00AEBC56 /* RegionKvp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */; };
 		325CEC311ADEF45E00AEBC56 /* SavedRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */; };
 		325CEC331ADF027200AEBC56 /* SubRegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */; };
@@ -140,6 +143,9 @@
 		322DD18D1AE97DA100058A5E /* HelperTransformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperTransformations.swift; sourceTree = "<group>"; };
 		324B53A41AE863AE006220C0 /* pixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixd.png; sourceTree = "<group>"; };
 		324B53A51AE863AE006220C0 /* unpixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpixd.png; sourceTree = "<group>"; };
+		325845D11B0D371300F38507 /* goBackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goBackArrow.png; sourceTree = "<group>"; };
+		325845D71B0D3D0300F38507 /* Back_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back_Arrow.png; sourceTree = "<group>"; };
+		325845DF1B0D475900F38507 /* goBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goBackButton.png; sourceTree = "<group>"; };
 		325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionKvp.swift; sourceTree = "<group>"; };
 		325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRegionViewController.swift; sourceTree = "<group>"; };
 		325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubRegionViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +321,9 @@
 			isa = PBXGroup;
 			children = (
 				32D94B731B0BDD90000F1C06 /* logo210.png */,
+				325845D71B0D3D0300F38507 /* Back_Arrow.png */,
+				325845DF1B0D475900F38507 /* goBackButton.png */,
+				325845D11B0D371300F38507 /* goBackArrow.png */,
 				32D94B711B0BDD05000F1C06 /* logo140.png */,
 				32D94B6F1B0BDAB1000F1C06 /* logo180.png */,
 				32D94B6D1B0BDAAB000F1C06 /* logo270.png */,
@@ -541,6 +550,8 @@
 				325CEC3C1ADF23CA00AEBC56 /* Slice 2.png in Resources */,
 				3221E5881AEB06F400BA23F6 /* default1px.png in Resources */,
 				32D94B6C1B0BD512000F1C06 /* logo.png in Resources */,
+				325845E01B0D475900F38507 /* goBackButton.png in Resources */,
+				325845D81B0D3D0300F38507 /* Back_Arrow.png in Resources */,
 				32CB0BC61B06AA5F00737425 /* LaunchScreen1.xib in Resources */,
 				32F9F2461B0A8E0500A9CBE8 /* pixilitloading.png in Resources */,
 				32FDB6401AE5A0B90039A30E /* dimmed.png in Resources */,
@@ -556,6 +567,7 @@
 				32D94B721B0BDD05000F1C06 /* logo140.png in Resources */,
 				32CB0BBD1B0695C100737425 /* mainfeedorange@2x.png in Resources */,
 				32E0E1AC1AE0669E00891C0C /* app icons in Resources */,
+				325845D21B0D371300F38507 /* goBackArrow.png in Resources */,
 				325CEC421ADF2E0000AEBC56 /* Slice 3.png in Resources */,
 				324B53A61AE863AE006220C0 /* pixd.png in Resources */,
 				32CB0BB91B0695C100737425 /* businessorange.png in Resources */,
