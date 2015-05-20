@@ -21,14 +21,13 @@ class TilePopupViewController: UIViewController {
     var business: Business?
     private var _SelectedTile: Tile?
     var userInteraction = true
+    
     var SelectedTile : Tile {
         get {
             return _SelectedTile!
         }
         set(value) {
-            //add stuff later
-            //if value
-            
+  
             _SelectedTile = value
         }
     }
@@ -50,26 +49,36 @@ class TilePopupViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
+    //hide status bar-->carrier and battery
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         HelperREST.RestBusinessRequest(SelectedTile.BusinessID!) {
             business in
             self.business = business
         }
+        
+        if (User.Role == AccountType.Business || User.Role == AccountType.Anonymous)
+        {
+            pixdButton.hidden = true
+            pixdButton.userInteractionEnabled = false
+        }
         image.image = SelectedImage
         image.userInteractionEnabled = userInteraction
-        
-       // var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: //image.image!.size, containerWidth: popupView.frame.width)
-      //  image.frame.size = dimensions
+
+
         var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
-        pictureTapped.numberOfTapsRequired = 1
+        pictureTapped.numberOfTapsRequired = 2
+        
+        var textTapped =  UITapGestureRecognizer(target: self, action: "hideText:")
+        textTapped.numberOfTapsRequired = 1
+        
+        image.addGestureRecognizer(textTapped)
         
         image.addGestureRecognizer(pictureTapped)
-        //var popupView = createContainerView()
-          //self.view.addSubview(popupView)
-        println("SUBVIEWS: \(self.view.subviews)")
-        //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
-        //popupView.center = self.view.center
 
        
         imageDescription.text = SelectedTile.Description
@@ -78,18 +87,14 @@ class TilePopupViewController: UIViewController {
             imageTags.text! += "\(modifiedString), "
         }
         
-//        if let logo = SelectedTile.BusinessLogo {
-//            //rest request
-//            HelperURLs.UrlToImage(logo) {
-//                photo in
-//                self.businessLogo.image = photo
-//            }
-//        }
-//        
-//        if let businessname = SelectedTile.BusinessName {
-//            businessTitle.text = SelectedTile.BusinessName
-//        }
         
+        
+        setPixdIconPopup()
+    }
+    
+    
+    func setPixdIconPopup()
+    {
         if User.IsLoggedIn() {
             if SelectedTile.Pixd == true {
                 pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
@@ -98,8 +103,30 @@ class TilePopupViewController: UIViewController {
                 pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
             }
         }
-        // Do any additional setup after loading the view.
+
     }
+    
+    func hideText(sender:UITapGestureRecognizer!)
+    {
+        if (imageDescription.text != "")
+        {
+        imageDescription.text = ""
+        imageTags.text = ""
+        }
+        else
+        {
+            imageDescription.text = SelectedTile.Description
+            for tag in self.SelectedTile.tags {
+               
+                var modifiedString = tag.stringByReplacingOccurrencesOfString("&amp;", withString: "&", options: NSStringCompareOptions.LiteralSearch, range: nil)
+                imageTags.text! += "\(modifiedString), "
+            }
+            
+        }
+        println("INSIDE HIDEtext")
+        
+    }
+    
     
     func segueToBusiness(sender: UITapGestureRecognizer!)
     {
@@ -110,22 +137,39 @@ class TilePopupViewController: UIViewController {
     @IBAction func pixdButtonPressed(sender: AnyObject) {
         println("pixd button pressed")
         
+        if(self.SelectedTile.Pixd == true)
+        {
+            println("THIS IS PIXD")
+            self.SelectedTile.Pixd == false
+            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+
+        }
+        else if (self.SelectedTile.Pixd == false){
+            self.SelectedTile.Pixd == true
+            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+            println ("THIS IS NOT PIXED")
+        }
+        
         HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
             success in
-            println("\(success) this sucs")
+          
             if success == true
             {
+                println("Yay")
                 self.SelectedTile.Pixd = self.SelectedTile.Pixd == true ? false : true
             }
+
+
         }
         
         
-        if SelectedTile.Pixd == true {
-            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
-        }
-        else {
-            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
-        }
+//        if SelectedTile.Pixd == true {
+//            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+//        }
+//        else {
+//       
+//            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+//        }
         
         //notify observers
     }
