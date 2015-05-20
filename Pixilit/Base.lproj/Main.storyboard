@@ -651,12 +651,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="MDA-ok-evC">
+                            <searchBar contentMode="redraw" placeholder="Search by Tags or Description" translatesAutoresizingMaskIntoConstraints="NO" id="MDA-ok-evC">
                                 <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ubd-YP-uek"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
                                 <connections>
                                     <outlet property="delegate" destination="EhB-lC-HeE" id="Upg-Y6-hiF"/>
                                 </connections>
@@ -706,11 +710,11 @@
                             <constraint firstItem="MDA-ok-evC" firstAttribute="top" secondItem="jkV-eu-4H6" secondAttribute="bottom" id="0nR-Us-zxi"/>
                             <constraint firstItem="T17-UD-6xE" firstAttribute="leading" secondItem="cfe-U3-A8g" secondAttribute="leadingMargin" constant="-16" id="3D1-Yg-89N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MDA-ok-evC" secondAttribute="trailing" constant="-16" id="6IE-LN-PI7"/>
-                            <constraint firstItem="T17-UD-6xE" firstAttribute="top" secondItem="MDA-ok-evC" secondAttribute="bottom" id="CgW-KE-bbM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="MDA-ok-evC" secondAttribute="trailing" constant="-16" id="Ckc-VM-bJy"/>
                             <constraint firstItem="T17-UD-6xE" firstAttribute="bottom" secondItem="cfe-U3-A8g" secondAttribute="bottomMargin" id="F0j-w1-omm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="T17-UD-6xE" secondAttribute="trailing" constant="-16" id="MwV-Ty-3B4"/>
                             <constraint firstItem="MDA-ok-evC" firstAttribute="leading" secondItem="cfe-U3-A8g" secondAttribute="leadingMargin" constant="-16" id="QIu-Zz-Neg"/>
+                            <constraint firstItem="T17-UD-6xE" firstAttribute="top" secondItem="MDA-ok-evC" secondAttribute="bottom" id="xaX-5Y-4QT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wKX-Sj-Kkw"/>

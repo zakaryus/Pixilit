@@ -11,7 +11,6 @@ import UIKit
 public class MainFeedViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, CollectionViewWaterfallLayoutDelegate
 {
     
-    
     @IBOutlet weak var collectionView: UICollectionView!
     var selectedIndex = NSIndexPath()
     var selectedTile: Tile = Tile()
@@ -19,6 +18,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     var hasLoggedIn = false
     var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
     var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    var allTiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     var filteredTiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
@@ -86,6 +86,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }
+            
+            self.allTiles = self.tiles
             
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
@@ -198,18 +200,31 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         // Filter the array using the filter method
         var tmpFilter: [(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
         
-        for item in tiles {
-            if item.tile.TagList().lowercaseString.rangeOfString(searchText.lowercaseString) != nil {
+        for item in allTiles {
+            
+            var tags = item.tile.TagList()
+            var desc = item.tile.Description != nil ? item.tile.Description! : ""
+            
+            if tags.lowercaseString.rangeOfString(searchText.lowercaseString) != nil {
+                tmpFilter.append(item)
+            } else if desc.lowercaseString.rangeOfString(searchText.lowercaseString) != nil {
                 tmpFilter.append(item)
             }
         }
         
-        self.filteredTiles = tmpFilter
+        self.tiles = tmpFilter
     }
     
     public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
     {
-        self.filterContentForSearchText(searchString)
+        if searchString == "" {
+            tiles = allTiles
+            self.collectionView.reloadData()
+        } else {
+            self.filterContentForSearchText(searchString)
+            self.collectionView.reloadData()
+        }
+        
         return true
     }
     
@@ -217,10 +232,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     {
         self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
         return true
-    }
-
-    public func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        self.collectionView.reloadData()
     }
 
     
