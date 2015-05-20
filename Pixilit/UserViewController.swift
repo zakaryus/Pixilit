@@ -56,11 +56,12 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     
     func Refresh()
     {
-        HelperREST.RestUserFlags(User.Uid)
-            {
+        if (User.Role == AccountType.Business)
+        {
+            HelperREST.RestBusinessTiles(User.Uid) {
                 Tiles in
                 
-            
+                
                 self.tiles = []
                 
                 for tile in Tiles {
@@ -69,6 +70,24 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
                 
                 self.collectionView.reloadData()
                 self.refresh.endRefreshing()
+            }
+        }
+        else
+        {
+            HelperREST.RestUserFlags(User.Uid)
+                {
+                    Tiles in
+                    
+                    
+                    self.tiles = []
+                    
+                    for tile in Tiles {
+                        self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
+                    }
+                    
+                    self.collectionView.reloadData()
+                    self.refresh.endRefreshing()
+            }
         }
 
     }
