@@ -68,6 +68,7 @@
 		32D94B721B0BDD05000F1C06 /* logo140.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B711B0BDD05000F1C06 /* logo140.png */; };
 		32D94B741B0BDD90000F1C06 /* logo210.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D94B731B0BDD90000F1C06 /* logo210.png */; };
 		32D94B761B0BE521000F1C06 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D94B751B0BE521000F1C06 /* CustomSegue.swift */; };
+		32D94B781B0D2894000F1C06 /* HelperJsonConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D94B771B0D2894000F1C06 /* HelperJsonConversion.swift */; };
 		32E0E1AC1AE0669E00891C0C /* app icons in Resources */ = {isa = PBXBuildFile; fileRef = 32E0E1AB1AE0669E00891C0C /* app icons */; };
 		32EFB2EA1AF8301F00BB176B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2E91AF8301F00BB176B /* Bolts.framework */; };
 		32EFB2EC1AF8302A00BB176B /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -176,6 +177,7 @@
 		32D94B711B0BDD05000F1C06 /* logo140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo140.png; sourceTree = "<group>"; };
 		32D94B731B0BDD90000F1C06 /* logo210.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo210.png; sourceTree = "<group>"; };
 		32D94B751B0BE521000F1C06 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
+		32D94B771B0D2894000F1C06 /* HelperJsonConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperJsonConversion.swift; sourceTree = "<group>"; };
 		32E0E1AB1AE0669E00891C0C /* app icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "app icons"; sourceTree = "<group>"; };
 		32EFB2E91AF8301F00BB176B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 				322DD18D1AE97DA100058A5E /* HelperTransformations.swift */,
 				3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */,
 				32F9F2411B0A5E0A00A9CBE8 /* HelperImageRotation.swift */,
+				32D94B771B0D2894000F1C06 /* HelperJsonConversion.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -613,6 +616,7 @@
 				32BA546D1ADC52920099DD87 /* HelperREST.swift in Sources */,
 				4293ACC41AAE533D0089F441 /* LoginViewController.swift in Sources */,
 				32F578BE1AF18EA600BFB16B /* JSONDictionary.swift in Sources */,
+				32D94B781B0D2894000F1C06 /* HelperJsonConversion.swift in Sources */,
 				325CEC2F1ADEF0AC00AEBC56 /* RegionKvp.swift in Sources */,
 				32B51DCA1ADDA0E40014ECCC /* PaymentViewController.swift in Sources */,
 				32B51DC61ADD9EB70014ECCC /* RegionViewController.swift in Sources */,

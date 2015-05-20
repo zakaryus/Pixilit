@@ -309,7 +309,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Fle-0x-xxF" firstAttribute="top" secondItem="hbe-iV-AOI" secondAttribute="bottom" constant="12" id="0rd-IX-43L"/>
                             <constraint firstItem="HW3-Zo-jRU" firstAttribute="top" secondItem="Fle-0x-xxF" secondAttribute="bottom" id="ENR-p3-gEb"/>
@@ -457,16 +457,10 @@
                         <viewControllerLayoutGuide type="top" id="IMA-uL-NuS"/>
                         <viewControllerLayoutGuide type="bottom" id="1Or-9o-92n"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="T5m-ip-09G">
+                    <view key="view" contentMode="scaleAspectFit" id="T5m-ip-09G">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pixilit Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w2-vk-oIw">
-                                <rect key="frame" x="225" y="72" width="150" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVk-8v-gLS">
                                 <rect key="frame" x="208" y="142" width="185" height="30"/>
                                 <constraints>
@@ -561,11 +555,9 @@
                             <constraint firstAttribute="centerX" secondItem="BVk-8v-gLS" secondAttribute="centerX" id="S67-kl-etZ"/>
                             <constraint firstItem="1Or-9o-92n" firstAttribute="top" secondItem="nLf-am-RsQ" secondAttribute="bottom" constant="124" id="XrP-ek-tqS"/>
                             <constraint firstItem="1Or-9o-92n" firstAttribute="top" secondItem="Ac2-PO-Veg" secondAttribute="bottom" constant="86" id="h5g-m5-CFo"/>
-                            <constraint firstItem="7w2-vk-oIw" firstAttribute="top" secondItem="IMA-uL-NuS" secondAttribute="bottom" constant="52" id="hc4-Ze-1VA"/>
                             <constraint firstItem="s5c-YX-Hmz" firstAttribute="top" secondItem="IMA-uL-NuS" secondAttribute="bottom" constant="160" id="jVh-iB-Jb6"/>
                             <constraint firstAttribute="centerX" secondItem="WyQ-8g-2fl" secondAttribute="centerX" id="rnO-JD-vKI"/>
                             <constraint firstItem="WyQ-8g-2fl" firstAttribute="top" secondItem="IMA-uL-NuS" secondAttribute="bottom" constant="287" id="s2t-Qx-RdJ"/>
-                            <constraint firstAttribute="centerX" secondItem="7w2-vk-oIw" secondAttribute="centerX" id="u8I-iJ-C9E"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Account" id="Is6-49-IcE"/>
@@ -784,7 +776,7 @@ Other "about" stuff here</string>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.83137254900000002" green="0.96078431369999995" blue="0.95294117649999999" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="GKL-v5-cX3" firstAttribute="leading" secondItem="Lhi-ZS-j4V" secondAttribute="leadingMargin" constant="-16" id="Kyo-pu-uCP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GKL-v5-cX3" secondAttribute="trailing" constant="-16" id="ua3-J8-ubL"/>
@@ -841,7 +833,7 @@ Other "about" stuff here</string>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.89411764709999997" green="0.96862745100000003" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="GS9-YG-kRa" firstAttribute="top" secondItem="FtJ-aG-hNw" secondAttribute="bottom" id="68e-0Q-WOf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FtJ-aG-hNw" secondAttribute="trailing" constant="-16" id="9um-36-4vg"/>
@@ -1220,8 +1212,8 @@ to upload a picture</string>
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="InO-nZ-IW7">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.0" green="0.58431372549019611" blue="0.63529411764705879" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.83137254900000002" green="0.96078431369999995" blue="0.95294117649999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle=" " id="nEG-tm-exg">
                                 <cells>
@@ -1370,7 +1362,7 @@ to upload a picture</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j9a-4m-C1z"/>
-        <segue reference="pab-dI-ubp"/>
+        <segue reference="t4t-oZ-rbm"/>
         <segue reference="hic-tj-NmB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94509804248809814" green="0.47843137383460999" blue="0.3490196168422699" alpha="1" colorSpace="calibratedRGB"/>

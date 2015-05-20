@@ -28,7 +28,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         let imageView = UIImageView(image: logo)
         self.navigationItem.titleView = imageView
         
-       self.view.backgroundColor = UIColor.clearColor()
+       self.view.backgroundColor = HelperTransformations.BackgroundColor()
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
         

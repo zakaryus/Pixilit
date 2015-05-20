@@ -51,6 +51,20 @@ public struct HelperREST
         return json
     }
     
+    public static func RestRequestAsync(url: String, CompletionHandler: (json: JSON) -> ()) {
+        let nsurl: NSURL = NSURL(string: url)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(nsurl, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            CompletionHandler(json: JSON(data: data))
+        })
+        task.resume()
+    }
+    
     public static func RestUpdateProfile(pid : String) -> Bool {
         
         let urlPath = Config.RestUserProfile + pid
@@ -190,8 +204,6 @@ public struct HelperREST
         
     }
     
-    
-
     //REST
     public static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {
         var tmpBusinesses = [Business]()
@@ -367,6 +379,9 @@ public struct HelperREST
     }
     
     public static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+        if Uid.toInt() == -1 {
+            return }
+        
         var tmpTiles = [Tile]()
         let urlPath = Config.UserFlagsJson + Uid
         

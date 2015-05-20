@@ -51,6 +51,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          self.view.backgroundColor = HelperTransformations.BackgroundColor()
         // Do any additional setup after loading the view, typically from a nib.
         
         SetBusinessToVC(business)

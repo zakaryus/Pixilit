@@ -30,9 +30,12 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var logo = UIImage(named: "background")
+        let imageView = UIImageView(image: logo)
+        self.tableView.backgroundView = imageView
         self.tableView.scrollEnabled = false
         tvSettings.delegate = self
-        self.view.backgroundColor = HelperTransformations.BackgroundColor()
+       // self.view.backgroundColor = HelperTransformations.BackgroundColor()
 
     }
     
