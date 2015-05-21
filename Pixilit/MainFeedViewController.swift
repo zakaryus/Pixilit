@@ -128,7 +128,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             Refresh()
         }
         
-        
         if !tiles[indexPath.row].hasImage {
             cell.setup(nil, img: nil)
         

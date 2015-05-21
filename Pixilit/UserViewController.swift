@@ -22,6 +22,8 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     
     //var collectVC = UICollectionViewController()
     var refresh = UIRefreshControl()
+    var pageCounter: Int = 0
+    let PAGESIZE: Int = 12
     
     override func viewWillAppear(animated: Bool) {
         if !User.IsLoggedIn()
@@ -39,6 +41,7 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             newsButton.enabled = false
             newsButton.title = ""
         }
+        pageCounter = 0
         Refresh()
     }
 
@@ -48,10 +51,15 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
         println(User.Uid)
        // collectVC.collectionView = collectionView
         
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
-      
+    }
+    
+    func PullToRefresh()
+    {
+        pageCounter = 0
+        Refresh()
     }
     
     func Refresh()
