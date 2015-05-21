@@ -32,6 +32,16 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         RefreshList()
     }
     
+    
+    func containsRegion(userRegions: [Region], businessRegions: [String]) -> Bool {
+        for region in userRegions {
+            if contains(businessRegions, region.Name!.lowercaseString) {
+                return true
+            }
+        }
+        return false
+    }
+
     func RefreshList()
     {
         var tmpBusinesses = [Business]()
@@ -40,7 +50,9 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         if json != nil {
         for (index: String, subJson: JSON) in json {
             var business = Business(json: subJson)
-            tmpBusinesses.append(business)
+            if (!User.IsLoggedIn() || containsRegion(User.Regions, businessRegions: business.Regions)) {
+                tmpBusinesses.append(business)
+            }
         }
             self.listOfBusinesses = tmpBusinesses
             self.sections = Sections<Business>(list: self.listOfBusinesses, key: "Title")
@@ -53,6 +65,7 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
         }
         
     }
+    
     
     override func didReceiveMemoryWarning()
     {
