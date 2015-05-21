@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>RestAboutPixilit</key>
+	<string>http://pixilit.com/rest/about.json</string>
 	<key>RestNodeCreate</key>
 	<string>http://pixilit.com/rest/node</string>
 	<key>RestFileCreate</key>
