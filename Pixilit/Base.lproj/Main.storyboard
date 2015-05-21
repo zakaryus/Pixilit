@@ -56,7 +56,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lSw-n1-aYo" userLabel="Go Back">
-                                        <rect key="frame" x="534" y="25" width="48" height="47"/>
+                                        <rect key="frame" x="540" y="21" width="48" height="47"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" none="YES" button="YES" image="YES"/>
                                         </accessibility>
@@ -72,14 +72,14 @@
                                 <constraints>
                                     <constraint firstItem="aVS-Bo-eUp" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="25" id="40h-WM-IgY"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" id="AET-q9-lLu"/>
-                                    <constraint firstAttribute="trailing" secondItem="lSw-n1-aYo" secondAttribute="trailing" constant="18" id="Caa-hG-8BW"/>
-                                    <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="lSw-n1-aYo" secondAttribute="bottom" constant="-72" id="ELW-UK-QVS"/>
                                     <constraint firstAttribute="trailing" secondItem="bMZ-t5-K1D" secondAttribute="trailing" id="Fo9-rg-VZt"/>
+                                    <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="lSw-n1-aYo" secondAttribute="bottom" constant="-68" id="MZC-Gt-JlK"/>
+                                    <constraint firstItem="lSw-n1-aYo" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="21" id="VR3-HO-aOb"/>
+                                    <constraint firstAttribute="trailing" secondItem="lSw-n1-aYo" secondAttribute="trailing" constant="12" id="aB0-cC-psf"/>
                                     <constraint firstItem="aVS-Bo-eUp" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" constant="15" id="cro-YQ-Tgi"/>
                                     <constraint firstAttribute="bottom" secondItem="bMZ-t5-K1D" secondAttribute="bottom" id="knd-bH-Wnm"/>
-                                    <constraint firstItem="lSw-n1-aYo" firstAttribute="leading" secondItem="bMZ-t5-K1D" secondAttribute="trailing" constant="-66" id="n91-KQ-aid"/>
+                                    <constraint firstItem="lSw-n1-aYo" firstAttribute="leading" secondItem="bMZ-t5-K1D" secondAttribute="trailing" constant="-60" id="lGs-8J-2CR"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" id="nWj-sV-PrR"/>
-                                    <constraint firstItem="lSw-n1-aYo" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="25" id="tEJ-fb-nta"/>
                                 </constraints>
                             </view>
                         </subviews>

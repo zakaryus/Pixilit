@@ -74,7 +74,7 @@ class TilePopupViewController: UIViewController {
         var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
         pictureTapped.numberOfTapsRequired = 2
         
-        var textTapped =  UITapGestureRecognizer(target: self, action: "hideText:")
+        var textTapped =  UITapGestureRecognizer(target: self, action: "hideInteractions:")
         textTapped.numberOfTapsRequired = 1
         
         image.addGestureRecognizer(textTapped)
@@ -107,7 +107,7 @@ class TilePopupViewController: UIViewController {
 
     }
     
-    func hideText(sender:UITapGestureRecognizer!)
+    func hideInteractions(sender:UITapGestureRecognizer!)
     {
         if (imageDescription.hidden == false )
         {
@@ -141,6 +141,7 @@ class TilePopupViewController: UIViewController {
         println("tap gesture recognized, preparing to segue");
         self.performSegueWithIdentifier("popupToBusinessSegue", sender: "")
     }
+    
     
     @IBAction func pixdButtonPressed(sender: AnyObject) {
         println("pixd button pressed")
