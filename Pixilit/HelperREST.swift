@@ -350,8 +350,8 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestBusinessTiles(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
-        let urlPath = Config.RestBusinessTileJson + Uid
+    public static func RestBusinessTiles(Uid: String, page: Int, CompletionHandler: (tiles: [Tile]) -> ()) {
+        let urlPath = Config.RestBusinessTileJson + Uid + "&page=\(page)"
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -367,8 +367,6 @@ public struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                println(subJson)
-                
                 tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
             }
@@ -378,12 +376,11 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
-        if Uid.toInt() == -1 {
-            return }
+    public static func RestUserFlags(Uid: String, page: Int, CompletionHandler: (tiles: [Tile]) -> ()) {
+        if Uid.toInt() == -1 { return }
         
         var tmpTiles = [Tile]()
-        let urlPath = Config.UserFlagsJson + Uid
+        let urlPath = Config.UserFlagsJson + Uid + "&page=\(page)"
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -395,8 +392,6 @@ public struct HelperREST
             var json = JSON(data: data)
             
             for (index: String, subJson: JSON) in json {
-                
-                println(subJson)
                 
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
@@ -465,7 +460,6 @@ public struct HelperREST
         {
            
             var json = JSON(data: data!)
-             println(json)
                User.Setup(json)
             ////println("User id is" + User.Uid)
         }

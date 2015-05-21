@@ -37,7 +37,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        collectionView.insertSubview(refresh, aboveSubview: collectionView)
+
 
         // Do any additional setup after loading the view, typically from a nib.
    
@@ -72,9 +72,10 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
-        var tid = "all"
+        collectionView.insertSubview(refresh, aboveSubview: collectionView)
         refresh.beginRefreshing()
-     //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        
+        var tid = "all"
   
         if(User.IsLoggedIn()) {
             var first = true
