@@ -175,17 +175,18 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
         if !User.IsLoggedIn() {
             return
         }
-        println("double tap")
         
-        var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
-        var content = HelperStrings.RestUpdateFlagString(tiles[selectedIndex.row].tile.Nid!, uid: User.Uid, flagged: flagged)
-        var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
-        
-        if success[0].stringValue == "true"
-        {
-            self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
-            tiles.removeAtIndex(selectedIndex.row)
-            self.collectionView.reloadData()
+        if User.Role == AccountType.User {
+            var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
+            var content = HelperStrings.RestUpdateFlagString(tiles[selectedIndex.row].tile.Nid!, uid: User.Uid, flagged: flagged)
+            var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
+            
+            if success[0].stringValue == "true"
+            {
+                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+                tiles.removeAtIndex(selectedIndex.row)
+                self.collectionView.reloadData()
+            }
         }
     }
     

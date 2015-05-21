@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.clearColor()
+           self.view.backgroundColor = HelperTransformations.BackgroundColor()
         self.inusername.delegate = self;
         self.inpassword.delegate = self;
         self.facebookButton.center = self.view.center;

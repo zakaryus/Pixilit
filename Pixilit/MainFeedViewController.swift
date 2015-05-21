@@ -25,7 +25,11 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     override public func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.clearColor()
+        var logo = UIImage(named: "newLogo")
+        let imageView = UIImageView(image: logo)
+        self.navigationItem.titleView = imageView
+        
+       self.view.backgroundColor = HelperTransformations.BackgroundColor()
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
         
