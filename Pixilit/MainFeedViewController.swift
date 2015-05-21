@@ -34,11 +34,12 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         collectionView.insertSubview(refresh, aboveSubview: collectionView)
 
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "Main Feed"
+   
     }
     
     
     override public func viewWillAppear(animated: Bool) {
+   
         println(User.Uid)
         if hasLoggedIn == false && User.IsLoggedIn()
         {

@@ -60,6 +60,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }//end FBlogin button
     
     
+    @IBAction func ContinueAnon(sender: AnyObject) {
+        self.performSegueWithIdentifier("GoHome", sender: self)
+    }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton)
     {

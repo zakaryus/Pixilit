@@ -51,6 +51,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          self.view.backgroundColor = HelperTransformations.BackgroundColor()
         // Do any additional setup after loading the view, typically from a nib.
         
         SetBusinessToVC(business)
@@ -77,19 +78,20 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     func Refresh() {
         
-        var tmpTiles: [Tile] = []
-        var tmpTile: Tile = Tile()
-        var json = HelperREST.RestRequest(Config.RestBusinessTileJson + business.Uid!, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
-        if json != nil {
-        for (index: String, subJson: JSON) in json {
-            
-            println(subJson)
-            
-            tmpTile = Tile(json: subJson)
-            tmpTiles.append(tmpTile)
-        }
-        
-            for tile in tmpTiles {
+        //var tmpTiles: [Tile] = []
+//        var tmpTile: Tile = Tile()
+//        var json = HelperREST.RestRequest(Config.RestBusinessTileJson + business.Uid!, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+//        if json != nil {
+//        for (index: String, subJson: JSON) in json {
+//            
+//            println(subJson)
+//            
+//            tmpTile = Tile(json: subJson)
+//            tmpTiles.append(tmpTile)
+//        }
+        HelperREST.RestBusinessTiles(business.Uid!) {
+            Tiles in
+            for tile in Tiles {
                  self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }
             
@@ -112,15 +114,25 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
         if !tiles[indexPath.row].hasImage {
+            cell.setup(nil, img: nil)
+            
             HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
-                self.tiles[indexPath.row].photo = Photo
-                self.tiles[indexPath.row].hasImage = true
+                
+                var update = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
+                if(update != nil) {
+                    self.tiles[indexPath.row].photo = Photo
+                    self.tiles[indexPath.row].hasImage = true
+                    update!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+                    self.registerTaps(update!)
+                    
+                }
             }
         }
-        
-        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        registerTaps(cell)
+        else {
+            cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+            registerTaps(cell)
+        }
         return cell
     }
     

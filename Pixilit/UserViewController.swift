@@ -44,14 +44,14 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
         println(User.Uid)
        // collectVC.collectionView = collectionView
         
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
-        Refresh()
+      
     }
     
     func Refresh()
@@ -108,21 +108,32 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        println(tiles.count)
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
-        if User.IsLoggedIn() {
-            if !tiles[indexPath.row].hasImage {
-                HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-                    Photo in
+        
+        if !tiles[indexPath.row].hasImage {
+            cell.setup(nil, img: nil)
+            println(tiles[indexPath.row].tile.Photo!)
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+                Photo in
+                
+                var update = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
+                if(update != nil) {
                     self.tiles[indexPath.row].photo = Photo
                     self.tiles[indexPath.row].hasImage = true
+                    update!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+                    self.registerTaps(update!)
+                    
                 }
             }
-            
+        }
+        else {
             cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
             registerTaps(cell)
         }
         return cell
     }
+
     
     func registerTaps(cell: TileCollectionViewCell) {
         var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
@@ -164,19 +175,18 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
         if !User.IsLoggedIn() {
             return
         }
+        println("double tap")
         
         var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
-        var content = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(tiles[selectedIndex.row].tile.Nid!)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
+        var content = HelperStrings.RestUpdateFlagString(tiles[selectedIndex.row].tile.Nid!, uid: User.Uid, flagged: flagged)
         var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
         
         if success[0].stringValue == "true"
         {
             self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+            tiles.removeAtIndex(selectedIndex.row)
+            self.collectionView.reloadData()
         }
-        
-        
-        setCellPix()
-        //tiles[self.selectedIndex.row].setPixd()
     }
     
     func setCellPix() {

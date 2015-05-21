@@ -30,4 +30,8 @@ struct HelperStrings
     static func RestNodeJsonString(uid: String, description: String, fid: String) -> String {
         return "{\"type\" : \"tile\",\"title\" : \"\(uid)\",\"language\" : \"und\",\"field_description\": {\"und\": [{\"value\": \"\(description)\"}]},\"field_image\": {\"und\": [{\"fid\": \(fid.toInt()!)}]}}"
     }
+    
+    static func RestUpdateFlagString(nid: String, uid: String, flagged: String) -> String {
+        return "{\"flag_name\":\"pixd\",\"entity_id\":\"\(nid)\",\"uid\":\"\(uid)\",\"action\":\"\(flagged)\"}"
+    }
 }

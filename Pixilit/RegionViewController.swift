@@ -20,7 +20,7 @@ class RegionViewController : UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
         tableVC.tableView = tvParentRegions
         tableVC.refreshControl = refresh
         refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
