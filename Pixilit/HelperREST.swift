@@ -413,7 +413,33 @@ public struct HelperREST
         
     }
     
+    static func RestAboutRequest(CompletionHandler: (about: About) -> ()) {
+        var tmpAbout = About()
+        
+        let urlPath = Config.RestAboutPixilit
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                tmpAbout = About(json: subJson)
+                break
+            }
+            
+            CompletionHandler(about: tmpAbout)
+        })
+        task.resume()
+    }
     
+
     
     public static func RestFacebook(accessToken: String) {
         

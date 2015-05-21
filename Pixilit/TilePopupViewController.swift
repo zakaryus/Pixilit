@@ -10,6 +10,7 @@ import UIKit
 
 class TilePopupViewController: UIViewController {
 
+    @IBOutlet weak var goBack: UIButton!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageDescription: UITextView!
     @IBOutlet weak var imageTags: UITextView!
@@ -73,7 +74,7 @@ class TilePopupViewController: UIViewController {
         var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
         pictureTapped.numberOfTapsRequired = 2
         
-        var textTapped =  UITapGestureRecognizer(target: self, action: "hideText:")
+        var textTapped =  UITapGestureRecognizer(target: self, action: "hideInteractions:")
         textTapped.numberOfTapsRequired = 1
         
         image.addGestureRecognizer(textTapped)
@@ -106,25 +107,32 @@ class TilePopupViewController: UIViewController {
 
     }
     
-    func hideText(sender:UITapGestureRecognizer!)
+    func hideInteractions(sender:UITapGestureRecognizer!)
     {
-        if (imageDescription.text != "")
+        if (imageDescription.hidden == false )
         {
-        imageDescription.text = ""
-        imageTags.text = ""
+
+        imageDescription.hidden = true
+        imageTags.hidden = true
+            
+        pixdButton.hidden = true
+        pixdButton.enabled = false
+            
+        goBack.hidden = true
+        goBack.enabled = false
+            
         }
         else
         {
-            imageDescription.text = SelectedTile.Description
-            for tag in self.SelectedTile.tags {
-               
-                var modifiedString = tag.stringByReplacingOccurrencesOfString("&amp;", withString: "&", options: NSStringCompareOptions.LiteralSearch, range: nil)
-                imageTags.text! += "\(modifiedString), "
-            }
+            imageDescription.hidden = false
+            imageTags.hidden = false
             
+            pixdButton.hidden = false
+            pixdButton.enabled = true
+            
+            goBack.hidden = false
+            goBack.enabled = true
         }
-        println("INSIDE HIDEtext")
-        
     }
     
     
@@ -133,6 +141,7 @@ class TilePopupViewController: UIViewController {
         println("tap gesture recognized, preparing to segue");
         self.performSegueWithIdentifier("popupToBusinessSegue", sender: "")
     }
+    
     
     @IBAction func pixdButtonPressed(sender: AnyObject) {
         println("pixd button pressed")
