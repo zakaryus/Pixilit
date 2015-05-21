@@ -22,6 +22,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     var filteredTiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var pageCounter: Int = 0
+    let PAGESIZE: Int = 12
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
         
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
         collectionView.insertSubview(refresh, aboveSubview: collectionView)
 
@@ -48,17 +50,25 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         if hasLoggedIn == false && User.IsLoggedIn()
         {
             hasLoggedIn = true
+            pageCounter = 0
             Refresh()
         }
         else if hasLoggedIn == true && !User.IsLoggedIn()
         {
             hasLoggedIn = false
+            pageCounter = 0
             Refresh()
         }
         else if tiles.count == 0 {
+            pageCounter = 0
             Refresh()
         }
         
+    }
+    
+    func PullToRefresh() {
+        pageCounter = 0
+        Refresh()
     }
     
     func Refresh() {
@@ -83,10 +93,12 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             }
         }
        
-        HelperREST.RestMainFeedRequest(tid) {
+        HelperREST.RestMainFeedRequest(tid, page: pageCounter) {
             Tiles in
 
-            self.tiles = []
+            if self.pageCounter == 0 {
+                self.tiles = []
+            }
           
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
@@ -109,6 +121,13 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
+        
+        //decide when to update pageCounter and call refresh
+        if (PAGESIZE * pageCounter) + (PAGESIZE / 2) == indexPath.row - 1 {
+            pageCounter++
+            Refresh()
+        }
+        
         
         if !tiles[indexPath.row].hasImage {
             cell.setup(nil, img: nil)

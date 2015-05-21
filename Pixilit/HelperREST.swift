@@ -321,10 +321,10 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestMainFeedRequest(tids: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestMainFeedRequest(tids: String, page: Int, CompletionHandler: (tiles: [Tile]) -> ()) {
         var tmpTiles = [Tile]()
         
-        let urlPath = Config.RestMainFeedRegionsJson + tids
+        let urlPath = Config.RestMainFeedRegionsJson + tids + "&page=\(page)"
         println(urlPath)
         //let urlPath = Config.RestMainFeedJson
         

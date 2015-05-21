@@ -31,7 +31,7 @@
 	<key>UserFlagsJson</key>
 	<string>http://pixilit.com/rest/user-pix.json?uid=</string>
 	<key>RestMainFeedJson</key>
-	<string>http://pixilit.com/rest/main-feed.json</string>
+	<string>http://pixilit.com/rest/main-feed-infinite.json</string>
 	<key>RestMainFeedRegionsJson</key>
 	<string>http://pixilit.com/rest/main-feed-region.json?tid=</string>
 	<key>UserPath</key>
