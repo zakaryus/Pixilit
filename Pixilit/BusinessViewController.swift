@@ -82,12 +82,13 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         collectionView.insertSubview(refresh, aboveSubview: collectionView)
         refresh.beginRefreshing()
         
+        if self.pageCounter == 0 {
+            self.tiles.removeAll(keepCapacity: false)
+            self.collectionView.reloadData()
+        }
+        
         HelperREST.RestBusinessTiles(business.Uid!, page: pageCounter) {
             Tiles in
-            
-            if self.pageCounter == 0 {
-                self.tiles = []
-            }
             
             for tile in Tiles {
                  self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
