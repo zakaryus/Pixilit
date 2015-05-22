@@ -37,7 +37,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         
         refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        collectionView.insertSubview(refresh, aboveSubview: collectionView)
+
 
         // Do any additional setup after loading the view, typically from a nib.
    
@@ -72,9 +72,17 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     }
     
     func Refresh() {
-        var tid = "all"
+        collectionView.insertSubview(refresh, aboveSubview: collectionView)
         refresh.beginRefreshing()
-     //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        
+        if self.pageCounter == 0 {
+            self.tiles.removeAll(keepCapacity: false)
+            self.allTiles.removeAll(keepCapacity: false)
+            self.collectionView.reloadData()
+        }
+        
+        
+        var tid = "all"
   
         if(User.IsLoggedIn()) {
             var first = true
@@ -95,10 +103,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
        
         HelperREST.RestMainFeedRequest(tid, page: pageCounter) {
             Tiles in
-
-            if self.pageCounter == 0 {
-                self.tiles = []
-            }
           
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
@@ -127,7 +131,6 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             pageCounter++
             Refresh()
         }
-        
         
         if !tiles[indexPath.row].hasImage {
             cell.setup(nil, img: nil)

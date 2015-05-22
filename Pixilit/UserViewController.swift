@@ -22,6 +22,8 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     
     //var collectVC = UICollectionViewController()
     var refresh = UIRefreshControl()
+    var pageCounter: Int = 0
+    let PAGESIZE: Int = 12
     
     override func viewWillAppear(animated: Bool) {
         if !User.IsLoggedIn()
@@ -39,30 +41,38 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             newsButton.enabled = false
             newsButton.title = ""
         }
+        pageCounter = 0
         Refresh()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = HelperTransformations.BackgroundColor()
-        println(User.Uid)
-       // collectVC.collectionView = collectionView
         
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
-        collectionView.addSubview(refresh)
-        refresh.beginRefreshing()
-      
+        refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    }
+    
+    func PullToRefresh()
+    {
+        pageCounter = 0
+        Refresh()
     }
     
     func Refresh()
     {
+        collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
+        
+        if self.pageCounter == 0 {
+            self.tiles.removeAll(keepCapacity: false)
+            self.collectionView.reloadData()
+        }
+        
         if (User.Role == AccountType.Business)
         {
-            HelperREST.RestBusinessTiles(User.Uid) {
+            HelperREST.RestBusinessTiles(User.Uid, page: pageCounter) {
                 Tiles in
-                
-                
-                self.tiles = []
                 
                 for tile in Tiles {
                     self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
@@ -74,19 +84,20 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
         }
         else
         {
-            HelperREST.RestUserFlags(User.Uid)
-                {
-                    Tiles in
-                    
-                    
+            HelperREST.RestUserFlags(User.Uid, page: pageCounter) {
+                Tiles in
+                
+                
+                if self.pageCounter == 0 {
                     self.tiles = []
-                    
-                    for tile in Tiles {
-                        self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
-                    }
-                    
-                    self.collectionView.reloadData()
-                    self.refresh.endRefreshing()
+                }
+                
+                for tile in Tiles {
+                    self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
+                }
+                
+                self.collectionView.reloadData()
+                self.refresh.endRefreshing()
             }
         }
 
@@ -108,12 +119,17 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        println(tiles.count)
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
+        
+        //decide when to update pageCounter and call refresh
+        if (PAGESIZE * pageCounter) + (PAGESIZE / 2) == indexPath.row - 1 {
+            pageCounter++
+            Refresh()
+        }
         
         if !tiles[indexPath.row].hasImage {
             cell.setup(nil, img: nil)
-            println(tiles[indexPath.row].tile.Photo!)
+            
             HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
                 Photo in
                 
