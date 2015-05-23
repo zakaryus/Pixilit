@@ -27,8 +27,18 @@ struct HelperStrings
         return "{\"file\":{\"file\": \"\(base64)\",\"filename\":\"my_first_image.png\",\"uri\":\"public://my_first_image.png\"}}"
     }
     
-    static func RestNodeJsonString(uid: String, description: String, fid: String) -> String {
-        return "{\"type\" : \"tile\",\"title\" : \"\(uid)\",\"language\" : \"und\",\"field_description\": {\"und\": [{\"value\": \"\(description)\"}]},\"field_image\": {\"und\": [{\"fid\": \(fid.toInt()!)}]}}"
+    static func RestNodeJsonString(uid: String, description: String, fid: String, regions: [String]) -> String {
+        
+        var regionStr: String = "\"field_tile_regions\": {\"und\": [{"
+        for region in regions {
+            regionStr += "\"tid\": \"\(region)\""
+        }
+        regionStr += "}]},"
+        
+        
+        var str =  "{\"type\" : \"tile\",\"title\" : \"\(uid)\",\"language\" : \"und\",\"field_description\": {\"und\": [{\"value\": \"\(description)\"}]},\(regionStr)\"field_image\": {\"und\": [{\"fid\": \(fid.toInt()!)}]}}"
+        
+        println
     }
     
     static func RestUpdateFlagString(nid: String, uid: String, flagged: String) -> String {

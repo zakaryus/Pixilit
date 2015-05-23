@@ -99,7 +99,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
         }
         else if segueName == "AccountInfoSegue"
         {
-            var a = segue.destinationViewController as! AccountInfoViewController
+            var a = segue.destinationViewController as! UploadPhotoViewController
         }
         else if segueName == "PaymentSegue"
         {

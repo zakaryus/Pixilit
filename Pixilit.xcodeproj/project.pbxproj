@@ -31,6 +31,8 @@
 		3235996D1B054A7400309D33 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EFB2EB1AF8302A00BB176B /* FBSDKCoreKit.framework */; };
 		324B53A61AE863AE006220C0 /* pixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A41AE863AE006220C0 /* pixd.png */; };
 		324B53A71AE863AE006220C0 /* unpixd.png in Resources */ = {isa = PBXBuildFile; fileRef = 324B53A51AE863AE006220C0 /* unpixd.png */; };
+		324C7E761B0FDE9E005B85CE /* AddRegionsTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C7E751B0FDE9E005B85CE /* AddRegionsTagsViewController.swift */; };
+		324C7E781B0FEDA6005B85CE /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324C7E771B0FEDA6005B85CE /* Protocol.swift */; };
 		325845D21B0D371300F38507 /* goBackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 325845D11B0D371300F38507 /* goBackArrow.png */; };
 		325845D81B0D3D0300F38507 /* Back_Arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 325845D71B0D3D0300F38507 /* Back_Arrow.png */; };
 		325845E01B0D475900F38507 /* goBackButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 325845DF1B0D475900F38507 /* goBackButton.png */; };
@@ -47,7 +49,7 @@
 		328000CD1B0E699A00C1E41E /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328000CC1B0E699A00C1E41E /* About.swift */; };
 		329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329E419F1ACB3EBA002131FD /* SettingsViewController.swift */; };
 		32B51DC61ADD9EB70014ECCC /* RegionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DC51ADD9EB70014ECCC /* RegionViewController.swift */; };
-		32B51DC81ADDA0980014ECCC /* AccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DC71ADDA0980014ECCC /* AccountInfoViewController.swift */; };
+		32B51DC81ADDA0980014ECCC /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DC71ADDA0980014ECCC /* UploadPhotoViewController.swift */; };
 		32B51DCA1ADDA0E40014ECCC /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DC91ADDA0E40014ECCC /* PaymentViewController.swift */; };
 		32B51DCC1ADDA1E10014ECCC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DCB1ADDA1E10014ECCC /* AboutViewController.swift */; };
 		32B51DCE1ADDA4D90014ECCC /* IRestful.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B51DCD1ADDA4D90014ECCC /* IRestful.swift */; };
@@ -145,6 +147,8 @@
 		322DD18D1AE97DA100058A5E /* HelperTransformations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperTransformations.swift; sourceTree = "<group>"; };
 		324B53A41AE863AE006220C0 /* pixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixd.png; sourceTree = "<group>"; };
 		324B53A51AE863AE006220C0 /* unpixd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpixd.png; sourceTree = "<group>"; };
+		324C7E751B0FDE9E005B85CE /* AddRegionsTagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRegionsTagsViewController.swift; sourceTree = "<group>"; };
+		324C7E771B0FEDA6005B85CE /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		325845D11B0D371300F38507 /* goBackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goBackArrow.png; sourceTree = "<group>"; };
 		325845D71B0D3D0300F38507 /* Back_Arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back_Arrow.png; sourceTree = "<group>"; };
 		325845DF1B0D475900F38507 /* goBackButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goBackButton.png; sourceTree = "<group>"; };
@@ -160,7 +164,7 @@
 		328000CC1B0E699A00C1E41E /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		329E419F1ACB3EBA002131FD /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		32B51DC51ADD9EB70014ECCC /* RegionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionViewController.swift; sourceTree = "<group>"; };
-		32B51DC71ADDA0980014ECCC /* AccountInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountInfoViewController.swift; sourceTree = "<group>"; };
+		32B51DC71ADDA0980014ECCC /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		32B51DC91ADDA0E40014ECCC /* PaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		32B51DCB1ADDA1E10014ECCC /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		32B51DCD1ADDA4D90014ECCC /* IRestful.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRestful.swift; sourceTree = "<group>"; };
@@ -300,6 +304,7 @@
 				3178DEE81A903FB600E6D1B4 /* Section.swift */,
 				32D94B751B0BE521000F1C06 /* CustomSegue.swift */,
 				3178DEEA1A9044B200E6D1B4 /* Sections.swift */,
+				324C7E771B0FEDA6005B85CE /* Protocol.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -383,13 +388,14 @@
 				3212E7231AD88CBD008593CE /* TabBarController.swift */,
 				3212E71E1AD87985008593CE /* CreateAccountViewController.swift */,
 				32B51DC51ADD9EB70014ECCC /* RegionViewController.swift */,
-				32B51DC71ADDA0980014ECCC /* AccountInfoViewController.swift */,
+				32B51DC71ADDA0980014ECCC /* UploadPhotoViewController.swift */,
 				32B51DC91ADDA0E40014ECCC /* PaymentViewController.swift */,
 				32B51DCB1ADDA1E10014ECCC /* AboutViewController.swift */,
 				325CEC301ADEF45E00AEBC56 /* SavedRegionViewController.swift */,
 				325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */,
 				32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */,
 				32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */,
+				324C7E751B0FDE9E005B85CE /* AddRegionsTagsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -614,6 +620,7 @@
 				328000CD1B0E699A00C1E41E /* About.swift in Sources */,
 				4293ACC21AAE53010089F441 /* User.swift in Sources */,
 				316A9F201A900A0000694B2B /* Config.swift in Sources */,
+				324C7E781B0FEDA6005B85CE /* Protocol.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */,
 				32D94B761B0BE521000F1C06 /* CustomSegue.swift in Sources */,
@@ -623,8 +630,9 @@
 				32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */,
 				322DD18E1AE97DA100058A5E /* HelperTransformations.swift in Sources */,
 				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
+				324C7E761B0FDE9E005B85CE /* AddRegionsTagsViewController.swift in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
-				32B51DC81ADDA0980014ECCC /* AccountInfoViewController.swift in Sources */,
+				32B51DC81ADDA0980014ECCC /* UploadPhotoViewController.swift in Sources */,
 				32F578C01AF18EA600BFB16B /* JSONSearch.swift in Sources */,
 				32F578C11AF18EA600BFB16B /* StringExtensions.swift in Sources */,
 				32FBEDB61AD4794A00B99783 /* MyCrypt.swift in Sources */,
