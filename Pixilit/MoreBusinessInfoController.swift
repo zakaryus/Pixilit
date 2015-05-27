@@ -14,13 +14,16 @@ class MoreBusinessInfoController: UIViewController {
     var passWebsite:String!
     var passDescription:String!
     var passLocality:String!
+    var passAddress:String!
     var passImage : UIImage!
 
  
     
     
+
+    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var businessTitleLabel: UILabel!
-    @IBOutlet var MoreBusinessInfo: UIView!
+    //@IBOutlet var MoreBusinessInfo: UIView!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emaiLabel: UILabel!
     @IBOutlet weak var websiteLabel: UILabel!
@@ -46,8 +49,8 @@ class MoreBusinessInfoController: UIViewController {
         self.descriptionTextView.text = passDescription
         self.localityLabel.text = passLocality
         self.businessLogo.image = passImage
-        //self.NavBarTitle.title = passTitle
-
+        self.address.text = passAddress
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
     }
     
     override func didReceiveMemoryWarning() {

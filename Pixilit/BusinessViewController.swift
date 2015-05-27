@@ -29,6 +29,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     var locality = "string"
     var businessTitle = "string"
     var image : UIImage!
+    var address = "string"
     
     var mintyForest = UIColor.clearColor()//(red: 228, green: 247, blue: 242, alpha: 1)
     var business: Business = Business()
@@ -195,11 +196,13 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         var thoroughfare: String
         if let _thoroughfare = business.Thoroughfare {
             thoroughfare = _thoroughfare
+            self.address =  thoroughfare
         }
         
         var locality: String = ""
         if let _locality = business.Locality {
             locality = _locality
+           // self.locality = locality
         }
         
         var administrativearea: String = ""
@@ -325,6 +328,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
             a.passWebsite = self.website
             a.passDescription = self.myDescription
             a.passImage = self.image
+            a.passAddress = self.address
         }
         else
         {
