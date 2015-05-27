@@ -11,15 +11,24 @@ import UIKit
 class BusinessViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate {
     
     @IBOutlet weak var businessNavBar: UINavigationItem!
-    @IBOutlet weak var businessName: UILabel!
-    @IBOutlet weak var businessThoroughfare: UILabel!
-    @IBOutlet weak var businessLocalityAdminZip: UILabel!
-    @IBOutlet weak var businessPhone: UILabel!
-    @IBOutlet weak var businessEmail: UILabel!
-    @IBOutlet weak var businessWebsite: UILabel!
-    @IBOutlet weak var businessDescription: UILabel!
-    @IBOutlet weak var businessLogo: UIImageView!
+    @IBOutlet weak var moreInfoButton: UIButton!
+   
+   // @IBOutlet weak var businessName: UILabel!
+   /// @IBOutlet weak var businessThoroughfare: UILabel!
+    //@IBOutlet weak var businessLocalityAdminZip: UILabel!
+    //@IBOutlet weak var businessPhone: UILabel!
+    //@IBOutlet weak var businessEmail: UILabel!
+    //@IBOutlet weak var businessWebsite: UILabel!
+    //@IBOutlet weak var businessDescription: UILabel!
+   // @IBOutlet weak var businessLogo: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
+    var phoneNumer = "string"
+    var email = "string"
+    var website = "string"
+    var myDescription = "string"
+    var locality = "string"
+    var businessTitle = "string"
+    var image : UIImage!
     
     var mintyForest = UIColor.clearColor()//(red: 228, green: 247, blue: 242, alpha: 1)
     var business: Business = Business()
@@ -29,6 +38,16 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
     var selectedIndex = NSIndexPath()
+    
+    //hide status bar-->carrier and battery
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    @IBAction func moreInfoPressed(sender: AnyObject) {
+        println("more info button pressed")
+      performSegueWithIdentifier("MoreBusinessInfo", sender: "")
+    }
     @IBAction func shareButton(sender: AnyObject)
     {
         let businessUrl = HelperURLs.UidToUserUrl(business.Uid!)
@@ -53,6 +72,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         super.viewDidLoad()
           self.view.backgroundColor = HelperTransformations.BackgroundColor()
         // Do any additional setup after loading the view, typically from a nib.
+     
         
         SetBusinessToVC(business)
     }
@@ -71,6 +91,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
         collectionView.addSubview(refresh)
         refresh.beginRefreshing()
+           self.moreInfoButton.titleLabel?.textAlignment = NSTextAlignment.Center
         Refresh()
         
         
@@ -164,8 +185,10 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     func SetBusinessToVC(business: Business)
     {
         if let title = business.Title {
-            self.businessName.text = title
-            self.businessName.backgroundColor = mintyForest
+            //self.businessName.text = title
+          //  self.businessName.backgroundColor = mintyForest
+            self.businessTitle = title
+            println ("BUSINESS TITLE IS " + self.businessTitle)
             self.businessNavBar.title = title
         }
         
@@ -190,38 +213,44 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         }
         
         if locality != "" && administrativearea != "" && postalcode != "" {
-            self.businessLocalityAdminZip.text = "\(locality), \(administrativearea) \(postalcode)"
-            self.businessLocalityAdminZip.backgroundColor = mintyForest
+            //self.businessLocalityAdminZip.text = "\(locality), \(administrativearea) \(postalcode)"
+            self.locality = "\(locality), \(administrativearea) \(postalcode)"
+           // self.businessLocalityAdminZip.backgroundColor = mintyForest
         }
         
         if let phone = business.Phone {
-            self.businessPhone.text = phone
-            self.businessPhone.backgroundColor = mintyForest
+            //self.businessPhone.text = phone
+            self.phoneNumer = phone
+           // self.businessPhone.backgroundColor = mintyForest
         }
         
         if let email = business.Email {
-            self.businessEmail.text = email
-            self.businessEmail.backgroundColor = mintyForest
+            //self.businessEmail.text = email
+            self.email = email
+           // self.businessEmail.backgroundColor = mintyForest
         }
         
         if let website = business.Website {
-            self.businessWebsite.text = website
-            self.businessWebsite.backgroundColor = mintyForest
+           // self.businessWebsite.text = website
+            self.website = website
+            //self.businessWebsite.backgroundColor = mintyForest
         }
         
         //self.Hours = [String]()
         
         if let description = business.Description {
-            self.businessDescription.text = description
-            self.businessDescription.backgroundColor = self.mintyForest
+           // self.businessDescription.text = description
+            self.myDescription = description
+           // self.businessDescription.backgroundColor = self.mintyForest
         }
         
         if let logo = business.Logo {
             HelperURLs.UrlToImage(logo)
             {
                 Image in
-                self.businessLogo.image = Image
-                self.businessLogo.backgroundColor = self.mintyForest
+          //      self.businessLogo.image = Image
+                self.image = Image
+          //      self.businessLogo.backgroundColor = self.mintyForest
             }
         }
         
@@ -270,24 +299,37 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     func SetMintyForestBackground()
     {
-        self.businessName.backgroundColor = mintyForest
-        businessThoroughfare.backgroundColor = mintyForest
-        businessLocalityAdminZip.backgroundColor = mintyForest
-        businessPhone.backgroundColor = mintyForest
-        businessEmail.backgroundColor = mintyForest
-        businessWebsite.backgroundColor = mintyForest
-        businessDescription.backgroundColor = mintyForest
-        businessLogo.backgroundColor = mintyForest
+     //   self.businessName.backgroundColor = mintyForest
+     //   businessThoroughfare.backgroundColor = mintyForest
+//businessLocalityAdminZip.backgroundColor = mintyForest
+      //  businessPhone.backgroundColor = mintyForest
+      //  businessEmail.backgroundColor = mintyForest
+      ////  businessWebsite.backgroundColor = mintyForest
+       // businessDescription.backgroundColor = mintyForest
+      //  businessLogo.backgroundColor = mintyForest
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
+        println("inside prepareforseg")
+        var segueName = segue.identifier
+        
+        if segueName == "MoreBusinessInfo"
+        {
+            println("I AM IN MORE BUSINESSINFOR SEG")
+            var a = segue.destinationViewController as! MoreBusinessInfoController
+           // a.businessTitleLabel.text = self.businessTitle as String
+        }
+        else
+        {
+
         var tpvc = segue.destinationViewController as! TilePopupViewController
         var index = sender as! Int
         tpvc.SelectedTile = tiles[index].tile
         tpvc.SelectedImage = tiles[index].photo
 
         tpvc.disablePictureInteraction()
+        }
     }
 
 }
