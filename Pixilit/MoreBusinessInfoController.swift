@@ -16,6 +16,8 @@ class MoreBusinessInfoController: UIViewController {
     var passLocality:String!
     var passImage : UIImage!
 
+ 
+    
     
     @IBOutlet weak var businessTitleLabel: UILabel!
     @IBOutlet var MoreBusinessInfo: UIView!
@@ -44,6 +46,7 @@ class MoreBusinessInfoController: UIViewController {
         self.descriptionTextView.text = passDescription
         self.localityLabel.text = passLocality
         self.businessLogo.image = passImage
+        //self.NavBarTitle.title = passTitle
 
     }
     
@@ -51,6 +54,10 @@ class MoreBusinessInfoController: UIViewController {
         super.didReceiveMemoryWarning()
         
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     override func viewWillAppear(animated: Bool) {
