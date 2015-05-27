@@ -318,7 +318,13 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         {
             println("I AM IN MORE BUSINESSINFOR SEG")
             var a = segue.destinationViewController as! MoreBusinessInfoController
-           // a.businessTitleLabel.text = self.businessTitle as String
+           a.passTitle = self.businessTitle
+            a.passNumber = self.phoneNumer
+            a.passEmail = self.email
+            a.passLocality = self.locality
+            a.passWebsite = self.website
+            a.passDescription = self.myDescription
+            a.passImage = self.image
         }
         else
         {

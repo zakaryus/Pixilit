@@ -8,9 +8,23 @@
 
 class MoreBusinessInfoController: UIViewController {
     
+    var passTitle:String!
+    var passNumber:String!
+    var passEmail:String!
+    var passWebsite:String!
+    var passDescription:String!
+    var passLocality:String!
+    var passImage : UIImage!
+
     
     @IBOutlet weak var businessTitleLabel: UILabel!
     @IBOutlet var MoreBusinessInfo: UIView!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var emaiLabel: UILabel!
+    @IBOutlet weak var websiteLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var localityLabel: UILabel!
+    @IBOutlet weak var businessLogo: UIImageView!
     //hide status bar-->carrier and battery
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -23,6 +37,13 @@ class MoreBusinessInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.businessTitleLabel.text = passTitle
+        self.phoneLabel.text = passNumber
+        self.emaiLabel.text = passEmail
+        self.websiteLabel.text = passWebsite
+        self.descriptionTextView.text = passDescription
+        self.localityLabel.text = passLocality
+        self.businessLogo.image = passImage
 
     }
     
