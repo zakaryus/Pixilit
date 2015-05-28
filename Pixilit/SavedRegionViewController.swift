@@ -14,6 +14,7 @@ class SavedRegionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+           self.view.backgroundColor = HelperTransformations.BackgroundColor()
       // Do any additional setup after loading the view.
     }
     

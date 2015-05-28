@@ -14,6 +14,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     @IBOutlet var tvSettings: UITableView!
     
     override func viewDidAppear(animated: Bool) {
+        
         if User.Role == AccountType.Business {
             ToggleRowVisibility(false, photo: true, payment: true, logout: true)
         }
@@ -25,9 +26,17 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
         }
     }
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        var logo = UIImage(named: "background")
+        let imageView = UIImageView(image: logo)
+        self.tableView.backgroundView = imageView
+        self.tableView.scrollEnabled = false
         tvSettings.delegate = self
+       // self.view.backgroundColor = HelperTransformations.BackgroundColor()
+
     }
     
     enum Section1 : Int {
@@ -45,6 +54,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     {
         if indexPath.row == Section1.Region.rawValue && indexPath.section == 0 {
             println("Region")
+            
             performSegueWithIdentifier("SavedRegionSegue", sender: self)
         }
         else if indexPath.row == Section1.AccountInfo.rawValue && indexPath.section == 0 {
@@ -89,7 +99,7 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
         }
         else if segueName == "AccountInfoSegue"
         {
-            var a = segue.destinationViewController as! AccountInfoViewController
+            var a = segue.destinationViewController as! UploadPhotoViewController
         }
         else if segueName == "PaymentSegue"
         {

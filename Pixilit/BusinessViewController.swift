@@ -29,6 +29,10 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var refresh = UIRefreshControl()
     var selectedIndex = NSIndexPath()
+    var pageCounter: Int = 0
+    let PAGESIZE: Int = 12
+    
+    
     @IBAction func shareButton(sender: AnyObject)
     {
         let businessUrl = HelperURLs.UidToUserUrl(business.Uid!)
@@ -51,6 +55,7 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     override func viewDidLoad() {
         super.viewDidLoad()
+          self.view.backgroundColor = HelperTransformations.BackgroundColor()
         // Do any additional setup after loading the view, typically from a nib.
         
         SetBusinessToVC(business)
@@ -63,33 +68,29 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     }
     
     override func viewWillAppear(animated: Bool) {
-        Setup()
+        refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        Refresh()
     }
     
-    func Setup() {
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
-        collectionView.addSubview(refresh)
-        refresh.beginRefreshing()
+    func PullToRefresh() {
+        pageCounter = 0
         Refresh()
-        
-        
     }
     
     func Refresh() {
+        collectionView.insertSubview(refresh, aboveSubview: collectionView)
+        refresh.beginRefreshing()
         
-        var tmpTiles: [Tile] = []
-        var tmpTile: Tile = Tile()
-        var json = HelperREST.RestRequest(Config.RestBusinessTileJson + business.Uid!, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
-        if json != nil {
-        for (index: String, subJson: JSON) in json {
-            
-            println(subJson)
-            
-            tmpTile = Tile(json: subJson)
-            tmpTiles.append(tmpTile)
+        if self.pageCounter == 0 {
+            self.tiles.removeAll(keepCapacity: false)
+            self.collectionView.reloadData()
         }
         
-            for tile in tmpTiles {
+        HelperREST.RestBusinessTiles(business.Uid!, page: pageCounter) {
+            Tiles in
+            
+            for tile in Tiles {
                  self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }
             
@@ -111,16 +112,31 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
         
-        if !tiles[indexPath.row].hasImage {
-            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-                Photo in
-                self.tiles[indexPath.row].photo = Photo
-                self.tiles[indexPath.row].hasImage = true
-            }
+        if (PAGESIZE * pageCounter) + (PAGESIZE / 2) == indexPath.row - 1 {
+            pageCounter++
+            Refresh()
         }
         
-        cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
-        registerTaps(cell)
+        if !tiles[indexPath.row].hasImage {
+            cell.setup(nil, img: nil)
+            
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+                Photo in
+                
+                var update = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
+                if(update != nil) {
+                    self.tiles[indexPath.row].photo = Photo
+                    self.tiles[indexPath.row].hasImage = true
+                    update!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+                    self.registerTaps(update!)
+                    
+                }
+            }
+        }
+        else {
+            cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+            registerTaps(cell)
+        }
         return cell
     }
     

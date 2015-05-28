@@ -8,9 +8,8 @@
 
 import UIKit
 
-public class MainFeedViewController: UIViewController, UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate
+public class MainFeedViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, CollectionViewWaterfallLayoutDelegate
 {
-    
     
     @IBOutlet weak var collectionView: UICollectionView!
     var selectedIndex = NSIndexPath()
@@ -19,46 +18,71 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     var hasLoggedIn = false
     var actInd : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRectMake(0,0, 50, 50)) as UIActivityIndicatorView
     var tiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    var allTiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+    var filteredTiles:[(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
     let reuseId = "tileCollectionViewCell"
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
-
+    var pageCounter: Int = 0
+    let PAGESIZE: Int = 12
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
-       self.view.backgroundColor = UIColor.clearColor()
+        var logo = UIImage(named: "newLogo")
+        let imageView = UIImageView(image: logo)
+        self.navigationItem.titleView = imageView
+        
+       self.view.backgroundColor = HelperTransformations.BackgroundColor()
         self.presentingViewController?.providesPresentationContextTransitionStyle = true
         self.presentingViewController?.definesPresentationContext = true
         
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
+        refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        collectionView.insertSubview(refresh, aboveSubview: collectionView)
+
 
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "Main Feed"
+   
     }
     
     
     override public func viewWillAppear(animated: Bool) {
+   
         println(User.Uid)
         if hasLoggedIn == false && User.IsLoggedIn()
         {
             hasLoggedIn = true
+            pageCounter = 0
             Refresh()
         }
         else if hasLoggedIn == true && !User.IsLoggedIn()
         {
             hasLoggedIn = false
+            pageCounter = 0
             Refresh()
         }
         else if tiles.count == 0 {
+            pageCounter = 0
             Refresh()
         }
         
     }
     
+    func PullToRefresh() {
+        pageCounter = 0
+        Refresh()
+    }
+    
     func Refresh() {
-        var tid = "all"
+        collectionView.insertSubview(refresh, aboveSubview: collectionView)
         refresh.beginRefreshing()
-     //   HelperREST.RestRequest(Config.RestMainFeedJson, content: nil, method: HelperREST.HTTPMethod.Get, headerValues: nil)
+        
+        if self.pageCounter == 0 {
+            self.tiles.removeAll(keepCapacity: false)
+            self.allTiles.removeAll(keepCapacity: false)
+            self.collectionView.reloadData()
+        }
+        
+        
+        var tid = "all"
   
         if(User.IsLoggedIn()) {
             var first = true
@@ -77,20 +101,26 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
             }
         }
        
-        HelperREST.RestMainFeedRequest(tid) {
+        HelperREST.RestMainFeedRequest(tid, page: pageCounter) {
             Tiles in
-
-            self.tiles = []
+            
+            if self.pageCounter == 0 {
+                self.tiles.removeAll(keepCapacity: false)
+                self.allTiles.removeAll(keepCapacity: false)
+            }
           
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
             }
+            
+            self.allTiles = self.tiles
             
             self.collectionView.reloadData()
             self.refresh.endRefreshing()
         }
         
     }
+    
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -101,6 +131,12 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
+                
+        //decide when to update pageCounter and call refresh
+        if (PAGESIZE * pageCounter) + (PAGESIZE / 2) == indexPath.row - 1 {
+            pageCounter++
+            Refresh()
+        }
         
         if !tiles[indexPath.row].hasImage {
             cell.setup(nil, img: nil)
@@ -190,6 +226,45 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         selectedIndex = indexPath
         //self.performSegueWithIdentifier("FeedToBusinessSegue", sender: indexPath.row)
         
+    }
+    
+    func filterContentForSearchText(searchText: String)
+    {
+        // Filter the array using the filter method
+        var tmpFilter: [(tile: Tile, photo: UIImage, photoSize: CGSize, hasImage: Bool)]=[]
+        
+        for item in allTiles {
+            
+            var tags = item.tile.TagList()
+            var desc = item.tile.Description != nil ? item.tile.Description! : ""
+            
+            if tags.lowercaseString.rangeOfString(searchText.lowercaseString) != nil {
+                tmpFilter.append(item)
+            } else if desc.lowercaseString.rangeOfString(searchText.lowercaseString) != nil {
+                tmpFilter.append(item)
+            }
+        }
+        
+        self.tiles = tmpFilter
+    }
+    
+    public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
+    {
+        if searchString == "" {
+            tiles = allTiles
+            self.collectionView.reloadData()
+        } else {
+            self.filterContentForSearchText(searchString)
+            self.collectionView.reloadData()
+        }
+        
+        return true
+    }
+    
+    public func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool
+    {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
     }
 
     

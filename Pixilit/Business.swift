@@ -22,6 +22,7 @@ public class Business: NSObject, IRestful
     private(set) var Description: String?
     private(set) var Logo: String?
     private(set) var Uid: String?
+    private(set) var Regions: [String] = []
     
    override init() { }
     
@@ -72,6 +73,13 @@ public class Business: NSObject, IRestful
         
         if let uid = json["uid"].string {
             self.Uid = uid
+        }
+        
+        if let regions = json["Region"].array {
+            for region in regions {
+            
+                self.Regions.append(region.stringValue.lowercaseString)
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ private let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForRes
 
 struct Config
 {
+    static let RestTileTags : String = dict?.objectForKey("RestTileTags") as! String
     static let RestFileCreate : String = dict?.objectForKey("RestFileCreate") as! String
     static let RestNodeCreate : String = dict?.objectForKey("RestNodeCreate") as! String
     static let RestUserLogout : String = dict?.objectForKey("RestUserLogout") as! String
@@ -38,4 +39,5 @@ struct Config
     static let RestRegionsJson: String = dict?.objectForKey("RestRegionsJson") as! String
     static let RestBusinessJson: String = dict?.objectForKey("RestBusinessJson") as! String
     static let RestFacebookConnect: String = dict?.objectForKey("RestFacebookConnect") as! String
+    static let RestAboutPixilit: String = dict?.objectForKey("RestAboutPixilit") as! String
 }

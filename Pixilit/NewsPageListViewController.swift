@@ -79,6 +79,7 @@ class NewsPageListViewController: UIViewController, UITableViewDelegate, UISearc
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        
         var np: NewsPage = self.sections.data[indexPath.section].data[indexPath.row] as NewsPage
         self.performSegueWithIdentifier("NewsPageShowSegue", sender: np)
     }

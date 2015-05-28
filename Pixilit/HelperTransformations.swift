@@ -103,4 +103,16 @@ struct HelperTransformations
         
         return imgEnd
     }
+    
+    
+    static func BackgroundColor() -> UIColor {
+        UIGraphicsBeginImageContext(UIScreen.mainScreen().bounds.size)
+        UIImage(named: "background")?.drawInRect(UIScreen.mainScreen().bounds)
+        
+        var img: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return UIColor(patternImage: img)
+    }
 }

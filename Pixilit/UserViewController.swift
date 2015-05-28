@@ -1,4 +1,4 @@
-//
+ //
 //  UserViewController.swift
 //  Pixilit
 //
@@ -22,6 +22,8 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     
     //var collectVC = UICollectionViewController()
     var refresh = UIRefreshControl()
+    var pageCounter: Int = 0
+    let PAGESIZE: Int = 12
     
     override func viewWillAppear(animated: Bool) {
         if !User.IsLoggedIn()
@@ -35,33 +37,45 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             newsButton.title = "News"
         }
         else {
-            newsButton.title = ""
             newsButton.enabled = false
             newsButton.title = ""
         }
+        pageCounter = 0
         Refresh()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.clearColor()
-        println(User.Uid)
-       // collectVC.collectionView = collectionView
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
         
-        refresh.addTarget(self, action: "Refresh", forControlEvents: .ValueChanged)
-        collectionView.addSubview(refresh)
-        refresh.beginRefreshing()
+        refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+    }
+    
+    func PullToRefresh()
+    {
+        pageCounter = 0
         Refresh()
     }
     
     func Refresh()
     {
-        HelperREST.RestUserFlags(User.Uid)
-            {
+        collectionView.addSubview(refresh)
+        refresh.beginRefreshing()
+        
+        if self.pageCounter == 0 {
+            self.tiles.removeAll(keepCapacity: false)
+            self.collectionView.reloadData()
+        }
+        
+        if (User.Role == AccountType.Business)
+        {
+            HelperREST.RestBusinessTiles(User.Uid, page: pageCounter) {
                 Tiles in
                 
-            
-                self.tiles = []
+                if self.pageCounter == 0 {
+                    self.tiles.removeAll(keepCapacity: false)
+                }
                 
                 for tile in Tiles {
                     self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
@@ -69,6 +83,25 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
                 
                 self.collectionView.reloadData()
                 self.refresh.endRefreshing()
+            }
+        }
+        else
+        {
+            HelperREST.RestUserFlags(User.Uid, page: pageCounter) {
+                Tiles in
+                
+                
+                if self.pageCounter == 0 {
+                    self.tiles.removeAll(keepCapacity: false)
+                }
+                
+                for tile in Tiles {
+                    self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
+                }
+                
+                self.collectionView.reloadData()
+                self.refresh.endRefreshing()
+            }
         }
 
     }
@@ -90,21 +123,36 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
-        if User.IsLoggedIn() {
-            if !tiles[indexPath.row].hasImage {
-                HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
-                    Photo in
+        
+        //decide when to update pageCounter and call refresh
+        if (PAGESIZE * pageCounter) + (PAGESIZE / 2) == indexPath.row - 1 {
+            pageCounter++
+            Refresh()
+        }
+        
+        if !tiles[indexPath.row].hasImage {
+            cell.setup(nil, img: nil)
+            
+            HelperURLs.UrlToImage(tiles[indexPath.row].tile.Photo!) {
+                Photo in
+                
+                var update = collectionView.cellForItemAtIndexPath(indexPath) as! TileCollectionViewCell?
+                if(update != nil) {
                     self.tiles[indexPath.row].photo = Photo
                     self.tiles[indexPath.row].hasImage = true
+                    update!.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
+                    self.registerTaps(update!)
+                    
                 }
             }
-            
+        }
+        else {
             cell.setup(self.tiles[indexPath.row].tile, img: self.tiles[indexPath.row].photo)
             registerTaps(cell)
         }
         return cell
     }
-    
+
     func registerTaps(cell: TileCollectionViewCell) {
         var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
         singleTap.numberOfTapsRequired = 1
@@ -146,18 +194,18 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             return
         }
         
-        var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
-        var content = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(tiles[selectedIndex.row].tile.Nid!)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
-        var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
-        
-        if success[0].stringValue == "true"
-        {
-            self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+        if User.Role == AccountType.User {
+            var flagged = tiles[self.selectedIndex.row].tile.Pixd == false ? "flag" : "unflag"
+            var content = HelperStrings.RestUpdateFlagString(tiles[selectedIndex.row].tile.Nid!, uid: User.Uid, flagged: flagged)
+            var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
+            
+            if success[0].stringValue == "true"
+            {
+                self.tiles[self.selectedIndex.row].tile.Pixd = self.tiles[self.selectedIndex.row].tile.Pixd == true ? false : true
+                tiles.removeAtIndex(selectedIndex.row)
+                self.collectionView.reloadData()
+            }
         }
-        
-        
-        setCellPix()
-        //tiles[self.selectedIndex.row].setPixd()
     }
     
     func setCellPix() {

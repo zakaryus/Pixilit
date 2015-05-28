@@ -10,25 +10,25 @@ import UIKit
 
 class TilePopupViewController: UIViewController {
 
+    @IBOutlet weak var goBack: UIButton!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageDescription: UITextView!
     @IBOutlet weak var imageTags: UITextView!
-    @IBOutlet weak var businessLogo: UIImageView!
-    @IBOutlet weak var businessTitle: UITextView!
+  //  @IBOutlet weak var businessLogo: UIImageView!
+   // @IBOutlet weak var businessTitle: UITextView!
     @IBOutlet weak var popupView: UIView!
     //var pixdButton = UIButton()
     @IBOutlet weak var pixdButton: UIButton!
     var business: Business?
     private var _SelectedTile: Tile?
     var userInteraction = true
+    
     var SelectedTile : Tile {
         get {
             return _SelectedTile!
         }
         set(value) {
-            //add stuff later
-            //if value
-            
+  
             _SelectedTile = value
         }
     }
@@ -50,45 +50,52 @@ class TilePopupViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
+    //hide status bar-->carrier and battery
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         HelperREST.RestBusinessRequest(SelectedTile.BusinessID!) {
             business in
             self.business = business
         }
+        
+        if (User.Role == AccountType.Business || User.Role == AccountType.Anonymous)
+        {
+            pixdButton.hidden = true
+            pixdButton.userInteractionEnabled = false
+        }
         image.image = SelectedImage
         image.userInteractionEnabled = userInteraction
-        
-        var dimensions = HelperTransformations.Scale(HelperTransformations.ScaleSize.FullScreen, itemToScale: image.image!.size, containerWidth: popupView.frame.width)
-        image.frame.size = dimensions
-        var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
-        pictureTapped.numberOfTapsRequired = 1
-        image.addGestureRecognizer(pictureTapped)
-        //var popupView = createContainerView()
-          //self.view.addSubview(popupView)
-        println("SUBVIEWS: \(self.view.subviews)")
-        //var puvHeight = NSLayoutConstraint.constraintsWithVisualFormat(<#format: String#>, options: <#NSLayoutFormatOptions#>, metrics: <#[NSObject : AnyObject]?#>, views: <#[NSObject : AnyObject]#>)
-        //popupView.center = self.view.center
 
+
+        var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
+        pictureTapped.numberOfTapsRequired = 2
         
+        var textTapped =  UITapGestureRecognizer(target: self, action: "hideInteractions:")
+        textTapped.numberOfTapsRequired = 1
+        
+        image.addGestureRecognizer(textTapped)
+        
+        image.addGestureRecognizer(pictureTapped)
+
+       
         imageDescription.text = SelectedTile.Description
         for tag in SelectedTile.tags {
             var modifiedString = tag.stringByReplacingOccurrencesOfString("&amp;", withString: "&", options: NSStringCompareOptions.LiteralSearch, range: nil)
             imageTags.text! += "\(modifiedString), "
         }
         
-        if let logo = SelectedTile.BusinessLogo {
-            //rest request
-            HelperURLs.UrlToImage(logo) {
-                photo in
-                self.businessLogo.image = photo
-            }
-        }
         
-        if let businessname = SelectedTile.BusinessName {
-            businessTitle.text = SelectedTile.BusinessName
-        }
         
+        setPixdIconPopup()
+    }
+    
+    
+    func setPixdIconPopup()
+    {
         if User.IsLoggedIn() {
             if SelectedTile.Pixd == true {
                 pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
@@ -97,8 +104,37 @@ class TilePopupViewController: UIViewController {
                 pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
             }
         }
-        // Do any additional setup after loading the view.
+
     }
+    
+    func hideInteractions(sender:UITapGestureRecognizer!)
+    {
+        if (imageDescription.hidden == false )
+        {
+
+        imageDescription.hidden = true
+        imageTags.hidden = true
+            
+        pixdButton.hidden = true
+        pixdButton.enabled = false
+            
+        goBack.hidden = true
+        goBack.enabled = false
+            
+        }
+        else
+        {
+            imageDescription.hidden = false
+            imageTags.hidden = false
+            
+            pixdButton.hidden = false
+            pixdButton.enabled = true
+            
+            goBack.hidden = false
+            goBack.enabled = true
+        }
+    }
+    
     
     func segueToBusiness(sender: UITapGestureRecognizer!)
     {
@@ -106,25 +142,43 @@ class TilePopupViewController: UIViewController {
         self.performSegueWithIdentifier("popupToBusinessSegue", sender: "")
     }
     
+    
     @IBAction func pixdButtonPressed(sender: AnyObject) {
         println("pixd button pressed")
         
+        if(self.SelectedTile.Pixd == true)
+        {
+            println("THIS IS PIXD")
+            self.SelectedTile.Pixd == false
+            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+
+        }
+        else if (self.SelectedTile.Pixd == false){
+            self.SelectedTile.Pixd == true
+            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+            println ("THIS IS NOT PIXED")
+        }
+        
         HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
             success in
-            println("\(success) this sucs")
+          
             if success == true
             {
+                println("Yay")
                 self.SelectedTile.Pixd = self.SelectedTile.Pixd == true ? false : true
             }
+
+
         }
         
         
-        if SelectedTile.Pixd == true {
-            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
-        }
-        else {
-            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
-        }
+//        if SelectedTile.Pixd == true {
+//            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+//        }
+//        else {
+//       
+//            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+//        }
         
         //notify observers
     }

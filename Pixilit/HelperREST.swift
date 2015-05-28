@@ -51,6 +51,20 @@ public struct HelperREST
         return json
     }
     
+    public static func RestRequestAsync(url: String, CompletionHandler: (json: JSON) -> ()) {
+        let nsurl: NSURL = NSURL(string: url)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(nsurl, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            CompletionHandler(json: JSON(data: data))
+        })
+        task.resume()
+    }
+    
     public static func RestUpdateProfile(pid : String) -> Bool {
         
         let urlPath = Config.RestUserProfile + pid
@@ -74,6 +88,37 @@ public struct HelperREST
         
         return responseError == nil
         
+    }
+
+    public static func RestTagsRequest(CompletionHandler: (Tags: [Tag]) -> ()) {
+        var tmpTags = [Tag]()
+        
+        let urlPath = Config.RestTileTags
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            //println(json)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                //  println(subJson)
+                
+                var tag = Tag(json: subJson)
+                tmpTags.append(tag)
+            }
+            
+            //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+            
+            CompletionHandler(Tags: tmpTags)
+        })
+        task.resume()
     }
 
 
@@ -190,8 +235,6 @@ public struct HelperREST
         
     }
     
-    
-
     //REST
     public static func RestBusinessesRequest(CompletionHandler: (Businesses: [Business]) -> ()) {
         var tmpBusinesses = [Business]()
@@ -309,10 +352,10 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestMainFeedRequest(tids: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestMainFeedRequest(tids: String, page: Int, CompletionHandler: (tiles: [Tile]) -> ()) {
         var tmpTiles = [Tile]()
         
-        let urlPath = Config.RestMainFeedRegionsJson + tids
+        let urlPath = Config.RestMainFeedRegionsJson + tids + "&page=\(page)"
         println(urlPath)
         //let urlPath = Config.RestMainFeedJson
         
@@ -338,8 +381,8 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestBusinessTiles(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
-        let urlPath = Config.RestBusinessTileJson + Uid
+    public static func RestBusinessTiles(Uid: String, page: Int, CompletionHandler: (tiles: [Tile]) -> ()) {
+        let urlPath = Config.RestBusinessTileJson + Uid + "&page=\(page)"
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -355,8 +398,6 @@ public struct HelperREST
             
             for (index: String, subJson: JSON) in json {
                 
-                println(subJson)
-                
                 tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
             }
@@ -366,9 +407,11 @@ public struct HelperREST
         task.resume()
     }
     
-    public static func RestUserFlags(Uid: String, CompletionHandler: (tiles: [Tile]) -> ()) {
+    public static func RestUserFlags(Uid: String, page: Int, CompletionHandler: (tiles: [Tile]) -> ()) {
+        if Uid.toInt() == -1 { return }
+        
         var tmpTiles = [Tile]()
-        let urlPath = Config.UserFlagsJson + Uid
+        let urlPath = Config.UserFlagsJson + Uid + "&page=\(page)"
         
         let url: NSURL = NSURL(string: urlPath)!
         let session = NSURLSession.sharedSession()
@@ -380,8 +423,6 @@ public struct HelperREST
             var json = JSON(data: data)
             
             for (index: String, subJson: JSON) in json {
-                
-                println(subJson)
                 
                 var tmpTile = Tile(json: subJson)
                 tmpTiles.append(tmpTile)
@@ -398,7 +439,33 @@ public struct HelperREST
         
     }
     
+    static func RestAboutRequest(CompletionHandler: (about: About) -> ()) {
+        var tmpAbout = About()
+        
+        let urlPath = Config.RestAboutPixilit
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                tmpAbout = About(json: subJson)
+                break
+            }
+            
+            CompletionHandler(about: tmpAbout)
+        })
+        task.resume()
+    }
     
+
     
     public static func RestFacebook(accessToken: String) {
         
@@ -424,7 +491,6 @@ public struct HelperREST
         {
            
             var json = JSON(data: data!)
-             println(json)
                User.Setup(json)
             ////println("User id is" + User.Uid)
         }
