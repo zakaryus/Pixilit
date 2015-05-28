@@ -22,14 +22,14 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     //@IBOutlet weak var businessDescription: UILabel!
    // @IBOutlet weak var businessLogo: UIImageView!
     @IBOutlet var collectionView: UICollectionView!
-    var phoneNumer = "string"
-    var email = "string"
+    var phoneNumer = "N/A"
+    var email = "N/A"
     var website = "string"
-    var myDescription = "string"
-    var locality = "string"
-    var businessTitle = "string"
+    var myDescription = "N/A"
+    var locality = "N/A"
+    var businessTitle = "N/A"
     var image : UIImage!
-    var address = "string"
+    var address = "N/A"
     
     var mintyForest = UIColor.clearColor()//(red: 228, green: 247, blue: 242, alpha: 1)
     var business: Business = Business()
@@ -185,6 +185,8 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     
     func SetBusinessToVC(business: Business)
     {
+    
+        
         if let title = business.Title {
             //self.businessName.text = title
           //  self.businessName.backgroundColor = mintyForest
