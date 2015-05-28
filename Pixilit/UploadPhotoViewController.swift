@@ -41,8 +41,8 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
             self.performSegueWithIdentifier("segueAddRegionsTags", sender: self)
         } else {
             var alertView:UIAlertView = UIAlertView()
-            alertView.title = "No Picture"
-            alertView.message = "Please begin by taking a picture!"
+            alertView.title = "No Photo"
+            alertView.message = "Please begin by taking a photo!"
             alertView.delegate = self
             
             alertView.addButtonWithTitle("OK")

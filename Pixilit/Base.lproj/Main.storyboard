@@ -1523,15 +1523,9 @@ to upload a photo</string>
         <image name="newSettings" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="j9a-4m-C1z"/>
         <segue reference="t4t-oZ-rbm"/>
         <segue reference="KhQ-4a-Iti"/>
-=======
-        <segue reference="Kjq-3T-UJ1"/>
-        <segue reference="t4t-oZ-rbm"/>
-        <segue reference="hic-tj-NmB"/>
->>>>>>> origin/NewMaster
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94509804248809814" green="0.47843137383460999" blue="0.3490196168422699" alpha="1" colorSpace="calibratedRGB"/>
 </document>
