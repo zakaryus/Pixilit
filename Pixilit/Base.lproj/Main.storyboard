@@ -20,13 +20,6 @@
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="600" translatesAutoresizingMaskIntoConstraints="NO" id="esp-ec-RWe">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bMZ-t5-K1D">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="600" id="Hoq-zA-KWD"/>
-                                            <constraint firstAttribute="height" constant="600" id="dJ2-iY-kNh"/>
-                                        </constraints>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVS-Bo-eUp">
                                         <rect key="frame" x="15" y="25" width="40" height="40"/>
                                         <constraints>
@@ -41,15 +34,15 @@
                                             <action selector="pixdButtonPressed:" destination="bB2-vR-l9d" eventType="touchUpInside" id="g3V-On-UIO"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" editable="NO" text="This is the picture descripton" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-Yt-FdY">
-                                        <rect key="frame" x="27" y="528" width="547" height="33"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="infinite" editable="NO" text="This is the picture descripton" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-Yt-FdY">
+                                        <rect key="frame" x="27" y="517" width="547" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="547" placeholderIntrinsicHeight="33" editable="NO" text="Tags" translatesAutoresizingMaskIntoConstraints="NO" id="T4U-vo-EOU">
-                                        <rect key="frame" x="27" y="493" width="547" height="33"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="547" placeholderIntrinsicHeight="33" editable="NO" text="Tags" translatesAutoresizingMaskIntoConstraints="NO" id="T4U-vo-EOU">
+                                        <rect key="frame" x="27" y="476" width="547" height="37"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -67,16 +60,24 @@
                                             <action selector="dismissViewController:" destination="bB2-vR-l9d" eventType="touchUpInside" id="Xal-Jm-rud"/>
                                         </connections>
                                     </button>
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bMZ-t5-K1D">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="aVS-Bo-eUp" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="25" id="40h-WM-IgY"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" id="AET-q9-lLu"/>
                                     <constraint firstAttribute="trailing" secondItem="bMZ-t5-K1D" secondAttribute="trailing" id="Fo9-rg-VZt"/>
+                                    <constraint firstItem="fWD-Yt-FdY" firstAttribute="top" secondItem="T4U-vo-EOU" secondAttribute="bottom" constant="8" id="LIT-vg-Rok"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="top" secondItem="lSw-n1-aYo" secondAttribute="bottom" constant="-68" id="MZC-Gt-JlK"/>
+                                    <constraint firstItem="fWD-Yt-FdY" firstAttribute="width" secondItem="T4U-vo-EOU" secondAttribute="width" id="SFv-cZ-6qS"/>
+                                    <constraint firstItem="T4U-vo-EOU" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" constant="27" id="Sm1-3D-awq"/>
+                                    <constraint firstAttribute="bottom" secondItem="fWD-Yt-FdY" secondAttribute="bottom" constant="50" id="SqY-jZ-OPy"/>
                                     <constraint firstItem="lSw-n1-aYo" firstAttribute="top" secondItem="esp-ec-RWe" secondAttribute="top" constant="21" id="VR3-HO-aOb"/>
                                     <constraint firstAttribute="trailing" secondItem="lSw-n1-aYo" secondAttribute="trailing" constant="12" id="aB0-cC-psf"/>
                                     <constraint firstItem="aVS-Bo-eUp" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" constant="15" id="cro-YQ-Tgi"/>
+                                    <constraint firstAttribute="trailing" secondItem="T4U-vo-EOU" secondAttribute="trailing" constant="26" id="hq6-0J-JFp"/>
                                     <constraint firstAttribute="bottom" secondItem="bMZ-t5-K1D" secondAttribute="bottom" id="knd-bH-Wnm"/>
                                     <constraint firstItem="lSw-n1-aYo" firstAttribute="leading" secondItem="bMZ-t5-K1D" secondAttribute="trailing" constant="-60" id="lGs-8J-2CR"/>
                                     <constraint firstItem="bMZ-t5-K1D" firstAttribute="leading" secondItem="esp-ec-RWe" secondAttribute="leading" id="nWj-sV-PrR"/>

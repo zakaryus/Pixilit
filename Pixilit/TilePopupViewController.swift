@@ -83,9 +83,18 @@ class TilePopupViewController: UIViewController {
 
        
         imageDescription.text = SelectedTile.Description
+        imageTags.text = "";
+        var first = true
         for tag in SelectedTile.tags {
             var modifiedString = tag.stringByReplacingOccurrencesOfString("&amp;", withString: "&", options: NSStringCompareOptions.LiteralSearch, range: nil)
-            imageTags.text! += "\(modifiedString), "
+            if (first) {
+                imageTags.text! += modifiedString
+                first = false
+            }
+            else {
+                imageTags.text! += ", \(modifiedString)"
+            }
+            
         }
         
         
