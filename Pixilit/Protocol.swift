@@ -9,5 +9,5 @@
 import Foundation
 
 protocol writeValueBackDelegate {
-    func writeValueBack(description: String, regions: [String], tags: String)
+    func writeValueBack(description: String, regions: [String], tags: [String])
 }

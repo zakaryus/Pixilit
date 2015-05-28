@@ -27,18 +27,31 @@ struct HelperStrings
         return "{\"file\":{\"file\": \"\(base64)\",\"filename\":\"my_first_image.png\",\"uri\":\"public://my_first_image.png\"}}"
     }
     
-    static func RestNodeJsonString(uid: String, description: String, fid: String, regions: [String]) -> String {
+    static func RestNodeJsonString(uid: String, description: String, fid: String, regions: [String], tags: [String]) -> String {
         
-        var regionStr: String = "\"field_tile_regions\": {\"und\": [{"
-        for region in regions {
-            regionStr += "\"tid\": \"\(region)\""
+        var regionStr = RestArrayJsonString("field_tile_regions", array: regions)
+        var tagStr = RestArrayJsonString("field_tags", array: tags)
+
+        
+        var rtn = "{\"type\" : \"tile\",\"title\" : \"\(uid)\",\"language\" : \"und\",\(regionStr)\(tagStr)\"field_description\": {\"und\": [{\"value\": \"\(description)\"}]},\"field_image\": {\"und\": [{\"fid\": \(fid.toInt()!)}]}}"
+        println(rtn)
+        return rtn
+    }
+    
+    private static func RestArrayJsonString(field: String, array: [String]) -> String {
+        var arrStr = "\"\(field)\": {\"und\": ["
+        var first: Bool = true
+        for a in array {
+            if(first) {
+                arrStr += "\"\(a)\""
+                first = false
+            } else {
+                arrStr += ",\"\(a)\""
+            }
         }
-        regionStr += "}]},"
+        arrStr += "]},"
         
-        
-        var str =  "{\"type\" : \"tile\",\"title\" : \"\(uid)\",\"language\" : \"und\",\"field_description\": {\"und\": [{\"value\": \"\(description)\"}]},\(regionStr)\"field_image\": {\"und\": [{\"fid\": \(fid.toInt()!)}]}}"
-        
-        println
+        return arrStr
     }
     
     static func RestUpdateFlagString(nid: String, uid: String, flagged: String) -> String {

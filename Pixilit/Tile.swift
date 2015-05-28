@@ -99,6 +99,7 @@ public class Tile: NSObject, IRestful {
         for tag in tags {
             if first {
                 str = tag
+                first = false
             } else {
                 str += ", \(tag)"
             }

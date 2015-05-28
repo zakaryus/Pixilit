@@ -8,17 +8,33 @@
 
 import UIKit
 
-class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegate, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource {
 
     @IBOutlet weak var TblRegions: UITableView!
     @IBOutlet weak var TbDescription: UITextView!
     @IBOutlet weak var BtnDone: UIButton!
+    @IBOutlet weak var TblTags: UITableView!
     var delegate: writeValueBackDelegate?
-    
+    var refresh = UIRefreshControl()
+    var tableVC = UITableViewController(style: .Plain)
     var addRegions: [String] = []
+    var clsTags : [Tag] = []
+    var addTags: [String] = []
+    var allTags : [Tag] = []
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableVC.tableView = TblTags
+        tableVC.refreshControl = refresh
+        refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
+     
+        RefreshList()
+
+        
+      
+        TblRegions.reloadData()
+
         self.BtnDone.enabled = false
         self.TbDescription.delegate = self
         self.TbDescription.text = "Enter Description..."
@@ -33,7 +49,20 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
-        TblRegions.reloadData()
+        
+    }
+    
+    func RefreshList()
+    {
+        refresh.beginRefreshing()
+        HelperREST.RestTagsRequest {
+            Tags in
+            
+            self.clsTags = Tags
+            self.allTags = Tags
+            self.TblTags.reloadData()
+            self.refresh.endRefreshing()
+        }
     }
     
 
@@ -49,13 +78,17 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     
     @IBAction func BtnDoneClick(sender: AnyObject) {
         
-        delegate?.writeValueBack(TbDescription.text, regions: addRegions, tags: "Tags")
+        delegate?.writeValueBack(TbDescription.text, regions: addRegions, tags: addTags)
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func textViewDidChange(textView: UITextView) {
-        if(!textView.text.isEmpty)
+        checkForDone()
+    }
+    
+    func checkForDone() {
+        if !TbDescription.text.isEmpty && TbDescription.textColor != UIColor.lightGrayColor() && !addRegions.isEmpty && !addTags.isEmpty
         {
             self.BtnDone.enabled = true
         }
@@ -82,7 +115,12 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return User.Regions.count
+        if tableView == TblRegions {
+            return User.Regions.count
+        }
+        else {  //TblTags and SearchDisplay
+            return clsTags.count
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -90,9 +128,24 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = User.Regions[indexPath.row].Name?.capitalizedString
+        var reId : String = ""
+        var value : String = ""
+        var check : Bool = false
+        if tableView == TblRegions {
+            reId = "RegionCell"
+            value = User.Regions[indexPath.row].Name!.capitalizedString
+            check = contains(addRegions, "\(User.Regions[indexPath.row].TID!)")
+        }
+        else {
+            reId = "TagCell"
+            value = clsTags[indexPath.row].Name!.capitalizedString
+            check = contains(addTags, "\(clsTags[indexPath.row].TID!)")
+        }
+        
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: reId)
+        cell.textLabel?.text = value
+        cell.accessoryType = check ? .Checkmark : .None
         
         return cell
     }
@@ -100,10 +153,61 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        cell?.accessoryType = .Checkmark
         
-        addRegions.append("\(User.Regions[indexPath.row].TID!)")
-        
+        if tableView == TblRegions {
+            if cell?.accessoryType == .Checkmark {
+                cell?.accessoryType = .None
+                addRegions = addRegions.filter() { $0 != "\(User.Regions[indexPath.row].TID!)" }
+            }
+            else {
+                cell?.accessoryType = .Checkmark
+                addRegions.append("\(User.Regions[indexPath.row].TID!)")
+            }
+            checkForDone()
+        }
+        else {
+            if cell?.accessoryType == .Checkmark {
+                cell?.accessoryType = .None
+                addTags = addTags.filter() { $0 != "\(self.clsTags[indexPath.row].TID!)" }
+            }
+            else {
+                cell?.accessoryType = .Checkmark
+                addTags.append("\(clsTags[indexPath.row].TID!)")
+            }
+            checkForDone()
+        }
     }
-
+    
+    func filterContentForSearchText(searchText: String)
+    {
+        // Filter the array using the filter method
+        self.clsTags = self.allTags.filter({(tag: Tag) -> Bool in
+            if let name = tag.Name {
+                let stringMatch = name.lowercaseString.rangeOfString(searchText.lowercaseString)
+                return stringMatch != nil
+            }
+            return false
+        })
+        
+        println(self.clsTags.count)
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String!) -> Bool
+    {
+        if searchString == "" {
+            self.clsTags = self.allTags
+            self.TblTags.reloadData()
+        } else {
+            self.filterContentForSearchText(searchString)
+            self.TblTags.reloadData()
+        }
+        
+        return true
+    }
+    
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool
+    {
+        self.filterContentForSearchText(self.searchDisplayController!.searchBar.text)
+        return true
+    }
 }

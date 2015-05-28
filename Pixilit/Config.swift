@@ -12,6 +12,7 @@ private let dict = NSDictionary(contentsOfFile: NSBundle.mainBundle().pathForRes
 
 struct Config
 {
+    static let RestTileTags : String = dict?.objectForKey("RestTileTags") as! String
     static let RestFileCreate : String = dict?.objectForKey("RestFileCreate") as! String
     static let RestNodeCreate : String = dict?.objectForKey("RestNodeCreate") as! String
     static let RestUserLogout : String = dict?.objectForKey("RestUserLogout") as! String

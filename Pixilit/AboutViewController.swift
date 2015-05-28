@@ -18,8 +18,9 @@ class AboutViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tbBody.center = self.view.center
-        self.lblTitle.center = self.view.center
+        //self.tbBody.center = self.view.center
+        //self.lblTitle.center = self.view.center
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
         
         var json = HelperREST.RestRequest(Config.RestAboutPixilit, content : ""  , method : HelperREST.HTTPMethod.Get, headerValues : nil)
         AboutModel = About(json: json[0])

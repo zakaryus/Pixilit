@@ -103,6 +103,11 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
        
         HelperREST.RestMainFeedRequest(tid, page: pageCounter) {
             Tiles in
+            
+            if self.pageCounter == 0 {
+                self.tiles.removeAll(keepCapacity: false)
+                self.allTiles.removeAll(keepCapacity: false)
+            }
           
             for tile in Tiles {
                 self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
@@ -115,6 +120,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         }
         
     }
+    
     public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -125,7 +131,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     
     public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell: TileCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: indexPath) as! TileCollectionViewCell
-        
+                
         //decide when to update pageCounter and call refresh
         if (PAGESIZE * pageCounter) + (PAGESIZE / 2) == indexPath.row - 1 {
             pageCounter++

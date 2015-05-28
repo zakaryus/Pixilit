@@ -90,6 +90,37 @@ public struct HelperREST
         
     }
 
+    public static func RestTagsRequest(CompletionHandler: (Tags: [Tag]) -> ()) {
+        var tmpTags = [Tag]()
+        
+        let urlPath = Config.RestTileTags
+        
+        let url: NSURL = NSURL(string: urlPath)!
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url, completionHandler: {data, response, error -> Void in
+            if((error) != nil) {
+                //If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            var json = JSON(data: data)
+            //println(json)
+            
+            for (index: String, subJson: JSON) in json {
+                
+                //  println(subJson)
+                
+                var tag = Tag(json: subJson)
+                tmpTags.append(tag)
+            }
+            
+            //tmpUrls = tmpUrls.sorted({$0.Title < $1.Title})
+            
+            CompletionHandler(Tags: tmpTags)
+        })
+        task.resume()
+    }
+
 
     public static func RestRegionsRequest(tid : String = "all", CompletionHandler: (Regions: [Region]) -> ()) {
         var tmpRegions = [Region]()

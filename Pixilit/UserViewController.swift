@@ -37,7 +37,6 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             newsButton.title = "News"
         }
         else {
-            newsButton.title = ""
             newsButton.enabled = false
             newsButton.title = ""
         }
@@ -74,6 +73,10 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             HelperREST.RestBusinessTiles(User.Uid, page: pageCounter) {
                 Tiles in
                 
+                if self.pageCounter == 0 {
+                    self.tiles.removeAll(keepCapacity: false)
+                }
+                
                 for tile in Tiles {
                     self.tiles.append(tile: tile, photo: UIImage(), photoSize: CGSizeMake(0, 0), hasImage: false)
                 }
@@ -89,7 +92,7 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
                 
                 
                 if self.pageCounter == 0 {
-                    self.tiles = []
+                    self.tiles.removeAll(keepCapacity: false)
                 }
                 
                 for tile in Tiles {
@@ -150,7 +153,6 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
         return cell
     }
 
-    
     func registerTaps(cell: TileCollectionViewCell) {
         var singleTap = UITapGestureRecognizer(target: self, action: "segueToPopup:")
         singleTap.numberOfTapsRequired = 1

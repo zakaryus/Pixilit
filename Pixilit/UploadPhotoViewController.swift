@@ -19,6 +19,7 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
     
     var desc: String!
     var regions: [String] = []
+    var tags: [String] = []
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tvInstructionPlaceholder: UITextView!
@@ -28,7 +29,6 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
         self.view.backgroundColor = HelperTransformations.BackgroundColor()
         self.imagePicker.delegate = self
 
-        
         BtnPhoto = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "BtnPhotoClicked:")
         BtnPhoto.enabled = true
         BtnUpload = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "BtnUploadClick:")
@@ -37,7 +37,17 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
     }
     
     @IBAction func BtnAddClicked(sender: AnyObject) {
-        self.performSegueWithIdentifier("segueAddRegionsTags", sender: self)
+        if imageView.image != nil {
+            self.performSegueWithIdentifier("segueAddRegionsTags", sender: self)
+        } else {
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "No Picture"
+            alertView.message = "Please begin by taking a picture!"
+            alertView.delegate = self
+            
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+        }
         
     }
     func BtnPhotoClicked(sender: UIBarButtonItem) {
@@ -104,7 +114,7 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
             
             
             println("\n\n\n\n\nLOOK AT ME: " + self.desc)
-            var nodeData =  HelperStrings.RestNodeJsonString(User.Uid, description: self.desc, fid: fid!, regions: self.regions)
+            var nodeData =  HelperStrings.RestNodeJsonString(User.Uid, description: self.desc, fid: fid!, regions: self.regions, tags: self.tags)
             var json2 = HelperREST.RestRequest(Config.RestNodeCreate, content: nodeData, method: HelperREST.HTTPMethod.Post, headerValues: [("X-CSRF-Token",User.Token)])
             
             
@@ -129,10 +139,11 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
         imageView.contentMode = .ScaleAspectFit
     }
     
-    func writeValueBack(description: String, regions: [String], tags: String) {
+    func writeValueBack(description: String, regions: [String], tags: [String]) {
         
         self.desc = description
         self.regions = regions
+        self.tags = tags
         
         self.BtnUpload.enabled = true
     }

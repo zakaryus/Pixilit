@@ -21,6 +21,7 @@
 		3185E1491A79E82900037B10 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185E1481A79E82900037B10 /* SwiftyJSON.swift */; };
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
 		31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */; };
+		321095371B162D2C0021285B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321095361B162D2C0021285B /* Tag.swift */; };
 		3211000C1AFC14AF000FC1D9 /* HelperLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */; };
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
@@ -139,6 +140,7 @@
 		3185E1481A79E82900037B10 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
+		321095361B162D2C0021285B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLogin.swift; sourceTree = "<group>"; };
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				32B51DCF1ADDA9A80014ECCC /* RegionHierarchy.swift */,
 				325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */,
 				328000CC1B0E699A00C1E41E /* About.swift */,
+				321095361B162D2C0021285B /* Tag.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				328000CD1B0E699A00C1E41E /* About.swift in Sources */,
 				4293ACC21AAE53010089F441 /* User.swift in Sources */,
 				316A9F201A900A0000694B2B /* Config.swift in Sources */,
+				321095371B162D2C0021285B /* Tag.swift in Sources */,
 				324C7E781B0FEDA6005B85CE /* Protocol.swift in Sources */,
 				3185E1291A79D3E600037B10 /* BusinessListViewController.swift in Sources */,
 				42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */,
@@ -808,6 +812,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Pixilit/Pixilit-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "Pixilit/Pixilit-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -830,6 +835,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pixilit/Pixilit-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
