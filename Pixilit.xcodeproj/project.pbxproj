@@ -399,6 +399,7 @@
 				325CEC321ADF027200AEBC56 /* SubRegionViewController.swift */,
 				32FDB6411AE5A3A80039A30E /* TilePopupViewController.swift */,
 				32F9F2431B0A775200A9CBE8 /* UploadingViewController.swift */,
+				A6B76ED11B15A60600950B11 /* MoreBusinessInfoController.swift */,
 				324C7E751B0FDE9E005B85CE /* AddRegionsTagsViewController.swift */,
 			);
 			name = Controllers;

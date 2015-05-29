@@ -42,7 +42,15 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
     var pageCounter: Int = 0
     let PAGESIZE: Int = 12
     
+    //hide status bar-->carrier and battery
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
+    @IBAction func moreInfoPressed(sender: AnyObject) {
+        println("more info button pressed")
+      performSegueWithIdentifier("MoreBusinessInfo", sender: "")
+    }
     @IBAction func shareButton(sender: AnyObject)
     {
         let businessUrl = HelperURLs.UidToUserUrl(business.Uid!)
