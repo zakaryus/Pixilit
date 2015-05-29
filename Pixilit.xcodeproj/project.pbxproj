@@ -106,6 +106,7 @@
 		42E524F81AAA552C004E93D5 /* MainFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */; };
 		42F848C71AA4D468009D4AD9 /* NewsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C61AA4D468009D4AD9 /* NewsPage.swift */; };
 		42F848C91AA4D6E8009D4AD9 /* NewsPageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */; };
+		A6B76ED21B15A60700950B11 /* MoreBusinessInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B76ED11B15A60600950B11 /* MoreBusinessInfoController.swift */; };
 		D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */; };
 		D0CD32ED1A8C236B00538B9B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CD32EB1A8C236B00538B9B /* CustomCell.swift */; };
 /* End PBXBuildFile section */
@@ -230,6 +231,7 @@
 		42E524F71AAA552C004E93D5 /* MainFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainFeedViewController.swift; sourceTree = "<group>"; };
 		42F848C61AA4D468009D4AD9 /* NewsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPage.swift; sourceTree = "<group>"; };
 		42F848C81AA4D6E8009D4AD9 /* NewsPageListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPageListViewController.swift; sourceTree = "<group>"; };
+		A6B76ED11B15A60600950B11 /* MoreBusinessInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreBusinessInfoController.swift; sourceTree = "<group>"; };
 		D0C2454C1A8946C00075CC9D /* TileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0CD32EB1A8C236B00538B9B /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -633,6 +635,7 @@
 				D0C2454D1A8946C00075CC9D /* TileCollectionViewCell.swift in Sources */,
 				32BA54691ADC51FE0099DD87 /* HelperURLs.swift in Sources */,
 				322DD18E1AE97DA100058A5E /* HelperTransformations.swift in Sources */,
+				A6B76ED21B15A60700950B11 /* MoreBusinessInfoController.swift in Sources */,
 				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
 				324C7E761B0FDE9E005B85CE /* AddRegionsTagsViewController.swift in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
