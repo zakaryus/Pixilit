@@ -18,7 +18,7 @@ public class Business: NSObject, IRestful
     private(set) var Phone: String?
     private(set) var Email: String?
     private(set) var Website: String?
-    private(set) var Hours: [String] = []
+    private(set) var Day: [DayHours] = []
     private(set) var Description: String?
     private(set) var Logo: String?
     private(set) var Uid: String?
@@ -61,7 +61,17 @@ public class Business: NSObject, IRestful
             self.Website = website
         }
         
-        self.Hours = [String]()
+        if let hours = json["hours"].array
+        {
+            for hour in hours
+            {
+            println("in business model loop")
+            var temp = DayHours(json: hour)
+            self.Day.append(temp) 
+
+            }
+            
+        }
         
         if let description = json["description"].string {
             self.Description = description

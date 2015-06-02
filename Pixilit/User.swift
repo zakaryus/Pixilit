@@ -1,7 +1,7 @@
 
 import UIKit
 
-enum AccountType : String{
+enum AccountType : String {
     case User = "user"
     case Business = "business"
     case Anonymous = "anonymous"

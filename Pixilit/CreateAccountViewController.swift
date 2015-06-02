@@ -51,7 +51,7 @@ class CreateAccountViewController: UIViewController, UIWebViewDelegate {
     func webViewDidFinishLoad(webView: UIWebView) {
         
         if let currenturl = webView.request?.URL!.absoluteString {
-            println(currenturl)
+
             
             if currenturl != Config.UserRegistrationURL && currenturl != Config.BusinessRegistrationURL && currenturl != "webViewDidFinishLoad:" {
                 SelectionChanged("")

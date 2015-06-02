@@ -14,14 +14,12 @@ class TilePopupViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var imageDescription: UITextView!
     @IBOutlet weak var imageTags: UITextView!
-  //  @IBOutlet weak var businessLogo: UIImageView!
-   // @IBOutlet weak var businessTitle: UITextView!
     @IBOutlet weak var popupView: UIView!
-    //var pixdButton = UIButton()
     @IBOutlet weak var pixdButton: UIButton!
     var business: Business?
     private var _SelectedTile: Tile?
     var userInteraction = true
+    var CurrentCell : TileCollectionViewCell!
     
     var SelectedTile : Tile {
         get {
@@ -39,9 +37,6 @@ class TilePopupViewController: UIViewController {
             return _SelectedImage!
         }
         set(value) {
-            //add stuff later
-            //if value
-            
             _SelectedImage = value
         }
     }
@@ -107,10 +102,10 @@ class TilePopupViewController: UIViewController {
     {
         if User.IsLoggedIn() {
             if SelectedTile.Pixd == true {
-                pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+                pixdButton.setImage(UIImage(named: "unpix"), forState: .Normal)
             }
             else {
-                pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+                pixdButton.setImage(UIImage(named: "pix"), forState: .Normal)
             }
         }
 
@@ -123,9 +118,11 @@ class TilePopupViewController: UIViewController {
 
         imageDescription.hidden = true
         imageTags.hidden = true
-            
+        
+        if User.Role != AccountType.Business {
         pixdButton.hidden = true
         pixdButton.enabled = false
+            }
             
         goBack.hidden = true
         goBack.enabled = false
@@ -136,8 +133,10 @@ class TilePopupViewController: UIViewController {
             imageDescription.hidden = false
             imageTags.hidden = false
             
+            if User.Role != AccountType.Business {
             pixdButton.hidden = false
             pixdButton.enabled = true
+            }
             
             goBack.hidden = false
             goBack.enabled = true
@@ -154,43 +153,32 @@ class TilePopupViewController: UIViewController {
     
     @IBAction func pixdButtonPressed(sender: AnyObject) {
         println("pixd button pressed")
-        
         if(self.SelectedTile.Pixd == true)
         {
+            CurrentCell.pixd.image = UIImage(named: "pix")
             println("THIS IS PIXD")
             self.SelectedTile.Pixd == false
-            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
+            pixdButton.setImage(UIImage(named: "pix"), forState: .Normal)
 
         }
         else if (self.SelectedTile.Pixd == false){
+            CurrentCell.pixd.image = UIImage(named: "unpix")
             self.SelectedTile.Pixd == true
-            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
+            pixdButton.setImage(UIImage(named: "unpix"), forState: .Normal)
             println ("THIS IS NOT PIXED")
         }
         
-        HelperREST.RestFlag(SelectedTile.Nid!, pixd : SelectedTile.Pixd!) {
-            success in
-          
-            if success == true
-            {
-                println("Yay")
-                self.SelectedTile.Pixd = self.SelectedTile.Pixd == true ? false : true
-            }
-
-
+        
+        var flagged = SelectedTile.Pixd == false ? "flag" : "unflag"
+        var content = "{\"flag_name\":\"pixd\",\"entity_id\":\"\(SelectedTile.Nid!)\",\"uid\":\"\(User.Uid)\",\"action\":\"\(flagged)\"}"
+        var success = HelperREST.RestRequest(Config.RestFlagJson, content: content, method: HelperREST.HTTPMethod.Post,  headerValues: [("X-CSRF-Token",User.Token)])
+        
+        if success[0].stringValue == "true"
+        {
+           SelectedTile.Pixd = SelectedTile.Pixd == true ? false : true
         }
-        
-        
-//        if SelectedTile.Pixd == true {
-//            pixdButton.setImage(UIImage(named: "pixd"), forState: .Normal)
-//        }
-//        else {
-//       
-//            pixdButton.setImage(UIImage(named: "unpixd"), forState: .Normal)
-//        }
-        
-        //notify observers
-    }
+
+       }
 
     func disablePictureInteraction()
     {

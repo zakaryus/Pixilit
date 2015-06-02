@@ -24,6 +24,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var pageCounter: Int = 0
     let PAGESIZE: Int = 12
+
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -179,6 +180,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         if size == CGSize(width: 0, height: 0) {
             tiles[indexPath.row].photoSize = HelperTransformations.Scale(HelperTransformations.ScaleSize.HalfScreen, itemToScale: tiles[indexPath.row].tile.PhotoMetadata!, containerWidth: self.view.frame.width)
             var ps = tiles[indexPath.row].photoSize
+            println("Main Feed View width: \(ps.width), height: \(ps.height)")
+
         }
         
         return tiles[indexPath.row].photoSize
@@ -285,6 +288,8 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         var index = sender as! Int
         tpvc.SelectedTile = tiles[index].tile
         tpvc.SelectedImage = tiles[index].photo
+        var cell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
+        tpvc.CurrentCell = cell
     }
     
    }

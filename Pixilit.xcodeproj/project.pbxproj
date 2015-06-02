@@ -22,6 +22,11 @@
 		31ABEB941A981A04001815F9 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31ABEB931A981A04001815F9 /* Tile.swift */; };
 		31CA75451AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */; };
 		321095371B162D2C0021285B /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321095361B162D2C0021285B /* Tag.swift */; };
+		3210953A1B1CFECF0021285B /* pixdV2.png in Resources */ = {isa = PBXBuildFile; fileRef = 321095381B1CFECF0021285B /* pixdV2.png */; };
+		3210953B1B1CFECF0021285B /* unpixdV2.png in Resources */ = {isa = PBXBuildFile; fileRef = 321095391B1CFECF0021285B /* unpixdV2.png */; };
+		3210953D1B1D08120021285B /* unpix.png in Resources */ = {isa = PBXBuildFile; fileRef = 3210953C1B1D08120021285B /* unpix.png */; };
+		3210953F1B1D08210021285B /* pix.png in Resources */ = {isa = PBXBuildFile; fileRef = 3210953E1B1D08210021285B /* pix.png */; };
+		321095411B1E4E6F0021285B /* DayHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321095401B1E4E6F0021285B /* DayHours.swift */; };
 		3211000C1AFC14AF000FC1D9 /* HelperLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */; };
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
@@ -142,6 +147,11 @@
 		31ABEB931A981A04001815F9 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		31CA75441AD9E1FE00990541 /* CollectionViewWaterfallLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewWaterfallLayout.swift; sourceTree = "<group>"; };
 		321095361B162D2C0021285B /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		321095381B1CFECF0021285B /* pixdV2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pixdV2.png; sourceTree = "<group>"; };
+		321095391B1CFECF0021285B /* unpixdV2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpixdV2.png; sourceTree = "<group>"; };
+		3210953C1B1D08120021285B /* unpix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpix.png; sourceTree = "<group>"; };
+		3210953E1B1D08210021285B /* pix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pix.png; sourceTree = "<group>"; };
+		321095401B1E4E6F0021285B /* DayHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHours.swift; sourceTree = "<group>"; };
 		3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLogin.swift; sourceTree = "<group>"; };
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -333,6 +343,10 @@
 		325CEC361ADF205E00AEBC56 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3210953E1B1D08210021285B /* pix.png */,
+				3210953C1B1D08120021285B /* unpix.png */,
+				321095381B1CFECF0021285B /* pixdV2.png */,
+				321095391B1CFECF0021285B /* unpixdV2.png */,
 				32D94B731B0BDD90000F1C06 /* logo210.png */,
 				325845D71B0D3D0300F38507 /* Back_Arrow.png */,
 				325845DF1B0D475900F38507 /* goBackButton.png */,
@@ -417,6 +431,7 @@
 				325CEC2E1ADEF0AC00AEBC56 /* RegionKvp.swift */,
 				328000CC1B0E699A00C1E41E /* About.swift */,
 				321095361B162D2C0021285B /* Tag.swift */,
+				321095401B1E4E6F0021285B /* DayHours.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -562,6 +577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3210953D1B1D08120021285B /* unpix.png in Resources */,
 				32CB0BC01B069FCD00737425 /* test@2x.gif in Resources */,
 				32CB0BC21B06A10900737425 /* Splashscreen.png in Resources */,
 				32D94B741B0BDD90000F1C06 /* logo210.png in Resources */,
@@ -576,10 +592,13 @@
 				316A9F1E1A9007BA00694B2B /* Config.plist in Resources */,
 				3185E12E1A79D3E600037B10 /* Main.storyboard in Resources */,
 				32D94B6E1B0BDAAB000F1C06 /* logo270.png in Resources */,
+				3210953A1B1CFECF0021285B /* pixdV2.png in Resources */,
 				32CB0BBE1B0695C100737425 /* mainfeedgreen@2x.png in Resources */,
 				325CEC3F1ADF2D3500AEBC56 /* business.png in Resources */,
 				32CB0BBA1B0695C100737425 /* accountorange.png in Resources */,
 				32CB0BB71B0695C100737425 /* settingsgreen.png in Resources */,
+				3210953B1B1CFECF0021285B /* unpixdV2.png in Resources */,
+				3210953F1B1D08210021285B /* pix.png in Resources */,
 				324B53A71AE863AE006220C0 /* unpixd.png in Resources */,
 				32CB0BBB1B0695C100737425 /* accountgreen.png in Resources */,
 				32D94B721B0BDD05000F1C06 /* logo140.png in Resources */,
@@ -638,6 +657,7 @@
 				322DD18E1AE97DA100058A5E /* HelperTransformations.swift in Sources */,
 				A6B76ED21B15A60700950B11 /* MoreBusinessInfoController.swift in Sources */,
 				32FBEDAD1AD4782900B99783 /* RNCryptorEngine.m in Sources */,
+				321095411B1E4E6F0021285B /* DayHours.swift in Sources */,
 				324C7E761B0FDE9E005B85CE /* AddRegionsTagsViewController.swift in Sources */,
 				42BCAB1A1A80214D000E9387 /* BusinessViewController.swift in Sources */,
 				32B51DC81ADDA0980014ECCC /* UploadPhotoViewController.swift in Sources */,

@@ -52,6 +52,10 @@ class TileCollectionViewCell: UICollectionViewCell {
             pixd.hidden = true
             pixd.userInteractionEnabled = false
         }
+        else if User.Role == AccountType.User {
+            pixd.hidden = false
+            pixd.userInteractionEnabled = true
+        }
         
     }
     
@@ -59,9 +63,9 @@ class TileCollectionViewCell: UICollectionViewCell {
     {
         if User.IsLoggedIn() {
             if currentTile.Pixd == true {
-                pixd.image = UIImage(named: "pixd")
+                pixd.image = UIImage(named: "unpix")
             } else {
-                pixd.image = UIImage(named: "unpixd")
+                pixd.image = UIImage(named: "pix")
             }
         }
         else {

@@ -16,11 +16,13 @@ class MoreBusinessInfoController: UIViewController {
     var passLocality:String!
     var passAddress:String!
     var passImage : UIImage!
+    var InfoBusiness: Business!
 
  
     
     
 
+    @IBOutlet weak var businessHours: UITextView!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var businessTitleLabel: UILabel!
     //@IBOutlet var MoreBusinessInfo: UIView!
@@ -42,14 +44,28 @@ class MoreBusinessInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.businessTitleLabel.text = passTitle
-        self.phoneLabel.text = passNumber
-        self.emaiLabel.text = passEmail
-        self.websiteLabel.text = passWebsite
-        self.descriptionTextView.text = passDescription
-        self.localityLabel.text = passLocality
-        self.businessLogo.image = passImage
-        self.address.text = passAddress
+        self.businessTitleLabel.text = InfoBusiness.Title
+        self.phoneLabel.text = InfoBusiness.Phone
+        self.emaiLabel.text = InfoBusiness.Email
+        self.websiteLabel.text = InfoBusiness.Website
+        self.descriptionTextView.text = InfoBusiness.Description
+        self.localityLabel.text = InfoBusiness.Locality
+        
+        if let logo = InfoBusiness.Logo {
+        HelperURLs.UrlToImage(logo)
+                {
+                    Image in
+                    self.businessLogo.image = Image
+                }
+            }
+  
+        self.address.text = InfoBusiness.Thoroughfare
+        var temp = ""
+        for dayHours in InfoBusiness.Day
+        {
+            temp += "\(dayHours.Day!):\t\(dayHours.Start!) - \(dayHours.End!) \n"
+        }
+        self.businessHours.text = temp
         self.view.backgroundColor = HelperTransformations.BackgroundColor()
     }
     
