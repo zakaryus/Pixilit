@@ -25,6 +25,12 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
     var pageCounter: Int = 0
     let PAGESIZE: Int = 12
     
+    @IBAction func accountInfoButtonPressed(sender: AnyObject) {
+        var businessMessage = "This is your account page. This is where your uploaded photos will show up. To read the latest news from the website, press the \"News\" button."
+        var userMessage = "This is your account page. This is where your \"pix'd\" photos will show up. Like the main feed, you can tap a picture to expand it, or double tap it to un-\"pix\" it."
+        HelperUtility.infoAlert(userMessage, businessMessage: businessMessage, vc: self)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         if !User.IsLoggedIn()
         {
@@ -230,6 +236,8 @@ class UserViewController: UIViewController , UICollectionViewDataSource, Collect
             var index = sender as! Int
             tpvc.SelectedTile = tiles[index].tile
             tpvc.SelectedImage = tiles[index].photo
+            var cell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
+            tpvc.CurrentCell = cell
         }
     }
 

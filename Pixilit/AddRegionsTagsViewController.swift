@@ -10,6 +10,7 @@ import UIKit
 
 class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegate, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource {
 
+
     @IBOutlet weak var TblRegions: UITableView!
     @IBOutlet weak var TbDescription: UITextView!
     @IBOutlet weak var BtnDone: UIButton!
@@ -75,6 +76,10 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func CancelButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func BtnDoneClick(sender: AnyObject) {
         

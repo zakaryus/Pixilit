@@ -63,7 +63,6 @@ class BusinessListViewController: UIViewController, UITableViewDelegate, UISearc
                     self.refresh.endRefreshing()
             })
         }
-        
     }
     
     

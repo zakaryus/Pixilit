@@ -57,4 +57,16 @@ struct HelperStrings
     static func RestUpdateFlagString(nid: String, uid: String, flagged: String) -> String {
         return "{\"flag_name\":\"pixd\",\"entity_id\":\"\(nid)\",\"uid\":\"\(uid)\",\"action\":\"\(flagged)\"}"
     }
+    
+    static func StripHtmlEntities(str: String) -> String {
+        let encodedData = str.dataUsingEncoding(NSUTF8StringEncoding)!
+        let attributedOptions : [String: AnyObject] = [
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+            NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding
+        ]
+        let attributedString = NSAttributedString(data: encodedData, options: attributedOptions, documentAttributes: nil, error: nil)!
+        let decodedString = attributedString.string 
+        
+        return decodedString
+    }
 }

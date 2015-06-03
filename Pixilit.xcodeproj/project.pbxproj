@@ -27,6 +27,7 @@
 		3210953D1B1D08120021285B /* unpix.png in Resources */ = {isa = PBXBuildFile; fileRef = 3210953C1B1D08120021285B /* unpix.png */; };
 		3210953F1B1D08210021285B /* pix.png in Resources */ = {isa = PBXBuildFile; fileRef = 3210953E1B1D08210021285B /* pix.png */; };
 		321095411B1E4E6F0021285B /* DayHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321095401B1E4E6F0021285B /* DayHours.swift */; };
+		321095431B1FBA820021285B /* HelperUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321095421B1FBA820021285B /* HelperUtility.swift */; };
 		3211000C1AFC14AF000FC1D9 /* HelperLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */; };
 		3212E71F1AD87985008593CE /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E71E1AD87985008593CE /* CreateAccountViewController.swift */; };
 		3212E7211AD88327008593CE /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3212E7201AD88327008593CE /* Region.swift */; };
@@ -152,6 +153,7 @@
 		3210953C1B1D08120021285B /* unpix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unpix.png; sourceTree = "<group>"; };
 		3210953E1B1D08210021285B /* pix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pix.png; sourceTree = "<group>"; };
 		321095401B1E4E6F0021285B /* DayHours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayHours.swift; sourceTree = "<group>"; };
+		321095421B1FBA820021285B /* HelperUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperUtility.swift; sourceTree = "<group>"; };
 		3211000B1AFC14AF000FC1D9 /* HelperLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperLogin.swift; sourceTree = "<group>"; };
 		3212E71E1AD87985008593CE /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		3212E7201AD88327008593CE /* Region.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 		32BA54671ADC51BE0099DD87 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				321095421B1FBA820021285B /* HelperUtility.swift */,
 				32BA54681ADC51FE0099DD87 /* HelperURLs.swift */,
 				32BA546A1ADC52540099DD87 /* HelperStrings.swift */,
 				32BA546C1ADC52920099DD87 /* HelperREST.swift */,
@@ -678,6 +681,7 @@
 				32FBEDAF1AD4782900B99783 /* RNEncryptor.m in Sources */,
 				329E41A01ACB3EBA002131FD /* SettingsViewController.swift in Sources */,
 				31ABEB941A981A04001815F9 /* Tile.swift in Sources */,
+				321095431B1FBA820021285B /* HelperUtility.swift in Sources */,
 				32F578BD1AF18EA600BFB16B /* JSONArray.swift in Sources */,
 				32FBEDAE1AD4782900B99783 /* RNDecryptor.m in Sources */,
 				32B51DCC1ADDA1E10014ECCC /* AboutViewController.swift in Sources */,

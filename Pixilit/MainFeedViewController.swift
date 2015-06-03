@@ -25,6 +25,14 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     var pageCounter: Int = 0
     let PAGESIZE: Int = 12
 
+    @IBAction func infoButtonTouched(sender: AnyObject) {
+        
+        var businessmsg = "This is the Main Feed. Your uploaded photos will appear here for users to \"pix\""
+        
+        var usermsg = "This is the Main Feed. This is where a business's uploaded pictures will show up. Tap a picture to expand it, or double tap it to \"pix\" the picture (if you are logged in). When a picture is expanded, double tap it to go to its business page, or tap the icon in the upper right to \"pix\" it.\n\"Pix\"ing an image will make the image show up on your \"Account\" page. "
+        
+        HelperUtility.infoAlert(usermsg, businessMessage: businessmsg, vc: self)
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()

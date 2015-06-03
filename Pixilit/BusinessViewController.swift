@@ -239,7 +239,8 @@ class BusinessViewController: UIViewController, UICollectionViewDataSource, Coll
         var index = sender as! Int
         tpvc.SelectedTile = tiles[index].tile
         tpvc.SelectedImage = tiles[index].photo
-
+        var cell = collectionView.cellForItemAtIndexPath(selectedIndex) as! TileCollectionViewCell
+        tpvc.CurrentCell = cell
         tpvc.disablePictureInteraction()
         }
     }

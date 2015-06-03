@@ -85,7 +85,8 @@ class SettingsViewController: UITableViewController, UITextViewDelegate
     {
          tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0))!.hidden = !region
          tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 0))!.hidden = !photo
-         tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))!.hidden = !payment
+         //show this when payment is implemented
+         tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 2, inSection: 0))!.hidden = true
          tvSettings.cellForRowAtIndexPath(NSIndexPath(forRow: 1, inSection: 1))!.hidden = !logout
     
     }

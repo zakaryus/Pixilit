@@ -13,10 +13,8 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
     
     var imagePicker = UIImagePickerController()
     var popover:UIPopoverController?=nil
-    
     var BtnPhoto: UIBarButtonItem!
     var BtnUpload: UIBarButtonItem!
-    
     var desc: String!
     var regions: [String] = []
     var tags: [String] = []
@@ -28,7 +26,6 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
         super.viewDidLoad()
         self.view.backgroundColor = HelperTransformations.BackgroundColor()
         self.imagePicker.delegate = self
-
         BtnPhoto = UIBarButtonItem(barButtonSystemItem: .Camera, target: self, action: "BtnPhotoClicked:")
         BtnPhoto.enabled = true
         BtnUpload = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "BtnUploadClick:")
@@ -44,7 +41,6 @@ class UploadPhotoViewController : UIViewController, UIImagePickerControllerDeleg
             alertView.title = "No Photo"
             alertView.message = "Please begin by taking a photo!"
             alertView.delegate = self
-            
             alertView.addButtonWithTitle("OK")
             alertView.show()
         }
