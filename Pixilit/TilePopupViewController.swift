@@ -63,7 +63,7 @@ class TilePopupViewController: UIViewController {
             pixdButton.userInteractionEnabled = false
         }
         image.image = SelectedImage
-        image.userInteractionEnabled = userInteraction
+        image.userInteractionEnabled = true
 
 
         var pictureTapped =  UITapGestureRecognizer(target: self, action: "segueToBusiness:")
@@ -116,16 +116,16 @@ class TilePopupViewController: UIViewController {
         if (imageDescription.hidden == false )
         {
 
-        imageDescription.hidden = true
-        imageTags.hidden = true
-        
-        if User.Role != AccountType.Business {
-        pixdButton.hidden = true
-        pixdButton.enabled = false
-            }
+            imageDescription.hidden = true
+            imageTags.hidden = true
             
-        goBack.hidden = true
-        goBack.enabled = false
+            if User.Role != AccountType.Business {
+            pixdButton.hidden = true
+            pixdButton.enabled = false
+                }
+                
+            goBack.hidden = true
+            goBack.enabled = false
             
         }
         else

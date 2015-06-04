@@ -11,6 +11,7 @@ import UIKit
 class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegate, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource {
 
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var TblRegions: UITableView!
     @IBOutlet weak var TbDescription: UITextView!
     @IBOutlet weak var BtnDone: UIButton!
@@ -26,21 +27,18 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = HelperTransformations.BackgroundColor()
         tableVC.tableView = TblTags
         tableVC.refreshControl = refresh
         refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
      
         RefreshList()
 
-        
-      
         TblRegions.reloadData()
 
         self.BtnDone.enabled = false
         self.TbDescription.delegate = self
-        self.TbDescription.text = "Enter Description..."
-        self.TbDescription.textColor = UIColor.lightGrayColor()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -110,13 +108,6 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
         }
         
         return true
-    }
-    
-    func textViewDidBeginEditing(textView: UITextView) {
-        if textView.textColor == UIColor.lightGrayColor() {
-            textView.text = nil
-            textView.textColor = UIColor.blackColor()
-        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
