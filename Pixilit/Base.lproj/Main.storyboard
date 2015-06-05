@@ -815,6 +815,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="T17-UD-6xE" id="pQR-v1-zBM"/>
+                        <outlet property="searchBar" destination="MDA-ok-evC" id="9hd-8f-9Sw"/>
                         <outlet property="searchDisplayController" destination="EhB-lC-HeE" id="gyS-BY-22i"/>
                         <segue destination="bB2-vR-l9d" kind="presentation" identifier="FeedToBusinessSegue" id="t4t-oZ-rbm"/>
                     </connections>
@@ -987,20 +988,26 @@
         <!--Add Regions Tags View Controller-->
         <scene sceneID="h37-ch-a0u">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DRN-1a-VpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="AIu-mQ-fuz">
+                    <connections>
+                        <outlet property="delegate" destination="g4j-lF-XNP" id="k7g-rA-DU4"/>
+                    </connections>
+                </searchDisplayController>
                 <viewController id="g4j-lF-XNP" customClass="AddRegionsTagsViewController" customModule="Pixilit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LZx-P6-Zdk"/>
                         <viewControllerLayoutGuide type="bottom" id="hwE-x9-V5V"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Q4H-bM-U8R">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1M-1g-7gt">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Laz-G0-6Gf" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add some tags" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGw-Db-ieT">
                                                 <rect key="frame" x="0.0" y="57" width="600" height="21"/>
@@ -1107,9 +1114,9 @@
                                             <constraint firstItem="hr7-KS-jOP" firstAttribute="leading" secondItem="Laz-G0-6Gf" secondAttribute="leading" id="Oil-WC-QzJ"/>
                                             <constraint firstAttribute="trailing" secondItem="WBo-Ff-IQD" secondAttribute="trailing" constant="8" id="Ozc-tN-S6b"/>
                                             <constraint firstItem="TGw-Db-ieT" firstAttribute="width" secondItem="hr7-KS-jOP" secondAttribute="width" id="P6x-lP-hfJ"/>
-                                            <constraint firstAttribute="bottom" secondItem="WBo-Ff-IQD" secondAttribute="bottom" constant="8" id="YIb-zl-Upd"/>
                                             <constraint firstAttribute="trailing" secondItem="0Zk-Nq-OYl" secondAttribute="trailing" id="YNX-aa-w54"/>
                                             <constraint firstItem="0E0-Tv-ixd" firstAttribute="top" secondItem="XNw-me-dFV" secondAttribute="bottom" constant="8" id="ZDX-Jk-Ja4"/>
+                                            <constraint firstAttribute="bottom" secondItem="WBo-Ff-IQD" secondAttribute="bottom" constant="208" id="ZeF-fs-Ab5"/>
                                             <constraint firstItem="0DM-ei-2Gb" firstAttribute="top" secondItem="0E0-Tv-ixd" secondAttribute="bottom" constant="8" id="clo-J8-K7f"/>
                                             <constraint firstAttribute="trailing" secondItem="XNw-me-dFV" secondAttribute="trailing" id="dN7-8r-biR"/>
                                             <constraint firstItem="TGw-Db-ieT" firstAttribute="width" secondItem="0Zk-Nq-OYl" secondAttribute="width" id="dbT-r2-lel"/>
@@ -1123,7 +1130,7 @@
                                             <constraint firstItem="0Zk-Nq-OYl" firstAttribute="top" secondItem="TGw-Db-ieT" secondAttribute="bottom" id="lHn-Vd-aaj"/>
                                             <constraint firstItem="TGw-Db-ieT" firstAttribute="width" secondItem="3AY-La-uoi" secondAttribute="width" id="lTZ-ag-7mt"/>
                                             <constraint firstItem="XNw-me-dFV" firstAttribute="leading" secondItem="Laz-G0-6Gf" secondAttribute="leading" id="pn1-aM-UbP"/>
-                                            <constraint firstAttribute="bottom" secondItem="0DM-ei-2Gb" secondAttribute="bottom" constant="8" id="yvr-Wl-4Yy"/>
+                                            <constraint firstAttribute="bottom" secondItem="0DM-ei-2Gb" secondAttribute="bottom" constant="208" id="vb8-Rc-17f"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1149,7 +1156,7 @@
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="900"/>
+                    <size key="freeformSize" width="600" height="1100"/>
                     <connections>
                         <outlet property="BtnDone" destination="WBo-Ff-IQD" id="lbW-R1-y3E"/>
                         <outlet property="TbDescription" destination="0E0-Tv-ixd" id="9WD-Y0-ym2"/>
@@ -1160,12 +1167,6 @@
                         <outlet property="searchDisplayController" destination="AIu-mQ-fuz" id="LCN-Dy-GoE"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DRN-1a-VpV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="AIu-mQ-fuz">
-                    <connections>
-                        <outlet property="delegate" destination="g4j-lF-XNP" id="k7g-rA-DU4"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="285" y="3767"/>
         </scene>
@@ -1242,7 +1243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="awv-0C-6VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1245" y="4277"/>
+            <point key="canvasLocation" x="-1245" y="4327"/>
         </scene>
         <!--Upload Photo View Controller-->
         <scene sceneID="msp-8H-bND">
@@ -1257,10 +1258,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-80-LGH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="526"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxB-2S-x0i">
-                                <rect key="frame" x="0.0" y="537" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="562" width="600" height="30"/>
                                 <state key="normal" title="Add photo details">
                                     <color key="titleColor" red="0.0" green="0.65278081290000001" blue="0.7623197115" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1290,13 +1291,13 @@ to upload a photo</string>
                             <constraint firstAttribute="centerY" secondItem="Jgg-2e-MM0" secondAttribute="centerY" id="0f4-Xa-z4s"/>
                             <constraint firstItem="sUd-80-LGH" firstAttribute="leading" secondItem="eBa-Uq-CcH" secondAttribute="leadingMargin" constant="-16" id="9XG-1S-T2N"/>
                             <constraint firstAttribute="centerX" secondItem="Jgg-2e-MM0" secondAttribute="centerX" id="9xu-zs-kTA"/>
+                            <constraint firstItem="sUd-80-LGH" firstAttribute="top" secondItem="CUX-t3-i6a" secondAttribute="bottom" constant="8" id="AJH-Ex-Bdw"/>
                             <constraint firstItem="Jgg-2e-MM0" firstAttribute="leading" secondItem="eBa-Uq-CcH" secondAttribute="leadingMargin" constant="-16" id="MhG-Jl-kR9"/>
-                            <constraint firstItem="sUd-80-LGH" firstAttribute="top" secondItem="eBa-Uq-CcH" secondAttribute="topMargin" id="NOp-De-eMb"/>
-                            <constraint firstItem="kz7-OI-uWm" firstAttribute="top" secondItem="fxB-2S-x0i" secondAttribute="bottom" constant="33" id="TQo-b6-TWm"/>
                             <constraint firstItem="fxB-2S-x0i" firstAttribute="leading" secondItem="eBa-Uq-CcH" secondAttribute="leadingMargin" constant="-16" id="UGe-Lu-LNr"/>
+                            <constraint firstItem="kz7-OI-uWm" firstAttribute="top" secondItem="sUd-80-LGH" secondAttribute="bottom" constant="46" id="X03-jk-V68"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Jgg-2e-MM0" secondAttribute="trailing" constant="-16" id="aX7-yp-Q0T"/>
+                            <constraint firstItem="kz7-OI-uWm" firstAttribute="top" secondItem="fxB-2S-x0i" secondAttribute="bottom" constant="8" id="oFV-km-nJl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fxB-2S-x0i" secondAttribute="trailing" constant="-16" id="oIl-jv-hLH"/>
-                            <constraint firstItem="kz7-OI-uWm" firstAttribute="top" secondItem="sUd-80-LGH" secondAttribute="bottom" id="vbv-Vy-qwa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sUd-80-LGH" secondAttribute="trailing" constant="-16" id="ydA-4L-lzg"/>
                         </constraints>
                     </view>
@@ -1685,8 +1686,8 @@ to upload a photo</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="j9a-4m-C1z"/>
+        <segue reference="t4t-oZ-rbm"/>
         <segue reference="hic-tj-NmB"/>
-        <segue reference="SQx-t0-6bQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.94509804248809814" green="0.47843137383460999" blue="0.3490196168422699" alpha="1" colorSpace="calibratedRGB"/>
 </document>

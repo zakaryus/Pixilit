@@ -10,7 +10,7 @@ import UIKit
 
 public class MainFeedViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, CollectionViewWaterfallLayoutDelegate
 {
-    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     var selectedIndex = NSIndexPath()
     var selectedTile: Tile = Tile()
@@ -24,6 +24,7 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
     let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     var pageCounter: Int = 0
     let PAGESIZE: Int = 12
+    
 
     @IBAction func infoButtonTouched(sender: AnyObject) {
         
@@ -47,9 +48,17 @@ public class MainFeedViewController: UIViewController, UICollectionViewDataSourc
         refresh.addTarget(self, action: "PullToRefresh", forControlEvents: .ValueChanged)
         refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
 
-
+        var dismiss =  UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        dismiss.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(dismiss)
+        self.navigationController?.view.addGestureRecognizer(dismiss)
+        
         // Do any additional setup after loading the view, typically from a nib.
    
+    }
+    
+    func dismissKeyboard(sender: UITapGestureRecognizer!) {
+        searchBar.resignFirstResponder()
     }
     
     

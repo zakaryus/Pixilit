@@ -28,6 +28,12 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = HelperTransformations.BackgroundColor()
+        
+        var dismiss =  UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        dismiss.numberOfTapsRequired = 1
+        dismiss.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(dismiss)
+        
         tableVC.tableView = TblTags
         tableVC.refreshControl = refresh
         refresh.addTarget(self, action: "RefreshList", forControlEvents: .ValueChanged)
@@ -62,6 +68,11 @@ class AddRegionsTagsViewController: UploadPhotoViewController, UITextViewDelegat
             self.TblTags.reloadData()
             self.refresh.endRefreshing()
         }
+    }
+    
+    func dismissKeyboard(sender: UITapGestureRecognizer!) {
+        searchBar.resignFirstResponder()
+        TbDescription.resignFirstResponder()
     }
     
 
